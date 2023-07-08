@@ -3,6 +3,9 @@
 Sujet : 
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
 
+Google doc:
+https://docs.google.com/document/d/1c7IVm0a13f6dmQzApheV4Y5r8KLZjx6FE1nGeYV0tWI/edit?usp=sharing
+
 Documentation
 https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf
 
