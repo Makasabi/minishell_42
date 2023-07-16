@@ -6,66 +6,61 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 20:40:02 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/15 18:16:11 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/16 19:01:12 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "minishell.h"
 
-typedef struct s_list
+t_cmd	*ft_lstnew(void *str)
 {
-	char	*content;
-	t_list	*next;
-	t_list	*prev;
-}			t_list;
+	t_cmd	*node;
 
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*node;
-
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(t_cmd));
 	if (!node)
 		return (0);
-	node->content = content;
+	node->command = str;
 	node->next = NULL;
+	node->prev = NULL;
 	return (node);
 }
 
-t_list	*ft_lstlast(t_list *lst)
+t_cmd	*ft_lstlast(t_cmd *cmd)
 {
-	if (lst == NULL)
+	if (cmd == NULL)
 		return (NULL);
-	while (lst && lst->next)
-		lst = lst->next;
-	return (lst);
+	if (cmd->next)
+		while (cmd && cmd->next)
+			cmd = cmd->next;
+	return (cmd);
 }
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_cmd *cmd)
 {
 	size_t	i;
 
 	i = 0;
-	while (lst != NULL)
+	while (cmd != NULL)
 	{
-		lst = lst->next;
+		cmd = cmd->next;
 		i++;
 	}
 	return (i);
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_cmd **cmd, t_cmd *new)
 {
-	new->next = *lst;
-	*lst = new;
+	new->next = *cmd;
+	*cmd = new;
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_cmd **cmd, t_cmd *new)
 {
-	t_list	*node;
+	t_cmd	*node;
 
-	node = ft_lstlast(*lst);
+	node = ft_lstlast(*cmd);
 	if (!node)
-		*lst = new;
+		*cmd = new;
 	else
 		node->next = new;
 }
