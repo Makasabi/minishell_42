@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:27:57 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/16 19:40:11 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/19 15:17:57 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_magic(t_cmd **save, char *temp, int nb)
 	if (!new)
 		return ;
 	new->next = NULL;
+	new->element = NULL;
 	new->command = malloc (sizeof(char) * (nb + 1));
 	if (!new->command)
 		return ;

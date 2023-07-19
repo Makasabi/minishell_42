@@ -6,16 +6,12 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:28:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/16 19:39:25 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/19 15:13:37 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2048
-# endif
 
 # include <stddef.h>
 # include <stdlib.h>
@@ -27,11 +23,40 @@
 # include <fcntl.h>
 # include <signal.h>
 # include <sys/wait.h>
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include "../libft/includes/libft.h"
+
+# include "../libft/includes/libft.h"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2048
+# endif
+
+# define FALSE 0
+# define TRUE 1
+
+# define EMPTY 0
+# define CMD 1
+# define ARG 2
+# define TRUNC 3
+# define APPEND 4
+# define INPUT 5
+# define PIPE 6
+# define END 7
+
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
+
+# define SKIP 1
+# define NOSKIP 0
 
 typedef struct s_cmd
 {
 	char			*command;
+	void			*element;
 	struct s_cmd	*next;
 	struct s_cmd	*prev;
 }					t_cmd;
@@ -53,7 +78,7 @@ void	check_envp(char **envp, t_minishit *hell);
 
 /* lexer */
 int		get_command(t_minishit *hell);
-void	lexer(t_minishit *hell);
+int		lexer(t_minishit *hell);
 
 /* lst_functions */
 t_cmd	*ft_lstnew(void *str);

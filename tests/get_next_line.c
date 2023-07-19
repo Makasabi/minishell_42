@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:30:52 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/16 15:03:43 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/19 10:25:08 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_magic(t_list **save, char *temp, int nb)
 	t_list	*last_node;
 	int		i;
 
-	new = malloc(sizeof(t_list));
+	new = ft_calloc(sizeof(t_list));
 	if (!new)
 		return ;
 	new->next = NULL;
@@ -109,7 +109,7 @@ t_list	*ft_clean_save(t_list *save)
 
 	last = ft_lstlast(save);
 	i = ft_next_nl(last);
-	clean = malloc (sizeof(t_list));
+	clean = ft_calloc (sizeof(t_list));
 	if (!clean)
 		return (NULL);
 	clean->next = NULL;

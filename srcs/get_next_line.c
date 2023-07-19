@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:27:32 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/16 17:35:51 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/19 15:41:27 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_cmd	*ft_clean_save(t_cmd *save)
 	if (!clean)
 		return (NULL);
 	clean->next = NULL;
+	clean->element = NULL;
 	clean->command = malloc (sizeof(char) * ((BUFFER_SIZE - i) + 1));
 	if (!clean->command)
 		return (NULL);
@@ -32,7 +33,9 @@ t_cmd	*ft_clean_save(t_cmd *save)
 	while (last->command[i])
 		clean->command[j++] = last->command[i++];
 	clean->command[j] = '\0';
-	ft_clear(save);
+	if (save)
+		ft_clear(save);
+	save = NULL;
 	return (clean);
 }
 
@@ -80,11 +83,13 @@ void	ft_read(int fd, t_cmd **save)
 		if (nb == -1 || ((*save) == NULL && nb == 0))
 		{
 			free(temp);
+			temp = NULL;
 			break ;
 		}
 		temp[nb] = '\0';
 		ft_magic(save, temp, nb);
 		free(temp);
+		temp = NULL;
 	}
 }
 
@@ -104,6 +109,7 @@ char	*get_next_line(int fd)
 	if (line[0] == '\0')
 	{
 		free(line);
+		line = NULL;
 		ft_clear(save);
 		return (NULL);
 	}

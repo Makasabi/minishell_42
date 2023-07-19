@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:25:25 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/16 15:48:10 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/19 14:09:57 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <string.h>
 # include <limits.h>
 # include <stdint.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {

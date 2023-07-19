@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/16 19:37:24 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/19 10:26:50 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**extract_path(char *str, char **path)
 	char	*temp;
 	int		i;
 
-	temp = malloc(sizeof(char) * ft_strlen(str) - 4);
+	temp = ft_calloc(sizeof(char), ft_strlen(str) - 4);
 	if (!temp)
 		return (0);
 	i = -1;

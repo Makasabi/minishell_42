@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 20:40:02 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/16 19:01:12 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/19 14:44:46 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ t_cmd	*ft_lstnew(void *str)
 {
 	t_cmd	*node;
 
-	node = malloc(sizeof(t_cmd));
+	node = ft_calloc(1, sizeof(t_cmd));
 	if (!node)
 		return (0);
 	node->command = str;
+	node->element = NULL;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);

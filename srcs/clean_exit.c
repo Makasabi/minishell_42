@@ -6,27 +6,46 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/16 19:40:23 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/19 16:41:28 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_clear(t_cmd *save)
+void	ft_clear(t_cmd *cmd)
 {
-	t_cmd	*temp;
 	t_cmd	*next;
 
-	temp = save;
-	while (temp)
+	while (cmd)
 	{
-		free(temp->command);
-		next = temp->next;
-		free(temp);
-		temp = next;
+		if (cmd->command)
+			free(cmd->command);
+		cmd->command = NULL;
+		if (cmd->element)
+			free(cmd->element);
+		cmd->element = NULL;
+		next = cmd->next;
+		free(cmd);
+		cmd = next;
 	}
-	if (temp)
-		free(temp);
+	if (cmd)
+		free(cmd);
+	// t_cmd	*temp;
+	// t_cmd	*next;
+
+	// temp = save;
+	// while (temp)
+	// {
+	// 	if (temp->command)
+	// 		free(temp->command);
+	// 	if (temp->element)
+	// 		free(temp->element);
+	// 	next = temp->next;
+	// 	free(temp);
+	// 	temp = next;
+	// }
+	// if (temp)
+	// 	free(temp);
 }
 
 void	ft_free(char **split)
