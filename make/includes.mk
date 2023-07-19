@@ -1,0 +1,1 @@
+INCLUDES += ./inc/minishell.h
