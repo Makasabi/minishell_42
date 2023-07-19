@@ -6,7 +6,7 @@
 #    By: mrony <mrony@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 13:08:34 by tgibier           #+#    #+#              #
-#    Updated: 2023/07/19 18:23:43 by mrony            ###   ########.fr        #
+#    Updated: 2023/07/19 18:31:54 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,12 +55,13 @@ $(OBJS_PATH)/%.o: %.c
 
 $(OBJS_PATH):
 	@mkdir -p $(OBJS_PATH)
+	@echo "$(B_BLUE)Minishell: .obj/ folder created$(C_END)"
 
 $(LIBFT):
 	@echo "$(B_BLUE)Summoning libft's genie$(C_END)"
 	@make -sC $(LIBFT_PATH)
 
-$(NAME)	: $(LIBFT) $(OBJS)
+$(NAME)	: $(LIBFT) $(OBJS_PATH) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(LDFLAGS)
 	@echo "\n$(B_GREEN)👾 MINISHELL ready, WOOP WOOP 👾$(C_END)"
 
