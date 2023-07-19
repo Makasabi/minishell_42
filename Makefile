@@ -6,7 +6,7 @@
 #    By: mrony <mrony@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 13:08:34 by tgibier           #+#    #+#              #
-#    Updated: 2023/07/19 18:31:54 by mrony            ###   ########.fr        #
+#    Updated: 2023/07/19 20:14:41 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ $(LIBFT):
 
 $(NAME)	: $(LIBFT) $(OBJS_PATH) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(LDFLAGS)
-	@echo "\n$(B_GREEN)👾 MINISHELL ready, WOOP WOOP 👾$(C_END)"
+	@echo "\n$(B_GREEN)👾 MINISHELL landed and ready, WOOP WOOP 👾$(C_END)"
 
 clean	:
 	@echo "$(C_YELLOW)Minishell: Cleaning the mess$(C_END)"
