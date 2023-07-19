@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:28:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/19 15:13:37 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/19 17:07:15 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # include <readline/history.h>
 # include "../libft/includes/libft.h"
 
-# include "../libft/includes/libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048
@@ -73,19 +72,19 @@ int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
 void	ft_clear(t_cmd *save);
 
-/* get_path */
-void	check_envp(char **envp, t_minishit *hell);
-
-/* lexer */
-int		get_command(t_minishit *hell);
-int		lexer(t_minishit *hell);
-
 /* lst_functions */
 t_cmd	*ft_lstnew(void *str);
 t_cmd	*ft_lstlast(t_cmd *cmd);
 int		ft_lstsize(t_cmd *cmd);
 void	ft_lstadd_front(t_cmd **cmd, t_cmd *new);
 void	ft_lstadd_back(t_cmd **cmd, t_cmd *new);
+
+/* get_path */
+void	check_envp(char **envp, t_minishit *hell);
+
+/* lexer */
+int		get_command(t_minishit *hell);
+int		lexer(t_minishit *hell);
 
 /* get_next_line */
 char	*get_next_line(int fd);
