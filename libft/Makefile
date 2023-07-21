@@ -31,27 +31,27 @@ NAME		:=	libft.a
 ${NAME}: ${OBJFLDR} ${OBJS} $(INCLUDES)
 		@${MAKELIB} ${NAME} ${OBJS}
 		@ranlib ${NAME}
-		@echo "\n🧞$(B_GREEN) Libft's genie is ready too grant you wishes $(C_END)🧞"
+		@echo "\n🧞$(_FOREST_GREEN)$(_BOLD) Libft's genie is ready too grant you wishes $(_END)🧞"
 
 all:	${NAME}
 
 .objs/%.o:	%.c
 		@mkdir -p $(dir $@)
 		@${CC} ${CFLAGS} -c $< -o $@ ${INC}
-		@printf "$(C_PINK)🪔 Rubbing the magic lamp... %-50s \r" $@
+		@printf "$(_FOREST_GREEN)🪔 Rubbing the magic lamp... %-50s \r" $@
 
 ${OBJFLDR}:
 		@mkdir -p ${OBJFLDR}
-		@echo "$(B_BLUE)libft: .obj/ folder created$(C_END)"
+		@echo "$(_EMMERALD)libft: .obj/ folder created$(_END)"
 
 clean:
 		@${DEL} ${OBJFLDR}
-		@echo "$(C_YELLOW)libft: Binary files deleted$(C_END)"
+		@echo "$(_AQUAMARINE)libft: Binary files deleted$(_END)"
 
 fclean: clean
 		@${DEL} ${NAME}
-		@echo "$(C_YELLOW)libft: Object files & folders deleted$(C_END)"
-		@echo "$(B_YELLOW)🧹 libft Cleaned the mess 🧹$(C_END)"
+		@echo "$(_AQUAMARINE)libft: Object files & folders deleted$(_END)"
+		@echo "$(_AQUAMARINE)$(_BOLD)🧹 libft Cleaned the mess 🧹$(_END)"
 
 re:		fclean all
 

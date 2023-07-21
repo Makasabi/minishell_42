@@ -6,11 +6,11 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/19 19:06:00 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/21 20:00:20 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MiNISHELL_H
+#ifndef MINISHELL_H
 # define MINISHELL_H
 
 # include <stddef.h>
@@ -27,8 +27,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-# include "../libft/inc/libft.h"
-
+# include "libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048
@@ -69,7 +68,7 @@ typedef struct s_minishit
 }				t_minishit;
 
 /* clean_exit */
-int		clean_exit(t_minishit *hell);
+int		clean_exit(t_minishit *hell, char **my_env);
 void	ft_free(char **split);
 void	ft_clear(t_cmd *save);
 
@@ -92,7 +91,5 @@ char	*get_next_line(int fd);
 void	ft_magic(t_cmd **list, char *temp, int nb);
 int		ft_next_nl(t_cmd *save);
 int		ft_new_line(t_cmd *save);
-
-
 
 #endif
