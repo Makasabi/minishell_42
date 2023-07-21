@@ -3,92 +3,86 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+         #
+#    By: mrony <mrony@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 13:08:34 by tgibier           #+#    #+#              #
-#    Updated: 2023/07/19 15:35:39 by tgibier          ###   ########.fr        #
+#    Updated: 2023/07/19 18:31:54 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+-include make/includes.mk
+-include make/sources.mk
+-include make/colors.mk
+
 
 # Das Progamm
 NAME				=	minishell
 NAME_BONUS			=	bonus
 
 # Compiler
-CC					=	cc	
+CC					=	cc
 CFLAGS				=	-g3 -Wall -Werror -Wextra
 LDFLAGS				=	-L $(LIBFT_PATH) -lft
-	
-# Libft	
+
+# Libft
 LIBFT_PATH			=	libft/
 LIBFT_NAME			=	libft.a
 LIBFT				=	$(LIBFT_PATH)$(LIBFT_NAME)
 
-HEAD				=	-I ./includes/ \
-						-I ./libft/
+HEAD				=	-I ./inc/ \
+						-I ./libft/inc/
 
 DEPS				=	${OBJS:.o=.d}
 
 # Sources
-SRCS_PATH			=	srcs
-SRCS_NAMES			=	main.c \
-						clean_exit.c \
-						get_path.c \
-						lexer.c \
-						lst_functions.c \
-						get_next_line.c \
-						get_next_line_utils.c 
-						
-SRCS				=	$(addprefix $(SRCS_PATH)/, $(SRCS_NAMES))
-SRCS_BONUS_PATH		=	srcs/bonus
-BONUS_NAMES			=	bonus.c
-BONUS				=	$(addprefix $(SRCS_BONUS_PATH)/, $(BONUS_NAMES))
+SRCS_PATH			=	srcs/
 
 # Objects
-OBJS_PATH			=	objs
-OBJS_NAMES			=	$(SRCS_NAMES:.c=.o)
-OBJS_BONUS_NAMES	=	$(BONUS_NAMES:.c=.o)
+OBJS_PATH			=	.objs/
+OBJS_NAMES			=	$(SRCS:.c=.o)
 OBJS				=	$(addprefix $(OBJS_PATH)/,$(OBJS_NAMES))
-OBJS_BONUS			=	$(addprefix $(OBJS_PATH)/,$(OBJS_BONUS_NAMES))
 
 # -fsanitize=address
 
 MAKEFLAGS			=	--no-print-directory
 
-all	:	$(NAME) $(LIBFT)
+all	:	$(NAME)
 
-$(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c | $(OBJS_PATH)
+$(OBJS_PATH)/%.o: %.c
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
-	
+	@printf "$(C_PINK)🛸 Preparing for landing... %-50s \r" $@
+
 $(OBJS_PATH):
 	@mkdir -p $(OBJS_PATH)
+	@echo "$(B_BLUE)Minishell: .obj/ folder created$(C_END)"
 
 $(LIBFT):
-		@echo "Crafting Libft"
-		@make -sC $(LIBFT_PATH)
+	@echo "$(B_BLUE)Summoning libft's genie$(C_END)"
+	@make -sC $(LIBFT_PATH)
 
-$(NAME)	: $(OBJS) $(LIBFT)
+$(NAME)	: $(LIBFT) $(OBJS_PATH) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(LDFLAGS)
-	@echo "\033[34;5mMINISHELL ready, WOOP WOOP\033[0m"
-
-bonus	:	all $(OBJS_BONUS)
-	@$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(NAME_BONUS)
-
-$(OBJS_PATH)/%.o: $(SRCS_BONUS_PATH)/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
+	@echo "\n$(B_GREEN)👾 MINISHELL ready, WOOP WOOP 👾$(C_END)"
 
 clean	:
-	@echo "Cleaning the mess"
+	@echo "$(C_YELLOW)Minishell: Cleaning the mess$(C_END)"
 	@rm -rf $(OBJS_PATH)
 	@rm -rf $(OBJS)
+	@make clean -C libft
 
 fclean	:	clean
-	@echo "byyye minishit"
+	@echo "$(B_YELLOW)🚀 Minishel leaving: byyye minishit 🚀$(C_END)"
 	@rm -rf $(NAME)
 	@rm -rf $(NAME_BONUS)
-	@rm -rf $(LIBFT_PATH)$(LIBFT_NAME)
+	@make fclean -C libft
 
 re:	fclean all
+
+gmk:
+		@if [ -d make ];then echo ok;else mkdir make;fi
+		@find -path './src/*' -name '*.c' | sed 's/^/SRCS += /' > make/sources.mk
+		@find -path './inc/*' -name '*.h' | sed 's/^/INCLUDES += /' > make/includes.mk
 
 -include $(DEPS)
 

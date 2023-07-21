@@ -1,63 +1,63 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/15 22:38:29 by tgibier           #+#    #+#              #
-#    Updated: 2023/07/19 15:31:23 by tgibier          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+#################### INCLUDE ####################
 
-NAME		= libft.a
+-include make/includes.mk
+-include make/sources.mk
+-include make/colors.mk
 
-CFLAGS		= -g3 -Wall -Werror -Wextra
+INCPATH		:=	inc/
+INC			:=	-I $(INCPATH)
 
-CC			= cc
+################# FOLDER PATHS ##################
 
-AR			= ar rcs
+OBJFLDR		:=	.objs/
 
-HEAD		=	-I ./includes/
+#################### SOURCES ####################
 
-SRCS_PATH	=	srcs/
+OBJS		:=	$(SOURCES:.c=.o)
+OBJS		:=	$(addprefix $(OBJFLDR), $(OBJS))
 
-SRCS_NAMES	= ft_atoi.c ft_calloc.c ft_isalpha.c ft_isdigit.c ft_itoa.c \
-	ft_memcmp.c ft_memmove.c ft_putchar_fd.c ft_putnbr_fd.c ft_split.c \
-	ft_strdup.c ft_strjoin.c ft_strlcpy.c ft_strmapi.c ft_strnstr.c \
-	ft_tolower.c ft_bzero.c ft_isalnum.c ft_isascii.c ft_isprint.c \
-	ft_memchr.c ft_memcpy.c ft_memset.c ft_putendl_fd.c ft_putstr_fd.c \
-	ft_strrchr.c ft_substr.c ft_toupper.c ft_strtrim.c ft_printf.c \
-	ft_strchr.c ft_striteri.c ft_strlcat.c ft_strlen.c ft_strncmp.c \
-	ft_putbase.c ft_putchar.c ft_putstr.c ft_putp.c
-	# ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-	# ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c 
-	
+CC			:=	gcc
 
-SRCS		=	$(addprefix $(SRCS_PATH)/, $(SRCS_NAMES))
+CFLAGS		:=	-Wall -Wextra -Werror -g
 
-OBJS_PATH	=	objs
-OBJS_NAMES	=	$(SRCS_NAMES:.c=.o)
-OBJS		=	$(addprefix $(OBJS_PATH)/, $(OBJS_NAMES))
+MAKELIB		:=	ar -rcs
 
-all: $(NAME)
+DEL			:=	rm -rf
 
-$(OBJS_PATH)/%.o	: $(SRCS_PATH)/%.c 
-		@mkdir -p $(OBJS_PATH)
-		@$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
-	
-$(NAME) : $(OBJS)
-	@ar rc $(NAME) $(OBJS)
-	@echo "Libft ready, WOOP WOOP"
+NAME		:=	libft.a
 
-clean: 
-	@rm -rf $(OBJS_PATH)
-	@rm -rf $(OBJS)
-	@echo "Cleaned the mess (￣ー￣)ゞ"
+####################  RULES  ####################
+
+${NAME}: ${OBJFLDR} ${OBJS} $(INCLUDES)
+		@${MAKELIB} ${NAME} ${OBJS}
+		@ranlib ${NAME}
+		@echo "\n🧞$(B_GREEN) Libft's genie is ready too grant you wishes $(C_END)🧞"
+
+all:	${NAME}
+
+.objs/%.o:	%.c
+		@mkdir -p $(dir $@)
+		@${CC} ${CFLAGS} -c $< -o $@ ${INC}
+		@printf "$(C_PINK)🪔 Rubbing the magic lamp... %-50s \r" $@
+
+${OBJFLDR}:
+		@mkdir -p ${OBJFLDR}
+		@echo "$(B_BLUE)libft: .obj/ folder created$(C_END)"
+
+clean:
+		@${DEL} ${OBJFLDR}
+		@echo "$(C_YELLOW)libft: Binary files deleted$(C_END)"
 
 fclean: clean
-	@rm -f $(NAME)
+		@${DEL} ${NAME}
+		@echo "$(C_YELLOW)libft: Object files & folders deleted$(C_END)"
+		@echo "$(B_YELLOW)🧹 libft Cleaned the mess 🧹$(C_END)"
 
-re: fclean all
+re:		fclean all
 
-.PHONY: all bonus clean fclean re 
+gmk:
+		@if [ -d make ];then echo ok;else mkdir make;fi
+		@find -name '*.c' | sed 's/^/SOURCES += /' > make/sources.mk
+		@find -name '*.h' | sed 's/^/INCLUDES += /' > make/includes.mk
+
+.PHONY: all clean fclean re%
