@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiffany.gibier <tiffany.gibier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/19 18:04:44 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/20 14:20:52 by tiffany.gib      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MiNISHELL_H
+#ifndef MINISHELL_H
 # define MINISHELL_H
 
 # include <stddef.h>
