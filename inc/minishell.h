@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiffany.gibier <tiffany.gibier@student.    +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/20 14:20:52 by tiffany.gib      ###   ########.fr       */
+/*   Updated: 2023/07/22 14:34:52 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,6 @@ int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
 void	ft_clear(t_cmd *save);
 
-/* get_path */
-void	check_envp(char **envp, t_minishit *hell);
-
-/* lexer */
-int		get_command(t_minishit *hell);
-int		lexer(t_minishit *hell);
-
 /* cmd_functions */
 t_cmd	*ft_cmdnew(void *str);
 t_cmd	*ft_cmdlast(t_cmd *cmd);
@@ -91,7 +84,5 @@ char	*get_next_line(int fd);
 void	ft_magic(t_cmd **list, char *temp, int nb);
 int		ft_next_nl(t_cmd *save);
 int		ft_new_line(t_cmd *save);
-
-
 
 #endif
