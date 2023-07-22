@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/22 21:30:21 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/22 21:56:30 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,3 +102,15 @@ int	tokenization(t_minishit *hell, char *command)
 	}
 	return (0);
 }
+
+
+/*
+
+To do :
+- issa_string : continue tokenization with types CMD & ARG 
+- se questionner existentiellement sur ce qu'est un mot, au final
+	-> JJ & JK parsing is my new bible 
+- REDIR names coz wtf fam, where are we going ?
+	-> More than names, we have to parse what comes before & after 
+
+*/
