@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/21 19:54:14 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/22 14:56:58 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,16 @@ char **ft_env_init(void)
 		return (ft_env_from_scratch());
 	my_env = malloc(sizeof(char **) * (size + 1));
 	if (!my_env)
-		ft_env_error(my_env, 0, i);
+		ft_env_error(my_env, 0);
 	while(environ[i])
 	{
 		my_env[i] = ft_strdup(environ[i]);
 		if (!my_env[i])
-			ft_env_error(my_env, 1, i);
+			ft_env_error(my_env, 1);
 		i++;
 	}
 	my_env[i] = NULL;
 	/*find and increment value of variable SHLVL by 1*/
-	ft_print_env(my_env, NULL);
 	return(my_env);
 }
 
@@ -45,36 +44,17 @@ char **ft_env_from_scratch(void)
 	char	**my_env;
 
 	getcwd(buff, PATH_MAX);
-	my_env = malloc(sizeof(char **) * 3);
+	my_env = malloc(sizeof(char **) * 4);
 	if (!my_env)
-		ft_env_error(my_env, 0, 0);
+		ft_env_error(my_env, 0);
 	my_env[0] = ft_strjoin("PWD=", buff);
 	if (!my_env[0])
-		ft_env_error(my_env, 2, 0);
+		ft_env_error(my_env, 2);
 	my_env[1] = ft_strdup("SHLVL=1");
-	if (!my_env[0])
-		ft_env_error(my_env, 1, 1);
+	if (!my_env[1])
+		ft_env_error(my_env, 1);
 	my_env[2] = NULL;
-	ft_print_env(my_env, NULL);
 	return (my_env);
-}
-
-void	ft_env_error(char **my_env, int stage, int i)
-{
-	(void)stage;
-	if (!my_env)
-		ft_putstr_fd(ENVERR0, 2);
-	if (stage == 1)
-	{
-		ft_free_table(my_env, i);
-		ft_putstr_fd(ENVERR1, 2);
-	}
-	if (stage == 2)
-	{
-		ft_free_table(my_env, i);
-		ft_putstr_fd(ENVERR2, 2);
-	}
-	exit(EXIT_FAILURE);
 }
 
 void ft_print_env(char **my_env, char *var)
@@ -92,23 +72,50 @@ void ft_print_env(char **my_env, char *var)
 	}
 }
 
+char *ft_find_var(char **my_env, char *target)
+{
+	int	i;
+	size_t size;
+
+	i = 0;
+	size = ft_strlen(target);
+	if (size == 0 || !target)
+		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
+	while(my_env[i])
+	{
+		if (ft_strncmp(my_env[i], target, size) == 0 && my_env[i][size] == '=')
+			return(my_env[i]);
+		i++;
+	}
+	ft_putstr_fd(VARNOTFOUND, 1);
+	return (NULL);
+}
+
+char	*ft_var_value(char **my_env, char *target)
+{
+	char	*tmp;
+	size_t	size;
+
+	if (!my_env || !target)
+		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
+	size = ft_strlen(target);
+	tmp = ft_find_var(my_env, target);
+	if (!tmp || size == 0)
+		return(NULL);
+	return(tmp+size+1);
+
+}
+
 /*
 	To Do
-	- Malloc security
-	- env modifications
-		- find vaiable
-		- extract value of variable
-		- replace / edit value
+	- Malloc security DONE
+	- env modifications function
+		- find vaiable DONE
+		- extract value of variable DONE
+
 	- table maniupulation :
 		- add variable
 		- delete variable
 		- replace variable
 		- sort table alphabetically
-*/
-
-/*
-	Environment possible Modifications
-	- add a variable - ft_realloc (using memset and memcpy)
-	- remove a variable - ft_realloc
-	- edit a variable - ft_realloc
 */

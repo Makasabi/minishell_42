@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:57:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/21 19:32:56 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/22 14:47:07 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,34 @@
 # define ENV_H
 
 # include "minishell.h"
+
 # include <linux/limits.h>
 
-# define ENVERR "🦖 \033[1;35mEnvironment initialization error: \033[1;0m"
-# define ENVERR0 ENVERR "my_env malloc failled\n"
-# define ENVERR1 ENVERR "failled ft_strdup\n"
-# define ENVERR2 ENVERR "failled ft_strjoin\n"
+# define ENVERR _PURPLE _BOLD "🦖 Environment initialization error: " _END
+# define ENVERR0 ENVERR _ITALIC "my_env malloc failled\n" _END
+# define ENVERR1 ENVERR _ITALIC"failled ft_strdup\n" _END
+# define ENVERR2 ENVERR _ITALIC"failled ft_strjoin\n" _END
+
+# define ENVSEARCH _LILAC _BOLD "Environment Variable search: " _END
+# define VARNOTFOUND ENVSEARCH _ITALIC "Variable not found\n" _END
+# define NOVARTARGET ENVSEARCH _ITALIC "No variable to search for\n" _END
 
 /* env_init.c */
 char	**ft_env_init(void);
 char	**ft_env_from_scratch(void);
-void	ft_env_error(char **my_env, int stage, int i);
+char	*ft_find_var(char **my_env, char *target);
+char	*ft_var_value(char **my_env, char *target);
+
+/* env_errors.c */
+void	ft_env_error(char **my_env, int stage);
 
 /* utils.c */
 int	ft_table_size(char **table);
 void ft_free_table(char **table, int size);
 void ft_print_env(char **my_env, char *var);
+
+/* test.c */
+
+void ft_env_test(char **my_env);
 
 #endif

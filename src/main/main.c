@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/21 19:59:51 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/22 14:11:37 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,15 @@ void	clean_init(t_minishit *hell)
 	hell->token = NULL;
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	t_minishit	*hell;
 	char **my_env;
 
-	(void)ac;
-	printf("%s\n", av[0]);
+	(void)argc;
+	(void)argv;
 	my_env = ft_env_init();
-	if (!my_env)
-		return(ft_putstr_fd("failled malloc\n", 2), 0);
+	ft_env_test(my_env);
 	hell = ft_calloc(1, sizeof(t_minishit));
 	if (!hell)
 		return (0);
