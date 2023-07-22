@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/22 14:34:52 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/22 18:09:45 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../libft/inc/libft.h"
+# include "parsing.h"
 
 
 # ifndef BUFFER_SIZE
@@ -39,11 +40,12 @@
 # define EMPTY 0
 # define CMD 1
 # define ARG 2
-# define TRUNC 3
-# define APPEND 4
-# define INPUT 5
-# define PIPE 6
-# define END 7
+# define GREAT 3 /* > */
+# define APPEND 4 /* >> */
+# define LESS 5 /* < */
+# define HEREDOC 6 /* << */
+# define PIPE 7
+# define END 8
 
 # define STDIN 0
 # define STDOUT 1
@@ -56,14 +58,17 @@ typedef struct s_cmd
 {
 	char			*command;
 	void			*element;
+	int				type;
 	struct s_cmd	*next;
 	struct s_cmd	*prev;
 }					t_cmd;
 
+
 typedef struct s_minishit
 {
 	t_cmd	*cmd;
-	char	**token;
+	t_cmd	*token;
+	// char	**token;
 	char	**path;
 }				t_minishit;
 

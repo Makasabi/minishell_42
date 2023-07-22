@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:27:57 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/19 18:07:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/22 21:33:21 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_magic(t_cmd **save, char *temp, int nb)
 {
 	t_cmd	*new;
 	t_cmd	*last_node;
-	int		i;
 
 	new = malloc(sizeof(t_cmd));
 	if (!new)
@@ -26,13 +25,7 @@ void	ft_magic(t_cmd **save, char *temp, int nb)
 	new->command = malloc (sizeof(char) * (nb + 1));
 	if (!new->command)
 		return ;
-	i = 0;
-	while (temp[i] && i < nb)
-	{
-		new->command[i] = temp[i];
-		i++;
-	}
-	new->command[i] = '\0';
+	new->command = ft_strdup(temp);
 	if (*save == NULL)
 	{
 		*save = new;

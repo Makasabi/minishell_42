@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/19 16:41:28 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/22 18:17:52 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,6 @@ void	ft_clear(t_cmd *cmd)
 	}
 	if (cmd)
 		free(cmd);
-	// t_cmd	*temp;
-	// t_cmd	*next;
-
-	// temp = save;
-	// while (temp)
-	// {
-	// 	if (temp->command)
-	// 		free(temp->command);
-	// 	if (temp->element)
-	// 		free(temp->element);
-	// 	next = temp->next;
-	// 	free(temp);
-	// 	temp = next;
-	// }
-	// if (temp)
-	// 	free(temp);
 }
 
 void	ft_free(char **split)
@@ -61,8 +45,10 @@ void	ft_free(char **split)
 
 int	clean_exit(t_minishit *hell)
 {
+	// if (hell->token)
+	// 	ft_free(hell->token);
 	if (hell->token)
-		ft_free(hell->token);
+		ft_clear(hell->token);
 	hell->token = NULL;
 	if (hell->path)
 		ft_free(hell->path);

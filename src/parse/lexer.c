@@ -6,11 +6,11 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:02:42 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/22 14:35:11 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/22 21:34:11 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "minishell.h"
 
 int	check_quotes(char *command)
 {
@@ -25,13 +25,13 @@ int	check_quotes(char *command)
 	{
 		if (i > 0 && command[i - 1] == '\\')
 			i++;
-		else if (command[i] == '\'' && singl == 0)
+		else if (command[i] == SINGLE && singl == 0)
 			singl = 1;
-		else if (command[i] == '\'' && singl == 1)
+		else if (command[i] == SINGLE && singl == 1)
 			singl = 0;
-		else if (command[i] == '\"' && doubl == 0)
+		else if (command[i] == DOUBLE && doubl == 0)
 			doubl = 1;
-		else if (command[i] == '\"' && doubl == 1)
+		else if (command[i] == DOUBLE && doubl == 1)
 			doubl = 0;
 		i++;
 	}
@@ -57,19 +57,25 @@ int	check_quotes(char *command)
 
 int	get_command(t_minishit *hell)
 {
+	char	*str;
+
 	/*
 	signal(SIGINT, );
 	signal(SIGQUIT, );
 	*/
-	hell->cmd->command = get_next_line(STDIN_FILENO);
-	if (hell->cmd->command)
+	// str = get_next_line(STDIN_FILENO);
+	str = NULL;
+	str = readline(str);
+	if (str)
 	{
-		if (check_quotes(hell->cmd->command) == FALSE)
+		if (check_quotes(str) == FALSE)
 		{
-			get_next_line(-1);
+			// get_next_line(-1);
+			free(str);
 			return (FALSE);
 		}
-		ft_cmdadd_back(&hell->cmd, ft_cmdnew(hell->cmd->command));
+		tokenization(hell, str);
+		ft_cmdadd_back(&hell->cmd, ft_cmdnew(str));
 		return (TRUE);
 	}
 	else

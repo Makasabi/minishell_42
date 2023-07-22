@@ -31,7 +31,7 @@ NAME		:=	libft.a
 ${NAME}: ${OBJFLDR} ${OBJS} $(INCLUDES)
 		@${MAKELIB} ${NAME} ${OBJS}
 		@ranlib ${NAME}
-		@echo "\n🧞$(B_GREEN) Libft's genie is ready too grant you wishes $(C_END)🧞"
+		@echo "\n🧞$(B_GREEN) Libft's genie is ready to grant your wishes $(C_END)🧞"
 
 all:	${NAME}
 

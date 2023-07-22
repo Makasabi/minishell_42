@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/19 17:24:52 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/22 21:29:43 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,18 @@ int	main(int argc, char **argv, char **envp)
 		if (get_command(hell) == FALSE)
 			break ;
 	}
+	// while (hell->cmd)
+	// {
+	// 	if (hell->cmd->command)
+	// 		printf("command is %s\n", hell->cmd->command);
+	// 	hell->cmd = hell->cmd->next;
+	// }
+	// while (hell->token)
+	// {
+	// 	if (hell->token->type)
+	// 		printf("type is %d\n", hell->token->type);
+	// 	hell->token = hell->token->next;
+	// }
 	clean_exit(hell);
 	return (0);
 }

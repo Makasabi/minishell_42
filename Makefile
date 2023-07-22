@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrony <mrony@student.42.fr>                +#+  +:+       +#+         #
+#    By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 13:08:34 by tgibier           #+#    #+#              #
-#    Updated: 2023/07/19 18:31:54 by mrony            ###   ########.fr        #
+#    Updated: 2023/07/22 18:37:50 by tgibier          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ $(LIBFT):
 	@make -sC $(LIBFT_PATH)
 
 $(NAME)	: $(LIBFT) $(OBJS_PATH) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(LDFLAGS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(LDFLAGS) -lreadline
 	@echo "\n$(B_GREEN)👾 MINISHELL ready, WOOP WOOP 👾$(C_END)"
 
 clean	:

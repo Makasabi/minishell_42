@@ -6,11 +6,11 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/22 14:35:34 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/22 16:06:06 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "minishell.h"
 
 char	**extract_path(char *str, char **path)
 {

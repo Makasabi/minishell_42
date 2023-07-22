@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 20:40:02 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/19 18:04:17 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/22 18:26:21 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_cmd	*ft_cmdnew(void *str)
 	node = ft_calloc(1, sizeof(t_cmd));
 	if (!node)
 		return (0);
-	node->command = str;
+	node->command = ft_strdup(str);
 	node->element = NULL;
 	node->next = NULL;
 	node->prev = NULL;
@@ -52,6 +52,9 @@ int	ft_cmdsize(t_cmd *cmd)
 void	ft_cmdadd_front(t_cmd **cmd, t_cmd *new)
 {
 	new->next = *cmd;
+	new->prev = NULL;
+	if (*cmd != NULL)
+		(*cmd)->prev = new;
 	*cmd = new;
 }
 
@@ -63,5 +66,8 @@ void	ft_cmdadd_back(t_cmd **cmd, t_cmd *new)
 	if (!node)
 		*cmd = new;
 	else
+	{
 		node->next = new;
+		new->prev = node;
+	}
 }
