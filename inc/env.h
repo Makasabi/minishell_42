@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:57:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/22 14:47:07 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/23 15:31:17 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ void	ft_env_error(char **my_env, int stage);
 /* utils.c */
 int	ft_table_size(char **table);
 void ft_free_table(char **table, int size);
-void ft_print_env(char **my_env, char *var);
+
+/* env_modfs.c */
+
 
 /* test.c */
-
+void ft_print_env(char **my_env);
 void ft_env_test(char **my_env);
 
 #endif

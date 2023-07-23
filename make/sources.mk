@@ -9,3 +9,4 @@ SRCS += ./src/env/env_errors.c
 SRCS += ./src/env/tests.c
 SRCS += ./src/env/utils.c
 SRCS += ./src/env/env_init.c
+SRCS += ./src/env/env_modifs.c

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/22 14:56:58 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/23 12:32:20 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,7 @@ char **ft_env_from_scratch(void)
 	return (my_env);
 }
 
-void ft_print_env(char **my_env, char *var)
-{
-	int	i;
 
-	i = 0;
-	(void)var;
-	if(!my_env)
-		return ;
-	while(my_env[i])
-	{
-		printf("%s\n", my_env[i]);
-		i++;
-	}
-}
 
 char *ft_find_var(char **my_env, char *target)
 {
@@ -116,6 +103,6 @@ char	*ft_var_value(char **my_env, char *target)
 	- table maniupulation :
 		- add variable
 		- delete variable
-		- replace variable
+		- replace variable value
 		- sort table alphabetically
 */
