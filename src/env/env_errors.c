@@ -6,11 +6,14 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:55:29 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/23 14:07:14 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/24 19:36:29 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+
+/* This function is used to secure the environments mallocs
+It should be edited in the future when we integrate the parsing and execution*/
 
 void	ft_env_error(char **my_env, int stage)
 {

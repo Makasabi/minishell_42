@@ -1,6 +1,6 @@
 # minishell_42
 
-Sujet : 
+Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
 
 Google doc:
@@ -18,7 +18,7 @@ git merge <nom de la branche> => merge deux commit de deux branches ensemble
 git checkout <nom de la branche> | git merge main => merge le contenu de main dans le nom de la branche dans laquelle on se trouve
 git rebase =>
 git checkout HEAD~4 => remonte HEAD au 4eme parent.
-git branch -f main HEAD~3 => bouge (de force : -f) la branche main à trois parents derrière HEAD. 
+git branch -f main HEAD~3 => bouge (de force : -f) la branche main à trois parents derrière HEAD.
 git branch -f <branche d'origine> <branche de destination> => permet de forcer l'emplacement d'une branche
 git cherry-pick <commit#> .... <commit #> => On choisi les commit a inclure dans la branche dans laquelle on se trouve actuellement
 git rebase -i <where I want to reorganise my commit from>
@@ -32,8 +32,11 @@ git clone => clone le repo sur notre machine locale avec la meme tructure de com
 git fetch => reccupere les commit et branches presentes dans le git distant mais pas dans le notre
 			-> The key difference between git fetch and pull is that git pull copies changes from a remote repository directly into your working directory, while git fetch does not. The git fetch command only copies changes into your local Git repo. The git pull command does both.
 git checkout -b totallyNotMain o/main => Cette commande crée une nouvelle branche nommée totallyNotMain et la configure pour suivre o/main.
-git branch -u o/main foo => 
+git branch -u o/main foo =>
 git push origin <source>:<destination> =>
 git fetch origin <source>:<destination> =>
 git pull origin <source>:<destination> = git fetch origin <source>:<destination> ; git merge <destination>
 
+My_env usage:
+-> use pointer to address of 2D array (***)"my env" for all functions that may alter it's content (variables).
+-> For read only function, simple pointer to 2D array (**) can be used.

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/23 15:31:39 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/24 19:47:02 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ void	clean_init(t_minishit *hell)
 int	main(int argc, char **argv)
 {
 	t_minishit	*hell;
-	char **my_env;
+	char		**my_env;
 
 	(void)argc;
 	(void)argv;
 	my_env = ft_env_init();
-	ft_env_test(my_env);
 	hell = ft_calloc(1, sizeof(t_minishit));
 	if (!hell)
 		return (0);
@@ -48,3 +47,5 @@ int	main(int argc, char **argv)
 	clean_exit(hell, my_env);
 	return (0);
 }
+
+// ft_env_test(&my_env);
