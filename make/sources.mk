@@ -3,6 +3,7 @@ SRCS += ./src/parse/lexer.c
 SRCS += ./src/parse/get_path.c
 SRCS += ./src/parse/get_next_line_utils.c
 SRCS += ./src/builtins/exit.c
+SRCS += ./src/builtins/tests.c
 SRCS += ./src/builtins/export.c
 SRCS += ./src/builtins/echo.c
 SRCS += ./src/builtins/cd.c

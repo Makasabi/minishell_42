@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/24 19:25:20 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/25 22:00:29 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char **ft_env_from_scratch(void)
 	char	buff[PATH_MAX];
 	char	**my_env;
 
-	getcwd(buff, PATH_MAX);
+	getcwd(buff, sizeof(buff));
 	my_env = malloc(sizeof(char **) * 4);
 	if (!my_env)
 		ft_env_error(my_env, 0);
@@ -68,7 +68,8 @@ char **ft_env_from_scratch(void)
 }
 
 /* This function searches through the environment table for the variable name sent
-as argument (target) and returns a pointer to the string holding the var name and its value. */
+as argument (target) and returns a pointer to the string holding the var name and its value.
+The variable passed as argument can be of format "VAR=value" or "VAR"*/
 
 char *ft_find_var(char **my_env, char *target)
 {
@@ -86,7 +87,7 @@ char *ft_find_var(char **my_env, char *target)
 			return(my_env[i]);
 		i++;
 	}
-	ft_putstr_fd(VARNOTFOUND, 1);
+	//ft_putstr_fd(VARNOTFOUND, 1);
 	return (NULL);
 }
 
@@ -117,7 +118,7 @@ int ft_var_line(char **my_env, char *var)
 		}
 		i++;
 	}
-	ft_putstr_fd(VARNOTFOUND, 1);
+	//ft_putstr_fd(VARNOTFOUND, 1);
 	return (-1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:09 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/24 19:47:18 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/25 19:21:23 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	ft_table_size(char **table)
 
 int	ft_shlvl_inc(char ***my_env)
 {
-	int shlvl;
-	char *level;
-	char *new_var;
+	int		shlvl;
+	char	*level;
+	char	*new_var;
 
 	shlvl = ft_atoi(ft_var_value((*my_env), "SHLVL"));
 	shlvl++;

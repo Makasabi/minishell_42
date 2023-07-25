@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:29:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/24 19:47:37 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/25 20:10:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_add_var(char ***my_env, char *var)
 	int		i;
 
 	i = 0;
+	if (ft_var_line((*my_env), var) >= 0)
+		return (ft_replace_var(my_env, var));
 	new_env = malloc(sizeof(char **) * (ft_table_size(*my_env) + 2));
 	if (!new_env)
 	{
@@ -55,6 +57,8 @@ void	ft_del_var(char ***my_env, char *var)
 
 	i = 0;
 	j = 0;
+	if (ft_var_line((*my_env), var) == -1)
+		return ;
 	new_env = malloc(sizeof(char **) * (ft_table_size(*my_env) + 2));
 	if (!new_env)
 	{
@@ -84,6 +88,8 @@ void	ft_replace_var(char ***my_env, char *var)
 	int		line;
 	char	*new_var;
 
+	if (ft_var_line((*my_env), var) == -1)
+		return (ft_add_var(my_env, var));
 	line = ft_var_line((*my_env), var);
 	new_var = ft_strdup(var);
 	if (!new_var)
@@ -94,3 +100,4 @@ void	ft_replace_var(char ***my_env, char *var)
 	free((*my_env)[line]);
 	(*my_env)[line] = new_var;
 }
+

@@ -6,12 +6,13 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/24 19:47:02 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/25 18:40:43 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "env.h"
+#include "builtins.h"
 
 void	clean_init(t_minishit *hell)
 {
@@ -39,6 +40,7 @@ int	main(int argc, char **argv)
 		return (0);
 	clean_init(hell);
 	check_envp(my_env, hell);
+	ft_builtin_test(&my_env);
 	while (1)
 	{
 		if (get_command(hell) == FALSE)
