@@ -4,5 +4,7 @@ SRCS += ./src/main/clean_exit.c
 SRCS += ./src/parse/get_next_line_utils.c
 SRCS += ./src/parse/lexer.c
 SRCS += ./src/parse/tokenize.c
+SRCS += ./src/parse/token_utils.c
 SRCS += ./src/parse/get_next_line.c
 SRCS += ./src/parse/get_path.c
+SRCS += ./src/parse/redirections.c

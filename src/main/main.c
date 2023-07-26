@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/22 21:29:43 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/26 15:36:13 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,13 @@ int	main(int argc, char **argv, char **envp)
 	check_envp(envp, hell);
 	while (1)
 	{
-		if (get_command(hell) == FALSE)
+		if (lexer(hell) == FALSE)
 			break ;
+	}
+	while (hell->token)
+	{
+		printf("token is %s\n", hell->token->command);
+		hell->token = hell->token->next;
 	}
 	// while (hell->cmd)
 	// {

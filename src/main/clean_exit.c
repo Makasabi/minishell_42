@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/22 18:17:52 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/26 16:12:16 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_clear(t_cmd *cmd)
 	}
 	if (cmd)
 		free(cmd);
+	// rl_clear_history(void);
 }
 
 void	ft_free(char **split)

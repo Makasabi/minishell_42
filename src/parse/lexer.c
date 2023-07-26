@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:02:42 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/22 21:34:11 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/26 16:06:39 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,42 +40,27 @@ int	check_quotes(char *command)
 	return (FALSE);
 }
 
-// int	lexer(t_minishit *hell)
-// {
-// 	if (check_quotes(hell) == FALSE)
-// 	{
-// 		// ft_putstr("OPEN QUOOOOTES AHHHHHH\n");
-// 		return (FALSE);
-// 	}
-// 	hell->token = ft_split(hell->cmd->command, ' ');
-// 	/* do something */
-// 	if (hell->token)
-// 		ft_free(hell->token);
-// 	hell->token = NULL;
-// 	return (TRUE);
-// }
-
-int	get_command(t_minishit *hell)
+int	lexer(t_minishit *hell)
 {
-	char	*str;
+	char	*command;
 
 	/*
 	signal(SIGINT, );
 	signal(SIGQUIT, );
 	*/
-	// str = get_next_line(STDIN_FILENO);
-	str = NULL;
-	str = readline(str);
-	if (str)
+	// command = get_next_line(STDIN_FILENO);
+	command = NULL;
+	command = readline(command);
+	if (command)
 	{
-		if (check_quotes(str) == FALSE)
+		if (check_quotes(command) == FALSE)
 		{
 			// get_next_line(-1);
-			free(str);
+			free(command);
 			return (FALSE);
 		}
-		tokenization(hell, str);
-		ft_cmdadd_back(&hell->cmd, ft_cmdnew(str));
+		tokenization(hell, command);
+		ft_cmdadd_back(&hell->cmd, ft_cmdnew(command));
 		return (TRUE);
 	}
 	else

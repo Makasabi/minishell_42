@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/22 18:09:45 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/26 16:38:39 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # include "../libft/inc/libft.h"
 # include "parsing.h"
 
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048
 # endif
@@ -40,12 +39,13 @@
 # define EMPTY 0
 # define CMD 1
 # define ARG 2
-# define GREAT 3 /* > */
-# define APPEND 4 /* >> */
-# define LESS 5 /* < */
-# define HEREDOC 6 /* << */
-# define PIPE 7
-# define END 8
+# define REDIR 3
+# define OUTPUT 4 /* > */
+# define APPEND 5 /* >> */
+# define INPUT 6 /* < */
+# define HEREDOC 7 /* << */
+# define PIPE 8
+# define END 9
 
 # define STDIN 0
 # define STDOUT 1
