@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:18:55 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/19 15:56:01 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/26 12:41:01 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char			**ft_split(char const *s, char c);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_strccmp(const char *s1, const char *s2, char c);
 char			*last_word(char *str, char c);
 
 ////////////////////////////////

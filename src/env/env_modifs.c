@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_modifs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:29:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/25 20:10:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/26 16:08:46 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,29 @@ void	ft_add_var(char ***my_env, char *var)
 }
 
 /* This function removes the VAR and it's value from the environment.
-It taks a pointer to the address of the environment table and modifies the environment table.*/
+It takes a pointer to the address of the environment table
+as well asthe line index of the var to remove
+and modifies the environment table.*/
 
-void	ft_del_var(char ***my_env, char *var)
+void	ft_del_var(char ***my_env, int line)
 {
 	char	**new_env;
 	int		i;
 	int		j;
-	int		size;
 
 	i = 0;
 	j = 0;
-	if (ft_var_line((*my_env), var) == -1)
+	if (line == -1)
 		return ;
-	new_env = malloc(sizeof(char **) * (ft_table_size(*my_env) + 2));
+	new_env = malloc(sizeof(char **) * (ft_table_size(*my_env)));
 	if (!new_env)
 	{
 		ft_free(*my_env);
 		ft_env_error((*my_env), 0);
 	}
-	size = ft_strlen(var);
 	while((*my_env)[i])
 	{
-		if (!(ft_strncmp((*my_env)[i], var, size)) && (*my_env)[i][size] == '=')
+		if (i == line)
 			free((*my_env)[i++]);
 		else
 			new_env[j++] = (*my_env)[i++];

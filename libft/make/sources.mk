@@ -1,5 +1,6 @@
 SOURCES += ./src/Strings/ft_strjoin.c
 SOURCES += ./src/Strings/ft_strnstr.c
+SOURCES += ./src/Strings/ft_strccmp.c
 SOURCES += ./src/Strings/ft_substr.c
 SOURCES += ./src/Strings/ft_isalpha.c
 SOURCES += ./src/Strings/ft_strdup.c

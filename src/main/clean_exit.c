@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/21 20:05:01 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/26 11:44:29 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ void	ft_free(char **split)
 	split = NULL;
 }
 
-int	clean_exit(t_minishit *hell, char **my_env)
+int	clean_exit(t_minishit *hell)
 {
+	if (hell->my_env)
+		ft_free(hell->my_env);
 	if (hell->token)
 		ft_free(hell->token);
 	hell->token = NULL;
@@ -73,6 +75,5 @@ int	clean_exit(t_minishit *hell, char **my_env)
 	if (hell)
 		free(hell);
 	hell = NULL;
-	ft_free(my_env);
 	exit (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/22 14:47:12 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/26 11:42:56 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,11 @@ typedef struct s_minishit
 	t_cmd	*cmd;
 	char	**token;
 	char	**path;
-}				t_minishit;
+	char	**my_env;
+}	t_minishit;
 
 /* clean_exit */
-int		clean_exit(t_minishit *hell, char **my_env);
+int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
 void	ft_clear(t_cmd *save);
 

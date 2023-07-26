@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:11:50 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/24 17:36:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/26 16:24:54 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void ft_env_test(char ***my_env)
 
 	ft_putstr_fd(_REV _FOREST_GREEN "TEST : ft_del_var\n" _END, 2);
 	ft_putstr_fd(_FOREST_GREEN "Removing var 'MARIE'\n" _END, 2);
-	ft_del_var(my_env, "MARIE");
+	ft_del_var(my_env, ft_var_line((*my_env), "MARIE"));
 	ft_print_env((*my_env));
 
 	ft_putstr_fd(_REV _FOREST_GREEN "TEST : ft_replace_var\n" _END, 2);
