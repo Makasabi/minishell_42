@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 15:43:32 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:50:32 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	ft_export(t_minishit *hell, t_builtin *args);
 /* unset.c */
 int	ft_unset(t_minishit *hell, t_builtin *args);
 
+/* echo.c */
+int	ft_echo(t_minishit *hell, t_builtin *args);
 
 /* tests.c */
 void ft_builtin_test(t_minishit *hell);

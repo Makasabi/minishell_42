@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:19:22 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 17:03:11 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:51:07 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_test_export(t_minishit *hell);
 void	ft_test_env(t_minishit *hell);
 void	ft_test_pwd(t_minishit *hell);
 void	ft_test_unset(t_minishit *hell);
+void	ft_test_echo(t_minishit *hell);
 
 void ft_builtin_test(t_minishit *hell)
 {
@@ -51,8 +52,32 @@ void ft_builtin_test(t_minishit *hell)
 	ft_test_unset(hell);
 	ft_putchar_fd('\n', 1);
 
+	/*************/
 	/* test echo */
+	/*************/
+	ft_test_echo(hell);
+	ft_putchar_fd('\n', 1);
+
 	/* test exit */
+}
+
+void	ft_test_echo(t_minishit *hell)
+{
+	t_builtin	args;
+
+	args.fd_in = 0;
+	args.fd_out = 1;
+	args.fd_err = 2;
+	args.cmd = "echo";
+	args.opt = "-n";
+	args.arg = "This should be printed without newline.";
+	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : echo <<<\n" _END, 2);
+	ft_putstr_fd(_FOREST_GREEN "--> echo -n test: " _END, 2);
+	ft_echo(hell, &args);
+	args.arg = "On the other hand, this should have a newline.";
+	ft_putstr_fd(_FOREST_GREEN "--> echo test: " _END, 2);
+	ft_echo(hell, &args);
+	ft_putchar_fd('\n', 1);
 }
 
 void	ft_test_unset(t_minishit *hell)
