@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/27 13:32:49 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/27 13:36:16 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,3 +20,10 @@ int	parsing(t_minishit *hell)
 		return (FALSE);
 	return (TRUE);
 }
+
+
+/* 
+ 
+	check if built_in
+ 
+*/
