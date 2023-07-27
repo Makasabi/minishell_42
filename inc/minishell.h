@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 16:38:39 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/27 13:24:42 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,21 @@ typedef struct s_cmd
 	struct s_cmd	*prev;
 }					t_cmd;
 
+typedef struct s_token
+{
+	int				type;
+	int				built_in;
+	char			*str;
+	struct s_token	*redir_in;
+	struct s_token	*redir_out;
+	struct s_token	*next;
+	struct s_token	*prev;
+}					t_token;
 
 typedef struct s_minishit
 {
 	t_cmd	*cmd;
-	t_cmd	*token;
-	// char	**token;
+	t_token	*token;
 	char	**path;
 }				t_minishit;
 
@@ -83,11 +92,5 @@ t_cmd	*ft_cmdlast(t_cmd *cmd);
 int		ft_cmdsize(t_cmd *cmd);
 void	ft_cmdadd_front(t_cmd **cmd, t_cmd *new);
 void	ft_cmdadd_back(t_cmd **cmd, t_cmd *new);
-
-/* get_next_line */
-char	*get_next_line(int fd);
-void	ft_magic(t_cmd **list, char *temp, int nb);
-int		ft_next_nl(t_cmd *save);
-int		ft_new_line(t_cmd *save);
 
 #endif

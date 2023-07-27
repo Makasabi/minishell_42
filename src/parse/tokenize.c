@@ -6,31 +6,51 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/26 16:49:07 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/27 12:48:16 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
+int	issa_double_token(t_minishit *hell, char *command, int i)
+{
+	int		type;
+	char	token[3];
+
+	token[0] = command[i];
+	if (command[i] == '>' && command[i + 1] == '>')
+	{
+		type = APPEND;
+		token[1] = command[i + 1];
+	}
+	if (command[i] == '<' && command[i + 1] == '<')
+	{
+		type = HEREDOC;
+		token[1] = command[i + 1];
+	}
+	token[2] = '\0';
+	ft_add_token(&hell->token, token, REDIR);
+	return (type);
+}
+
 int	issa_token(t_minishit *hell, char *command, int i)
 {
-	char	token[3];
+	char	token[2];
 	int		type;
 
 	token[0] = command[i];
-	token[1] = '\0';
-	if (command[i + 1] && (command[i + 1] == OUTPUT || command[i + 1] == INPUT))
+	if (command[i + 1] && (command[i + 1] == '<' || command[i + 1] == '>'))
 	{
-		if (command[i] == OUTPUT && command[i + 1] == OUTPUT)
-			type = APPEND;
-		if (command[i] == INPUT && command[i + 1] == INPUT)
-			type = HEREDOC;
+		type = issa_double_token(hell, command, i);
 	}
 	else
+	{
+		token[1] = '\0';
 		type = is_token(command[i]);
-	if (type == INPUT || type == OUTPUT || type == APPEND || type == HEREDOC)
+	}
+	if (type == INPUT || type == OUTPUT)
 		ft_add_token(&hell->token, token, REDIR);
-	else
+	else if (type == PIPE || type == END)
 		ft_add_token(&hell->token, token, type);
 	if (type == APPEND || type == HEREDOC)
 		return (2);
@@ -108,7 +128,18 @@ int	tokenization(t_minishit *hell, char *command)
 }
 
 /*
-
+	check token type
+	
+	void *ptr;
+	ptr = hell->token;
+	assign_type_redir(hell);
+	hell->token = ptr;
+	while (hell->token)
+	{
+		printf("token type is %d\n", hell->token->type);
+		hell->token = hell->token->next;
+	}
+	
 To do :
 - issa_string : continue tokenization with types CMD & ARG 
 - se questionner existentiellement sur ce qu'est un mot, au final

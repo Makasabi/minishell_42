@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 15:54:00 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/19 15:58:54 by mrony            ###   ########.fr       */
+/*   Created: 2022/11/07 12:18:55 by mrony             #+#    #+#             */
+/*   Updated: 2023/07/27 12:46:32 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef PRINTF_H
+# define PRINTF_H
 
-#include "libft.h"
+# include "libft.h"
 
 /******************/
 /* DATA STRUCTURE */

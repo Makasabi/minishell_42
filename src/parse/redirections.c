@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/26 17:20:53 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/27 13:05:24 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,33 @@ int	which_redir(char *command)
 {
 	if (command[0] && command[1])
 	{
-		if (command[0] == OUTPUT && command[1] == OUTPUT)
+		if (command[0] == '>' && command[1] == '>')
 			return (APPEND);
-		if (command[0] == INPUT && command[1] == INPUT)
+		if (command[0] == '<' && command[1] == '<')
 			return (HEREDOC);
 	}
-	else if (command[0])
+	if (command[0])
 	{
-		if (command[0] == OUTPUT)
+		if (command[0] == '>')
 			return (OUTPUT);
-		if (command[0] == INPUT)
+		if (command[0] == '<')
 			return (INPUT);
 	}
 	return (0);
 }
 
-void	assign_redir(t_minishit *hell)
+void	assign_type_redir(t_token *token)
 {
 	int	redir;
 
-	while (hell->token)
+	while (token)
 	{
-		redir = which_redir(hell->token->command);
-		if (hell->token->next && (redir == OUTPUT || redir == APPEND))
-			hell->token->next->type = redir;
-		if (hell->token->prev && (redir == INPUT || redir == HEREDOC))
-			hell->token->prev->type = redir;
-		hell->token = hell->token->next;
+		redir = which_redir(token->str);
+		if (token->next
+			&& (redir == INPUT || redir == OUTPUT || redir == APPEND))
+			token->next->type = redir;
+		if (token->prev && (redir == HEREDOC))
+			token->prev->type = redir;
+		token = token->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/26 15:36:13 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/27 13:21:11 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,26 @@ int	main(int argc, char **argv, char **envp)
 	check_envp(envp, hell);
 	while (1)
 	{
-		if (lexer(hell) == FALSE)
+		if (parsing(hell) == FALSE)
 			break ;
 	}
-	while (hell->token)
-	{
-		printf("token is %s\n", hell->token->command);
-		hell->token = hell->token->next;
-	}
-	// while (hell->cmd)
-	// {
-	// 	if (hell->cmd->command)
-	// 		printf("command is %s\n", hell->cmd->command);
-	// 	hell->cmd = hell->cmd->next;
-	// }
-	// while (hell->token)
-	// {
-	// 	if (hell->token->type)
-	// 		printf("type is %d\n", hell->token->type);
-	// 	hell->token = hell->token->next;
-	// }
 	clean_exit(hell);
 	return (0);
 }
+
+/*
+	Check cmd, token
+	
+	while (hell->cmd)
+	{
+		if (hell->cmd->command)
+			printf("command is %s\n", hell->cmd->command);
+		hell->cmd = hell->cmd->next;
+	}
+	while (hell->token)
+	{
+		if (hell->token->type)
+			printf("type is %d\n", hell->token->type);
+		hell->token = hell->token->next;
+	}
+*/

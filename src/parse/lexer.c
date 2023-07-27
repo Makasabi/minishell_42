@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:02:42 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/26 16:06:39 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/27 13:08:11 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,26 @@ int	lexer(t_minishit *hell)
 {
 	char	*command;
 
-	/*
-	signal(SIGINT, );
-	signal(SIGQUIT, );
-	*/
-	// command = get_next_line(STDIN_FILENO);
 	command = NULL;
 	command = readline(command);
 	if (command)
 	{
 		if (check_quotes(command) == FALSE)
 		{
-			// get_next_line(-1);
 			free(command);
 			return (FALSE);
 		}
 		tokenization(hell, command);
+		assign_type_redir(hell->token);
+		add_history(command);
 		ft_cmdadd_back(&hell->cmd, ft_cmdnew(command));
 		return (TRUE);
 	}
 	else
 		return (FALSE);
 }
+
+/*
+	signal(SIGINT, );
+	signal(SIGQUIT, );
+*/
