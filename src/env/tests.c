@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:11:50 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 16:24:54 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/07/29 19:01:58 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void ft_print_env(char **my_env)
 		return ;
 	while(my_env[i])
 	{
-		printf("%s\n", my_env[i]);
+		ft_putendl_fd(my_env[i], 1);
 		i++;
 	}
 }

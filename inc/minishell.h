@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/29 16:28:17 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:52:41 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,31 @@
 # define SKIP 1
 # define NOSKIP 0
 
-typedef struct s_cmd
+typedef enum e_type
 {
-	char			*command;
-	void			*element;
-	int				type;
-	struct s_cmd	*next;
-	struct s_cmd	*prev;
-}					t_cmd;
+	pip,
+	cmd,
+	red,
+}	t_type;
+
+typedef enum e_redir
+{
+	append,
+	heredoc,
+	writeto,
+	readfrom,
+	none,
+}	t_redir;
+
+typedef struct	s_node
+{
+	char				**argv;
+	t_type				type;
+	t_redir				redir;
+	struct s_node	*previous;
+	struct s_node	*left;
+	struct s_node	*right;
+}	t_node;
 
 typedef struct s_token
 {
@@ -78,7 +95,6 @@ typedef struct s_token
 typedef struct s_minishit
 {
 	int		pipes;
-	t_cmd	*cmd;
 	t_token	*token;
 	char	**path;
 	char	**my_env;
@@ -87,14 +103,8 @@ typedef struct s_minishit
 /* clean_exit */
 int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
-void	ft_clear(t_cmd *save);
 
-/* cmd_functions */
-t_cmd	*ft_cmdnew(void *str);
-t_cmd	*ft_cmdlast(t_cmd *cmd);
-int		ft_cmdsize(t_cmd *cmd);
-void	ft_cmdadd_front(t_cmd **cmd, t_cmd *new);
-void	ft_cmdadd_back(t_cmd **cmd, t_cmd *new);
+
 
 
 #endif

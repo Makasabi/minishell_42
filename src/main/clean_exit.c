@@ -6,31 +6,11 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 16:32:52 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:53:23 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	ft_clear(t_cmd *cmd)
-{
-	t_cmd	*next;
-
-	while (cmd)
-	{
-		if (cmd->command)
-			free(cmd->command);
-		cmd->command = NULL;
-		if (cmd->element)
-			free(cmd->element);
-		cmd->element = NULL;
-		next = cmd->next;
-		free(cmd);
-		cmd = next;
-	}
-	if (cmd)
-		free(cmd);
-}
 
 void	ft_clear_token(t_token *token)
 {
@@ -72,9 +52,6 @@ int	clean_exit(t_minishit *hell)
 	if (hell->path)
 		ft_free(hell->path);
 	hell->path = NULL;
-	if (hell->cmd)
-		ft_clear(hell->cmd);
-	hell->cmd = NULL;
 	if (hell)
 		free(hell);
 	hell = NULL;

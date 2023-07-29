@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 16:45:11 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/29 19:03:03 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@ void    clean_init(t_minishit *hell)
 	hell->pipes = 0;
 	hell->path = NULL;
     hell->my_env = NULL;
-	hell->cmd = ft_calloc(1, sizeof(t_cmd));
-	if (!hell->cmd)
-		return ;
-	hell->cmd->next = NULL;
-	hell->cmd->prev = NULL;
-	hell->cmd->command = NULL;
-	hell->cmd->element = NULL;
 	hell->token = NULL;
 }
 
@@ -42,9 +35,9 @@ int    main(int argc, char **argv)
 		return (0);
 	clean_init(hell);
     hell->my_env = ft_env_init();
-	// ft_env_test(&hell->my_env);
-	// ft_builtin_test(hell);
-	check_envp(hell->my_env, hell);
+	ft_env_test(&hell->my_env);
+//	check_envp(hell->my_env, hell);
+	ft_builtin_test(hell);
 	while (1)
 	{
 		if (parsing(hell) == FALSE)

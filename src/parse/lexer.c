@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:02:42 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 14:33:10 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/29 18:53:50 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	lexer(t_minishit *hell)
 		tokenization(hell, command);
 		assign_type_redir(hell, hell->token);
 		add_history(command);
-		ft_cmdadd_back(&hell->cmd, ft_cmdnew(command));
 		return (TRUE);
 	}
 	else

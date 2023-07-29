@@ -7,7 +7,6 @@ SRCS += ./src/builtins/echo.c
 SRCS += ./src/builtins/export.c
 SRCS += ./src/builtins/pwd.c
 SRCS += ./src/main/main.c
-SRCS += ./src/main/lst_functions.c
 SRCS += ./src/main/clean_exit.c
 SRCS += ./src/parse/lexer.c
 SRCS += ./src/parse/tokenize.c
