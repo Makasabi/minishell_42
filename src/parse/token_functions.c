@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:16:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/27 13:25:07 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/29 12:51:07 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ void	ft_add_back_token(t_token **token, t_token *new)
 		new->prev = node;
 	}
 }
+
+/* 
+	Creates a token, where you can add both the string and the type.
+*/
 
 void	ft_add_token(t_token **token, char *s, int type)
 {

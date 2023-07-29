@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/27 13:24:42 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/29 14:39:42 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # define FALSE 0
 # define TRUE 1
 
-# define EMPTY 0
-# define CMD 1
+# define CMD 0
+# define OPTION 1
 # define ARG 2
 # define REDIR 3
 # define OUTPUT 4 /* > */
@@ -76,6 +76,7 @@ typedef struct s_token
 
 typedef struct s_minishit
 {
+	int		pipes;
 	t_cmd	*cmd;
 	t_token	*token;
 	char	**path;

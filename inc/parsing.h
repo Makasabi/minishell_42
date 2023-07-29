@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/27 13:22:47 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/29 14:32:00 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_add_back_token(t_token **token, t_token *new);
 void	ft_add_token(t_token **token, char *str, int type);
 void	add_redir(t_token *token, t_token *redir, int boool);
 
-void	assign_type_redir(t_token *token);
+void	assign_type_redir(t_minishit *hell, t_token *token);
 
 int		is_bw_quotes(char *command, int i);
 int		issa_token(t_minishit *hell, char *command, int i);

@@ -27,6 +27,7 @@ SOURCES += ./src/Strings/ft_strstr.c
 SOURCES += ./src/Strings/ft_isalpha.c
 SOURCES += ./src/Strings/ft_strtrim.c
 SOURCES += ./src/Strings/ft_isalnum.c
+SOURCES += ./src/Strings/ft_strcmp.c
 SOURCES += ./src/Strings/ft_isdigit.c
 SOURCES += ./src/Strings/ft_isprint.c
 SOURCES += ./src/Strings/ft_strncmp.c

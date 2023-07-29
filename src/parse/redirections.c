@@ -6,11 +6,15 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/27 13:05:24 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/29 14:43:40 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+/*
+	Goes through the token list and assigns types according to the redirections
+*/
 
 int	which_redir(char *command)
 {
@@ -31,12 +35,14 @@ int	which_redir(char *command)
 	return (0);
 }
 
-void	assign_type_redir(t_token *token)
+void	assign_type_redir(t_minishit *hell, t_token *token)
 {
 	int	redir;
 
 	while (token)
 	{
+		if (token->type == PIPE)
+			hell->pipes++;
 		redir = which_redir(token->str);
 		if (token->next
 			&& (redir == INPUT || redir == OUTPUT || redir == APPEND))

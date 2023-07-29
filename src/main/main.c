@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/27 13:21:11 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/29 14:32:49 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	clean_init(t_minishit *hell)
 {
+	hell->pipes = 0;
 	hell->path = NULL;
 	hell->cmd = ft_calloc(1, sizeof(t_cmd));
 	if (!hell->cmd)

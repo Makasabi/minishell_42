@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 13:14:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 13:27:58 by tgibier          ###   ########.fr       */
+/*   Created: 2022/11/11 10:47:17 by mrony             #+#    #+#             */
+/*   Updated: 2023/07/29 13:19:29 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-void	is_built_in(t_token *token)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	while (token)
+	unsigned int	i;
+
+	i = 0;
+	while (s1[i] == s2[i])
 	{
-		if (ft_strnstr("echo\ncd\npwd\nexport\nunset\nenv\nexit\n",
-				token->str, 35))
-		{
-			token->type = CMD;
-			token->built_in = TRUE;
-		}
-		token = token->next;
+		if (!s1[i] && !s2[i])
+			return (0);
+		i++;
 	}
-}
-
-int	parser(t_minishit *hell)
-{
-	is_built_in(hell->token);
-	return (TRUE);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
