@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/27 12:58:02 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/29 16:32:52 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	ft_free(char **split)
 
 int	clean_exit(t_minishit *hell)
 {
+	if (hell->my_env)
+		ft_free(hell->my_env);
 	if (hell->token)
 		ft_clear_token(hell->token);
 	hell->token = NULL;

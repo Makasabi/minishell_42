@@ -3,19 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 14:32:49 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/29 16:34:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
+#include "env.h"
+#include "builtins.h"
 
-void	clean_init(t_minishit *hell)
+void    clean_init(t_minishit *hell)
 {
 	hell->pipes = 0;
 	hell->path = NULL;
+    hell->my_env = NULL;
 	hell->cmd = ft_calloc(1, sizeof(t_cmd));
 	if (!hell->cmd)
 		return ;
@@ -26,9 +29,11 @@ void	clean_init(t_minishit *hell)
 	hell->token = NULL;
 }
 
-int	main(int argc, char **argv, char **envp)
+// ft_env_test(&my_env);
+
+int    main(int argc, char **argv)
 {
-	t_minishit	*hell;
+    t_minishit    *hell;
 
 	(void)argc;
 	(void)argv;
@@ -36,6 +41,7 @@ int	main(int argc, char **argv, char **envp)
 	if (!hell)
 		return (0);
 	clean_init(hell);
+    hell->my_env = ft_env_init();
 	check_envp(envp, hell);
 	while (1)
 	{

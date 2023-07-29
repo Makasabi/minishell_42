@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+         #
+#    By: mrony <mrony@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 13:08:34 by tgibier           #+#    #+#              #
-#    Updated: 2023/07/22 18:37:50 by tgibier          ###   ########.fr        #
+#    Updated: 2023/07/29 16:35:19 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,7 @@ LIBFT_PATH			=	libft/
 LIBFT_NAME			=	libft.a
 LIBFT				=	$(LIBFT_PATH)$(LIBFT_NAME)
 
-HEAD				=	-I ./inc/ \
-						-I ./libft/inc/
+HEAD				=	-I ./inc -I ./libft/inc
 
 DEPS				=	${OBJS:.o=.d}
 
@@ -51,28 +50,28 @@ all	:	$(NAME)
 $(OBJS_PATH)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
-	@printf "$(C_PINK)🛸 Preparing for landing... %-50s \r" $@
+	@printf "$(_FOREST_GREEN)🛸 Preparing for landing... %-50s \r" $@
 
 $(OBJS_PATH):
 	@mkdir -p $(OBJS_PATH)
-	@echo "$(B_BLUE)Minishell: .obj/ folder created$(C_END)"
+	@echo "$(_EMMERALD)Minishell: .obj/ folder created$(_END)"
 
 $(LIBFT):
-	@echo "$(B_BLUE)Summoning libft's genie$(C_END)"
+	@echo "$(_GOLD)Summoning libft's genie$(_END)"
 	@make -sC $(LIBFT_PATH)
 
 $(NAME)	: $(LIBFT) $(OBJS_PATH) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(LDFLAGS) -lreadline
-	@echo "\n$(B_GREEN)👾 MINISHELL ready, WOOP WOOP 👾$(C_END)"
+	@echo "\n$(_FOREST_GREEN)$(_BOLD)👾 MINISHELL landed and ready, WOOP WOOP 👾$(_END)"
 
 clean	:
-	@echo "$(C_YELLOW)Minishell: Cleaning the mess$(C_END)"
+	@echo "$(_AQUAMARINE)Minishell: Cleaning the mess$(_END)"
 	@rm -rf $(OBJS_PATH)
 	@rm -rf $(OBJS)
 	@make clean -C libft
 
 fclean	:	clean
-	@echo "$(B_YELLOW)🚀 Minishel leaving: byyye minishit 🚀$(C_END)"
+	@echo "$(_AQUAMARINE)$(_BOLD)🚀 Minishel leaving: byyye minishit 🚀$(_END)"
 	@rm -rf $(NAME)
 	@rm -rf $(NAME_BONUS)
 	@make fclean -C libft

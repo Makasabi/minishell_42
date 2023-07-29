@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/29 14:39:42 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/07/29 16:28:17 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "../libft/inc/libft.h"
+# include "libft.h"
 # include "parsing.h"
+# include "colors.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048
@@ -80,7 +81,8 @@ typedef struct s_minishit
 	t_cmd	*cmd;
 	t_token	*token;
 	char	**path;
-}				t_minishit;
+	char	**my_env;
+}	t_minishit;
 
 /* clean_exit */
 int		clean_exit(t_minishit *hell);
@@ -93,5 +95,6 @@ t_cmd	*ft_cmdlast(t_cmd *cmd);
 int		ft_cmdsize(t_cmd *cmd);
 void	ft_cmdadd_front(t_cmd **cmd, t_cmd *new);
 void	ft_cmdadd_back(t_cmd **cmd, t_cmd *new);
+
 
 #endif
