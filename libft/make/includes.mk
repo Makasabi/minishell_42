@@ -1,1 +1,0 @@
-INCLUDES += ./inc/libft.h
