@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/25 22:00:29 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/31 17:06:03 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ char *ft_find_var(char **my_env, char *target)
 	while(my_env[i])
 	{
 		if (ft_strncmp(my_env[i], target, size) == 0
-		&& my_env[i][size] == '=')
+		&& (my_env[i][size] == '=' 
+		|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
 			return(my_env[i]);
 		i++;
 	}
@@ -109,17 +110,19 @@ int ft_var_line(char **my_env, char *var)
 		j = 0;
 		while(my_env[i][j] == var[j] && var[j] && my_env[i][j])
 		{
-			if ((my_env[i][j + 1] == '=' && var[j + 1] == '=')
-			|| (my_env[i][j + 1] == '=' && var[j + 1] == '\0')
-			|| (my_env[i][j + 1] == '\0' && var[j + 1] == '=')
-			|| (my_env[i][j + 1] == '\0' && var[j + 1] == '\0'))
-				return(i);
+			if (my_env[i][j + 1] == '=' 
+			&& (var[j + 1] == '=' || var[j + 1] == '\0'
+			|| (var[j + 1] == '+' && var[j + 2] == '=')))
+				return (i);
+			if (my_env[i][j + 1] == '\0'
+			&& (var[j + 1] == '=' || var[j + 1] == '\0'
+			|| (var[j + 1] == '+' && var[j + 2] == '=')))
+				return (i);
 			j++;
 		}
 		i++;
 	}
-	//ft_putstr_fd(VARNOTFOUND, 1);
-	return (-1);
+	return (FAILED);
 }
 
 /* This function searches through the environment table for the variable name sent
@@ -130,6 +133,7 @@ char	*ft_var_value(char **my_env, char *target)
 	char	*tmp;
 	size_t	size;
 
+	
 	if (!my_env || !target)
 		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
 	size = ft_strlen(target);

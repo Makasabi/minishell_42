@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 19:03:03 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/31 12:21:49 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int    main(int argc, char **argv)
 		return (0);
 	clean_init(hell);
     hell->my_env = ft_env_init();
-	ft_env_test(&hell->my_env);
+//	ft_env_test(&hell->my_env);
 //	check_envp(hell->my_env, hell);
 	ft_builtin_test(hell);
 	while (1)

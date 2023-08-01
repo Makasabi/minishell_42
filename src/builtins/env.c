@@ -6,22 +6,22 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:07 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 12:05:37 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/31 15:53:04 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 #include "env.h"
 
-int	ft_env(t_minishit *hell, t_builtin *args)
+int	ft_env(t_minishit *hell, char **argv)
 {
 	int	i;
 	int j;
 
-	(void)args;
 	i = 0;
+	(void)argv;
 	if(!hell->my_env)
-		return (-1);
+		return (FAILED);
 	while(hell->my_env[i])
 	{
 		j = 0;
@@ -35,5 +35,5 @@ int	ft_env(t_minishit *hell, t_builtin *args)
 			i++;
 		}
 	}
-	return (0);
+	return (SUCCESS);
 }

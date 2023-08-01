@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:56:01 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/29 16:50:34 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/31 14:47:56 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define _RED "\033[31m"
 # define _FOREST_GREEN "\033[32m"
-# define _DARK_BLUE "\033[34m"
+# define _BLUE "\033[34m"
 # define _YELLOW "\033[33m"
 # define _ORANGE "\033[38;5;208m"
 # define _PURPLE "\033[38;5;129m"

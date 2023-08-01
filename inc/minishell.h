@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/29 18:52:41 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/31 16:27:19 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 
 # define FALSE 0
 # define TRUE 1
+
+# define SUCCESS 0
+# define FAILED -1
 
 # define CMD 0
 # define OPTION 1

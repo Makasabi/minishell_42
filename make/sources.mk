@@ -1,5 +1,6 @@
 SRCS += ./src/builtins/unset.c
 SRCS += ./src/builtins/exit.c
+SRCS += ./src/builtins/errors.c
 SRCS += ./src/builtins/cd.c
 SRCS += ./src/builtins/env.c
 SRCS += ./src/builtins/tests.c
@@ -8,6 +9,7 @@ SRCS += ./src/builtins/export.c
 SRCS += ./src/builtins/pwd.c
 SRCS += ./src/main/main.c
 SRCS += ./src/main/clean_exit.c
+SRCS += ./src/parse/expand.c
 SRCS += ./src/parse/lexer.c
 SRCS += ./src/parse/tokenize.c
 SRCS += ./src/parse/token_utils.c

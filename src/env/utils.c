@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:09 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/25 19:21:23 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/31 17:06:23 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,18 @@ int	ft_shlvl_inc(char ***my_env)
 	ft_replace_var(my_env, new_var);
 	free(new_var);
 	return(0);
+}
+
+int	ft_char(char c, char *set)
+{
+	int	i;
+
+	i = 0;
+	while(set[i])
+	{
+		if (c == set[i])
+			return (TRUE);
+		i++;
+	}
+	return(FALSE);
 }

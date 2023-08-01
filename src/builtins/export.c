@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 15:43:54 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/07/31 18:40:00 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 #include "builtins.h"
 #include "env.h"
 
@@ -68,7 +69,7 @@ static int ft_print_export(t_minishit *hell)
 
 	export = ft_dup_env(hell->my_env);
 	if (!export)
-		return (-1);
+		return (FAILED);
 	ft_sort_export(&export);
 	i = 0;
 	while(export[i])
@@ -78,22 +79,72 @@ static int ft_print_export(t_minishit *hell)
 		i++;
 	}
 	ft_free(export);
-	return(0);
+	return(SUCCESS);
 }
 
-int	ft_export(t_minishit *hell, t_builtin *args)
+static int	ft_sign_append(char *arg)
 {
+	int	i;
+
+	i = 0;
+	while(arg[i])
+	{
+		if (arg[i] == '+' && arg[i+1] == '=')
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
+}
+
+static int	ft_check_arg(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i] && arg[i] != '=' && arg[i] != '+')
+	{
+		if (ft_isalpha(arg[i]) == 0)
+		{
+			if (arg[i] == '_')
+				i++;
+			else
+				return (FAILED);
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
+
+int	ft_export(t_minishit *hell, char **argv)
+{
+	int	i;
+
+	i = 1;
 	if(!hell->my_env)
-		return (-1);
-	if (!args)
+		return (FAILED);
+	if (ft_table_size(argv) == 1)
 	{
 		if (ft_print_export(hell) < 0)
-			return (-1);
-		return (0);
+			return (FAILED);
+		return (SUCCESS);
 	}
-	if (ft_var_line(hell->my_env, args->arg) > 0)
-		ft_replace_var(&hell->my_env, args->arg);
-	else
-		ft_add_var(&hell->my_env, args->arg);
-	return (0);
+	while (argv[i])
+	{
+		if (ft_check_arg(argv[i]) == FAILED)
+		{
+			ft_bt_err(SHELL, EXPT,argv[i], VALID);
+			i++;
+		}
+		if (ft_var_line(hell->my_env, argv[i]) > 0)
+		{
+			if (ft_sign_append(argv[i]) == TRUE)
+				ft_append_var(&hell->my_env, argv[i]);
+			else
+				ft_replace_var(&hell->my_env, argv[i]);
+		}
+		else
+			ft_add_var(&hell->my_env, argv[i]);
+		i++;
+	}
+	return (SUCCESS);
 }

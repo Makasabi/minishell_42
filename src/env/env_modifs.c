@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_modifs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:29:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 16:08:46 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:36:07 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,3 +101,24 @@ void	ft_replace_var(char ***my_env, char *var)
 	(*my_env)[line] = new_var;
 }
 
+void	ft_append_var(char ***my_env, char *var)
+{
+	int		line;
+	char	*new_var;
+
+	line = ft_var_line((*my_env), var);
+	while (*var)
+	{
+		if (*var == '+' && *(var + 1)== '=')
+			break;
+		var++;
+	}
+	var += 2;
+	if (*var == '\0')
+		return ;
+	new_var = ft_strjoin((*my_env)[line], var);
+	if (!new_var)
+		return (ft_putendl_fd("error appending var\n", 2)); /* to be reworked */
+	ft_replace_var(my_env, new_var);
+	free(new_var);
+}

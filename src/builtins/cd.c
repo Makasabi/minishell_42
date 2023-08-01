@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:00:59 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 12:04:05 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/31 17:31:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static int ft_update_oldpwd(t_minishit *hell)
 		i++;
 	tmp = ft_strjoin("OLDPWD=", hell->my_env[line] + i + 1);
 	if (!tmp)
-		return (-1);
+		return (FAILED);
 	ft_replace_var(&hell->my_env, tmp);
 	free(tmp);
-	return (0);
+	return (SUCCESS);
 }
 
 static int ft_update_pwd(t_minishit *hell)
@@ -39,40 +39,55 @@ static int ft_update_pwd(t_minishit *hell)
 	getcwd(buff, sizeof(buff));
 	tmp = ft_strjoin("PWD=", buff);
 	if (!tmp)
-		return (-1);
+		return (FAILED);
 	ft_replace_var(&hell->my_env, tmp);
 	free(tmp);
-	return (0);
+	return (SUCCESS);
 }
 
-static int	cd_error(char *arg)
+static char	*ft_home_old(t_minishit *hell, char **argv)
 {
-	ft_putstr_fd("bash: cd: ", 2);
-	if (arg)
-		ft_putstr_fd(arg, 2);
-	ft_putstr_fd(": ", 2);
-	perror(NULL);
-	return(-1);
-}
+	char	*dir;
 
-
-int	ft_cd(t_minishit *hell, t_builtin *args)
-{
-	char *home;
-
-	if(!args->arg)
+	if (!argv[1])
 	{
-		home = ft_var_value(hell->my_env, "HOME");
-		if (!home)
-			return (ft_putstr_fd("bash: cd: HOME not set\n", 2), 1);
-		if (chdir(home) == -1)
-			return (cd_error(NULL));
+		dir = ft_var_value(hell->my_env, "HOME");
+		if (!dir)
+			return (ft_bt_err(SHELL, CD, argv[1], HOMENS), NULL);
 	}
-	else if (chdir(args->arg) == -1)
-		return (cd_error(args->arg));
+	else
+	{
+		if (argv[1][1] != '\0')
+			return (ft_bt_err(SHELL, CD, argv[1], INVOPT), NULL);
+		dir = ft_var_value(hell->my_env, "OLDPWD");
+		if (!dir)
+			return (ft_bt_err(SHELL, CD, argv[1], OPWDNS), NULL);
+	}
+	return (dir);
+}
+
+int	ft_cd(t_minishit *hell, char **argv)
+{
+	char	*dir;
+
+	if (ft_table_size(argv) > 2)
+	{
+		printf("%d\n", ft_table_size(argv));
+		return (ft_bt_err(SHELL, CD, NULL, ARGNB), FAILED);
+	}
+	if(!argv[1] || argv[1][0] == '-')
+	{
+		dir = ft_home_old(hell, argv);
+		if (!dir)
+			return (FAILED);
+		if (chdir(dir) == -1)
+			return (ft_bt_err(SHELL, CD, argv[1], NULL), FAILED);
+	}
+	else if (chdir(argv[1]) == -1)
+		return (ft_bt_err(SHELL, CD, argv[1], NULL), FAILED);
 	if (ft_update_oldpwd(hell))
-		return (ft_putstr_fd("bash: cd: error updating OLDPWD", 2), 1);
+		return (ft_bt_err(SHELL, CD, NULL, ERROLDPWD), FAILED);
 	if (ft_update_pwd(hell))
-		return (ft_putstr_fd("bash: cd: error updating PWD", 2), 1);
-	return(0);
+		return (ft_bt_err(SHELL, CD, NULL, ERRPWD), FAILED);
+	return(SUCCESS);
 }
