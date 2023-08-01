@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 14:36:54 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/01 18:14:00 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef enum e_type
 	pip,
 	cmd,
 	rdr,
+	empty,
 }	t_type;
 
 typedef enum e_redir
@@ -71,24 +72,36 @@ typedef enum e_redir
 	none,
 }	t_redir;
 
-typedef struct	s_node
+typedef struct s_node
 {
 	char				**argv;
 	t_type				type;
 	t_redir				redir;
-	struct s_node	*prev;
-	struct s_node	*next;
-	struct s_node	*up;
-	struct s_node	*left;
-	struct s_node	*right;
+	struct s_node		*prev;
+	struct s_node		*next;
+	struct s_node		*up;
+	struct s_node		*left;
+	struct s_node		*right;
 }	t_node;
+
+typedef struct s_token
+{
+	int				type;
+	int				built_in;
+	char			*str;
+	struct s_token	*redir_in;
+	struct s_token	*redir_out;
+	struct s_token	*next;
+	struct s_token	*prev;
+}					t_token;
 
 typedef struct s_minishit
 {
 	int		pipes;
-	t_token	*token;
 	char	**path;
 	char	**my_env;
+	t_node	*node;
+	t_token	*token;
 }	t_minishit;
 
 /* clean_exit */

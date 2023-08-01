@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 19:03:03 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 18:18:02 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 #include "env.h"
 #include "builtins.h"
 
-void    clean_init(t_minishit *hell)
+void	clean_init(t_minishit *hell)
 {
 	hell->pipes = 0;
 	hell->path = NULL;
-    hell->my_env = NULL;
+	hell->my_env = NULL;
+	hell->node = NULL;
 	hell->token = NULL;
 }
 
 // ft_env_test(&my_env);
 
-int    main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_minishit    *hell;
+	t_minishit	*hell;
 
 	(void)argc;
 	(void)argv;
@@ -34,10 +35,10 @@ int    main(int argc, char **argv)
 	if (!hell)
 		return (0);
 	clean_init(hell);
-    hell->my_env = ft_env_init();
-	ft_env_test(&hell->my_env);
-//	check_envp(hell->my_env, hell);
-	ft_builtin_test(hell);
+	hell->my_env = ft_env_init();
+	// ft_env_test(&hell->my_env);
+	// check_envp(hell->my_env, hell);
+	// ft_builtin_test(hell);
 	while (1)
 	{
 		if (parsing(hell) == FALSE)

@@ -6,13 +6,13 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:16:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 12:51:07 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/01 16:19:53 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	initialize_token(t_token *token)
+void	init_token(t_token *token)
 {
 	token->type = -1;
 	token->built_in = -1;
@@ -58,7 +58,7 @@ void	ft_add_token(t_token **token, char *s, int type)
 	new = ft_calloc(1, sizeof(t_token));
 	if (!new)
 		return ;
-	initialize_token(new);
+	init_token(new);
 	if (s)
 		new->str = ft_strdup(s);
 	if (type != -1)

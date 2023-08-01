@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize.c                                         :+:      :+:    :+:   */
+/*   creating_tokens.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 13:01:09 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/01 19:50:11 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,7 @@ int	tokenization(t_minishit *hell, char *command)
 		if (command[i] == ' ' || (command[i] >= 9 && command[i] <= 13))
 			i++;
 		else if (is_token(command[i]) > 0)
-		{
 			i += issa_token(hell, command, i);
-		}
 		else
 			i += issa_string(hell, command, i);
 	}

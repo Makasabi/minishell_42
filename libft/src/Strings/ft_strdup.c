@@ -1,4 +1,13 @@
-/* ************************************************************************** */
+typedef struct s_token
+{
+	int				type;
+	int				built_in;
+	char			*str;
+	struct s_token	*redir_in;
+	struct s_token	*redir_out;
+	struct s_token	*next;
+	struct s_token	*prev;
+}					t_token;/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */

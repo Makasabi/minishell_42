@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 18:53:23 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 16:04:39 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,25 @@ void	ft_clear_token(t_token *token)
 		free(token);
 }
 
+void	ft_clear_node(t_node *node)
+{
+	t_node	*next;
+
+	while (node->prev)
+		node = node->prev;
+	while (node)
+	{
+		if (node->argv)
+			ft_free(node->argv);
+		node->argv = NULL;
+		next = node->next;
+		free(node);
+		node = next;
+	}
+	if (node)
+		free(node);
+}
+
 void	ft_free(char **split)
 {
 	int	i;
@@ -49,6 +68,9 @@ int	clean_exit(t_minishit *hell)
 	if (hell->token)
 		ft_clear_token(hell->token);
 	hell->token = NULL;
+	if (hell->node)
+		ft_clear_node(hell->node);
+	hell->node = NULL;
 	if (hell->path)
 		ft_free(hell->path);
 	hell->path = NULL;
