@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/29 18:52:41 by mrony            ###   ########.fr       */
+/*   Updated: 2023/07/29 19:50:46 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef enum e_type
 {
 	pip,
 	cmd,
-	red,
+	rdr,
 }	t_type;
 
 typedef enum e_redir
@@ -76,7 +76,9 @@ typedef struct	s_node
 	char				**argv;
 	t_type				type;
 	t_redir				redir;
-	struct s_node	*previous;
+	struct s_node	*prev;
+	struct s_node	*next;
+	struct s_node	*up;
 	struct s_node	*left;
 	struct s_node	*right;
 }	t_node;
