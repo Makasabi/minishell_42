@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:09 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/31 17:06:23 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 16:58:48 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+#include "builtins.h"
+#include "minishell.h"
+
 
 /* This functin can be moved in a more generic location
 as it is used to count the number of strings in a 2d table */
@@ -61,4 +64,24 @@ int	ft_char(char c, char *set)
 		i++;
 	}
 	return(FALSE);
+}
+
+void	ft_clean_var(char **var)
+{
+	int	i;
+	size_t	size;
+	char *new_var;
+
+	i = 0;
+	size = ft_strlen(*var);
+	if (ft_sign_append(*var) == FALSE)
+		return ;
+	printf("var = '%s'\n", (*var));
+	while ((*var)[i] != '+')
+		i++;
+	printf("var = '%s'\n", (*var) + i + 1);
+	ft_memmove((*var), (*var), (size_t)i);
+	new_var = ft_memmove((*var) + i, (*var) + i + 1, size - ( i + 1));
+	new_var[size - 2] = '\0';
+	printf("new_var = '%s'\n", new_var);
 }

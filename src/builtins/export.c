@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/31 18:40:00 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 15:13:03 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,39 +80,6 @@ static int ft_print_export(t_minishit *hell)
 	}
 	ft_free(export);
 	return(SUCCESS);
-}
-
-static int	ft_sign_append(char *arg)
-{
-	int	i;
-
-	i = 0;
-	while(arg[i])
-	{
-		if (arg[i] == '+' && arg[i+1] == '=')
-			return (TRUE);
-		i++;
-	}
-	return (FALSE);
-}
-
-static int	ft_check_arg(char *arg)
-{
-	int	i;
-
-	i = 0;
-	while (arg[i] && arg[i] != '=' && arg[i] != '+')
-	{
-		if (ft_isalpha(arg[i]) == 0)
-		{
-			if (arg[i] == '_')
-				i++;
-			else
-				return (FAILED);
-		}
-		i++;
-	}
-	return (SUCCESS);
 }
 
 int	ft_export(t_minishit *hell, char **argv)

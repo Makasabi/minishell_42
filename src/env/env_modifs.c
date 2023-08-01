@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   env_modifs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:29:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/31 17:36:07 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 16:49:21 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+#include "builtins.h"
 
 /* This function adds the VAR and it's value to the environment.
 It taks a pointer to the address of the environment table and modifies the environment table.*/
@@ -41,6 +42,7 @@ void	ft_add_var(char ***my_env, char *var)
 		ft_free(new_env);
 		ft_env_error(new_env, 0);
 	}
+	ft_clean_var(&new_env[i]);
 	new_env[i+1] = NULL;
 	(*my_env) = new_env;
 }
@@ -107,6 +109,8 @@ void	ft_append_var(char ***my_env, char *var)
 	char	*new_var;
 
 	line = ft_var_line((*my_env), var);
+	if (line == -1)
+		return (ft_add_var(my_env, var));
 	while (*var)
 	{
 		if (*var == '+' && *(var + 1)== '=')

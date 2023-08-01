@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/31 18:12:07 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 15:22:24 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 typedef int	(*t_bin)(t_minishit *hell, char **argv);
 
+/* errors.c */
 void	ft_bt_err(char *shell, char *cmd, char *arg, char *error);
 
 /* cd.c */
@@ -54,5 +55,10 @@ int	ft_unset(t_minishit *hell, char **argv);
 
 /* tests.c */
 void ft_builtin_test(t_minishit *hell);
+
+/* utils */
+int	ft_check_arg(char *arg);
+int	ft_sign_append(char *arg);
+
 
 #endif

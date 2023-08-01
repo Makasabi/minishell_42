@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:57:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/31 16:51:16 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 16:48:15 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_env_error(char **my_env, int stage);
 int		ft_table_size(char **table);
 int		ft_shlvl_inc(char ***my_env);
 int		ft_char(char c, char *set);
+void	ft_clean_var(char **var);
 
 /* env_modfs.c */
 void	ft_add_var(char ***my_env, char *var);

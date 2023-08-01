@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:19:22 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/31 18:39:16 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 15:59:24 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void ft_builtin_test(t_minishit *hell)
 // 	argv[0] = "unset";
 // 	argv[1] = "NEW_VAR";
 // 	argv[2] = NULL;
-	
+
 // 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : unset <<<\n" _END, 2);
 // 	ft_putstr_fd(_FOREST_GREEN "--> Unset variable: " _END, 2);
 // 	ft_putstr_fd(_EMMERALD "NEW_VAR\n" _END, 2);
@@ -133,7 +133,7 @@ void	ft_test_cd(t_minishit *hell)
 	argv[0] = "cd";
 	argv[1] = "-";
 	argv[2] = NULL;
-	
+
 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : cd <<< \n" _END, 2);
 	ft_putstr_fd(_FOREST_GREEN "--> printing environment BEFORE changing directory\n" _END, 2);
 	ft_print_env(hell->my_env);
@@ -159,16 +159,16 @@ void	ft_test_export(t_minishit *hell)
 	char *argv[5];
 
 	argv[0] = "export";
-	argv[1] = "NEW_VAR=this_is_a_new_var";
+	argv[1] = "NEW_V*AR=this_is_a_new_var";
 	argv[2] = "NEW_VAR_2=blah";
 	argv[3] = "NEW_VAR+=blah";
 	argv[4] = NULL;
 
 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : export <<<\n" _END, 2);
-	//ft_putstr_fd(_FOREST_GREEN "--> Exporting: " _END, 2);
-	//ft_putstr_fd(_EMMERALD "NEW_VAR=this_is_a_new_var\n" _END, 2);
+	ft_putstr_fd(_FOREST_GREEN "--> Exporting: " _END, 2);
+	ft_putstr_fd(_EMMERALD "NEW_VAR=this_is_a_new_var\n" _END, 2);
 	ft_export(hell, argv);
-	ft_putchar_fd('\n', 1);
+	// ft_putchar_fd('\n', 1);
 	// ft_putstr_fd(_FOREST_GREEN "--> Exporting: " _END, 2);
 	// ft_putstr_fd(_EMMERALD "NEW_VAR_2\n" _END, 2);
 	// argv[1] = "NEW_VAR_2";
@@ -180,5 +180,8 @@ void	ft_test_export(t_minishit *hell)
 	// ft_export(hell, argv);
 	// ft_putchar_fd('\n', 1);
 	// ft_putstr_fd(_FOREST_GREEN "--> Executing export cmd with no arg\n" _END, 2);
-	ft_export(hell, NULL);
+	// char *deux[2];
+	// deux[0] = "export";
+	// deux[1] = NULL;
+	// ft_export(hell, deux);
 }
