@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 14:32:00 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/01 14:37:05 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,18 @@
 # define SINGLE '\''
 # define DOUBLE '\"'
 
-typedef struct s_token		t_token;
+
+typedef struct s_token
+{
+	int				type;
+	int				built_in;
+	char			*str;
+	struct s_token	*redir_in;
+	struct s_token	*redir_out;
+	struct s_token	*next;
+	struct s_token	*prev;
+}					t_token;
+
 typedef struct s_minishit	t_minishit;
 
 /* get_path */

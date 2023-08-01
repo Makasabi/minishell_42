@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/29 19:50:46 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/01 14:36:54 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,6 @@ typedef struct	s_node
 	struct s_node	*right;
 }	t_node;
 
-typedef struct s_token
-{
-	int				type;
-	int				built_in;
-	char			*str;
-	struct s_token	*redir_in;
-	struct s_token	*redir_out;
-	struct s_token	*next;
-	struct s_token	*prev;
-}					t_token;
-
 typedef struct s_minishit
 {
 	int		pipes;
@@ -105,8 +94,5 @@ typedef struct s_minishit
 /* clean_exit */
 int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
-
-
-
 
 #endif
