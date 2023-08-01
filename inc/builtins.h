@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 15:22:24 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/01 20:12:41 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <unistd.h>
 # include <linux/limits.h>
 
-# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GOLD "sh" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">>" _END
 # define HOMENS "HOME not set"
 # define OPWDNS "OLDPWD not set"
+# define ENVNS	"environment not set"
 # define INVOPT	"invalid option"
 # define ARGNB	"too many arguments"
 # define ERROLDPWD "error updating OLDPWD"
@@ -29,6 +29,8 @@
 # define CD "cd"
 # define UNST "unset"
 # define EXPT "export"
+# define ENV "env"
+# define PWD "pwd"
 
 typedef int	(*t_bin)(t_minishit *hell, char **argv);
 
@@ -41,8 +43,8 @@ int	ft_cd(t_minishit *hell, char **argv);
 /* env.c */
 int	ft_env(t_minishit *hell, char **argv);
 
-// /* pwd.c */
-// int ft_pwd(t_minishit *hell, char **argv);
+/* pwd.c */
+int ft_pwd(t_minishit *hell, char **argv);
 
 /* export.c */
 int	ft_export(t_minishit *hell, char **argv);
@@ -50,8 +52,8 @@ int	ft_export(t_minishit *hell, char **argv);
 /* unset.c */
 int	ft_unset(t_minishit *hell, char **argv);
 
-// /* echo.c */
-// int	ft_echo(t_minishit *hell, char **argv);
+/* echo.c */
+int	ft_echo(t_minishit *hell, char **argv);
 
 /* tests.c */
 void ft_builtin_test(t_minishit *hell);
@@ -59,6 +61,7 @@ void ft_builtin_test(t_minishit *hell);
 /* utils */
 int	ft_check_arg(char *arg);
 int	ft_sign_append(char *arg);
+int ft_value_is_empty(char *arg);
 
 
 #endif

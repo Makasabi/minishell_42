@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:09 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 16:58:48 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:24:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,13 @@ void	ft_clean_var(char **var)
 {
 	int	i;
 	size_t	size;
-	char *new_var;
 
 	i = 0;
 	size = ft_strlen(*var);
 	if (ft_sign_append(*var) == FALSE)
 		return ;
-	printf("var = '%s'\n", (*var));
 	while ((*var)[i] != '+')
 		i++;
-	printf("var = '%s'\n", (*var) + i + 1);
-	ft_memmove((*var), (*var), (size_t)i);
-	new_var = ft_memmove((*var) + i, (*var) + i + 1, size - ( i + 1));
-	new_var[size - 2] = '\0';
-	printf("new_var = '%s'\n", new_var);
+	ft_memmove((*var) + i, (*var) + i + 1, size - ( i + 1));
+	(*var)[size - 1] = '\0';
 }

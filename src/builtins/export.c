@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 15:13:03 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/01 19:26:13 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "builtins.h"
 #include "env.h"
 
-static char **ft_dup_env(char **env)
+static char	**ft_dup_env(char **env)
 {
 	char	**export;
 	int		size;
@@ -24,33 +24,33 @@ static char **ft_dup_env(char **env)
 	size = ft_table_size(env);
 	export = malloc(sizeof(char **) * (size + 1));
 	if (!export)
-		return(NULL);
-	while(env[i])
+		return (NULL);
+	while (env[i])
 	{
 		export[i] = ft_strdup(env[i]);
 		if (!export[i])
-			return(NULL);
+			return (NULL);
 		i++;
 	}
 	export[i] = NULL;
-	return(export);
+	return (export);
 }
 
-static void ft_sort_export(char ***export)
+static void	ft_sort_export(char ***export)
 {
-	char *tmp;
-	int i;
-	int j;
-	int size;
+	char	*tmp;
+	int		i;
+	int		j;
+	int		size;
 
 	size = ft_table_size(*export);
 	i = 0;
 	while (i < size)
 	{
 		j = 0;
-		while(j < size - 1 - i)
+		while (j < size - 1 - i)
 		{
-			if(ft_strccmp((*export)[j], (*export)[j+1], '=') > 0)
+			if (ft_strccmp((*export)[j], (*export)[j + 1], '=') > 0)
 			{
 				tmp = (*export)[j];
 				(*export)[j] = (*export)[j + 1];
@@ -62,7 +62,7 @@ static void ft_sort_export(char ***export)
 	}
 }
 
-static int ft_print_export(t_minishit *hell)
+static int	ft_print_export(t_minishit *hell)
 {
 	char	**export;
 	int		i;
@@ -72,14 +72,13 @@ static int ft_print_export(t_minishit *hell)
 		return (FAILED);
 	ft_sort_export(&export);
 	i = 0;
-	while(export[i])
+	while (export[i])
 	{
 		ft_putstr_fd("export ", 1);
-		ft_putendl_fd(export[i], 1);
-		i++;
+		ft_putendl_fd(export[i++], 1);
 	}
 	ft_free(export);
-	return(SUCCESS);
+	return (SUCCESS);
 }
 
 int	ft_export(t_minishit *hell, char **argv)
@@ -87,31 +86,25 @@ int	ft_export(t_minishit *hell, char **argv)
 	int	i;
 
 	i = 1;
-	if(!hell->my_env)
-		return (FAILED);
 	if (ft_table_size(argv) == 1)
-	{
-		if (ft_print_export(hell) < 0)
-			return (FAILED);
-		return (SUCCESS);
-	}
-	while (argv[i])
+		return (ft_print_export(hell));
+	while (argv[i] != NULL)
 	{
 		if (ft_check_arg(argv[i]) == FAILED)
-		{
-			ft_bt_err(SHELL, EXPT,argv[i], VALID);
-			i++;
-		}
-		if (ft_var_line(hell->my_env, argv[i]) > 0)
+			ft_bt_err(SHELL, EXPT, argv[i++], VALID);
+		else if (ft_var_line(hell->my_env, argv[i]) > 0
+			&& ft_value_is_empty(argv[i]) == FALSE)
 		{
 			if (ft_sign_append(argv[i]) == TRUE)
-				ft_append_var(&hell->my_env, argv[i]);
+				ft_append_var(&hell->my_env, argv[i++]);
 			else
-				ft_replace_var(&hell->my_env, argv[i]);
+				ft_replace_var(&hell->my_env, argv[i++]);
 		}
+		else if (ft_var_line(hell->my_env, argv[i]) > 0
+			&& ft_value_is_empty(argv[i]) == TRUE)
+			i++;
 		else
-			ft_add_var(&hell->my_env, argv[i]);
-		i++;
+			ft_add_var(&hell->my_env, argv[i++]);
 	}
 	return (SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 14:54:31 by makasabi          #+#    #+#             */
-/*   Updated: 2023/08/01 15:13:14 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:43:35 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,22 @@ int	ft_sign_append(char *arg)
 		i++;
 	}
 	return (FALSE);
+}
+
+int ft_value_is_empty(char *arg)
+{
+	int		flag;
+	int		i;
+
+	i = 0;
+	flag = 0;
+	while (arg[i])
+	{
+		if (arg[i] == '=')
+			flag++;
+		i++;
+	}
+	if ((arg[i--] == '=' && flag == 1) || flag == 0)
+		return(TRUE);
+	return(FALSE);
 }

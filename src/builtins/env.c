@@ -6,22 +6,21 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:07 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/31 15:53:04 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 19:56:51 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 #include "env.h"
 
-int	ft_env(t_minishit *hell, char **argv)
+int	ft_env(t_minishit *hell, __attribute__((unused)) char **argv )
 {
 	int	i;
 	int j;
 
 	i = 0;
-	(void)argv;
-	if(!hell->my_env)
-		return (FAILED);
+	if(!hell || !hell->my_env)
+		return (ft_bt_err(SHELL, ENV, NULL, ENVNS), FAILED);
 	while(hell->my_env[i])
 	{
 		j = 0;
