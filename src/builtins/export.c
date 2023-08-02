@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 19:26:13 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/02 11:45:55 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int	ft_export(t_minishit *hell, char **argv)
 	while (argv[i] != NULL)
 	{
 		if (ft_check_arg(argv[i]) == FAILED)
-			ft_bt_err(SHELL, EXPT, argv[i++], VALID);
-		else if (ft_var_line(hell->my_env, argv[i]) > 0
+			ft_bt_err(SHELL, EXP, argv[i++], IVALID);
+		else if (ft_var_line(hell->my_env, argv[i]) >= 0
 			&& ft_value_is_empty(argv[i]) == FALSE)
 		{
 			if (ft_sign_append(argv[i]) == TRUE)
@@ -100,7 +100,7 @@ int	ft_export(t_minishit *hell, char **argv)
 			else
 				ft_replace_var(&hell->my_env, argv[i++]);
 		}
-		else if (ft_var_line(hell->my_env, argv[i]) > 0
+		else if (ft_var_line(hell->my_env, argv[i]) >= 0
 			&& ft_value_is_empty(argv[i]) == TRUE)
 			i++;
 		else

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:19:22 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 20:08:20 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/02 12:10:13 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_test_cd(t_minishit *hell);
 void	ft_test_export(t_minishit *hell);
 void	ft_test_env(t_minishit *hell);
 void	ft_test_pwd(t_minishit *hell);
-// void	ft_test_unset(t_minishit *hell);
+void	ft_test_unset(t_minishit *hell);
 // void	ft_test_echo(t_minishit *hell);
 
 void ft_builtin_test(t_minishit *hell)
@@ -46,11 +46,11 @@ void ft_builtin_test(t_minishit *hell)
 	ft_test_pwd(hell);
 	ft_putchar_fd('\n', 1);
 
-	// /**************/
-	// /* test unset */
-	// /**************/
-	// ft_test_unset(hell);
-	// ft_putchar_fd('\n', 1);
+	/**************/
+	/* test unset */
+	/**************/
+	ft_test_unset(hell);
+	ft_putchar_fd('\n', 1);
 
 	// /*************/
 	// /* test echo */
@@ -79,33 +79,41 @@ void ft_builtin_test(t_minishit *hell)
 // 	ft_putchar_fd('\n', 1);
 // }
 
-// void	ft_test_unset(t_minishit *hell)
-// {
-// 	char *argv[3];
-// 	argv[0] = "unset";
-// 	argv[1] = "NEW_VAR";
-// 	argv[2] = NULL;
-// 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : unset <<<\n" _END, 2);
-// 	ft_putstr_fd(_FOREST_GREEN "--> Unset variable: " _END, 2);
-// 	ft_putstr_fd(_EMMERALD "NEW_VAR\n" _END, 2);
-// 	ft_unset(hell, argv);
-// 	ft_putchar_fd('\n', 1);
-// 	ft_putstr_fd(_FOREST_GREEN "--> Unsetting non-set variable: " _END, 2);
-// 	ft_putstr_fd(_EMMERALD "MARIE\n" _END, 2);
-// 	argv[1] = "MARIE";
-// 	ft_unset(hell, argv);
-// 	ft_putchar_fd('\n', 1);
-// 	ft_putstr_fd(_FOREST_GREEN "--> Unset variable: " _END, 2);
-// 	ft_putstr_fd(_EMMERALD "NEW_VAR_2\n" _END, 2);
-// 	argv[1] = "NEW_VAR_2";
-// 	ft_unset(hell, argv);
-// 	ft_putchar_fd('\n', 1);
-// 	ft_putstr_fd(_FOREST_GREEN "--> Printing environment\n" _END, 2);
-// 	ft_env(hell, argv);
-// 	ft_putchar_fd('\n', 1);
-// 	ft_putstr_fd(_FOREST_GREEN "--> Exporting environment\n" _END, 2);
-// 	ft_export(hell, NULL);
-// }
+void	ft_test_unset(t_minishit *hell)
+{
+	char *argv[4];
+	argv[0]	= "unset";
+	argv[1] = "NEW_VAR";
+	argv[2] = "NEW_VAR_2";
+	argv[3] = NULL;
+	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : unset <<<\n" _END, 2);
+	ft_putstr_fd(_FOREST_GREEN "--> Unset variable: " _END, 2);
+	ft_putstr_fd(_EMMERALD "NEW_VAR & NEW_VAR_2\n" _END, 2);
+	ft_unset(hell, argv);
+	ft_putchar_fd('\n', 1);
+	ft_putstr_fd(_FOREST_GREEN "--> Unsetting invalid variable name: " _END, 2);
+	ft_putstr_fd(_EMMERALD "-NEW_VAR\n" _END, 2);
+	argv[1] = "-NEW_VAR";
+	argv[2] = NULL;
+	ft_unset(hell, argv);
+	ft_putchar_fd('\n', 1);
+	ft_putstr_fd(_FOREST_GREEN "--> Unset variable: " _END, 2);
+	ft_putstr_fd(_EMMERALD "NEW_VAR_3\n" _END, 2);
+	argv[1] = "NEW_VAR_3";
+	ft_unset(hell, argv);
+	ft_putchar_fd('\n', 1);
+	ft_putstr_fd(_FOREST_GREEN "--> Unset non-existent variable: " _END, 2);
+	ft_putstr_fd(_EMMERALD "NEW_VAR_4\n" _END, 2);
+	argv[1] = "NEW_VAR_4";
+	ft_unset(hell, argv);
+	ft_putchar_fd('\n', 1);
+	ft_putstr_fd(_FOREST_GREEN "--> Printing environment\n" _END, 2);
+	ft_env(hell, argv);
+	ft_putchar_fd('\n', 1);
+	argv[1] = NULL;
+	ft_putstr_fd(_FOREST_GREEN "--> Exporting environment\n" _END, 2);
+	ft_export(hell, argv);
+}
 
 void	ft_test_pwd(t_minishit *hell)
 {

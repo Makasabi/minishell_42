@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 20:12:41 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/02 11:23:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@
 # define ARGNB	"too many arguments"
 # define ERROLDPWD "error updating OLDPWD"
 # define ERRPWD "error updating PWD"
-# define VALID	"not a valid identifier"
+# define IVALID	"not a valid identifier"
+# define IVALPM "invalid parameter name"
+# define IVALOP "invalid option"
 
 # define CD "cd"
-# define UNST "unset"
-# define EXPT "export"
+# define EXP "export"
 # define ENV "env"
 # define PWD "pwd"
+# define UST "unset"
+# define ECH "echo"
 
 typedef int	(*t_bin)(t_minishit *hell, char **argv);
 
@@ -52,8 +55,8 @@ int	ft_export(t_minishit *hell, char **argv);
 /* unset.c */
 int	ft_unset(t_minishit *hell, char **argv);
 
-/* echo.c */
-int	ft_echo(t_minishit *hell, char **argv);
+// /* echo.c */
+// int	ft_echo(t_minishit *hell, char **argv);
 
 /* tests.c */
 void ft_builtin_test(t_minishit *hell);

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:18:55 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/29 16:29:30 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/02 10:43:59 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 /////////////////////////////////
 
 int				ft_isalpha(int c);
+int				ft_iscaps(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
