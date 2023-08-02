@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 14:54:31 by makasabi          #+#    #+#             */
-/*   Updated: 2023/08/02 10:44:13 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/02 16:08:20 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@ int	ft_check_arg(char *arg)
 	int	i;
 
 	i = 0;
+	if (arg[i] && (ft_isalpha(arg[0]) == 1 || arg[0] == '_'))
+		i++;
+	else 
+		return (FAILED);
 	while (arg[i] && arg[i] != '=' && arg[i] != '+')
 	{
-		if (ft_iscaps(arg[i]) == 0)
+		if (ft_isalnum(arg[i]) == 0)
 		{
 			if (arg[i] == '_')
 				i++;

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/01 19:29:32 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/02 15:33:53 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int    main(int argc, char **argv)
 //	ft_env_test(&hell->my_env);
 //	check_envp(hell->my_env, hell);
 	ft_builtin_test(hell);
-	while (1)
-	{
-		if (parsing(hell) == FALSE)
-			break ;
-	}
+	// while (1)
+	// {
+	// 	if (parsing(hell) == FALSE)
+	// 		break ;
+	// }
 	clean_exit(hell);
 	return (0);
 }

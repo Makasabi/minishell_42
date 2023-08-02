@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 20:11:05 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/02 15:54:44 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@
 # define SKIP 1
 # define NOSKIP 0
 
-# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GOLD "sh" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">>" _END
+# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GREY "s" _GOLD "h" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">>" _END
 
 typedef enum e_type
 {

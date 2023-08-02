@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:19:22 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/02 12:10:13 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/02 17:17:37 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	ft_test_export(t_minishit *hell);
 void	ft_test_env(t_minishit *hell);
 void	ft_test_pwd(t_minishit *hell);
 void	ft_test_unset(t_minishit *hell);
-// void	ft_test_echo(t_minishit *hell);
+void	ft_test_echo(t_minishit *hell);
+// void	ft_test_exit(t_minishit *hell);
 
 void ft_builtin_test(t_minishit *hell)
 {
@@ -52,48 +53,47 @@ void ft_builtin_test(t_minishit *hell)
 	ft_test_unset(hell);
 	ft_putchar_fd('\n', 1);
 
-	// /*************/
-	// /* test echo */
-	// /*************/
-	// ft_test_echo(hell);
-	// ft_putchar_fd('\n', 1);
+	/*************/
+	/* test echo */
+	/*************/
+	ft_test_echo(hell);
+	ft_putchar_fd('\n', 1);
 
 	/* test exit */
 }
 
-// void	ft_test_echo(t_minishit *hell)
-// {
-// 	t_builtin	args;
-// 	args.fd_in = 0;
-// 	args.fd_out = 1;
-// 	args.fd_err = 2;
-// 	args.cmd = "echo";
-// 	args.opt = "-n";
-// 	args.arg = "This should be printed without newline.";
-// 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : echo <<<\n" _END, 2);
-// 	ft_putstr_fd(_FOREST_GREEN "--> echo -n test: " _END, 2);
-// 	ft_echo(hell, &args);
-// 	args.arg = "On the other hand, this should have a newline.";
-// 	ft_putstr_fd(_FOREST_GREEN "--> echo test: " _END, 2);
-// 	ft_echo(hell, &args);
-// 	ft_putchar_fd('\n', 1);
-// }
+void	ft_test_echo(t_minishit *hell)
+{
+	char *argv[4];
+	argv[0]	= "echo";
+	argv[1] = "-n";
+	argv[2] = "This should be printed without newline.";
+	argv[3] = NULL;
+	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : echo <<<\n" _END, 2);
+	ft_putstr_fd(_FOREST_GREEN "--> echo -n test: " _END, 2);
+	ft_echo(hell, argv);
+	argv[1] = "-nnhnn";
+	argv[2] = "On the other hand, this should have a newline.";
+	ft_putstr_fd(_FOREST_GREEN "--> echo test: " _END, 2);
+	ft_echo(hell, argv);
+	ft_putchar_fd('\n', 1);
+}
 
 void	ft_test_unset(t_minishit *hell)
 {
 	char *argv[4];
 	argv[0]	= "unset";
-	argv[1] = "NEW_VAR";
+	argv[1] = "-NEW_VAR";
 	argv[2] = "NEW_VAR_2";
 	argv[3] = NULL;
 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : unset <<<\n" _END, 2);
 	ft_putstr_fd(_FOREST_GREEN "--> Unset variable: " _END, 2);
-	ft_putstr_fd(_EMMERALD "NEW_VAR & NEW_VAR_2\n" _END, 2);
+	ft_putstr_fd(_EMMERALD "-NEW_VAR & NEW_VAR_2\n" _END, 2);
 	ft_unset(hell, argv);
 	ft_putchar_fd('\n', 1);
 	ft_putstr_fd(_FOREST_GREEN "--> Unsetting invalid variable name: " _END, 2);
-	ft_putstr_fd(_EMMERALD "-NEW_VAR\n" _END, 2);
-	argv[1] = "-NEW_VAR";
+	ft_putstr_fd(_EMMERALD "lNEW_VAR\n" _END, 2);
+	argv[1] = "lNEW_VAR";
 	argv[2] = NULL;
 	ft_unset(hell, argv);
 	ft_putchar_fd('\n', 1);
@@ -108,7 +108,7 @@ void	ft_test_unset(t_minishit *hell)
 	ft_unset(hell, argv);
 	ft_putchar_fd('\n', 1);
 	ft_putstr_fd(_FOREST_GREEN "--> Printing environment\n" _END, 2);
-	ft_env(hell, argv);
+	ft_env(hell, NULL);
 	ft_putchar_fd('\n', 1);
 	argv[1] = NULL;
 	ft_putstr_fd(_FOREST_GREEN "--> Exporting environment\n" _END, 2);
@@ -124,12 +124,23 @@ void	ft_test_pwd(t_minishit *hell)
 
 void	ft_test_env(t_minishit *hell)
 {
+	char *argv[3];
+
+	argv[0] = "env";
+	argv[1] = "blah";
+	argv[2] = NULL;
+	
 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : env <<<\n" _END, 2);
 	ft_putstr_fd(_FOREST_GREEN "--> Print void env\n" _END, 2);
 	ft_env(NULL, NULL);
-	ft_putstr_fd(_FOREST_GREEN "--> Print all set env variable.\n" _END, 2);
+	ft_putstr_fd(_FOREST_GREEN "--> Print env with args\n" _END, 2);
+	ft_putstr_fd(_CORAL "--> Should not do anything as args and option are not managed heremake\n" _END, 2);
+
+	ft_env(NULL, argv);
+	argv[1] = NULL;
+	ft_putstr_fd(_FOREST_GREEN "--> Print all set env variable\n" _END, 2);
 	ft_putstr_fd(_CORAL "--> Variable 'NEW_VAR_3' should not be displayed as it is declared but not set.\n" _END, 2);
-	ft_env(hell, NULL);
+	ft_env(hell, argv);
 }
 
 void	ft_test_cd(t_minishit *hell)
@@ -138,7 +149,7 @@ void	ft_test_cd(t_minishit *hell)
 	char buff[PATH_MAX];
 
 	argv[0] = "cd";
-	argv[1] = "-";
+	argv[1] = "../../..";
 	argv[2] = NULL;
 
 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : cd <<< \n" _END, 2);
@@ -166,11 +177,11 @@ void	ft_test_export(t_minishit *hell)
 	char *argv[3];
 
 	argv[0] = "export";
-	argv[1] = "NEW_V*AR=this_is_a_new_var";
+	argv[1] = "n4ew_VAR=this_is_a_new_var";
 	argv[2] = NULL;
 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : export <<<\n" _END, 1);
 	ft_putstr_fd(_FOREST_GREEN "--> Exporting: " _END, 1);
-	ft_putstr_fd(_EMMERALD "NEW_V*AR=this_is_a_new_var\n" _END, 1);
+	ft_putstr_fd(_EMMERALD "-NEW_VAR=this_is_a_new_var\n" _END, 1);
 	ft_export(hell, argv);
 	ft_putchar_fd('\n', 1);
 	ft_putstr_fd(_FOREST_GREEN "--> Exporting: " _END, 1);
