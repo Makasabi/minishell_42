@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:56:01 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/31 14:47:56 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 17:26:15 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define _ITALIC "\033[3m"
 # define _UNDER "\033[4m"
 # define _REV "\033[7m"
-
 
 # define _RED "\033[31m"
 # define _FOREST_GREEN "\033[32m"

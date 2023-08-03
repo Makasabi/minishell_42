@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:09 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 18:24:12 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 17:07:53 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "builtins.h"
 #include "minishell.h"
-
 
 /* This functin can be moved in a more generic location
 as it is used to count the number of strings in a 2d table */
@@ -24,8 +23,8 @@ int	ft_table_size(char **table)
 
 	i = 0;
 	if (!table)
-		return(0);
-	while(table[i])
+		return (0);
+	while (table[i])
 		i++;
 	return (i);
 }
@@ -46,10 +45,10 @@ int	ft_shlvl_inc(char ***my_env)
 	new_var = ft_strjoin("SHLVL=", level);
 	free(level);
 	if (!new_var)
-		return(-1);
+		return (-1);
 	ft_replace_var(my_env, new_var);
 	free(new_var);
-	return(0);
+	return (0);
 }
 
 int	ft_char(char c, char *set)
@@ -57,18 +56,18 @@ int	ft_char(char c, char *set)
 	int	i;
 
 	i = 0;
-	while(set[i])
+	while (set[i])
 	{
 		if (c == set[i])
 			return (TRUE);
 		i++;
 	}
-	return(FALSE);
+	return (FALSE);
 }
 
 void	ft_clean_var(char **var)
 {
-	int	i;
+	int		i;
 	size_t	size;
 
 	i = 0;
@@ -77,6 +76,6 @@ void	ft_clean_var(char **var)
 		return ;
 	while ((*var)[i] != '+')
 		i++;
-	ft_memmove((*var) + i, (*var) + i + 1, size - ( i + 1));
+	ft_memmove((*var) + i, (*var) + i + 1, size - (i + 1));
 	(*var)[size - 1] = '\0';
 }

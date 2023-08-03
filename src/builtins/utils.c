@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 14:54:31 by makasabi          #+#    #+#             */
-/*   Updated: 2023/08/02 16:08:20 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 16:55:35 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_check_arg(char *arg)
 	i = 0;
 	if (arg[i] && (ft_isalpha(arg[0]) == 1 || arg[0] == '_'))
 		i++;
-	else 
+	else
 		return (FAILED);
 	while (arg[i] && arg[i] != '=' && arg[i] != '+')
 	{
@@ -42,16 +42,16 @@ int	ft_sign_append(char *arg)
 	int	i;
 
 	i = 0;
-	while(arg[i])
+	while (arg[i])
 	{
-		if (arg[i] == '+' && arg[i+1] == '=')
+		if (arg[i] == '+' && arg[i + 1] == '=')
 			return (TRUE);
 		i++;
 	}
 	return (FALSE);
 }
 
-int ft_value_is_empty(char *arg)
+int	ft_value_is_empty(char *arg)
 {
 	int		flag;
 	int		i;
@@ -65,6 +65,6 @@ int ft_value_is_empty(char *arg)
 		i++;
 	}
 	if ((arg[i--] == '=' && flag == 1) || flag == 0)
-		return(TRUE);
-	return(FALSE);
+		return (TRUE);
+	return (FALSE);
 }

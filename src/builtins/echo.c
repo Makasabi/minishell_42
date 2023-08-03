@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/02 17:17:51 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 16:53:22 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* Print to the specified fd the string sent as argument.
 if option -n, then do not print \n at the end */
 
-bool	ft_newline (char *str)
+bool	ft_newline(char *str)
 {
 	int	i;
 
@@ -46,7 +46,7 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv)
 	newline = ft_newline(argv[1]);
 	if (newline == 0)
 		i++;
-	while(argv[i])
+	while (argv[i])
 	{
 		ft_putstr_fd(argv[i], 1);
 		if (argv[i + 1] != NULL)

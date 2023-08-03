@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_modifs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:29:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 16:49:21 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/03 17:00:31 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "builtins.h"
 
 /* This function adds the VAR and it's value to the environment.
-It taks a pointer to the address of the environment table and modifies the environment table.*/
+It taks a pointer to the address of the environment table
+and modifies the environment table.*/
 
 void	ft_add_var(char ***my_env, char *var)
 {
@@ -37,13 +38,13 @@ void	ft_add_var(char ***my_env, char *var)
 	}
 	free(*my_env);
 	new_env[i] = ft_strdup(var);
-	if(!new_env[i])
+	if (!new_env[i])
 	{
 		ft_free(new_env);
 		ft_env_error(new_env, 0);
 	}
 	ft_clean_var(&new_env[i]);
-	new_env[i+1] = NULL;
+	new_env[i + 1] = NULL;
 	(*my_env) = new_env;
 }
 
@@ -68,7 +69,7 @@ void	ft_del_var(char ***my_env, int line)
 		ft_free(*my_env);
 		ft_env_error((*my_env), 0);
 	}
-	while((*my_env)[i])
+	while ((*my_env)[i])
 	{
 		if (i == line)
 			free((*my_env)[i++]);
@@ -113,16 +114,16 @@ void	ft_append_var(char ***my_env, char *var)
 		return (ft_add_var(my_env, var));
 	while (*var)
 	{
-		if (*var == '+' && *(var + 1)== '=')
-			break;
+		if (*var == '+' && *(var + 1) == '=')
+			break ;
 		var++;
 	}
 	var += 2;
 	if (*var == '\0')
 		return ;
 	new_var = ft_strjoin((*my_env)[line], var);
-	if (!new_var)
-		return (ft_putendl_fd("error appending var\n", 2)); /* to be reworked */
+	if (!new_var)/* to be reworked */
+		return (ft_putendl_fd("error appending var\n", 2));
 	ft_replace_var(my_env, new_var);
 	free(new_var);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 16:10:31 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 17:16:44 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ void	assign_type_redir(t_minishit *hell, t_token *token)
 		if (token->prev && redir == HEREDOC)
 		{
 			token->prev->type = REDIR;
-			// something about heredoc
 		}
 		token = token->next;
 	}
 }
+
+/*
+			// something about heredoc
+*/

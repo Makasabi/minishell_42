@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 16:30:45 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 17:29:52 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,22 @@
 typedef int	(*t_bin)(t_minishit *hell, char **argv);
 
 /* cd.c */
-int	ft_cd(t_minishit *hell, char **argv);
+int		ft_cd(t_minishit *hell, char **argv);
 
 /* env.c */
-int	ft_env(t_minishit *hell, char **argv);
+int		ft_env(t_minishit *hell, char **argv);
 
 /* pwd.c */
-int ft_pwd(t_minishit *hell, char **argv);
+int		ft_pwd(t_minishit *hell, char **argv);
 
 /* export.c */
-int	ft_export(t_minishit *hell, char **argv);
+int		ft_export(t_minishit *hell, char **argv);
 
 /* unset.c */
-int	ft_unset(t_minishit *hell, char **argv);
+int		ft_unset(t_minishit *hell, char **argv);
 
 /* echo.c */
-int	ft_echo(t_minishit *hell, char **argv);
+int		ft_echo(t_minishit *hell, char **argv);
 
 /* exit.c */
 void	ft_exit(t_minishit *hell);

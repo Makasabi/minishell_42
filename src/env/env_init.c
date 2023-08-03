@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 15:46:35 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 17:04:30 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 
-/* This function copies the content of the environment variables passed to the process
-upon execution. From the external variable **environ to a 2D array **my_env.
+/* This function copies the content of the environment variables passed to the 
+process upon execution. 
+From the external variable **environ to a 2D array **my_env.
 
 If the program was launched without any environment variable,
 the function ft_env_from_scratch is called to create our own environment with
 the variable PWD and SHLVL. */
 
-char **ft_env_init(void)
+char	**ft_env_init(void)
 {
-	extern char **environ;
-	char	**my_env;
-	int		size;
-	int		i;
+	extern char	**environ;
+	char		**my_env;
+	int			size;
+	int			i;
 
 	i = 0;
 	size = ft_table_size(environ);
@@ -33,7 +34,7 @@ char **ft_env_init(void)
 	my_env = malloc(sizeof(char **) * (size + 1));
 	if (!my_env)
 		ft_env_error(my_env, 0);
-	while(environ[i])
+	while (environ[i])
 	{
 		my_env[i] = ft_strdup(environ[i]);
 		if (!my_env[i])
@@ -42,13 +43,13 @@ char **ft_env_init(void)
 	}
 	my_env[i] = NULL;
 	ft_shlvl_inc(&my_env);
-	return(my_env);
+	return (my_env);
 }
 
 /* This function mallocs a 2D array and adds 2 env variables : PWD and SHLVL,
 with their respective values */
 
-char **ft_env_from_scratch(void)
+char	**ft_env_from_scratch(void)
 {
 	char	buff[PATH_MAX];
 	char	**my_env;
@@ -67,25 +68,26 @@ char **ft_env_from_scratch(void)
 	return (my_env);
 }
 
-/* This function searches through the environment table for the variable name sent
-as argument (target) and returns a pointer to the string holding the var name and its value.
+/* This function searches through the environment table for the variable name
+sent as argument (target) and returns a pointer to the string holding the var
+name and its value. 
 The variable passed as argument can be of format "VAR=value" or "VAR"*/
 
-char *ft_find_var(char **my_env, char *target)
+char	*ft_find_var(char **my_env, char *target)
 {
-	int	i;
-	size_t size;
+	int		i;
+	size_t	size;
 
 	i = 0;
 	size = ft_strlen(target);
 	if (size == 0 || !target)
 		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
-	while(my_env[i])
+	while (my_env[i])
 	{
 		if (ft_strncmp(my_env[i], target, size) == 0
-		&& (my_env[i][size] == '=' 
-		|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
-			return(my_env[i]);
+			&& (my_env[i][size] == '='
+			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
+			return (my_env[i]);
 		i++;
 	}
 	//ft_putstr_fd(VARNOTFOUND, 1);
@@ -93,11 +95,11 @@ char *ft_find_var(char **my_env, char *target)
 }
 
 /* This function searches through the environment table for the variable sent
-as argument (target) and returns the index (int) of the variable in the environment table.
-if the vairable is not found, the function returns -1
+as argument (target) and returns the index (int) of the variable in
+the environment table. if the vairable is not found, the function returns -1
 The variable passed as argument can be of format "VAR=value" or "VAR" */
 
-int ft_var_line(char **my_env, char *var)
+int	ft_var_line(char **my_env, char *var)
 {
 	int	i;
 	int	j;
@@ -105,12 +107,12 @@ int ft_var_line(char **my_env, char *var)
 	i = 0;
 	if (!var)
 		return (-1);
-	while(my_env[i])
+	while (my_env[i])
 	{
 		j = 0;
-		while(my_env[i][j] == var[j] && var[j] && my_env[i][j])
+		while (my_env[i][j] == var[j] && var[j] && my_env[i][j])
 		{
-			if (my_env[i][j + 1] == '=' 
+			if (my_env[i][j + 1] == '='
 			&& (var[j + 1] == '=' || var[j + 1] == '\0'
 			|| (var[j + 1] == '+' && var[j + 2] == '=')))
 				return (i);
@@ -125,20 +127,20 @@ int ft_var_line(char **my_env, char *var)
 	return (FAILED);
 }
 
-/* This function searches through the environment table for the variable name sent
-as argument (target) and returns a pointer to the begining of the variable value */
+/* This function searches through the environment table for the variable name
+sent as argument (target) and returns a pointer
+to the begining of the variable value */
 
 char	*ft_var_value(char **my_env, char *target)
 {
 	char	*tmp;
 	size_t	size;
 
-	
 	if (!my_env || !target)
 		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
 	size = ft_strlen(target);
 	tmp = ft_find_var(my_env, target);
 	if (!tmp || size == 0)
-		return(NULL);
-	return(tmp+size+1);
+		return (NULL);
+	return (tmp + size + 1);
 }

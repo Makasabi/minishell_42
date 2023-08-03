@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 16:29:35 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 17:25:56 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,14 @@ void	make_nodes(t_minishit *hell, t_token *token);
 
 t_node	*ft_new_node(int type);
 t_node	*ft_nodelast(t_node *node);
-int	    ft_node_size(t_node *node);
+int		ft_node_size(t_node *node);
 void	init_node(t_node *node);
 void	ft_add_back_node(t_node **node, t_node *new);
 
-int	    count_tab(t_token *token, int current_type);
+int		count_tab(t_token *token, int current_type);
 t_node	*make_argv_rdr(t_node *node, t_token *token);
 t_node	*make_argv_cmd(t_node *node, t_token *token, int current_type);
 t_node	*make_argv(t_node *node, t_token *token, int current_type);
-
 
 /* creating_tree */
 t_node	*single_command(t_minishit *hell, t_node *node);

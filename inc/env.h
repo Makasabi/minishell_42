@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:57:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 16:48:15 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/03 17:28:15 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@
 
 # define ENVERR _PURPLE _BOLD "🦖 Environment initialization error: " _END
 # define ENVERR0 ENVERR _ITALIC "my_env malloc failled\n" _END
-# define ENVERR1 ENVERR _ITALIC"failled ft_strdup\n" _END
+# define ENVERR1 ENVERR _ITALIC "failled ft_strdup\n" _END
 # define ENVERR2 ENVERR _ITALIC"failled ft_strjoin\n" _END
 
 # define ENVSEARCH _PURPLE _BOLD "Environment Variable search: " _END
 # define VARNOTFOUND ENVSEARCH _ITALIC "Variable not found\n" _END
 # define NOVARTARGET ENVSEARCH _ITALIC "No variable to search for\n" _END
-
-
 
 /* env_init.c */
 char	**ft_env_init(void);
@@ -53,7 +51,5 @@ void	ft_append_var(char ***my_env, char *var);
 /* test.c */
 void	ft_print_env(char **my_env);
 void	ft_env_test(char ***my_env);
-
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 14:50:47 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 14:20:44 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 17:16:13 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_node	*link_last_cmd(t_node *node)
 	}
 	return (node);
 }
-
 
 void	complex_commands(t_minishit *hell, t_node *node)
 {

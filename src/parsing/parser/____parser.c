@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:14:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 15:48:41 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 17:19:21 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	parser(t_minishit *hell)
 		pipes not lefting all the way through
 	infinite loop when righting
 */
-
 
 /*
 

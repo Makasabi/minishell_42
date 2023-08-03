@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 16:29:10 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 17:26:33 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@
 #  define BUFFER_SIZE 2048
 # endif
 
-# define SUCCESS 0
-# define FAILED -1
-
 # define FALSE 0
 # define TRUE 1
 
@@ -57,8 +54,6 @@
 
 # define SKIP 1
 # define NOSKIP 0
-
-# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GREY "s" _GOLD "h" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">>" _END
 
 typedef enum e_type
 {
@@ -115,11 +110,11 @@ typedef struct s_minishit
 void	clean_init(t_minishit *hell);
 
 /* clean_exit */
+
 int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
 void	ft_clear_token(t_token *token);
 void	ft_clear_node(t_node *node);
-
 void	ft_free(char **split);
 
 #endif

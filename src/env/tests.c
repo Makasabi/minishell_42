@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tests.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:11:50 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/29 19:01:58 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 17:08:57 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 
-void ft_env_test(char ***my_env)
+void	ft_env_test(char ***my_env)
 {
 	ft_putstr_fd(_REV _FOREST_GREEN "TEST : print_env\n" _END, 2);
 	ft_print_env((*my_env));
@@ -49,14 +49,14 @@ void ft_env_test(char ***my_env)
 	ft_print_env((*my_env));
 }
 
-void ft_print_env(char **my_env)
+void	ft_print_env(char **my_env)
 {
 	int	i;
 
 	i = 0;
-	if(!my_env)
+	if (!my_env)
 		return ;
-	while(my_env[i])
+	while (my_env[i])
 	{
 		ft_putendl_fd(my_env[i], 1);
 		i++;
