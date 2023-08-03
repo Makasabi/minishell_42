@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/02 15:54:44 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 15:57:40 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ typedef enum e_type
 {
 	pip,
 	cmd,
-	red,
+	rdr,
+	not,
 }	t_type;
 
 typedef enum e_redir
@@ -73,23 +74,27 @@ typedef enum e_redir
 	heredoc,
 	writeto,
 	readfrom,
+	empty,
 	none,
 }	t_redir;
 
-typedef struct	s_node
+typedef struct s_node
 {
+	int					index;
 	char				**argv;
+	bool				built_in;
 	t_type				type;
 	t_redir				redir;
-	struct s_node	*previous;
-	struct s_node	*left;
-	struct s_node	*right;
+	struct s_node		*prev;
+	struct s_node		*next;
+	struct s_node		*up;
+	struct s_node		*left;
+	struct s_node		*right;
 }	t_node;
 
 typedef struct s_token
 {
 	int				type;
-	int				built_in;
 	char			*str;
 	struct s_token	*redir_in;
 	struct s_token	*redir_out;
@@ -100,16 +105,21 @@ typedef struct s_token
 typedef struct s_minishit
 {
 	int		pipes;
-	t_token	*token;
 	char	**path;
 	char	**my_env;
+	t_node	*node;
+	t_token	*token;
 }	t_minishit;
+
+/* main */
+void	clean_init(t_minishit *hell);
 
 /* clean_exit */
 int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
+void	ft_clear_token(t_token *token);
+void	ft_clear_node(t_node *node);
 
-
-
+void	ft_free(char **split);
 
 #endif

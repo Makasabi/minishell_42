@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:19:22 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 10:24:48 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 15:54:55 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,32 +31,32 @@ void ft_builtin_test(t_minishit *hell)
 	/***************/
 	/* test export */
 	/***************/
-	ft_test_export(hell);
-	ft_putchar_fd('\n', 1);
+	// ft_test_export(hell);
+	// ft_putchar_fd('\n', 1);
 
-	/************/
-	/* test env */
-	/************/
-	ft_test_env(hell);
-	ft_putchar_fd('\n', 1);
+	// /************/
+	// /* test env */
+	// /************/
+	// ft_test_env(hell);
+	// ft_putchar_fd('\n', 1);
 
-	/************/
-	/* test pwd */
-	/************/
-	ft_test_pwd(hell);
-	ft_putchar_fd('\n', 1);
+	// /************/
+	// /* test pwd */
+	// /************/
+	// ft_test_pwd(hell);
+	// ft_putchar_fd('\n', 1);
 
-	/**************/
-	/* test unset */
-	/**************/
-	ft_test_unset(hell);
-	ft_putchar_fd('\n', 1);
+	// /**************/
+	// /* test unset */
+	// /**************/
+	// ft_test_unset(hell);
+	// ft_putchar_fd('\n', 1);
 
-	/*************/
-	/* test echo */
-	/*************/
-	ft_test_echo(hell);
-	ft_putchar_fd('\n', 1);
+	// /*************/
+	// /* test echo */
+	// /*************/
+	// ft_test_echo(hell);
+	// ft_putchar_fd('\n', 1);
 
 	/* test exit */
 	ft_exit(hell);
@@ -149,7 +149,7 @@ void	ft_test_cd(t_minishit *hell)
 	char buff[PATH_MAX];
 
 	argv[0] = "cd";
-	argv[1] = "../.k./..";
+	argv[1] = "-";
 	argv[2] = NULL;
 
 	ft_putstr_fd(_REV _FOREST_GREEN ">>> TEST : cd <<< \n" _END, 1);
