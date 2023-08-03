@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:21 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 16:06:58 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 16:32:57 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,21 @@ int	ft_unset(t_minishit *hell, char **argv)
 	int	var_l;
 	int	i;
 
-	if (!args->arg || !args)
-		return (-1);
-	var_i = ft_var_line(hell->my_env, args->arg);
-	if (var_i >= 0)
-		ft_del_var(&hell->my_env, var_i);
-	else
-		return (-1);
-	return(0);
+	i = 1;
+	if (!argv[1])
+		return (FAILED);
+	while (argv[i])
+	{
+		if (argv[i][0] == '-')
+			i++;
+		else if (ft_check_arg(argv[i]) == FAILED)
+			i++;
+		else
+		{
+			var_l = ft_var_line(hell->my_env, argv[i++]);
+			if (var_l >= 0)
+				ft_del_var(&hell->my_env, var_l);
+		}
+	}
+	return (SUCCESS);
 }

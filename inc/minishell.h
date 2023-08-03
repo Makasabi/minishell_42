@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 16:25:42 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 16:29:10 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048
 # endif
+
+# define SUCCESS 0
+# define FAILED -1
 
 # define FALSE 0
 # define TRUE 1
@@ -118,3 +121,5 @@ void	ft_clear_token(t_token *token);
 void	ft_clear_node(t_node *node);
 
 void	ft_free(char **split);
+
+#endif
