@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/27 11:50:32 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/03 10:14:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,56 @@
 # include <unistd.h>
 # include <linux/limits.h>
 
-typedef struct s_builtin {
-	int	fd_in;
-	int	fd_out;
-	int	fd_err;
-	char *cmd;
-	char *opt;
-	char *arg;
-}	t_builtin;
+# define HOMENS "HOME not set"
+# define OPWDNS "OLDPWD not set"
+# define ENVNS	"environment not set"
+# define INVOPT	"invalid option"
+# define ARGNB	"too many arguments"
+# define ERROLDPWD "error updating OLDPWD"
+# define ERRPWD "error updating PWD"
+# define IVALID	"not a valid identifier"
+# define IVALPM "invalid parameter name"
+# define IVALOP "invalid option"
 
+# define CD "cd"
+# define EXP "export"
+# define ENV "env"
+# define PWD "pwd"
+# define UST "unset"
+# define ECH "echo"
 
-typedef int	(*t_bin)(t_minishit *hell, t_builtin *args);
+typedef int	(*t_bin)(t_minishit *hell, char **argv);
 
 /* cd.c */
-int	ft_cd(t_minishit *hell, t_builtin *args);
+int	ft_cd(t_minishit *hell, char **argv);
 
 /* env.c */
-int	ft_env(t_minishit *hell, t_builtin *args);
+int	ft_env(t_minishit *hell, char **argv);
 
 /* pwd.c */
-int ft_pwd(t_minishit *hell, t_builtin *args);
+int ft_pwd(t_minishit *hell, char **argv);
 
 /* export.c */
-int	ft_export(t_minishit *hell, t_builtin *args);
+int	ft_export(t_minishit *hell, char **argv);
 
 /* unset.c */
-int	ft_unset(t_minishit *hell, t_builtin *args);
+int	ft_unset(t_minishit *hell, char **argv);
 
 /* echo.c */
-int	ft_echo(t_minishit *hell, t_builtin *args);
+int	ft_echo(t_minishit *hell, char **argv);
+
+/* exit.c */
+void	ft_exit(t_minishit *hell);
 
 /* tests.c */
-void ft_builtin_test(t_minishit *hell);
+void	ft_builtin_test(t_minishit *hell);
+
+/* utils */
+int		ft_check_arg(char *arg);
+int		ft_sign_append(char *arg);
+int		ft_value_is_empty(char *arg);
+
+/* errors.c */
+void	ft_bt_err(char *shell, char *cmd, char *arg, char *error);
 
 #endif

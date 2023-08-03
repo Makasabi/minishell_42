@@ -1,9 +1,11 @@
 SRCS += ./src/builtins/unset.c
 SRCS += ./src/builtins/exit.c
+SRCS += ./src/builtins/errors.c
 SRCS += ./src/builtins/cd.c
 SRCS += ./src/builtins/env.c
 SRCS += ./src/builtins/tests.c
 SRCS += ./src/builtins/echo.c
+SRCS += ./src/builtins/utils.c
 SRCS += ./src/builtins/export.c
 SRCS += ./src/builtins/pwd.c
 SRCS += ./src/parsing/parser/__creating_nodes.c

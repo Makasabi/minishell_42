@@ -6,11 +6,14 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:09 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/25 19:21:23 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/01 18:24:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+#include "builtins.h"
+#include "minishell.h"
+
 
 /* This functin can be moved in a more generic location
 as it is used to count the number of strings in a 2d table */
@@ -47,4 +50,33 @@ int	ft_shlvl_inc(char ***my_env)
 	ft_replace_var(my_env, new_var);
 	free(new_var);
 	return(0);
+}
+
+int	ft_char(char c, char *set)
+{
+	int	i;
+
+	i = 0;
+	while(set[i])
+	{
+		if (c == set[i])
+			return (TRUE);
+		i++;
+	}
+	return(FALSE);
+}
+
+void	ft_clean_var(char **var)
+{
+	int	i;
+	size_t	size;
+
+	i = 0;
+	size = ft_strlen(*var);
+	if (ft_sign_append(*var) == FALSE)
+		return ;
+	while ((*var)[i] != '+')
+		i++;
+	ft_memmove((*var) + i, (*var) + i + 1, size - ( i + 1));
+	(*var)[size - 1] = '\0';
 }

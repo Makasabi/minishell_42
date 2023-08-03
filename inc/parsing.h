@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 15:00:58 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 16:05:19 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 # define SINGLE '\''
 # define DOUBLE '\"'
 
-typedef struct  s_node      t_node;
-typedef struct  s_token     t_token;
-typedef struct  s_minishit  t_minishit;
+typedef struct s_token		t_token;
+typedef struct s_minishit	t_minishit;
 
 /* get_path */
 void	check_envp(char **envp, t_minishit *hell);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 15:00:38 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 16:04:51 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@
 
 # define SKIP 1
 # define NOSKIP 0
+
+# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GREY "s" _GOLD "h" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">>" _END
 
 typedef enum e_type
 {
@@ -116,4 +118,3 @@ void	ft_clear_token(t_token *token);
 void	ft_clear_node(t_node *node);
 
 void	ft_free(char **split);
-

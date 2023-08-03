@@ -6,11 +6,12 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:29:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 16:08:46 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:49:21 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+#include "builtins.h"
 
 /* This function adds the VAR and it's value to the environment.
 It taks a pointer to the address of the environment table and modifies the environment table.*/
@@ -41,6 +42,7 @@ void	ft_add_var(char ***my_env, char *var)
 		ft_free(new_env);
 		ft_env_error(new_env, 0);
 	}
+	ft_clean_var(&new_env[i]);
 	new_env[i+1] = NULL;
 	(*my_env) = new_env;
 }
@@ -101,3 +103,26 @@ void	ft_replace_var(char ***my_env, char *var)
 	(*my_env)[line] = new_var;
 }
 
+void	ft_append_var(char ***my_env, char *var)
+{
+	int		line;
+	char	*new_var;
+
+	line = ft_var_line((*my_env), var);
+	if (line == -1)
+		return (ft_add_var(my_env, var));
+	while (*var)
+	{
+		if (*var == '+' && *(var + 1)== '=')
+			break;
+		var++;
+	}
+	var += 2;
+	if (*var == '\0')
+		return ;
+	new_var = ft_strjoin((*my_env)[line], var);
+	if (!new_var)
+		return (ft_putendl_fd("error appending var\n", 2)); /* to be reworked */
+	ft_replace_var(my_env, new_var);
+	free(new_var);
+}

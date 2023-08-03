@@ -6,21 +6,21 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/26 12:00:21 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/02 15:52:45 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
+#include "env.h"
 
-int ft_pwd(t_minishit *hell, t_builtin *args)
-{
+int ft_pwd(t_minishit __attribute__((unused)) *hell, 
+	char __attribute__((unused))  **argv)
+{ 
 	char buff[PATH_MAX];
 
-	(void)hell;
-	(void)args;
 	if (getcwd(buff, sizeof(buff)) == NULL)
-		return (perror("bash: pwd"), -1);
+		return (ft_bt_err(SHELL, PWD, NULL, NULL), FAILED);
 	else
 		ft_putendl_fd(buff, 1);
-	return(0);
+	return(SUCCESS);
 }
