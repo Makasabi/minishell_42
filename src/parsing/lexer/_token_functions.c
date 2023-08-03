@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:16:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/01 16:19:53 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/02 14:07:00 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	init_token(t_token *token)
 {
 	token->type = -1;
-	token->built_in = -1;
 	token->str = NULL;
 	token->redir_in = NULL;
 	token->redir_out = NULL;

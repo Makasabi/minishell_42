@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/01 19:50:11 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 14:36:34 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,18 +124,3 @@ int	tokenization(t_minishit *hell, char *command)
 	}
 	return (0);
 }
-
-/*
-	check token type
-	
-	void *ptr;
-	ptr = hell->token;
-	assign_type_redir(hell);
-	hell->token = ptr;
-	while (hell->token)
-	{
-		printf("token type is %d\n", hell->token->type);
-		hell->token = hell->token->next;
-	}
-	
-*/

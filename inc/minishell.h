@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/01 18:14:00 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 10:55:30 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef enum e_type
 	pip,
 	cmd,
 	rdr,
-	empty,
+	not,
 }	t_type;
 
 typedef enum e_redir
@@ -69,12 +69,15 @@ typedef enum e_redir
 	heredoc,
 	writeto,
 	readfrom,
+	empty,
 	none,
 }	t_redir;
 
 typedef struct s_node
 {
+	int					index;
 	char				**argv;
+	bool				built_in;
 	t_type				type;
 	t_redir				redir;
 	struct s_node		*prev;
@@ -87,7 +90,6 @@ typedef struct s_node
 typedef struct s_token
 {
 	int				type;
-	int				built_in;
 	char			*str;
 	struct s_token	*redir_in;
 	struct s_token	*redir_out;
@@ -104,8 +106,16 @@ typedef struct s_minishit
 	t_token	*token;
 }	t_minishit;
 
+/* main */
+void	clean_init(t_minishit *hell);
+
 /* clean_exit */
+
 int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
+void	ft_clear_token(t_token *token);
+void	ft_clear_node(t_node *node);
+void	ft_free(char **split);
+
 
 #endif

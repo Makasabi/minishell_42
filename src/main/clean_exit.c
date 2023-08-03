@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/01 16:04:39 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/02 11:25:34 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,13 @@ void	ft_clear_token(t_token *token)
 	}
 	if (token)
 		free(token);
+	token = NULL;
 }
 
 void	ft_clear_node(t_node *node)
 {
 	t_node	*next;
 
-	while (node->prev)
-		node = node->prev;
 	while (node)
 	{
 		if (node->argv)
@@ -48,6 +47,7 @@ void	ft_clear_node(t_node *node)
 	}
 	if (node)
 		free(node);
+	node = NULL;
 }
 
 void	ft_free(char **split)
@@ -67,13 +67,10 @@ int	clean_exit(t_minishit *hell)
 		ft_free(hell->my_env);
 	if (hell->token)
 		ft_clear_token(hell->token);
-	hell->token = NULL;
 	if (hell->node)
 		ft_clear_node(hell->node);
-	hell->node = NULL;
 	if (hell->path)
 		ft_free(hell->path);
-	hell->path = NULL;
 	if (hell)
 		free(hell);
 	hell = NULL;

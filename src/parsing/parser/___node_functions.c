@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:45:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/01 19:19:19 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/02 11:51:13 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	init_node(t_node *node)
 {
+	node->index = -1;
 	node->argv = NULL;
-	node->type = empty;
+	node->type = not;
 	node->redir = none;
 	node->prev = NULL;
 	node->next = NULL;
