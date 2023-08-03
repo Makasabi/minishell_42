@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:04:30 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 17:37:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ char	*ft_find_var(char **my_env, char *target)
 			return (my_env[i]);
 		i++;
 	}
-	//ft_putstr_fd(VARNOTFOUND, 1);
 	return (NULL);
 }
 

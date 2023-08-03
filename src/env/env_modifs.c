@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_modifs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:29:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:00:31 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 17:36:43 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	ft_add_var(char ***my_env, char *var)
 		return (ft_replace_var(my_env, var));
 	new_env = malloc(sizeof(char **) * (ft_table_size(*my_env) + 2));
 	if (!new_env)
-	{
-		ft_free(*my_env);
-		ft_env_error((*my_env), 0);
-	}
+		return (ft_free(*my_env), ft_env_error((*my_env), 0));
 	while ((*my_env)[i])
 	{
 		new_env[i] = (*my_env)[i];
@@ -122,7 +119,7 @@ void	ft_append_var(char ***my_env, char *var)
 	if (*var == '\0')
 		return ;
 	new_var = ft_strjoin((*my_env)[line], var);
-	if (!new_var)/* to be reworked */
+	if (!new_var) /* to be reworked */
 		return (ft_putendl_fd("error appending var\n", 2));
 	ft_replace_var(my_env, new_var);
 	free(new_var);
