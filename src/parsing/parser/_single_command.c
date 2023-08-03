@@ -6,11 +6,11 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 09:26:33 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 14:20:35 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:30:15 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parsing.h"
 
 void	link_left(t_node *node_up, t_node *node_left)
 {

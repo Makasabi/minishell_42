@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 17:25:56 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 21:30:54 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_token(t_token *token);
 void	ft_add_back_token(t_token **token, t_token *new);
 void	add_redir(t_token *token, t_token *redir, int boool);
 
+int	which_redir(char *command);
 void	assign_type_redir(t_minishit *hell, t_token *token);
 
 int		is_bw_quotes(char *command, int i);
@@ -71,9 +72,15 @@ t_node	*single_command(t_minishit *hell, t_node *node);
 void	link_left(t_node *node_up, t_node *node_left);
 void	link_right(t_node *node_up, t_node *node_right);
 
+t_node	*single_command(t_minishit *hell, t_node *node);
 void	complex_commands(t_minishit *hell, t_node *node);
-void	creating_tree(t_minishit *hell, t_node *node);
 
+void	creating_tree(t_minishit *hell);
+void	redir_in_tree(t_node *tree);
+t_node	*inside_the_tree(t_minishit *hell, t_node *node);
+
+t_node	*find_next_pipe(t_node *node);
+void	link_between_pipes(t_node *node);
 t_node	*link_last_cmd(t_node *node);
 void	link_cmd_to_pip(t_node *node);
 void	link_rdr_to_cmd(t_node *cmd_node, t_node *node);

@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 17:47:17 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:49:20 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	clean_hell(t_minishit *hell)
 
 int	parsing(t_minishit *hell)
 {
+	// t_node	*tree;
+
 	if (lexer(hell) == FALSE)
 		return (FALSE);
 	if (parser(hell) == FALSE)

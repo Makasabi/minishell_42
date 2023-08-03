@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:14:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 17:19:21 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:58:39 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,28 @@ void	index_built_ing(t_node *node)
 	}
 }
 
+
+int	parser(t_minishit *hell)
+{
+	make_nodes(hell, hell->token);
+	index_built_ing(hell->node);
+	creating_tree(hell);
+	// while (hell->node)
+	// {
+	// 	if (hell->node->up)
+	// 		printf("my index is %d (type %d) could go up to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->up->index, hell->node->up->type);
+	// 	if (hell->node->left)
+	// 		printf("my index is %d (type %d) could go left to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->left->index, hell->node->left->type);
+	// 	if (hell->node->right)
+	// 		printf("my index is %d (type %d) could go right to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->right->index, hell->node->right->type);
+	// 	hell->node = hell->node->next;
+	// }
+	return (TRUE);
+}
+
+
+/* OLD PARSER  DON'T TOUCH
+
 int	parser(t_minishit *hell)
 {
 	make_nodes(hell, hell->token);
@@ -56,7 +78,7 @@ int	parser(t_minishit *hell)
 	}
 	return (TRUE);
 }
-
+*/
 /*
 
 	TO DO

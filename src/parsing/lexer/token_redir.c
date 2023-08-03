@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 17:16:44 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:17:54 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	which_redir(char *command)
 	}
 	if (command[0])
 	{
-		if (command[0] == '>')
-			return (OUTPUT);
 		if (command[0] == '<')
 			return (INPUT);
+		if (command[0] == '>')
+			return (OUTPUT);
 	}
 	return (0);
 }

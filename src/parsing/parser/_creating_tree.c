@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   creating_tree.c                                    :+:      :+:    :+:   */
+/*   _creating_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 14:36:07 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:57:35 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,11 @@ void	link_cmd_to_pip(t_node *node)
 	}
 }
 
-void	creating_tree(t_minishit *hell, t_node *node)
+t_node	*inside_the_tree(t_minishit *hell, t_node *node)
 {
 	t_node	*pipe_node;
 	t_node	*cmd_node;
 
-	(void)hell;
-	link_between_pipes(node);
 	while (node && hell->pipes)
 	{
 		hell->pipes--;
@@ -85,9 +83,34 @@ void	creating_tree(t_minishit *hell, t_node *node)
 		while (node && node->type != pip)
 			node = node->next;
 	}
+	return (node);
+}
+
+void	creating_tree(t_minishit *hell)
+{
+	if (hell->pipes == 0)
+		single_command(hell, hell->node);
+	else
+		complex_commands(hell, hell->node);
+	// while (hell->node)
+	// 	hell->node = hell->node->up;
+	redir_in_tree(hell->node);
+}
+
+/* OLD CREATING TREE DON'T TOUCH
+
+
+void	creating_tree(t_minishit *hell, t_node *node)
+{
+	t_node	*cmd_node;
+
+	link_between_pipes(node);
+	node = inside_the_tree(hell, node);
 	cmd_node = link_last_cmd(node);
 	link_rdr_to_cmd(cmd_node, node->next);
+	
 }
+*/
 
 /*
 < Makefile cat | grep "PATH" | wc -l > outfile

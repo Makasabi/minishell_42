@@ -6,11 +6,11 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:45:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 17:16:03 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 19:30:02 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parsing.h"
 
 void	init_node(t_node *node)
 {

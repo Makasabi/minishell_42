@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   creating_nodes.c                                   :+:      :+:    :+:   */
+/*   __creating_nodes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:18:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/02 15:16:26 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 20:32:40 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	pip_node(t_node *node)
 	t_node	*new_node;
 
 	new_node = ft_new_node(pip);
+	new_node->redir = none;
 	ft_add_back_node(&node, new_node);
 }
 
@@ -26,15 +27,30 @@ void	cmd_node(t_minishit *hell, t_token *token)
 
 	new_node = ft_new_node(cmd);
 	new_node = make_argv_cmd(new_node, token, ARG);
+	new_node->redir = none;
 	ft_add_back_node(&hell->node, new_node);
 }
 
 void	rdr_node(t_minishit *hell, t_token *token)
 {
 	t_node	*new_node;
+	int		type;
 
 	new_node = ft_new_node(rdr);
 	new_node = make_argv_rdr(new_node, token->next);
+	type = which_redir(token->str);
+	if (type == APPEND)
+		new_node->redir = append;
+	if (type == HEREDOC)
+		new_node->redir = heredoc;
+	if (type == INPUT)
+		new_node->redir = readfrom;
+	if (type == OUTPUT)
+		new_node->redir = writeto;
+	if (type == INPUT || type == HEREDOC)
+		new_node->in_out_put = 0;
+	if (type == OUTPUT || type == APPEND)
+		new_node->in_out_put = 1;
 	ft_add_back_node(&hell->node, new_node);
 }
 
