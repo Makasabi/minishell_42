@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirections.c                                     :+:      :+:    :+:   */
+/*   token_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/07/29 14:43:40 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/01 18:47:54 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,12 @@ void	assign_type_redir(t_minishit *hell, t_token *token)
 		redir = which_redir(token->str);
 		if (token->next
 			&& (redir == INPUT || redir == OUTPUT || redir == APPEND))
-			token->next->type = redir;
-		if (token->prev && (redir == HEREDOC))
-			token->prev->type = redir;
+			token->next->type = REDIR;
+		if (token->prev && redir == HEREDOC)
+		{
+			token->prev->type = REDIR;
+			// something about heredoc
+		}
 		token = token->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 14:53:11 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 15:00:38 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,10 @@ typedef struct s_minishit
 void	clean_init(t_minishit *hell);
 
 /* clean_exit */
-
 int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
 void	ft_clear_token(t_token *token);
 void	ft_clear_node(t_node *node);
+
 void	ft_free(char **split);
+
