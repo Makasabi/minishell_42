@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:14:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 14:45:10 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 15:48:41 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ int	parser(t_minishit *hell)
 		single_command(hell, hell->node);
 	else
 		complex_commands(hell, hell->node);
-	// while (hell->node)
-	// {
-	// 	if (hell->node->up)
-	// 		printf("my index is %d (type %d) could go up to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->up->index, hell->node->up->type);
-	// 	if (hell->node->left)
-	// 		printf("my index is %d (type %d) could go left to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->left->index, hell->node->left->type);
-	// 	if (hell->node->right)
-	// 		printf("my index is %d (type %d) could go right to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->right->index, hell->node->right->type);
-	// 	hell->node = hell->node->next;
-	// }
+	while (hell->node)
+	{
+		if (hell->node->up)
+			printf("my index is %d (type %d) could go up to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->up->index, hell->node->up->type);
+		if (hell->node->left)
+			printf("my index is %d (type %d) could go left to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->left->index, hell->node->left->type);
+		if (hell->node->right)
+			printf("my index is %d (type %d) could go right to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->right->index, hell->node->right->type);
+		hell->node = hell->node->next;
+	}
 	return (TRUE);
 }
 
