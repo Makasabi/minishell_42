@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 17:17:05 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 17:47:17 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	parsing(t_minishit *hell)
 		return (FALSE);
 	if (parser(hell) == FALSE)
 		return (FALSE);
-	/*
-		exec here
-	*/
+	while (hell->node)
+		hell->node = hell->node->up;
+	ft_exec(hell, hell->node);
 	clean_hell(hell);
 	clean_init(hell);
 	return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:26:33 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/03 17:48:52 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,13 @@
 #  define BUFFER_SIZE 2048
 # endif
 
+# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GREY "s" _GOLD "h" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">>" _END
+
 # define FALSE 0
 # define TRUE 1
+
+# define SUCCESS 0
+# define FAILED -1
 
 # define CMD 0
 # define OPTION 1
@@ -78,6 +83,7 @@ typedef struct s_node
 	int					index;
 	char				**argv;
 	bool				built_in;
+	bool				in_out_put;
 	t_type				type;
 	t_redir				redir;
 	struct s_node		*prev;
@@ -108,6 +114,8 @@ typedef struct s_minishit
 
 /* main */
 void	clean_init(t_minishit *hell);
+void	ft_exec(t_minishit *hell, t_node *tree);
+
 
 /* clean_exit */
 
