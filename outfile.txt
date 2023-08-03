@@ -1,0 +1,431 @@
+[7m[32m>>> TEST : cd <<< 
+[0m[32m--> printing environment BEFORE changing directory
+[0mSHELL=/bin/zsh
+LSCOLORS=Gxfxcxdxbxegedabagacad
+SESSION_MANAGER=local/paul-f4Br5s2.clusters.42paris.fr:@/tmp/.ICE-unix/1603344,unix/paul-f4Br5s2.clusters.42paris.fr:/tmp/.ICE-unix/1603344
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+SSH_AGENT_LAUNCHER=gnome-keyring
+LESS=-R
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session32
+XDG_MENU_PREFIX=gnome-
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GTK_IM_MODULE=ibus
+TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+SSH_AUTH_SOCK=/run/user/103580/keyring/ssh
+TERMINATOR_UUID=urn:uuid:b48af6ba-9b0f-4af5-892f-b6aca2c9cdcb
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+GTK_MODULES=gail:atk-bridge
+PWD=/mnt/nfs/homes/mrony/Documents/08_minishell
+KRB5CCNAME=FILE:/tmp/krb5cc_103580_XLm0RP
+LOGNAME=mrony
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/103580/gnupg/S.gpg-agent:0:1
+SYSTEMD_EXEC_PID=1603365
+XAUTHORITY=/mnt/nfs/homes/mrony/.Xauthority
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/mrony
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+HOME=/mnt/nfs/homes/mrony
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+VTE_VERSION=6800
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+INVOCATION_ID=3b6ff2a03e6a4c18bd47ee726767d5b4
+TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+MANAGERPID=1602769
+GJS_DEBUG_OUTPUT=stderr
+XDG_SESSION_CLASS=user
+IBUS_DISABLE_SNOOPER=1
+TERM=xterm-256color
+ZSH=/mnt/nfs/homes/mrony/.oh-my-zsh
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+LIBVIRT_DEFAULT_URI=qemu:///system
+USER=mrony
+DISPLAY=:0
+SHLVL=4
+PAGER=less
+QT_IM_MODULE=ibus
+XDG_RUNTIME_DIR=/run/user/103580
+DOCKER_HOST=unix:///run/user/103580/docker.sock
+JOURNAL_STREAM=8:8414738
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/mnt/nfs/homes/mrony/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/mnt/nfs/homes/mrony/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=ubuntu
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/103580/bus
+GIO_LAUNCHED_DESKTOP_FILE_PID=1605765
+GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/terminator.desktop
+OLDPWD=/mnt/nfs/homes/mrony
+_=./minishell
+
+[32m--> Current directory
+[0m
+[38;5;118m--> Changing directory
+[0m
+[32m--> New directory
+[0m
+[32m--> printing environment AFTER changing directory
+[0mSHELL=/bin/zsh
+LSCOLORS=Gxfxcxdxbxegedabagacad
+SESSION_MANAGER=local/paul-f4Br5s2.clusters.42paris.fr:@/tmp/.ICE-unix/1603344,unix/paul-f4Br5s2.clusters.42paris.fr:/tmp/.ICE-unix/1603344
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+SSH_AGENT_LAUNCHER=gnome-keyring
+LESS=-R
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session32
+XDG_MENU_PREFIX=gnome-
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GTK_IM_MODULE=ibus
+TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+SSH_AUTH_SOCK=/run/user/103580/keyring/ssh
+TERMINATOR_UUID=urn:uuid:b48af6ba-9b0f-4af5-892f-b6aca2c9cdcb
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+GTK_MODULES=gail:atk-bridge
+PWD=/mnt/nfs/homes/mrony/Documents/08_minishell
+KRB5CCNAME=FILE:/tmp/krb5cc_103580_XLm0RP
+LOGNAME=mrony
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/103580/gnupg/S.gpg-agent:0:1
+SYSTEMD_EXEC_PID=1603365
+XAUTHORITY=/mnt/nfs/homes/mrony/.Xauthority
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/mrony
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+HOME=/mnt/nfs/homes/mrony
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+VTE_VERSION=6800
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+INVOCATION_ID=3b6ff2a03e6a4c18bd47ee726767d5b4
+TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+MANAGERPID=1602769
+GJS_DEBUG_OUTPUT=stderr
+XDG_SESSION_CLASS=user
+IBUS_DISABLE_SNOOPER=1
+TERM=xterm-256color
+ZSH=/mnt/nfs/homes/mrony/.oh-my-zsh
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+LIBVIRT_DEFAULT_URI=qemu:///system
+USER=mrony
+DISPLAY=:0
+SHLVL=4
+PAGER=less
+QT_IM_MODULE=ibus
+XDG_RUNTIME_DIR=/run/user/103580
+DOCKER_HOST=unix:///run/user/103580/docker.sock
+JOURNAL_STREAM=8:8414738
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/mnt/nfs/homes/mrony/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/mnt/nfs/homes/mrony/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=ubuntu
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/103580/bus
+GIO_LAUNCHED_DESKTOP_FILE_PID=1605765
+GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/terminator.desktop
+OLDPWD=/mnt/nfs/homes/mrony
+_=./minishell
+
+[7m[32m>>> TEST : export <<<
+[0m[32m--> Exporting: [0m[38;5;118mNEW0_VAR=this_is_a_new_var
+[0m
+[32m--> Exporting: [0m[38;5;118mNEW_VAR=blah
+[0m
+[32m--> Exporting: [0m[38;5;118mNEW_VAR_2+=Thatsonefuckinglongvariablevalue-thismeansYoullhavetobeabletocheckitsvalueblah
+[0m
+[32m--> Exporting: [0m[38;5;118mNEW_VAR_3
+[0m
+[32m--> Appending: [0m[38;5;118mNEW_VAR+=_let'scheckifthisworkscorrectlythroughout
+[0m
+[32m--> Executing export cmd with no arg:
+[0mexport COLORTERM=truecolor
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/103580/bus
+export DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+export DESKTOP_SESSION=ubuntu
+export DISPLAY=:0
+export DOCKER_HOST=unix:///run/user/103580/docker.sock
+export GDMSESSION=ubuntu
+export GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/terminator.desktop
+export GIO_LAUNCHED_DESKTOP_FILE_PID=1605765
+export GJS_DEBUG_OUTPUT=stderr
+export GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+export GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+export GPG_AGENT_INFO=/run/user/103580/gnupg/S.gpg-agent:0:1
+export GTK_IM_MODULE=ibus
+export GTK_MODULES=gail:atk-bridge
+export HOME=/mnt/nfs/homes/mrony
+export IBUS_DISABLE_SNOOPER=1
+export INVOCATION_ID=3b6ff2a03e6a4c18bd47ee726767d5b4
+export JOURNAL_STREAM=8:8414738
+export KRB5CCNAME=FILE:/tmp/krb5cc_103580_XLm0RP
+export LANG=en_US.UTF-8
+export LESS=-R
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LOGNAME=mrony
+export LSCOLORS=Gxfxcxdxbxegedabagacad
+export LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+export MANAGERPID=1602769
+export MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+export NEW0_VAR=this_is_a_new_var
+export NEW_VAR=blah_let'scheckifthisworkscorrectlythroughout
+export NEW_VAR_2=Thatsonefuckinglongvariablevalue-thismeansYoullhavetobeabletocheckitsvalueblah
+export NEW_VAR_3
+export OLDPWD=/mnt/nfs/homes/mrony
+export PAGER=less
+export PATH=/mnt/nfs/homes/mrony/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+export PWD=/mnt/nfs/homes/mrony/Documents/08_minishell
+export QT_ACCESSIBILITY=1
+export QT_IM_MODULE=ibus
+export SESSION_MANAGER=local/paul-f4Br5s2.clusters.42paris.fr:@/tmp/.ICE-unix/1603344,unix/paul-f4Br5s2.clusters.42paris.fr:/tmp/.ICE-unix/1603344
+export SHELL=/bin/zsh
+export SHLVL=4
+export SSH_AGENT_LAUNCHER=gnome-keyring
+export SSH_AUTH_SOCK=/run/user/103580/keyring/ssh
+export SYSTEMD_EXEC_PID=1603365
+export TERM=xterm-256color
+export TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+export TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+export TERMINATOR_UUID=urn:uuid:b48af6ba-9b0f-4af5-892f-b6aca2c9cdcb
+export USER=mrony
+export VTE_VERSION=6800
+export XAUTHORITY=/mnt/nfs/homes/mrony/.Xauthority
+export XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+export XDG_CURRENT_DESKTOP=ubuntu:GNOME
+export XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/mnt/nfs/homes/mrony/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+export XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/mrony
+export XDG_MENU_PREFIX=gnome-
+export XDG_RUNTIME_DIR=/run/user/103580
+export XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+export XDG_SESSION_CLASS=user
+export XDG_SESSION_DESKTOP=ubuntu
+export XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session32
+export XDG_SESSION_TYPE=x11
+export XMODIFIERS=@im=ibus
+export ZSH=/mnt/nfs/homes/mrony/.oh-my-zsh
+export _=./minishell
+
+[7m[32m>>> TEST : env <<<
+[0m[32m--> Print void env
+[0m[32m--> Print env with args
+[0m[38;5;201m--> Should not do anything as args and option are not managed heremake
+[0m[32m--> Print all set env variable
+[0m[38;5;201m--> Variable 'NEW_VAR_3' should not be displayed as it is declared but not set.
+[0mSHELL=/bin/zsh
+LSCOLORS=Gxfxcxdxbxegedabagacad
+SESSION_MANAGER=local/paul-f4Br5s2.clusters.42paris.fr:@/tmp/.ICE-unix/1603344,unix/paul-f4Br5s2.clusters.42paris.fr:/tmp/.ICE-unix/1603344
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+SSH_AGENT_LAUNCHER=gnome-keyring
+LESS=-R
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session32
+XDG_MENU_PREFIX=gnome-
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GTK_IM_MODULE=ibus
+TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+SSH_AUTH_SOCK=/run/user/103580/keyring/ssh
+TERMINATOR_UUID=urn:uuid:b48af6ba-9b0f-4af5-892f-b6aca2c9cdcb
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+GTK_MODULES=gail:atk-bridge
+PWD=/mnt/nfs/homes/mrony/Documents/08_minishell
+KRB5CCNAME=FILE:/tmp/krb5cc_103580_XLm0RP
+LOGNAME=mrony
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/103580/gnupg/S.gpg-agent:0:1
+SYSTEMD_EXEC_PID=1603365
+XAUTHORITY=/mnt/nfs/homes/mrony/.Xauthority
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/mrony
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+HOME=/mnt/nfs/homes/mrony
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+VTE_VERSION=6800
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+INVOCATION_ID=3b6ff2a03e6a4c18bd47ee726767d5b4
+TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+MANAGERPID=1602769
+GJS_DEBUG_OUTPUT=stderr
+XDG_SESSION_CLASS=user
+IBUS_DISABLE_SNOOPER=1
+TERM=xterm-256color
+ZSH=/mnt/nfs/homes/mrony/.oh-my-zsh
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+LIBVIRT_DEFAULT_URI=qemu:///system
+USER=mrony
+DISPLAY=:0
+SHLVL=4
+PAGER=less
+QT_IM_MODULE=ibus
+XDG_RUNTIME_DIR=/run/user/103580
+DOCKER_HOST=unix:///run/user/103580/docker.sock
+JOURNAL_STREAM=8:8414738
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/mnt/nfs/homes/mrony/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/mnt/nfs/homes/mrony/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=ubuntu
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/103580/bus
+GIO_LAUNCHED_DESKTOP_FILE_PID=1605765
+GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/terminator.desktop
+OLDPWD=/mnt/nfs/homes/mrony
+_=./minishell
+NEW0_VAR=this_is_a_new_var
+NEW_VAR=blah_let'scheckifthisworkscorrectlythroughout
+NEW_VAR_2=Thatsonefuckinglongvariablevalue-thismeansYoullhavetobeabletocheckitsvalueblah
+
+[7m[32m>>> TEST : pwd <<<
+[0m[32m--> Print current working directory
+[0m/mnt/nfs/homes/mrony/Documents/08_minishell
+
+[7m[32m>>> TEST : unset <<<
+[0m[32m--> Unset variable: [0m[38;5;118m-NEW_VAR & NEW_VAR_2
+[0m
+[32m--> Unsetting invalid variable name: [0m[38;5;118mlNEW_VAR
+[0m
+[32m--> Unset variable: [0m[38;5;118mNEW_VAR_3
+[0m
+[32m--> Unset non-existent variable: [0m[38;5;118mNEW_VAR_4
+[0m
+[32m--> Printing environment
+[0mSHELL=/bin/zsh
+LSCOLORS=Gxfxcxdxbxegedabagacad
+SESSION_MANAGER=local/paul-f4Br5s2.clusters.42paris.fr:@/tmp/.ICE-unix/1603344,unix/paul-f4Br5s2.clusters.42paris.fr:/tmp/.ICE-unix/1603344
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+SSH_AGENT_LAUNCHER=gnome-keyring
+LESS=-R
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session32
+XDG_MENU_PREFIX=gnome-
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GTK_IM_MODULE=ibus
+TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+SSH_AUTH_SOCK=/run/user/103580/keyring/ssh
+TERMINATOR_UUID=urn:uuid:b48af6ba-9b0f-4af5-892f-b6aca2c9cdcb
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+GTK_MODULES=gail:atk-bridge
+PWD=/mnt/nfs/homes/mrony/Documents/08_minishell
+KRB5CCNAME=FILE:/tmp/krb5cc_103580_XLm0RP
+LOGNAME=mrony
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/103580/gnupg/S.gpg-agent:0:1
+SYSTEMD_EXEC_PID=1603365
+XAUTHORITY=/mnt/nfs/homes/mrony/.Xauthority
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/mrony
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+HOME=/mnt/nfs/homes/mrony
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+VTE_VERSION=6800
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+INVOCATION_ID=3b6ff2a03e6a4c18bd47ee726767d5b4
+TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+MANAGERPID=1602769
+GJS_DEBUG_OUTPUT=stderr
+XDG_SESSION_CLASS=user
+IBUS_DISABLE_SNOOPER=1
+TERM=xterm-256color
+ZSH=/mnt/nfs/homes/mrony/.oh-my-zsh
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+LIBVIRT_DEFAULT_URI=qemu:///system
+USER=mrony
+DISPLAY=:0
+SHLVL=4
+PAGER=less
+QT_IM_MODULE=ibus
+XDG_RUNTIME_DIR=/run/user/103580
+DOCKER_HOST=unix:///run/user/103580/docker.sock
+JOURNAL_STREAM=8:8414738
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/mnt/nfs/homes/mrony/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/mnt/nfs/homes/mrony/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=ubuntu
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/103580/bus
+GIO_LAUNCHED_DESKTOP_FILE_PID=1605765
+GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/terminator.desktop
+OLDPWD=/mnt/nfs/homes/mrony
+_=./minishell
+NEW0_VAR=this_is_a_new_var
+NEW_VAR=blah_let'scheckifthisworkscorrectlythroughout
+
+[32m--> Exporting environment
+[0mexport COLORTERM=truecolor
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/103580/bus
+export DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+export DESKTOP_SESSION=ubuntu
+export DISPLAY=:0
+export DOCKER_HOST=unix:///run/user/103580/docker.sock
+export GDMSESSION=ubuntu
+export GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/terminator.desktop
+export GIO_LAUNCHED_DESKTOP_FILE_PID=1605765
+export GJS_DEBUG_OUTPUT=stderr
+export GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+export GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+export GPG_AGENT_INFO=/run/user/103580/gnupg/S.gpg-agent:0:1
+export GTK_IM_MODULE=ibus
+export GTK_MODULES=gail:atk-bridge
+export HOME=/mnt/nfs/homes/mrony
+export IBUS_DISABLE_SNOOPER=1
+export INVOCATION_ID=3b6ff2a03e6a4c18bd47ee726767d5b4
+export JOURNAL_STREAM=8:8414738
+export KRB5CCNAME=FILE:/tmp/krb5cc_103580_XLm0RP
+export LANG=en_US.UTF-8
+export LESS=-R
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export LOGNAME=mrony
+export LSCOLORS=Gxfxcxdxbxegedabagacad
+export LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+export MANAGERPID=1602769
+export MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+export NEW0_VAR=this_is_a_new_var
+export NEW_VAR=blah_let'scheckifthisworkscorrectlythroughout
+export OLDPWD=/mnt/nfs/homes/mrony
+export PAGER=less
+export PATH=/mnt/nfs/homes/mrony/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+export PWD=/mnt/nfs/homes/mrony/Documents/08_minishell
+export QT_ACCESSIBILITY=1
+export QT_IM_MODULE=ibus
+export SESSION_MANAGER=local/paul-f4Br5s2.clusters.42paris.fr:@/tmp/.ICE-unix/1603344,unix/paul-f4Br5s2.clusters.42paris.fr:/tmp/.ICE-unix/1603344
+export SHELL=/bin/zsh
+export SHLVL=4
+export SSH_AGENT_LAUNCHER=gnome-keyring
+export SSH_AUTH_SOCK=/run/user/103580/keyring/ssh
+export SYSTEMD_EXEC_PID=1603365
+export TERM=xterm-256color
+export TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+export TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+export TERMINATOR_UUID=urn:uuid:b48af6ba-9b0f-4af5-892f-b6aca2c9cdcb
+export USER=mrony
+export VTE_VERSION=6800
+export XAUTHORITY=/mnt/nfs/homes/mrony/.Xauthority
+export XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+export XDG_CURRENT_DESKTOP=ubuntu:GNOME
+export XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/mnt/nfs/homes/mrony/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+export XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/mrony
+export XDG_MENU_PREFIX=gnome-
+export XDG_RUNTIME_DIR=/run/user/103580
+export XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+export XDG_SESSION_CLASS=user
+export XDG_SESSION_DESKTOP=ubuntu
+export XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session32
+export XDG_SESSION_TYPE=x11
+export XMODIFIERS=@im=ibus
+export ZSH=/mnt/nfs/homes/mrony/.oh-my-zsh
+export _=./minishell
+
+[7m[32m>>> TEST : echo <<<
+[0m[32m--> echo -n test: [0mThis should be printed without newline.[32m--> echo test: [0m-nnnnnnnnnnfnnnnnn On the other hand, this should have a newline.
+
+
+/mnt/nfs/homes/mrony/Documents/08_minishell
+/mnt/nfs/homes/mrony/Documents/08_minishell

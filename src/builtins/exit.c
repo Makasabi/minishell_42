@@ -6,8 +6,13 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:11 by mrony             #+#    #+#             */
-/*   Updated: 2023/07/24 20:03:12 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 10:13:22 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
+
+void	ft_exit(t_minishit *hell)
+{
+	clean_exit(hell);
+}

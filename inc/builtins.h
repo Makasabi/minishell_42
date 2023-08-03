@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/02 16:08:25 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/03 10:14:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	ft_unset(t_minishit *hell, char **argv);
 
 /* echo.c */
 int	ft_echo(t_minishit *hell, char **argv);
+
+/* exit.c */
+void	ft_exit(t_minishit *hell);
 
 /* tests.c */
 void	ft_builtin_test(t_minishit *hell);
