@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:48:52 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/04 18:18:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 
 # define SUCCESS 0
 # define FAILED -1
+# define ERROR -1
 
 # define CMD 0
 # define OPTION 1
@@ -105,7 +106,7 @@ typedef struct s_token
 
 typedef struct s_minishit
 {
-	int		pipes;
+	int		pbipes;
 	char	**path;
 	char	**my_env;
 	t_node	*node;
@@ -114,8 +115,6 @@ typedef struct s_minishit
 
 /* main */
 void	clean_init(t_minishit *hell);
-void	ft_exec(t_minishit *hell, t_node *tree);
-
 
 /* clean_exit */
 

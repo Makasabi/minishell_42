@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:37:15 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/04 18:59:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,31 @@ char	**ft_env_from_scratch(void)
 	return (my_env);
 }
 
-/* This function searches through the environment table for the variable name
+/* OBSOLETE FUNCTION - TO BE REMOVED
+This function searches through the environment table for the variable name
 sent as argument (target) and returns a pointer to the string holding the var
 name and its value. 
 The variable passed as argument can be of format "VAR=value" or "VAR"*/
 
-char	*ft_find_var(char **my_env, char *target)
-{
-	int		i;
-	size_t	size;
+// char	*ft_find_var(char **my_env, char *target)
+// {
+// 	int		i;
+// 	size_t	size;
 
-	i = 0;
-	size = ft_strlen(target);
-	if (size == 0 || !target)
-		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
-	while (my_env[i])
-	{
-		if (ft_strncmp(my_env[i], target, size) == 0
-			&& (my_env[i][size] == '='
-			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
-			return (my_env[i]);
-		i++;
-	}
-	return (NULL);
-}
+// 	i = 0;
+// 	size = ft_strlen(target);
+// 	if (size == 0 || !target)
+// 		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
+// 	while (my_env[i])
+// 	{
+// 		if (ft_strncmp(my_env[i], target, size) == 0
+// 			&& (my_env[i][size] == '='
+// 			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
+// 			return (my_env[i]);
+// 		i++;
+// 	}
+// 	return (NULL);
+// }
 
 /* This function searches through the environment table for the variable sent
 as argument (target) and returns the index (int) of the variable in
@@ -136,9 +137,10 @@ char	*ft_var_value(char **my_env, char *target)
 	size_t	size;
 
 	if (!my_env || !target)
-		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
+		return (ft_putstr_fd(_PURPLE _BOLD ENVSEARCH _END, 1),
+			ft_putstr_fd(_ITALIC NOVARTARGET _END, 1), NULL);
 	size = ft_strlen(target);
-	tmp = ft_find_var(my_env, target);
+	tmp = my_env[ft_var_line(my_env, target)];
 	if (!tmp || size == 0)
 		return (NULL);
 	return (tmp + size + 1);

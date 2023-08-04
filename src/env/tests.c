@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:11:50 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:08:57 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/04 13:55:07 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	ft_env_test(char ***my_env)
 	ft_putstr_fd(_REV _FOREST_GREEN "TEST : print_env\n" _END, 2);
 	ft_print_env((*my_env));
 
-	ft_putstr_fd(_REV _FOREST_GREEN "TEST : ft_find_var\n" _END, 2);
-	ft_putstr_fd(_FOREST_GREEN "Looking for var 'NULL'\n" _END, 2);
-	ft_find_var((*my_env), NULL);
+	// ft_putstr_fd(_REV _FOREST_GREEN "TEST : ft_find_var\n" _END, 2);
+	// ft_putstr_fd(_FOREST_GREEN "Looking for var 'NULL'\n" _END, 2);
+	// ft_find_var((*my_env), NULL);
 	ft_putstr_fd(_FOREST_GREEN "Looking for var 'PWD'\n" _END, 2);
-	printf("%s\n", ft_find_var((*my_env), "PWD"));
+	printf("%s\n", (*my_env)[ft_var_line((*my_env), "PWD")]);
 	ft_putstr_fd(_FOREST_GREEN "Looking for var 'MARIE'\n" _END, 2);
-	ft_find_var((*my_env), "MARIE");
+	// ft_find_var((*my_env), "MARIE");
 
 	ft_putstr_fd(_REV _FOREST_GREEN "TEST : ft_var_value\n" _END, 2);
 	ft_putstr_fd(_FOREST_GREEN "Looking for var 'NULL'\n" _END, 2);

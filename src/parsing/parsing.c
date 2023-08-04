@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 19:49:20 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/04 16:03:27 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "exec.h"
 
 void	clean_hell(t_minishit *hell)
 {
@@ -32,9 +33,9 @@ int	parsing(t_minishit *hell)
 		return (FALSE);
 	if (parser(hell) == FALSE)
 		return (FALSE);
-	while (hell->node)
+	while (hell->node && hell->node->up)
 		hell->node = hell->node->up;
-	ft_exec(hell, hell->node);
+	ft_exec(hell, &hell->node);
 	clean_hell(hell);
 	clean_init(hell);
 	return (TRUE);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:09 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:07:53 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/04 14:29:54 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int	ft_shlvl_inc(char ***my_env)
 	return (0);
 }
 
+/* This function checks if a character is part of a
+string of char given in arguments - returns either true or false*/
+
 int	ft_char(char c, char *set)
 {
 	int	i;
@@ -64,6 +67,9 @@ int	ft_char(char c, char *set)
 	}
 	return (FALSE);
 }
+
+/* This function takes a pointer to a pointer of string of format "VAR+=value"
+and returns it without the append symbol : such as "VAR=value"*/
 
 void	ft_clean_var(char **var)
 {
