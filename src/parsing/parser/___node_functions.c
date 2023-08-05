@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:45:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 19:30:02 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/05 18:12:12 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_add_back_node(t_node **node, t_node *new)
 	}
 }
 
-t_node	*ft_new_node(int type)
+t_node	*ft_new_node(t_type type)
 {
 	t_node	*new;
 

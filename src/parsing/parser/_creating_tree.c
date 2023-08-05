@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 19:57:35 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/05 14:56:18 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	link_between_pipes(t_node *node)
 
 void	link_cmd_to_pip(t_node *node)
 {
-	t_node	*pipe_node;
+	t_node	*pip_node;
 
-	pipe_node = node;
+	pip_node = node;
 	while (node && node->type != pip)
 	{
 		if (node->type == cmd)
 		{
-			link_left(pipe_node, node);
+			link_left(pip_node, node);
 			break ;
 		}
 		node = node->next;
@@ -64,7 +64,7 @@ void	link_cmd_to_pip(t_node *node)
 
 t_node	*inside_the_tree(t_minishit *hell, t_node *node)
 {
-	t_node	*pipe_node;
+	t_node	*pip_node;
 	t_node	*cmd_node;
 
 	while (node && hell->pipes)
@@ -72,14 +72,14 @@ t_node	*inside_the_tree(t_minishit *hell, t_node *node)
 		hell->pipes--;
 		if (node->type == pip)
 			node = node->next;
-		pipe_node = find_next_pipe(node);
-		if (!pipe_node)
+		pip_node = find_next_pipe(node);
+		if (!pip_node)
 		{
 			node = node->prev;
 			break ;
 		}
 		cmd_node = single_command(hell, node);
-		link_left(pipe_node, cmd_node);
+		link_left(pip_node, cmd_node);
 		while (node && node->type != pip)
 			node = node->next;
 	}
@@ -92,8 +92,6 @@ void	creating_tree(t_minishit *hell)
 		single_command(hell, hell->node);
 	else
 		complex_commands(hell, hell->node);
-	// while (hell->node)
-	// 	hell->node = hell->node->up;
 	redir_in_tree(hell->node);
 }
 
@@ -107,7 +105,7 @@ void	creating_tree(t_minishit *hell, t_node *node)
 	link_between_pipes(node);
 	node = inside_the_tree(hell, node);
 	cmd_node = link_last_cmd(node);
-	link_rdr_to_cmd(cmd_node, node->next);
+	link_rdr(cmd_node, node->next);
 	
 }
 */

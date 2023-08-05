@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:14:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 19:58:39 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/05 18:23:53 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	parser(t_minishit *hell)
 	creating_tree(hell);
 	// while (hell->node)
 	// {
+	// 	if (hell->node->argv)
+	// 		printf("argv[0] is %s\n", hell->node->argv[0]);
 	// 	if (hell->node->up)
 	// 		printf("my index is %d (type %d) could go up to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->up->index, hell->node->up->type);
 	// 	if (hell->node->left)
