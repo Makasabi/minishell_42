@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/04 18:18:15 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/07 11:49:20 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_node
 	bool				in_out_put;
 	t_type				type;
 	t_redir				redir;
+	int					fd; //to handle redirection - negative number if not used (typically for cmd and pipe)
 	struct s_node		*prev;
 	struct s_node		*next;
 	struct s_node		*up;
@@ -106,7 +107,7 @@ typedef struct s_token
 
 typedef struct s_minishit
 {
-	int		pbipes;
+	int		pipes;
 	char	**path;
 	char	**my_env;
 	t_node	*node;

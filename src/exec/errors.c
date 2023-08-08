@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.h                                             :+:      :+:    :+:   */
+/*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 14:09:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/07 14:33:23 by mrony            ###   ########.fr       */
+/*   Created: 2023/08/07 14:19:48 by mrony             #+#    #+#             */
+/*   Updated: 2023/08/07 14:19:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXEC_H
-# define EXEC_H
+#include "exec.h"
 
-# include "minishell.h"
-# include "builtins.h"
-# include <unistd.h>
-# include <fcntl.h>
-
-/* exec.c */
-void	ft_extract_rdr(t_minishit *hell, t_node **tree);
-void	ft_exec(t_minishit *hell, t_node **tree);
-
-/* exec_check_redir.c */
-int		ft_check_rdr(t_minishit *hell,t_node *redir);
-
-/* exec_errors*/
-void	ft_exec_err(char *shell, char *cmd, char *arg, char *error);
-
-#endif
+void	ft_exec_err(char *shell, char *cmd, char *arg, char *error)
+{
+	if (shell)
+	{
+		ft_putstr_fd(shell, 2);
+		ft_putstr_fd(": ", 2);
+	}
+	if (cmd)
+	{
+		ft_putstr_fd(cmd, 2);
+		ft_putstr_fd(": ", 2);
+	}
+	if (arg)
+	{
+		ft_putstr_fd(arg, 2);
+		ft_putstr_fd(": ", 2);
+	}
+	if (error)
+		ft_putstr_fd(error, 2);
+	else
+		perror(NULL);
+	ft_putchar_fd('\n', 2);
+}
