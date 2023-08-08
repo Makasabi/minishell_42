@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:44:53 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/08 17:17:45 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/08 18:02:35 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,12 @@ int	ft_sgl_bltin(t_minishit *hell, t_node **cmd)
 	/* call the builtin function */
 	return (SUCCESS);
 }
+/* 
+typedef int (*t_ptr)(t_minishit *hell, char **argv)
+
+-> function that returns pointer to builtin
+t_ptr ft_get_builtin(int _ enum number ? )
+
+return (ft_ptr(helll, argv))
+
+*/
