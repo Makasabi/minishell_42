@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:19:22 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 16:52:46 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/09 12:06:18 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void ft_builtin_test(t_minishit *hell)
 	// ft_putchar_fd('\n', 1);
 
 	/* test exit */
-	ft_exit(hell);
+	// ft_exit(hell);
 }
 
 void	ft_test_echo(t_minishit *hell)

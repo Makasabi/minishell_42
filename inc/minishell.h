@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/08 17:48:15 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:16:36 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 #  define BUFFER_SIZE 2048
 # endif
 
-# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GREY "s" _GOLD "h" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">>" _END
+# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GREY "s" _GOLD "h" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">> " _END
 
 # define FALSE 0
 # define TRUE 1
@@ -108,6 +108,8 @@ typedef struct s_token
 typedef struct s_minishit
 {
 	int		pipes;
+	int		save_in;
+	int		save_out;
 	char	**path;
 	char	**my_env;
 	t_node	*node;

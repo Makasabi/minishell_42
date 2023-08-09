@@ -6,43 +6,47 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:44:53 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/08 18:02:35 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/09 16:48:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "minishell.h"
 
-int	ft_sgl_bltin(t_minishit *hell, t_node **cmd)
+static int	ft_exec_bltin_cont(t_minishit *hell, char **argv)
 {
-	(void)hell;
-
-	printf("cmd = %s\n", (*cmd)->argv[0]);
-	while ((*cmd) != NULL)
+	if (argv[0][1] == 'c')
+		return (ft_echo(hell, argv));
+	else if (argv[0][1] == 'n')
+		return (ft_env(hell, argv));
+	else
 	{
-		if ((*cmd)->type == rdr && ((*cmd)->redir == append 
-			|| (*cmd)->redir == writeto) && (*cmd)->fd != -1)
-		{
-			dup2((*cmd)->fd, STDOUT_FILENO);
-			close((*cmd)->fd);
-		}	
-		if ((*cmd)->type == rdr && ((*cmd)->redir == readfrom 
-			|| (*cmd)->redir == heredoc) && (*cmd)->fd != -1)
-		{
-			dup2((*cmd)->fd, STDIN_FILENO);
-			close((*cmd)->fd);
-		}
-		(*cmd) = (*cmd)->left;
+		if (argv[0][2] == 'p')
+			return (ft_export(hell, argv));
+		else if (argv[0][2] == 'i')
+			return (ft_exit(hell, argv));
 	}
-	/* call the builtin function */
 	return (SUCCESS);
 }
-/* 
-typedef int (*t_ptr)(t_minishit *hell, char **argv)
 
--> function that returns pointer to builtin
-t_ptr ft_get_builtin(int _ enum number ? )
+int ft_exec_bltin(t_minishit *hell, char **argv, int *fds)
+{
+	int	res;
+	
+	res = SUCCESS;
+	if (argv[0][0] == 'c')
+		res = ft_cd(hell, argv);
+	else if (argv[0][0] == 'p')
+		res = ft_pwd(hell, argv);
+	else if (argv[0][0] == 'u')
+		res = ft_unset(hell, argv);
+	else if (argv[0][0] == 'e')
+		res = ft_exec_bltin_cont(hell, argv);
+	if (fds[0] != -1)
+		dup2(hell->save_in, STDIN_FILENO);
+	if (fds[1] != -1)
+		dup2(hell->save_out, STDOUT_FILENO);
+	return (res);
+}
 
-return (ft_ptr(helll, argv))
 
-*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/02 11:25:34 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/09 12:05:52 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ int	clean_exit(t_minishit *hell)
 		ft_clear_node(hell->node);
 	if (hell->path)
 		ft_free(hell->path);
+	if (hell->save_in > 2)
+		close (hell->save_in);
+	if (hell->save_out > 2)
+		close (hell->save_out);
 	if (hell)
 		free(hell);
 	hell = NULL;

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 16:07:43 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/09 13:58:39 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 void	clean_init(t_minishit *hell)
 {
 	hell->pipes = 0;
+	hell->save_in = -1;
+	hell->save_out = -1;
 	hell->path = NULL;
 	hell->my_env = NULL;
 	hell->node = NULL;
 	hell->token = NULL;
 }
-
-// ft_env_test(&my_env);
 
 int	main(int argc, char **argv)
 {
@@ -36,9 +36,6 @@ int	main(int argc, char **argv)
 		return (0);
 	clean_init(hell);
 	hell->my_env = ft_env_init();
-	// ft_env_test(&hell->my_env);
-	// check_envp(hell->my_env, hell);
-	// ft_builtin_test(hell);
 	while (1)
 	{
 		if (parsing(hell) == FALSE)

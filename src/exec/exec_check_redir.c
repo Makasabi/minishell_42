@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 14:17:37 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/08 15:47:46 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:02:16 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static int	ft_check_out(t_node *redir)
 	return (SUCCESS);
 }
 
-int	ft_check_rdr(t_minishit *hell,t_node *redir)
+int	ft_check_rdr(t_minishit *hell, t_node *redir)
 {
 	(void)hell;
-	while(redir != NULL)
+	while (redir != NULL)
 	{
 		if (redir->type == rdr)
 		{

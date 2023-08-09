@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:02:42 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/08 13:52:05 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/09 13:42:48 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	lexer(t_minishit *hell)
 	char	*command;
 
 	command = NULL;
-	command = readline(command);
+	command = readline(SHELL);
 	if (command)
 	{
 		if (check_quotes(command) == FALSE)
@@ -56,6 +56,7 @@ int	lexer(t_minishit *hell)
 		tokenization(hell, command);
 		assign_type_redir(hell, hell->token);
 		add_history(command);
+		free(command);
 		return (TRUE);
 	}
 	else
