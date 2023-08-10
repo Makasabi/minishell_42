@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:57:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/04 18:58:54 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/10 14:33:59 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define ENVSEARCH   "Environment Variable search: " 
 # define VARNOTFOUND "Variable not found\n" 
 # define NOVARTARGET "No variable to search for\n" 
+# define NOFLDIR "No such file or directory\n"
 
 /* env_init.c */
 char	**ft_env_init(void);

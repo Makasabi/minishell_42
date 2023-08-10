@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:03:18 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/09 14:21:38 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/10 12:04:41 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,4 @@ void	ft_set_redir(t_minishit *hell, t_node **cmd, int *fds)
 		(*cmd) = (*cmd)->left;
 	}
 }
+

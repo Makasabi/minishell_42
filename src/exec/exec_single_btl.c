@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:44:53 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/09 16:48:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/10 17:45:23 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int ft_exec_bltin(t_minishit *hell, char **argv, int *fds)
 		dup2(hell->save_in, STDIN_FILENO);
 	if (fds[1] != -1)
 		dup2(hell->save_out, STDOUT_FILENO);
+	close (hell->save_out);
+	close (hell->save_in);
 	return (res);
 }
 

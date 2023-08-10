@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:43:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/09 17:27:04 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/10 17:45:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	ft_exec_cmd(t_minishit *hell, t_node *cmd)
 void	ft_exec(t_minishit *hell, t_node **tree)
 {
 	(void)hell;
-	char **path;
 	
 	if (!(*tree))
 		return ;
