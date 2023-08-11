@@ -6,36 +6,80 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:22:20 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/10 16:59:16 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/11 17:23:32 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-// void	ft_child(t_minishit *hell, t_node **argv, int *fds)
+
+
+// int	ft_exec_child(t_minishit *hell, char *path, char **argv, int *fds)
 // {
+// 	(void)fds;
+// 	if (fds[0] != -1)
+// 	{
+// 		close(fds[0]);
+// 		dup2(hell->save_in, STDIN_FILENO);
+// 	}
+// 	if (fds[1] != -1)
+// 	{
+// 		close(fds[1]);
+// 		dup2(hell->save_out, STDOUT_FILENO);
+// 	}
+// 	close (hell->save_out);
+// 	close (hell->save_in);
+// 	execve(path, argv, hell->my_env);
+// 	return(FAILED);
 // }
 
-int ft_forked_cmd(t_minishit *hell, t_node **cmd, int *fds)
+void	ft_close_fds(t_minishit *hell, int *fds)
 {
-	(void)fds;
-	//int first_pid;
-	if ((*cmd)->built_in == FALSE)
-	{
-		if (check_path(hell->my_env, hell, (*cmd)) < SUCCESS)
-			return (FAILED);
-	}
-	//printf("hell->path = %s\n", hell->path[0]);
-	// if (hell->pipes == 0)
-	// {
-	// 	first_pid = fork();
-	// 	if (first_pid == 0)
-	// 	{
-	// 		ft_child(hell, (*cmd)->argv, fds);
-	// 	}
-	// }
-	// else
-	// 	/*fork + pipe*/
-	//ft_free(hell->path);
-	return (SUCCESS);
+	if (fds[0] != -1)
+		close (fds[0]);
+	if (fds[1] != -1)
+		close (fds[1]);
+	dup2(hell->save_in, STDIN_FILENO);
+	dup2(hell->save_out, STDOUT_FILENO);
+	close (hell->save_in);
+	close (hell->save_out);
+}
+
+int	ft_forked_cmd(t_minishit *hell, char **argv, int *fds)
+{
+// 	char	*path;
+// 	int		pid;
+	(void)argv;
+	ft_close_fds(hell, fds);
+	return(SUCCESS);
+// 	path = ft_check_path(hell, (*cmd)->argv[0]);
+// 	if (!path)
+// 		return (close (hell->save_in), close (hell->save_out), FAILED);
+// 	if (fds[0] == -1)
+// 		dup2(fds[0], hell->save_in);
+// 	if (fds[1] == -1)
+// 		dup2(fds[1], hell->save_out);
+// 	if (pipe(fds) == -1)
+// 		return (free (path), 
+// 		close (hell->save_in), close (hell->save_out), FAILED);
+// 	pid = fork();
+// 	if (pid == 0)
+// 		ft_exec_child(hell, path, (*cmd)->argv, fds);
+// 	else
+// 	{
+// 		free(path);
+// 		if (fds[0] != -1)
+// 		{
+// 			dup2(fds[0], STDIN_FILENO);
+// 			close(fds[0]);
+// 		}
+// 		if (fds[1] != -1)
+// 		{
+// 			dup2(fds[1], STDOUT_FILENO);
+// 			close(fds[1]);
+// 		}
+// 		close (hell->save_out);
+// 		close (hell->save_in);
+// 	}
+// 	return (SUCCESS);
 }

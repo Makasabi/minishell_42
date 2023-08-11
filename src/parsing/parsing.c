@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/04 16:03:27 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/11 17:23:09 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	parsing(t_minishit *hell)
 		return (FALSE);
 	while (hell->node && hell->node->up)
 		hell->node = hell->node->up;
+	printf ("pipes = %d\n", hell->pipes);
 	ft_exec(hell, &hell->node);
 	clean_hell(hell);
 	clean_init(hell);

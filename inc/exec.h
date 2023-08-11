@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:09:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/10 17:01:25 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/11 17:23:22 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # define CMDERR "command not found"
 
 /* exec.c */
-int		ft_extract_rdr(t_minishit *hell, t_node **tree);
 void	ft_exec(t_minishit *hell, t_node **tree);
 
 /* exec_utils.c */
@@ -33,14 +32,13 @@ void	ft_set_redir(t_minishit *hell, t_node **cmd, int *fds);
 int		ft_check_rdr(t_minishit *hell,t_node *redir);
 
 /* exec_fork.c */
-int ft_forked_cmd(t_minishit *hell, t_node **cmd, int *fds);
+int		ft_forked_cmd(t_minishit *hell, char **argv, int *fds);
 
 /* exec_single_blt.c */
-int ft_exec_bltin(t_minishit *hell, char **argv, int *fds);
-
+int		ft_exec_bltin(t_minishit *hell, char **argv, int *fds);
 
 /* exec_path.c */
-int	check_path(char **envp, t_minishit *hell, t_node *cmd);
+char	*ft_check_path(t_minishit *hell, char *cmd);
 
 /* exec_errors*/
 void	ft_exec_err(char *shell, char *cmd, char *arg, char *error);

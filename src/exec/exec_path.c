@@ -6,80 +6,69 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/10 17:37:42 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/11 15:34:36 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "env.h"
 
-
-
-char *ft_slash_cmd(char *cmd)
+static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 {
-	char	*_cmd;
-	_cmd = malloc(sizeof(char) * (ft_strlen(cmd) + 2));
-	if (!_cmd)
-		return (NULL);
-	_cmd[0]='/';
-	ft_memcpy(_cmd+1, cmd, ft_strlen(cmd));
-	_cmd[ft_strlen(cmd) + 1] = '\0';
-	return (_cmd);
-}
-
-int find_path(t_minishit *hell, char *cmd)
-{
+	char	*test;
 	int		i;
-	char	*tmp;
-	char	*_cmd;
-
+	int		j;
+	
+	test = ft_calloc((ft_strlen(path) + size_cmd + 2), sizeof(char));
+	if (!test)
+		return (ft_exec_err(SHELL, NULL, cmd, MALLERRPATH), NULL);
 	i = -1;
-	_cmd = ft_slash_cmd(cmd);
-	if (!_cmd)
-		return (MALFAILED);
-	while (hell->path[++i])
-	{
-		tmp = ft_strjoin(hell->path[i], _cmd);
-		if (!tmp)
-			return (free(_cmd), MALFAILED);
-		if ((access(tmp, F_OK) >= 0) && access(tmp, X_OK) >= 0)
-		{
-			ft_free(hell->path);
-			hell->path = malloc(sizeof(char **) * 2);
-			if (!hell->path)
-				return (MALFAILED);
-			hell->path[0] = tmp;
-			hell->path[1] = NULL;
-			return (free(_cmd), SUCCESS);
-		}
-		free(tmp);
-	}
-	return (free(_cmd), ft_exec_err(SHELL, cmd, NULL, CMDERR), FAILED);
+	while(path[++i])
+		test[i] = path[i];
+	test[i] = '/';
+	i++;
+	j = -1;
+	while(cmd[++j])
+		test[i + j] = cmd[j];
+	test[i + j] = '\0';
+	return(test);
 }
 
-int	split_path(char *my_env, t_minishit *hell, char *cmd)
+static char	*ft_find_right_path(char **paths, char *cmd)
 {
-	(void)my_env;
-	if (hell->path)
-		ft_free(hell->path);
-	hell->path = ft_split(my_env, ':');
-	if (!hell->path)
-		return (MALFAILED);
-	return (find_path(hell, cmd));
-}
-
-int	check_path(char **my_env, t_minishit *hell, t_node *cmd)
-{
+	char	*test;
 	int		i;
-
+	size_t	size_cmd;
+	
 	i = -1;
-	while (my_env[++i])
+	size_cmd = ft_strlen(cmd);
+	while(paths[++i])
 	{
-		if (my_env[i][0] == 'P' && my_env[i][1] == 'A'
-			&& my_env[i][2] == 'T' && my_env[i][3] == 'H')
-		{
-			return (split_path(my_env[i], hell, cmd->argv[0]));
-		}
+		test = ft_craft_test(paths[i], cmd, size_cmd);
+		if (!test)
+			break;
+		if ((access(test, F_OK) >= 0) && access(test, X_OK) >= 0)
+			break;
+		free(test);
 	}
-	return (ft_exec_err(SHELL, "env", NULL, NOFLDIR), FAILED);
+	ft_free(paths);
+	return(test);
+}
+
+char	*ft_check_path(t_minishit *hell, char *cmd)
+{
+	char *path_val;
+	char **paths;
+	char *right_path;
+	
+	path_val = ft_var_value(hell->my_env, "PATH");
+	if (!path_val)
+		return (ft_exec_err(SHELL, NULL, cmd, NOFLDIR), NULL);
+	paths = ft_split(path_val, ':');
+	if (!paths)
+		return (ft_exec_err(SHELL, NULL, cmd, MALLERRPATH), NULL);
+	right_path = ft_find_right_path(paths, cmd);
+	if (!right_path)
+		return (ft_exec_err(SHELL, NULL, cmd, NOFLDIR), NULL);
+	return (right_path);
 }
