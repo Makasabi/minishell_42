@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/09 10:30:44 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/13 16:06:53 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define PARSING_H
 
 # include "env.h"
-// # include "builtins.h"
 # include "minishell.h"
+# include "builtins.h"
+# include "env.h"
 
 # define SINGLE '\''
 # define DOUBLE '\"'

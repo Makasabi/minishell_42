@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:29:52 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/13 16:01:04 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define PWD "pwd"
 # define UST "unset"
 # define ECH "echo"
+
+typedef struct s_minishit	t_minishit;
 
 typedef int	(*t_bin)(t_minishit *hell, char **argv);
 
