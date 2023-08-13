@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/05 18:26:36 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/09 18:04:00 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	parsing(t_minishit *hell)
 
 	if (lexer(hell) == FALSE)
 		return (FALSE);
+	if (expander(hell, hell->token) == FALSE)
+		return (FALSE);
 	if (parser(hell) == FALSE)
 		return (FALSE);
 	// while (hell->node)
@@ -40,13 +42,20 @@ int	parsing(t_minishit *hell)
 	return (TRUE);
 }
 
-/* 
- 
-	// while (hell->node)
-	// {
-	// 	printf("type is %d index is %d\n", hell->node->type, hell->node->index);
-	// 	hell->node = hell->node->next;
-	// }
-	check if built_in
- 
+
+/*
+
+	TO DO
+
+	- CLEAN LOOP
+	
+	- CLEAN THE WHOLE THING GODDAMNIT
+	- expand
+		- within doubles : only skips the $word if not a var
+			-> check only the $ word, not the entire token->str
+		- see all specifities with \
+		- include .h from other folders WHY DOESN'T IT WORK
+
+OK		echo "$HOME" 'inside simples $doubles' wrong one "$HOnotME"
+NOT OK	echo "$HOME" "singles' 'inside $doubles" 'op"po"site' "$HOnotME"
 */

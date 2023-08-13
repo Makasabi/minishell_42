@@ -6,11 +6,18 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:18:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 20:32:40 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/06 16:06:34 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+/* 
+		PIP / CMD / RDR NODE
+		
+- creates and add_back a node according to giventype
+
+*/
 
 void	pip_node(t_node *node)
 {
@@ -54,6 +61,15 @@ void	rdr_node(t_minishit *hell, t_token *token)
 	ft_add_back_node(&hell->node, new_node);
 }
 
+/* 
+		MAKE NODES
+		
+- browses tokens until the end
+- creates and add_back nodes according to the token->type 
+	(see pip / cmd / rdr _node functions)
+
+*/
+
 void	make_nodes(t_minishit *hell, t_token *token)
 {
 	while (token)
@@ -77,27 +93,3 @@ void	make_nodes(t_minishit *hell, t_token *token)
 		}
 	}
 }
-
-/*
-void	is_built_in(t_node *node, char *str)
-{
-	if (ft_strnstr("echo\ncd\npwd\nexport\nunset\nenv\nexit\n",
-			str, 35))
-		node->built_in = TRUE;
-}
-
-void	indexing(t_node *node)
-{
-	int		index;
-
-	index = 0;
-	while (node)
-	{
-		// if (node->type == cmd)
-		// 	is_built_in(node, node->argv[0])
-		node->index = index;
-		index++;
-		node = node->next;
-	}
-}
-*/

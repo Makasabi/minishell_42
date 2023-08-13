@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _token_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:16:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 16:09:56 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/06 19:42:59 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	init_token(t_token *token)
 {
 	token->type = -1;
+	token->quote = ' ';
 	token->str = NULL;
 	token->redir_in = NULL;
 	token->redir_out = NULL;
@@ -65,10 +66,10 @@ void	ft_add_token(t_token **token, char *s, int type)
 	ft_add_back_token(token, new);
 }
 
-void	add_redir(t_token *token, t_token *redir, int boool)
-{
-	if (boool == INPUT)
-		token->redir_in = redir;
-	if (boool == OUTPUT)
-		token->redir_out = redir;
-}
+// void	add_redir(t_token *token, t_token *redir, int boool)
+// {
+// 	if (boool == INPUT)
+// 		token->redir_in = redir;
+// 	if (boool == OUTPUT)
+// 		token->redir_out = redir;
+// }

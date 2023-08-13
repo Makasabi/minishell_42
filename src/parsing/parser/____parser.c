@@ -6,98 +6,46 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:14:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/05 18:23:53 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/09 10:30:34 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-void	is_built_in(t_node *node, char *str)
-{
-	if (ft_strnstr("echo\ncd\npwd\nexport\nunset\nenv\nexit\n",
-			str, 35))
-		node->built_in = TRUE;
-}
-
-void	index_built_ing(t_node *node)
-{
-	int		index;
-	t_node	*temp;
-
-	index = 0;
-	temp = node;
-	while (temp)
-	{
-		if (temp->type == cmd)
-			is_built_in(temp, temp->argv[0]);
-		temp->index = index;
-		index++;
-		temp = temp->next;
-	}
-}
-
+#include "builtins.h"
 
 int	parser(t_minishit *hell)
 {
 	make_nodes(hell, hell->token);
 	index_built_ing(hell->node);
 	creating_tree(hell);
-	// while (hell->node)
-	// {
-	// 	if (hell->node->argv)
-	// 		printf("argv[0] is %s\n", hell->node->argv[0]);
-	// 	if (hell->node->up)
-	// 		printf("my index is %d (type %d) could go up to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->up->index, hell->node->up->type);
-	// 	if (hell->node->left)
-	// 		printf("my index is %d (type %d) could go left to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->left->index, hell->node->left->type);
-	// 	if (hell->node->right)
-	// 		printf("my index is %d (type %d) could go right to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->right->index, hell->node->right->type);
-	// 	hell->node = hell->node->next;
-	// }
+	if (hell->node && hell->node->argv)
+		ft_echo(hell, hell->node->argv);
 	return (TRUE);
 }
 
-
-/* OLD PARSER  DON'T TOUCH
-
-int	parser(t_minishit *hell)
-{
-	make_nodes(hell, hell->token);
-	index_built_ing(hell->node);
-	if (hell->pipes == 0)
-		single_command(hell, hell->node);
-	else
-		complex_commands(hell, hell->node);
+/*
 	while (hell->node)
 	{
-		if (hell->node->up)
-			printf("my index is %d (type %d) could go up to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->up->index, hell->node->up->type);
-		if (hell->node->left)
-			printf("my index is %d (type %d) could go left to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->left->index, hell->node->left->type);
-		if (hell->node->right)
-			printf("my index is %d (type %d) could go right to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->right->index, hell->node->right->type);
+		if (hell->node->argv)
+		{
+			i = 0;
+			while (hell->node->argv[i])
+			{
+				printf("argv[i] is %s\n", hell->node->argv[i]);
+				i++;
+			}
+		}
+		// if (hell->node->up)
+		// 	printf("my index is %d (type %d) could go up to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->up->index, hell->node->up->type);
+		// if (hell->node->left)
+		// 	printf("my index is %d (type %d) could go left to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->left->index, hell->node->left->type);
+		// if (hell->node->right)
+		// 	printf("my index is %d (type %d) could go right to index %d (type %d)\n", hell->node->index, hell->node->type, hell->node->right->index, hell->node->right->type);
 		hell->node = hell->node->next;
 	}
-	return (TRUE);
-}
-*/
-/*
 
 	TO DO
-
-	link pipe not working, 
-		pipes not lefting all the way through
-	infinite loop when righting
-*/
-
-/*
-
-	TO DO
-	- boucle check
-		- if hell->pipes == 0 et > 2  redir
-	- if type == cmd 
-		-> node->argv[0] built_in TRUE or FALSE
-	- if complex command
-	
+	- expand variables $
+	- handle quotes
 
 */

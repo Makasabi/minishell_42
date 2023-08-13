@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creating_tokens.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/03 16:10:07 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/06 19:29:59 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,30 +58,6 @@ int	issa_token(t_minishit *hell, char *command, int i)
 		return (1);
 }
 
-int	is_bw_quotes(char *command, int i)
-{
-	int	singl;
-	int	doubl;
-	int	j;
-
-	singl = 0;
-	doubl = 0;
-	if (command[i] == SINGLE)
-		singl = 1;
-	else if (command[i] == DOUBLE)
-		doubl = 1;
-	j = 1;
-	while (command[i + j])
-	{
-		if (command[i + j] == SINGLE && singl != 0)
-			break ;
-		else if (command[i + j] == DOUBLE && doubl != 0)
-			break ;
-		j++;
-	}
-	return (j + 1);
-}
-
 int	issa_string(t_minishit *hell, char *command, int i)
 {
 	int		j;
@@ -90,21 +66,31 @@ int	issa_string(t_minishit *hell, char *command, int i)
 	j = 0;
 	while (command[i + j] && is_token(command[i + j]) < 0)
 	{
-		if (command[i + j] == SINGLE || command[i + j] == DOUBLE)
-		{
-			if (j != 0 && !is_space(command[i + j - 1]))
-				break ;
-			j += is_bw_quotes(command, i + j);
+		if (is_space(command[i + j])
+			|| command[i + j] == SINGLE || command[i + j] == DOUBLE)
 			break ;
-		}
-		else if (is_space(command[i + j]))
-			break ;
-		else
-			j++;
+		j++;
 	}
 	str = ft_substr(command, i, j);
 	ft_add_token(&hell->token, str, ARG);
 	free(str);
+	return (j);
+}
+
+int	issa_quotes(t_minishit *hell, char *command, int i)
+{
+	int		j;
+	char	*str;
+
+	j = 1;
+	while (command[i + j] && command[i + j] != command[i]
+		&& is_token(command[i + j]) < 0)
+		j++;
+	str = ft_substr(command, i, j + 1);
+	ft_add_token(&hell->token, str, ARG);
+	free(str);
+	if (command[i + j] && command[i + j + 1])
+		return (j + 1);
 	return (j);
 }
 
@@ -119,6 +105,8 @@ int	tokenization(t_minishit *hell, char *command)
 			i++;
 		else if (is_token(command[i]) > 0)
 			i += issa_token(hell, command, i);
+		else if (command[i] == SINGLE || command[i] == DOUBLE)
+			i += issa_quotes(hell, command, i);
 		else
 			i += issa_string(hell, command, i);
 	}
