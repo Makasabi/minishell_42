@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/11 17:23:09 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/14 12:40:45 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,19 @@ int	parsing(t_minishit *hell)
 		return (FALSE);
 	while (hell->node && hell->node->up)
 		hell->node = hell->node->up;
-	printf ("pipes = %d\n", hell->pipes);
 	ft_exec(hell, &hell->node);
 	clean_hell(hell);
 	clean_init(hell);
 	return (TRUE);
 }
 
-/* 
- 
+/*
+
 	// while (hell->node)
 	// {
 	// 	printf("type is %d index is %d\n", hell->node->type, hell->node->index);
 	// 	hell->node = hell->node->next;
 	// }
 	check if built_in
- 
+
 */
