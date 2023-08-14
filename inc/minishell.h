@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/10 12:14:21 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/14 18:36:42 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_node
 	bool				in_out_put;
 	t_type				type;
 	t_redir				redir;
-	int					fd; //to handle redirection - negative number if not used (typically for cmd and pipe)
+	int					cmd_fd[2];
 	struct s_node		*prev;
 	struct s_node		*next;
 	struct s_node		*up;

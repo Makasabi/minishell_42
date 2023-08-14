@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:45:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/07 11:24:30 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/14 17:46:42 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	init_node(t_node *node)
 	node->argv = NULL;
 	node->type = not;
 	node->redir = none;
-	node->fd = -1;
+	node->fd[0] = -1;
+	node->fd[1] = -1;
 	node->prev = NULL;
 	node->next = NULL;
 	node->up = NULL;

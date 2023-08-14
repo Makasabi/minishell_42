@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 14:17:37 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/09 12:02:16 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/14 18:07:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static int	ft_check_in(t_node *redir)
 		return (ft_exec_err(SHELL, NULL, redir->argv[0], NULL), FAILED);
 	if (access(redir->argv[0], F_OK) >= 0)
 	{
-		redir->fd = open(redir->argv[0], O_RDONLY);
-		if (redir->fd < 0)
+		redir->fd[0] = open(redir->argv[0], O_RDONLY);
+		if (redir->fd[0] < 0)
 			return (ft_exec_err(SHELL, NULL, redir->argv[0], NULL), FAILED);
 	}
 	return (SUCCESS);
@@ -30,17 +30,17 @@ static int	ft_check_out(t_node *redir)
 {
 	if (access(redir->argv[0], F_OK) < 0)
 	{
-		redir->fd = open(redir->argv[0], O_CREAT | O_RDWR | O_TRUNC);
-		if (redir->fd < 0)
+		redir->fd[1] = open(redir->argv[0], O_CREAT | O_RDWR | O_TRUNC);
+		if (redir->fd[1] < 0)
 			return (ft_exec_err(SHELL, NULL, redir->argv[0], NULL), FAILED);
 	}
 	else if (access(redir->argv[0], F_OK) >= 0)
 	{
 		if (redir->redir == writeto || redir->redir == empty)
-			redir->fd = open(redir->argv[0], O_RDWR | O_TRUNC);
+			redir->fd[1] = open(redir->argv[0], O_RDWR | O_TRUNC);
 		else if (redir->redir == append)
-			redir->fd = open(redir->argv[0], O_RDWR | O_APPEND);
-		if (redir->fd < 0)
+			redir->fd[1] = open(redir->argv[0], O_RDWR | O_APPEND);
+		if (redir->fd[1] < 0)
 			return (ft_exec_err(SHELL, NULL, redir->argv[0], NULL), FAILED);
 	}
 	return (SUCCESS);
@@ -63,8 +63,10 @@ int	ft_check_rdr(t_minishit *hell, t_node *redir)
 			else if (redir->in_out_put == 1)
 				if (ft_check_out(redir) == FAILED)
 					return (FAILED);
-			if (redir->redir == empty)
-				close(redir->fd);
+			if (redir->redir == empty && redir->in_out_put == 0)
+				close(redir->fd[0]);
+			if (redir->redir == empty && redir->in_out_put == 1)
+				close(redir->fd[1]);
 		}
 		redir = redir->left; 
 	}

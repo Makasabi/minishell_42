@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:09:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/14 12:38:49 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:57:08 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@
 # define MALFAILED -2
 # define CMDERR "command not found"
 
-// /* exec.c */
+/* exec.c */
 void	ft_exec(t_minishit *hell, t_node **tree);
-// /* exec_utils.c */
-// void	ft_set_redir(t_minishit *hell, t_node **cmd, int *fds);
-// /* exec_check_redir.c */
-// int		ft_check_rdr(t_minishit *hell,t_node *redir);
+/* exec_utils.c */
+void	ft_set_redir(t_minishit *hell, t_node **cmd, int *fd);
+/* exec_check_redir.c */
+int		ft_check_rdr(t_minishit *hell, t_node *redir);
 // /* exec_fork.c */
 // int		ft_forked_cmd(t_minishit *hell, char **argv, int *fds);
 // /* exec_single_blt.c */
 // int		ft_exec_bltin(t_minishit *hell, char **argv, int *fds);
 // /* exec_path.c */
 // char	*ft_check_path(t_minishit *hell, char *cmd);
-// /* exec_errors*/
-// void	ft_exec_err(char *shell, char *cmd, char *arg, char *error);
+/* exec_errors*/
+void	ft_exec_err(char *shell, char *cmd, char *arg, char *error);
 
 #endif
