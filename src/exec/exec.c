@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/14 12:16:54 by makasabi          #+#    #+#             */
-/*   Updated: 2023/08/14 18:26:28 by mrony            ###   ########.fr       */
+/*   Created: 2023/08/15 13:58:36 by mrony             #+#    #+#             */
+/*   Updated: 2023/08/15 14:08:11 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,9 @@ check à droite : si pipe, on appelle à nouveau la même fonction (qui va faire
 si !pipe alors c'est la last cmd (ou rdr), donc on exec ça puis on sort
 */
 
-int		ft_exec_cmd(t_minishit *hell, t_node **cmd, int pip_fd)
+int	ft_exec(t_minishit *hell, t_node **tree)
 {
-	int	pid;
-	
-	ft_check_rdr(hell, (*cmd)->left);
-	ft_set_redir(hell, cmd, pip_fd);
-	// dups here
-	pid = fork();
-	// exec cmd
-	//close all fds
-}
-
-void	ft_exec(t_minishit *hell, t_node **tree)
-{
-	int	fd[2];
-
-	if ((*tree)->type == pip)
-	{
-		pipe(fd);
-		ft_exec_cmd(hell, &(*tree)->left, fd);
-		ft_exec(hell, &(*tree)->right);
-	}
-	if ((*tree)->type == cmd || (*tree)->type == rdr)
-		ft_exec_last_cmd(hell, &(*tree)->left, fd);
+	(void)hell;
+	(void)tree;
+	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: mrony <mrony@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 13:08:34 by tgibier           #+#    #+#              #
-#    Updated: 2023/08/07 15:53:52 by mrony            ###   ########.fr        #
+#    Updated: 2023/08/15 14:01:03 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ all	:	$(NAME)
 $(OBJS_PATH)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
-	@printf "$(_FOREST_GREEN)🛸 Preparing for landing... %-50s \r" $@
+#	@printf "$(_FOREST_GREEN)🛸 Preparing for landing... %-50s \r" $@
 
 $(OBJS_PATH):
 	@mkdir -p $(OBJS_PATH)

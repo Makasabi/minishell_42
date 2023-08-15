@@ -38,7 +38,7 @@ all:	${NAME}
 .objs/%.o:	%.c
 		@mkdir -p $(dir $@)
 		@${CC} ${CFLAGS} -c $< -o $@ ${INC}
-		@printf "$(_FOREST_GREEN)🪔 Rubbing the magic lamp... %-50s \r" $@
+#		@printf "$(_FOREST_GREEN)🪔 Rubbing the magic lamp... %-50s \r" $@
 
 ${OBJFLDR}:
 		@mkdir -p ${OBJFLDR}
