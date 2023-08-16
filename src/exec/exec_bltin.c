@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 10:56:05 by makasabi          #+#    #+#             */
-/*   Updated: 2023/08/16 11:37:03 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:40:38 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,21 @@ static int	ft_exec_bltin_cont(t_minishit *hell, char **argv)
 	return (SUCCESS);
 }
 
-int ft_exec_bltin(t_minishit *hell, char **argv)
+int ft_exec_bltin(t_minishit *hell, char **argv, int *fds)
 {
+	int	res;
+
 	if (argv[0][0] == 'c')
-		return (ft_cd(hell, argv));
+		res = ft_cd(hell, argv);
 	else if (argv[0][0] == 'p')
-		return (ft_pwd(hell, argv));
+		res = ft_pwd(hell, argv);
 	else if (argv[0][0] == 'u')
-		return (ft_unset(hell, argv));
+		res = ft_unset(hell, argv);
 	else if (argv[0][0] == 'e')
-		return (ft_exec_bltin_cont(hell, argv));
-	return (SUCCESS);
+		res = ft_exec_bltin_cont(hell, argv);
+	if (fds[0] != -1)
+		dup2(hell->save_in, STDIN_FILENO);
+	if (fds[1] != -1)
+		dup2(hell->save_out, STDOUT_FILENO);
+	return (res);
 }
