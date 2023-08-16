@@ -3,15 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   exec_check_redir.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 14:17:37 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/14 18:07:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/16 13:14:05 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "minishell.h"
+
+void	ft_set_redir(t_node **cmd, int *fd)
+{
+	t_node *cpy;
+
+	cpy = (*cmd);
+	while (cpy != NULL)
+	{
+		if (cpy->type == rdr && (cpy->redir == append
+			|| cpy->redir == writeto) && cpy->fd[1] != -1)
+		{
+			fd[1] = cpy->fd[1];
+			dup2(cpy->fd[1], STDOUT_FILENO);
+			close(cpy->fd[1]);
+		}
+		if (cpy->type == rdr && (cpy->redir == readfrom
+			|| cpy->redir == heredoc) && cpy->fd[0] != -1)
+		{
+			fd[0] = cpy->fd[0];
+			printf("input file = %d\n", cpy->fd[0]);
+			dup2(cpy->fd[0], STDIN_FILENO);
+			close(cpy->fd[0]);
+		}
+		cpy = cpy->left;
+	}
+}
 
 static int	ft_check_in(t_node *redir)
 {
@@ -68,7 +94,7 @@ int	ft_check_rdr(t_minishit *hell, t_node *redir)
 			if (redir->redir == empty && redir->in_out_put == 1)
 				close(redir->fd[1]);
 		}
-		redir = redir->left; 
+		redir = redir->left;
 	}
 	return (SUCCESS);
 }
