@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:07 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 16:54:09 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/22 17:46:27 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 #include "env.h"
 
-int	ft_env(t_minishit *hell, char **argv )
+int	ft_env(t_minishit *hell, char **argv, int fd_out)
 {
 	int	i;
 	int	j;
@@ -32,7 +32,7 @@ int	ft_env(t_minishit *hell, char **argv )
 			i++;
 		else
 		{
-			ft_putendl_fd(hell->my_env[i], 1);
+			ft_putendl_fd(hell->my_env[i], fd_out);
 			i++;
 		}
 	}

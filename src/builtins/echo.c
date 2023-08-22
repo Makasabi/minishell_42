@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 16:53:22 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/22 17:51:37 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	ft_newline(char *str)
 	return (0);
 }
 
-int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv)
+int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 {
 	bool	newline;
 	int		i;
@@ -42,18 +42,18 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv)
 	newline = 0;
 	i = 1;
 	if (!argv[1])
-		return (ft_putchar_fd('\n', 1), SUCCESS);
+		return (ft_putchar_fd('\n', fd_out), SUCCESS);
 	newline = ft_newline(argv[1]);
 	if (newline == 0)
 		i++;
 	while (argv[i])
 	{
-		ft_putstr_fd(argv[i], 1);
+		ft_putstr_fd(argv[i], fd_out);
 		if (argv[i + 1] != NULL)
-			ft_putchar_fd(' ', 1);
+			ft_putchar_fd(' ', fd_out);
 		i++;
 	}
 	if (newline == 1)
-		ft_putchar_fd('\n', 1);
+		ft_putchar_fd('\n', fd_out);
 	return (SUCCESS);
 }

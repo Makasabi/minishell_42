@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/16 11:48:23 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/22 18:09:41 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	clean_hell(t_minishit *hell)
 void	clear_hell(t_minishit *hell)
 {
 	hell->pipes = 0;
-	hell->save_in = -1;
-	hell->save_out = -1;
 	hell->path = NULL;
 	hell->node = NULL;
 	hell->token = NULL;

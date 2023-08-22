@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:00:59 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 15:54:44 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/22 17:45:16 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,11 @@ static char	*ft_home_old(t_minishit *hell, char **argv)
 	return (dir);
 }
 
-int	ft_cd(t_minishit *hell, char **argv)
+int	ft_cd(t_minishit *hell, char **argv, int fd_out)
 {
 	char	*dir;
 
+	(void)fd_out;
 	if (ft_table_size(argv) > 2)
 	{
 		printf("%d\n", ft_table_size(argv));

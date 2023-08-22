@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/15 14:17:12 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/22 18:00:50 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,6 @@ typedef struct s_token
 typedef struct s_minishit
 {
 	int		pipes;
-	int		save_in;
-	int		save_out;
 	char	**path;
 	char	**my_env;
 	t_node	*node;

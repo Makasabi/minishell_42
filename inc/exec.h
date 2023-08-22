@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:09:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/16 18:39:45 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:21:42 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 /* exec.c */
 int		ft_exec(t_minishit *hell, t_node **tree);
+
+/* exec_sgl.c */
 int		ft_exec_sgl(t_minishit *hell, t_node **tree);
 
 /* exec_bltin.c */

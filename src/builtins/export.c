@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/02 15:08:39 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/22 17:54:25 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	ft_sort_export(char ***export)
 	}
 }
 
-static int	ft_print_export(t_minishit *hell)
+static int	ft_print_export(t_minishit *hell, int fd_out)
 {
 	char	**export;
 	int		i;
@@ -74,20 +74,20 @@ static int	ft_print_export(t_minishit *hell)
 	i = 0;
 	while (export[i])
 	{
-		ft_putstr_fd("export ", 1);
-		ft_putendl_fd(export[i++], 1);
+		ft_putstr_fd("export ", fd_out);
+		ft_putendl_fd(export[i++], fd_out);
 	}
 	ft_free(export);
 	return (SUCCESS);
 }
 
-int	ft_export(t_minishit *hell, char **argv)
+int	ft_export(t_minishit *hell, char **argv, int fd_out)
 {
 	int	i;
 
 	i = 1;
 	if (ft_table_size(argv) == 1)
-		return (ft_print_export(hell));
+		return (ft_print_export(hell, fd_out));
 	while (argv[i] != NULL)
 	{
 		if (ft_check_arg(argv[i]) == FAILED)

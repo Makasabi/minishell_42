@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/08 17:59:50 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/22 17:52:05 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@
 
 typedef int	(*t_bin)(t_minishit *hell, char **argv);
 
-int		ft_cd(t_minishit *hell, char **argv);
-int		ft_env(t_minishit *hell, char **argv);
-int		ft_pwd(t_minishit *hell, char **argv);
-int		ft_export(t_minishit *hell, char **argv);
+int		ft_cd(t_minishit *hell, char **argv, int fd_out);
+int		ft_env(t_minishit *hell, char **argv, int fd_out);
+int		ft_pwd(t_minishit *hell, char **argv, int fd_out);
+int		ft_export(t_minishit *hell, char **argv, int fd_out);
 int		ft_unset(t_minishit *hell, char **argv);
-int		ft_echo(t_minishit *hell, char **argv);
+int		ft_echo(t_minishit *hell, char **argv, int fd_out);
 int		ft_exit(t_minishit *hell, char **argv);
 
 /* tests.c */
