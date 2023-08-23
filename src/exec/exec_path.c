@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/11 15:34:36 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:52:22 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 	char	*test;
 	int		i;
 	int		j;
-	
+
 	test = ft_calloc((ft_strlen(path) + size_cmd + 2), sizeof(char));
 	if (!test)
 		return (ft_exec_err(SHELL, NULL, cmd, MALLERRPATH), NULL);
@@ -39,7 +39,7 @@ static char	*ft_find_right_path(char **paths, char *cmd)
 	char	*test;
 	int		i;
 	size_t	size_cmd;
-	
+
 	i = -1;
 	size_cmd = ft_strlen(cmd);
 	while(paths[++i])
@@ -50,6 +50,7 @@ static char	*ft_find_right_path(char **paths, char *cmd)
 		if ((access(test, F_OK) >= 0) && access(test, X_OK) >= 0)
 			break;
 		free(test);
+		test = NULL;
 	}
 	ft_free(paths);
 	return(test);
@@ -60,7 +61,7 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 	char *path_val;
 	char **paths;
 	char *right_path;
-	
+
 	path_val = ft_var_value(hell->my_env, "PATH");
 	if (!path_val)
 		return (ft_exec_err(SHELL, NULL, cmd, NOFLDIR), NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_check_redir.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 14:17:37 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/22 18:11:32 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/23 13:24:34 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,9 @@ int	ft_check_rdr(t_minishit *hell, t_node *redir)
 				if (ft_check_out(redir) == FAILED)
 					return (FAILED);
 			if (redir->redir == empty && redir->in_out_put == 0)
-			{
 				close(redir->fd[0]);
-			}
 			if (redir->redir == empty && redir->in_out_put == 1)
-			{
 				close(redir->fd[1]);
-			}
 		}
 		redir = redir->left;
 	}
