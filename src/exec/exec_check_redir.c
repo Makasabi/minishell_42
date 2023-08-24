@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 14:17:37 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/23 13:24:34 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:44:05 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 void	ft_set_redir(t_node **cmd, int *fd)
 {
-	t_node *cpy;
+	t_node	*cpy;
 
 	cpy = (*cmd);
 	while (cpy != NULL)
 	{
 		if (cpy->type == rdr && (cpy->redir == append
-			|| cpy->redir == writeto) && cpy->fd[1] != -1)
+				|| cpy->redir == writeto) && cpy->fd[1] != -1)
 			fd[1] = cpy->fd[1];
 		if (cpy->type == rdr && (cpy->redir == readfrom
-			|| cpy->redir == heredoc) && cpy->fd[0] != -1)
+				|| cpy->redir == heredoc) && cpy->fd[0] != -1)
 			fd[0] = cpy->fd[0];
 		cpy = cpy->left;
 	}
@@ -54,14 +54,9 @@ static int	ft_check_out(t_node *redir)
 	else if (access(redir->argv[0], F_OK) >= 0)
 	{
 		if (redir->redir == writeto || redir->redir == empty)
-		{
 			redir->fd[1] = open(redir->argv[0], O_RDWR | O_TRUNC | 0644);
-			printf("fd is = %d\n", redir->fd[1]);
-		}
 		else if (redir->redir == append)
-		{
 			redir->fd[1] = open(redir->argv[0], O_RDWR | O_APPEND | 0644);
-		}
 		if (redir->fd[1] < 0)
 			return (ft_exec_err(SHELL, NULL, redir->argv[0], NULL), FAILED);
 	}
@@ -79,7 +74,8 @@ int	ft_check_rdr(t_minishit *hell, t_node *redir)
 			{
 				// if (redir->redir == heredoc)
 				// 	ft_here_doc(helll);
-				/*else*/ if (ft_check_in(redir) == FAILED)
+				/*else*/
+				if (ft_check_in(redir) == FAILED)
 					return (FAILED);
 			}
 			else if (redir->in_out_put == 1)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   exec_exit_errors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 14:19:48 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/23 15:53:21 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:09:22 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	ft_exec_err(char *shell, char *cmd, char *arg, char *error)
 		ft_putstr_fd(error, 2);
 	else
 		perror(NULL);
-	// ft_putchar_fd('\n', 2);
 }

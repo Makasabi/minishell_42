@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:00:59 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/22 17:45:16 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/24 12:49:57 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int	ft_cd(t_minishit *hell, char **argv, int fd_out)
 			return (FAILED);
 		if (chdir(dir) == -1)
 			return (ft_bt_err(SHELL, CD, argv[1], NULL), FAILED);
+		if (ft_pwd(hell, NULL, fd_out) == FAILED)
+			return (FAILED);
 	}
 	else if (chdir(argv[1]) == -1)
 		return (ft_bt_err(SHELL, CD, argv[1], NULL), FAILED);

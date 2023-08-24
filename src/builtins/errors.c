@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:49:56 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/23 13:39:33 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:50:51 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	ft_bt_err(char *shell, char *cmd, char *arg, char *error)
 		ft_putstr_fd(error, 2);
 	else
 		perror(NULL);
-	//ft_putchar_fd('\n', 2);
 }

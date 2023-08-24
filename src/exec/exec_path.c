@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/23 15:52:22 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:07:15 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 	if (!test)
 		return (ft_exec_err(SHELL, NULL, cmd, MALLERRPATH), NULL);
 	i = -1;
-	while(path[++i])
+	while (path[++i])
 		test[i] = path[i];
 	test[i] = '/';
 	i++;
 	j = -1;
-	while(cmd[++j])
+	while (cmd[++j])
 		test[i + j] = cmd[j];
 	test[i + j] = '\0';
-	return(test);
+	return (test);
 }
 
 static char	*ft_find_right_path(char **paths, char *cmd)
@@ -42,25 +42,25 @@ static char	*ft_find_right_path(char **paths, char *cmd)
 
 	i = -1;
 	size_cmd = ft_strlen(cmd);
-	while(paths[++i])
+	while (paths[++i])
 	{
 		test = ft_craft_test(paths[i], cmd, size_cmd);
 		if (!test)
-			break;
+			break ;
 		if ((access(test, F_OK) >= 0) && access(test, X_OK) >= 0)
-			break;
+			break ;
 		free(test);
 		test = NULL;
 	}
 	ft_free(paths);
-	return(test);
+	return (test);
 }
 
 char	*ft_check_path(t_minishit *hell, char *cmd)
 {
-	char *path_val;
-	char **paths;
-	char *right_path;
+	char	*path_val;
+	char	**paths;
+	char	*right_path;
 
 	path_val = ft_var_value(hell->my_env, "PATH");
 	if (!path_val)
