@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/24 16:44:41 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/26 18:37:50 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	parsing(t_minishit *hell)
 		return (FALSE);
 	while (hell->node && hell->node->up)
 		hell->node = hell->node->up;
-	ft_exec(hell, &hell->node);
+	if (hell->node)
+		ft_exec(hell, &hell->node);
 	clean_hell(hell);
 	clear_hell(hell);
 	return (TRUE);
