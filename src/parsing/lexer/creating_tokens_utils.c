@@ -6,11 +6,20 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:07:19 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 23:49:00 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/30 00:16:32 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+/* 
+		UTILS
+		
+- is_space : checks if given char is a white space
+- is_token : checks if given token is either pipe or redir
+- is_quote : checks if given char is a quote (not preceded by '\')
+
+*/
 
 int	is_space(char c)
 {
@@ -42,6 +51,15 @@ int	is_quote(char *str, int i)
 	}
 	return (FALSE);
 }
+
+/* 
+		REMOVE QUOTES
+		
+- if first AND last char of str are both the same quote (SINGLE || DOUBLE)
+	-> realloc with right size (len without quotes)
+	-> replaces current str by "quote-less" str
+
+*/
 
 void	remove_quotes(t_token *token)
 {

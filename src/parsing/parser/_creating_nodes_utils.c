@@ -6,20 +6,11 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:16:37 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 23:44:38 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/30 00:34:29 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-void    is_built_in(t_node *node, char *str)
-{
-    if (!ft_strcmp("echo", str) || !ft_strcmp("cd", str)
-        || !ft_strcmp("pwd", str) || !ft_strcmp("export", str)
-        || !ft_strcmp("unset", str) || !ft_strcmp("env", str)
-        || !ft_strcmp("exit", str))
-        node->built_in = TRUE;
-}
 
 /* 
 		INDEX BUILT ING
@@ -29,6 +20,15 @@ void    is_built_in(t_node *node, char *str)
 - check if a command_node is a built_in
 
 */
+
+void    is_built_in(t_node *node, char *str)
+{
+    if (!ft_strcmp("echo", str) || !ft_strcmp("cd", str)
+        || !ft_strcmp("pwd", str) || !ft_strcmp("export", str)
+        || !ft_strcmp("unset", str) || !ft_strcmp("env", str)
+        || !ft_strcmp("exit", str))
+        node->built_in = TRUE;
+}
 
 void	index_built_ing(t_node *node)
 {
@@ -44,6 +44,7 @@ void	index_built_ing(t_node *node)
 		node = node->next;
 	}
 }
+
 /* 
 		COUNT TAB SIZE
 		

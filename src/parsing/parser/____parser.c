@@ -6,12 +6,20 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:14:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/26 18:46:19 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/30 00:34:03 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "builtins.h"
+
+/*
+		PARSER
+
+	Creates the chained list hell->node
+	Puts the nodes in up/left/right order to create tree
+
+*/
 
 int	parser(t_minishit *hell)
 {
@@ -20,11 +28,3 @@ int	parser(t_minishit *hell)
 	creating_tree(hell);
 	return (TRUE);
 }
-
-/*
-
-	TO DO
-	- expand variables $
-	- handle quotes
-
-*/

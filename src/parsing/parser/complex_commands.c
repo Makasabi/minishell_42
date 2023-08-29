@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_commands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 14:50:47 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/05 20:57:09 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/30 00:05:30 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 - for the last part (after last pipe)
 	- if cmd -> links cmd right to pip, links rdr left to cmd
 	- else -> links rdr right to pipe
+
 */
 
 void	complex_commands(t_minishit *hell, t_node *node)

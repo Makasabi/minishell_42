@@ -6,11 +6,18 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:45:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/24 16:45:12 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/30 00:07:46 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+/* 
+		INIT NODE
+
+	initiates every element of the node to either NULL or default value	
+	
+*/
 
 void	init_node(t_node *node)
 {
@@ -27,6 +34,13 @@ void	init_node(t_node *node)
 	node->right = NULL;
 }
 
+/* 
+		NODE LAST
+
+	typical chained_list function; gives the last element of given list	
+	
+*/
+
 t_node	*ft_nodelast(t_node *node)
 {
 	if (node == NULL)
@@ -36,6 +50,13 @@ t_node	*ft_nodelast(t_node *node)
 			node = node->next;
 	return (node);
 }
+
+/* 
+		NODE SIZE
+
+	typical chained_list function; gives size of given list	
+	
+*/
 
 int	ft_node_size(t_node *node)
 {
@@ -52,6 +73,13 @@ int	ft_node_size(t_node *node)
 	return (nb_elements);
 }
 
+/* 
+		ADD BACK NODE
+
+	typical chained_list function; adds node back to given list	
+	
+*/
+
 void	ft_add_back_node(t_node **node, t_node *new)
 {
 	t_node	*last;
@@ -65,6 +93,13 @@ void	ft_add_back_node(t_node **node, t_node *new)
 		new->prev = last;
 	}
 }
+
+/* 
+		NEW NODE
+		
+	creates a new node with given t_type (pip, cmd, rdr, not)
+
+*/
 
 t_node	*ft_new_node(t_type type)
 {

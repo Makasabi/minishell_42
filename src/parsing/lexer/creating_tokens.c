@@ -6,11 +6,26 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 23:49:00 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/30 00:31:01 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+/* 
+		TOKENIZATION
+
+- goes through given command (str)
+- sorts each word (or words) by
+	- token (pipe, redir)
+		- issa_token
+		- issa_double_token
+	- quotes (str bw DOUBLE or SINGLE quotes)
+		- issa_quotes
+	- words
+		- issa_string
+
+*/
 
 int	issa_double_token(t_minishit *hell, char *command, int i)
 {
@@ -77,6 +92,14 @@ int	issa_string(t_minishit *hell, char *command, int i)
 	return (j);
 }
 
+/* 
+		ISSSA QUOTES
+
+- flag is used to handle if quote is preceded by '\'
+- creates a token with the whole string between quotes
+
+*/
+
 int	issa_quotes(t_minishit *hell, char *command, int i)
 {
 	int		j;
@@ -93,12 +116,9 @@ int	issa_quotes(t_minishit *hell, char *command, int i)
 	while (command[i + j] && command[i + j] != flag
 		&& is_token(command[i + j]) < 0)
 		j++;
-	// printf("char is  %c\n", command[i + j - 1]);
 	str = ft_substr(command, i, j + 1);
 	ft_add_token(&hell->token, str, ARG);
 	free(str);
-	if (command[i + j] && command[i + j + 1])
-		return (j + 1);
 	return (j + 1);
 }
 
@@ -113,7 +133,6 @@ int	tokenization(t_minishit *hell, char *command)
 			i++;
 		else if (is_token(command[i]) > 0)
 			i += issa_token(hell, command, i);
-		// else if (command[i] == SINGLE || command[i] == DOUBLE)
 		else if (is_quote(command, i) != FALSE)
 			i += issa_quotes(hell, command, i);
 		else

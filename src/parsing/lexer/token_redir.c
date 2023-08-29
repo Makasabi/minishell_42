@@ -3,17 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   token_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/06 21:47:15 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/30 00:08:41 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
 /*
+				REDIR
+		
 	Goes through the token list and assigns types according to the redirections
+
 */
 
 int	which_redir(char *command)
@@ -54,7 +57,3 @@ void	assign_type_redir(t_minishit *hell, t_token *token)
 		token = token->next;
 	}
 }
-
-/*
-			// something about heredoc
-*/

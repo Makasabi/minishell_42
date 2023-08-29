@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 23:43:57 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/30 00:36:56 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 #include "expand.h"
 #include "exec.h"
 
-void	clean_hell(t_minishit *hell)
+/*
+		CLEAR HELL
+
+	Clears every chained_list and env
+		
+*/
+
+void	clear_hell(t_minishit *hell)
 {
 	if (hell->token)
 		ft_clear_token(hell->token);
@@ -24,7 +31,14 @@ void	clean_hell(t_minishit *hell)
 		ft_free(hell->path);
 }
 
-void	clear_hell(t_minishit *hell)
+/*
+		CLEAN HELL
+
+	Initializes every hell element to either NULL or defaut value
+		
+*/
+
+void	clean_hell(t_minishit *hell)
 {
 	hell->pipes = 0;
 	hell->path = NULL;
@@ -58,8 +72,8 @@ int	mini_loop(t_minishit *hell)
 		hell->node = hell->node->up;
 	if (hell->node)
 		ft_exec(hell, &hell->node);
-	clean_hell(hell);
 	clear_hell(hell);
+	clean_hell(hell);
 	return (TRUE);
 }
 

@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   _token_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:16:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/06 19:42:59 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/30 00:23:16 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+/* 
+		INIT TOKEN
+
+	initiates every element of the token to either NULL or default value	
+	
+*/
 
 void	init_token(t_token *token)
 {
@@ -23,6 +30,13 @@ void	init_token(t_token *token)
 	token->prev = NULL;
 }
 
+/* 
+		tpken LAST
+
+	typical chained_list function; gives the last element of given list	
+	
+*/
+
 t_token	*ft_tokenlast(t_token *token)
 {
 	if (token == NULL)
@@ -32,6 +46,13 @@ t_token	*ft_tokenlast(t_token *token)
 			token = token->next;
 	return (token);
 }
+
+/* 
+		ADD BACK TOKEN
+
+	typical chained_list function; adds token back to given list	
+	
+*/
 
 void	ft_add_back_token(t_token **token, t_token *new)
 {
@@ -48,7 +69,11 @@ void	ft_add_back_token(t_token **token, t_token *new)
 }
 
 /* 
-	Creates a token, where you can add both the string and the type.
+		ADD TOKEN
+		
+	- creates a token,  with given string and type (PIPE, REDIR)
+	- adds it back to the list
+	
 */
 
 void	ft_add_token(t_token **token, char *s, int type)
@@ -65,11 +90,3 @@ void	ft_add_token(t_token **token, char *s, int type)
 		new->type = type;
 	ft_add_back_token(token, new);
 }
-
-// void	add_redir(t_token *token, t_token *redir, int boool)
-// {
-// 	if (boool == INPUT)
-// 		token->redir_in = redir;
-// 	if (boool == OUTPUT)
-// 		token->redir_out = redir;
-// }

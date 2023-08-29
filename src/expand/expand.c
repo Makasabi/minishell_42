@@ -6,13 +6,23 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 02:42:30 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/30 00:40:52 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "env.h"
 #include "expand.h"
+
+/*
+		REPLACE VAR BY VALUE
+
+	- mallocs final len of the str with value instaed of var
+	- copies old until var
+	- copies value instaed of var
+	- copies the rest of old
+
+*/
 
 char	*replace_var_by_value(char *var, char *value, int start, int end)
 {
@@ -37,6 +47,15 @@ char	*replace_var_by_value(char *var, char *value, int start, int end)
 	ft_strlcat(new, var + start + end + 1, len);
 	return (new);
 }
+
+/*
+		GET VALUE
+
+	- extracts var from str (from $ on)
+	- check with env if var/value exists
+	- calls replace_var_by_value
+
+*/
 
 char	*get_value(t_minishit *hell, char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 02:32:04 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/30 00:44:50 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #include "env.h"
 #include "expand.h"
 
+/*
+		DOLLAR SIGN
+
+	Returns position of $ if it exists ; except it's followed by ?
+
+*/
 
 int	dollar_sign(char *str)
 {
@@ -25,17 +31,19 @@ int	dollar_sign(char *str)
         if (str[i + 1] && str[i + 1] == '?')
             i++;
 		else if (str[i] == '$')
-		{
-        	// if (i == 0 || (i != 0 && str[i - 1] != '\\'))
-				return (i);
-            // if (i != 0 && str[i - 1] == '\\')
-            //     i++;
-        }
+			return (i);
         else
             i++;
 	}
 	return (FAILED);
 }
+
+/*
+		CHECK DOLLAR
+
+	Returns 1 while $ is not followed by potential var
+
+*/
 
 int	check_dollar(char *str, int i)
 {
@@ -47,6 +55,13 @@ int	check_dollar(char *str, int i)
 		return (0);
 	return (1);
 }
+
+/*
+		GET START / END
+
+	Returns the start ($ + 1) and the end of the var to be potentially expanded
+
+*/
 
 int	get_start(char *str)
 {
