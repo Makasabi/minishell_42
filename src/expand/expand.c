@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/18 15:53:37 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/29 02:42:30 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,60 +14,53 @@
 #include "env.h"
 #include "expand.h"
 
-int	dollar_sign(char *str)
+char	*replace_var_by_value(char *var, char *value, int start, int end)
 {
-	int		i;
+	char	*new;
+	int		len;
 
-	i = 0;
-	while (str[i])
+	len = ft_strlen(var);
+	if (value)
+		len += ft_strlen(value);
+	else
 	{
-		if (str[i] == '$')
-			return (i);
-		i++;
+		new = ft_calloc(len + 1, sizeof(char));
+		ft_strlcpy(new, var, start);
+		ft_strlcat(new, var + start + end + 1, len);
+		return (new);
 	}
-	return (FAILED);
+	new = ft_calloc(len + 1, sizeof(char));
+	if (!new)
+		return (NULL);
+	ft_strlcpy(new, var, start + 1);
+	ft_strlcat(new, value, ft_strlen(new) + ft_strlen(value) + 1);
+	ft_strlcat(new, var + start + end + 1, len);
+	return (new);
 }
 
-// char	*replace_var_value(char *str, char *value, int start)
-// {
-// 	char	*final;
-	
-	
-// }
-
-char	*get_var(t_minishit *hell, char *str)
+char	*get_value(t_minishit *hell, char *str)
 {
-	char	*var;
-	char	*value;
-	int		i;
 	int		start;
+	int		end;
+	char	*var;
+	char	*new;
+	char	*value;
 
-	i = 0;
-	var = NULL;
-	value = NULL;
-	while (str[i])
+	start = get_start(str);
+	end = get_end(str + start + 1);
+	var = ft_substr(str, start + 1, end);
+	if (!var)
 	{
-		while (str[i] && str[i] != '$')
-			i++;
-		start = i;
-		while (str[i] && str[i] != ' ' && str[i] != '\t')
-			i++;
-		var = malloc (sizeof(char) * i - start + 1);
-		ft_strlcpy(var, str + start, i - start + 1);
-		if (ft_var_line(hell->my_env, var + 1) != FAILED)
-		{	
-			value = ft_var_value(hell->my_env, var + 1);
-			free (var);
-			var = NULL;
-			break ;
-		}
-		free (var);
-		var = NULL;
+		free(var);
+		return (str);
 	}
-	if (var)
-		free (var);
-	printf("start is %d\n", start);
-	return (value);
+	value = ft_var_value(hell->my_env, var);
+	if (!value)
+		value = "";
+	new = replace_var_by_value(str, value, start, end);
+	free(var);
+	free(str);
+	return(new);
 }
 
 void	expander(t_minishit *hell, t_token *token)
@@ -75,11 +68,25 @@ void	expander(t_minishit *hell, t_token *token)
 	(void)hell;
 	while (token)
 	{
-		if (token->quote != SINGLE && dollar_sign(token->str) != FAILED)
-		{
-			// get_var(hell, token->str);
-			printf("you gotta do what you gotta do\n");
-		}
+		if (token->quote != SINGLE)
+			while (dollar_sign(token->str) != FAILED)
+				token->str = get_value(hell, token->str);
 		token = token->next;
 	}
 }
+
+/*
+	TO DO LIST
+		- create a global var g_exit(?) to help with error_handling
+				-> error_handling
+		- expand $? is to do in echo.c with g_exit
+
+		- '\' is not supposed to be handled, as well as open quotes
+				-> decision on what we do with it ?
+					(ex : echo \$HOME -> \/home/wan as it doesn't "unread" $ ?)
+		
+		
+		- see wildcards for bonuses ? 
+		- parenthesis () priorities should be handled by moving the concerned node up or down the tree
+
+*/

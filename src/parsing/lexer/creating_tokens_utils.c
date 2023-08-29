@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:07:19 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/18 15:52:10 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/28 23:47:43 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,15 @@ int	is_token(char c)
 		return (-1);
 }
 
-int	is_bw_quotes(char *command, int i, char quote)
+int	is_a_quote(char *str, int i)
 {
-	int	j;
-
-	j = 0;
-	if (command[i + j] == quote)
-	{
-		j++;
-		while (command[i + j] && command[i + j] != quote)
-			j++;
+	if (str[i] == SINGLE || str[i] == DOUBLE)
+		return (1);
+	else if (str[i] == '\\')
+	{	if (str[i + 1] && (str[i + 1] == SINGLE || str[i + 1] == DOUBLE))
+			return (2);
 	}
-	return (j);
+	return (FALSE);
 }
 
 void	remove_quotes(t_token *token)
@@ -59,10 +56,9 @@ void	remove_quotes(t_token *token)
 			if ((token->str[0] == SINGLE && token->str[last] == SINGLE)
 				|| (token->str[0] == DOUBLE && token->str[last] == DOUBLE))
 			{
-				temp = ft_substr(token->str, 1, last - 2);
+				temp = ft_substr(token->str, 1, last - 1);
 				token->quote = token->str[0];
 				free(token->str);
-				// temp = ft_memmove(token->str, token->str + 1, last);
 				token->str = temp;
 			}
 		}

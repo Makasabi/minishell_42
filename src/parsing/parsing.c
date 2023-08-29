@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/26 18:37:50 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/29 01:38:12 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,20 @@ void	clear_hell(t_minishit *hell)
 
 int	parsing(t_minishit *hell)
 {
+	// int i;
+	
 	if (lexer(hell) == FALSE)
 		return (FALSE);
-	// expander(hell, hell->token);
+	expander(hell, hell->token);
 	if (parser(hell) == FALSE)
 		return (FALSE);
+	// while (hell->node)
+	// {
+	// 	i = 0;
+	// 	while (hell->node->argv[i++])
+	// 		printf("argv %s\n", hell->node->argv[i]);
+	// 	hell->node = hell->node->up;
+	// }
 	while (hell->node && hell->node->up)
 		hell->node = hell->node->up;
 	if (hell->node)
@@ -58,3 +67,44 @@ int	parsing(t_minishit *hell)
 	check if built_in
 
 */
+
+
+
+// int	check_dollar(char *str, int i)
+// {
+// 	if (ft_strlen(str) < 2)
+// 		return (1);
+// 	if (str[i] == '$' && str[i + 1] == '?')
+// 		return (0);
+// 	if (str[i] == '$' && ft_isalnum(str[i + 1]))
+// 		return (0);
+// 	return (1);
+// }
+
+// int	get_start(char *str)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (str[i] && str[i + 1] && check_dollar(str, i))
+// 	{
+// 		str++;
+// 		i++;
+// 	}
+// 	return (i);
+// }
+
+// int	get_end(char *str)
+// {
+// 	int	n;
+
+// 	n = 0;
+// 	if (*str && *str == '?')
+// 		return (1);
+// 	while (*str && ft_isalnum(*str))
+// 	{
+// 		str++;
+// 		n++;
+// 	}
+// 	return (n);
+// }

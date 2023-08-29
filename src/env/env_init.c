@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/24 16:40:42 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/29 00:59:21 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ to the begining of the variable value */
 
 char	*ft_var_value(char **my_env, char *target)
 {
+	int		line;
 	char	*tmp;
 	size_t	size;
 
@@ -140,8 +141,10 @@ char	*ft_var_value(char **my_env, char *target)
 		return (ft_putstr_fd(_PURPLE _BOLD ENVSEARCH _END, 1),
 			ft_putstr_fd(_ITALIC NOVARTARGET _END, 1), NULL);
 	size = ft_strlen(target);
-	tmp = my_env[ft_var_line(my_env, target)];
-	if (!tmp || size == 0)
+	line = ft_var_line(my_env, target);
+	if (line != FAILED)
+	tmp = my_env[line];
+	if (line == FAILED || !tmp || size == 0)
 		return (NULL);
 	return (tmp + size + 1);
 }

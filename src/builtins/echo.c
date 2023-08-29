@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/22 17:51:37 by mrony            ###   ########.fr       */
+/*   Updated: 2023/08/29 02:34:37 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 		i++;
 	while (argv[i])
 	{
+		/*
+			if dollar_sign in argv[i] -> put_nbr de var globale g_exit
+		*/
 		ft_putstr_fd(argv[i], fd_out);
 		if (argv[i + 1] != NULL)
 			ft_putchar_fd(' ', fd_out);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_nodes_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:16:37 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/06 19:30:27 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/29 01:30:16 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	count_tab_size(t_token *token, int current_type)
 
 t_node	*make_argv_rdr(t_node *node, t_token *token)
 {
+	if (ft_strlen(token->str) == 0)
+		return (NULL);
 	node->argv = ft_calloc (sizeof(char *), 2);
 	if (!node->argv)
 		return (NULL);
@@ -97,8 +99,11 @@ t_node	*make_argv_cmd(t_node *node, t_token *token, int current_type)
 	i = 0;
 	while (token && token->type == current_type)
 	{
-		node->argv[i] = ft_strdup(token->str);
-		i++;
+		if (ft_strlen(token->str) != 0)
+		{
+			node->argv[i] = ft_strdup(token->str);
+			i++;	
+		}	
 		token = token->next;
 	}
 	return (node);

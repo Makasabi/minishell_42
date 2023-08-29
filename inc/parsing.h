@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/17 22:10:02 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/28 23:17:57 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		which_redir(char *command);
 void	assign_type_redir(t_minishit *hell, t_token *token);
 
 int		issa_quotes(t_minishit *hell, char *command, int i);
-int		is_bw_quotes(char *command, int i, char quote);
+int 	is_a_quote(char *str, int i);
 int		issa_token(t_minishit *hell, char *command, int i);
 int		issa_string(t_minishit *hell, char *command, int i);
 
