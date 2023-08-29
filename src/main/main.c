@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/24 16:43:45 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/29 23:33:27 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	hell->my_env = ft_env_init();
 	while (1)
 	{
-		if (parsing(hell) == FALSE)
+		if (mini_loop(hell) == FALSE)
 			break ;
 	}
 	clean_exit(hell);

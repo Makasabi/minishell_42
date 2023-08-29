@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/28 23:17:57 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/29 23:33:27 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 void	check_envp(char **envp, t_minishit *hell);
 
 /* parsing */
-int		parsing(t_minishit *hell);
+int		mini_loop(t_minishit *hell);
 
 /* lexer */
 int		lexer(t_minishit *hell);
