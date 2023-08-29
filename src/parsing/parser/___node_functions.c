@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:45:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/30 00:07:46 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/30 01:18:41 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_node(t_node *node)
 {
 	node->index = -1;
 	node->argv = NULL;
+	node->built_in = FALSE;
 	node->type = not;
 	node->redir = none;
 	node->fd[0] = -1;
