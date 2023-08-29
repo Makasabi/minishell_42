@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:07:19 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/28 23:47:43 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/29 23:49:00 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	is_token(char c)
 		return (-1);
 }
 
-int	is_a_quote(char *str, int i)
+int	is_quote(char *str, int i)
 {
 	if (str[i] == SINGLE || str[i] == DOUBLE)
 		return (1);

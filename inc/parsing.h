@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 23:33:27 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/29 23:48:35 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 # define SINGLE '\''
 # define DOUBLE '\"'
 
-/* get_path */
-void	check_envp(char **envp, t_minishit *hell);
-
-/* parsing */
+                                    /* PARSING */
+                                    
+/* loop */
 int		mini_loop(t_minishit *hell);
 
 /* lexer */
-int		lexer(t_minishit *hell);
+int		lexer(t_minishit *hell, char *command);
+
+/* parser */
+int		parser(t_minishit *hell);
 
 /* token */
 int		tokenization(t_minishit *hell, char *command);
@@ -40,18 +42,17 @@ int		which_redir(char *command);
 void	assign_type_redir(t_minishit *hell, t_token *token);
 
 int		issa_quotes(t_minishit *hell, char *command, int i);
-int 	is_a_quote(char *str, int i);
 int		issa_token(t_minishit *hell, char *command, int i);
 int		issa_string(t_minishit *hell, char *command, int i);
 
 void	remove_quotes(t_token *token);
+int 	is_quote(char *str, int i);
 int		is_space(char c);
 int		is_token(char c);
 
-/* parser */
-int		parser(t_minishit *hell);
-void	make_nodes(t_minishit *hell, t_token *token);
+/* node */
 
+void	make_nodes(t_minishit *hell, t_token *token);
 t_node	*ft_new_node(t_type type);
 t_node	*ft_nodelast(t_node *node);
 int		ft_node_size(t_node *node);
@@ -64,19 +65,19 @@ t_node	*make_argv_cmd(t_node *node, t_token *token, int current_type);
 
 /* creating_tree */
 
-void	link_left(t_node *up_node, t_node *left_node);
-void	link_right(t_node *up_node, t_node *right_node);
-t_node	*get_components(t_node *node, t_type current_type);
-void	index_built_ing(t_node *node);
+void	creating_tree(t_minishit *hell);
+void	redir_in_tree(t_node *tree);
 
 t_node	*single_command(t_minishit *hell, t_node *node);
 void	complex_commands(t_minishit *hell, t_node *node);
 
-void	creating_tree(t_minishit *hell);
-void	redir_in_tree(t_node *tree);
+void	index_built_ing(t_node *node);
+void	link_left(t_node *up_node, t_node *left_node);
+void	link_right(t_node *up_node, t_node *right_node);
+t_node	*get_components(t_node *node, t_type current_type);
 
-int 	link_inside_pipes(t_node *node);
 void	link_between_pipes(t_node *node);
+int 	link_inside_pipes(t_node *node);
 void	link_cmd_to_pip(t_node *node);
 void	link_rdr(t_node *up_node, t_node *node);
 void	link_to_last_pipe(t_node *node, t_node *last_pipe);

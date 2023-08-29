@@ -6,17 +6,19 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:16:37 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 01:30:16 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/29 23:44:38 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	is_built_in(t_node *node, char *str)
+void    is_built_in(t_node *node, char *str)
 {
-	if (ft_strnstr("echo\ncd\npwd\nexport\nunset\nenv\nexit\n",
-			str, 35))
-		node->built_in = TRUE;
+    if (!ft_strcmp("echo", str) || !ft_strcmp("cd", str)
+        || !ft_strcmp("pwd", str) || !ft_strcmp("export", str)
+        || !ft_strcmp("unset", str) || !ft_strcmp("env", str)
+        || !ft_strcmp("exit", str))
+        node->built_in = TRUE;
 }
 
 /* 
