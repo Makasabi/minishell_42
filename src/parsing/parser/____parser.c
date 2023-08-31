@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:14:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/30 00:34:03 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/31 04:16:05 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@
 
 int	parser(t_minishit *hell)
 {
-	make_nodes(hell, hell->token);
+	if (make_nodes(hell, hell->token) == FALSE)
+		return (FALSE);
 	index_built_ing(hell->node);
-	creating_tree(hell);
+	if (creating_tree(hell) == FALSE)
+		return (FALSE);
 	return (TRUE);
 }

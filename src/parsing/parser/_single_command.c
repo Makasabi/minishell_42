@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _single_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 09:26:33 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/05 20:57:07 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/08/31 04:09:32 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_node	*single_command(t_minishit *hell, t_node *node)
 	t_node	*cmd_node;
 
 	(void)hell;
-	cmd_node = node;
 	while (cmd_node && cmd_node->type != pip)
 	{
 		if (cmd_node->type == cmd)

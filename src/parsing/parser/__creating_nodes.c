@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:18:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 00:33:08 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/31 04:03:03 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	rdr_node(t_minishit *hell, t_token *token)
 
 */
 
-void	make_nodes(t_minishit *hell, t_token *token)
+int	make_nodes(t_minishit *hell, t_token *token)
 {
 	while (token)
 	{
@@ -89,9 +89,15 @@ void	make_nodes(t_minishit *hell, t_token *token)
 		}
 		if (token && token->type == REDIR)
 		{
-			rdr_node(hell, token);
+			if (token->next && token->next->type == REDIR)
+				rdr_node(hell, token);
+			else
+				ft_add_back_node(&hell->node, ft_new_node(not));
 			token = token->next;
-			token = token->next;
+			if (token && token->next)
+				token = token->next;
+		
 		}
 	}
+	return (TRUE);
 }

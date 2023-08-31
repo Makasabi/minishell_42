@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:16:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/30 00:23:16 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/31 02:45:57 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_token(t_token *token)
 }
 
 /* 
-		tpken LAST
+		token LAST
 
 	typical chained_list function; gives the last element of given list	
 	
@@ -46,6 +46,30 @@ t_token	*ft_tokenlast(t_token *token)
 			token = token->next;
 	return (token);
 }
+
+
+/* 
+		TOKEN SIZE
+
+	typical chained_list function; gives size of given list	
+	
+*/
+
+int	ft_token_size(t_token *token)
+{
+	t_token	*tmp;
+	int		nb_elements;
+
+	tmp = token;
+	nb_elements = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		nb_elements++;
+	}
+	return (nb_elements);
+}
+
 
 /* 
 		ADD BACK TOKEN

@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/30 00:36:56 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/31 03:19:07 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,17 @@ int	mini_loop(t_minishit *hell)
 	command = readline(SHELL);
 	if (!command)
 		return (FALSE);
-	lexer(hell, command);
-	expander(hell, hell->token);
-	parser(hell);
-	while (hell->node && hell->node->up)
-		hell->node = hell->node->up;
-	if (hell->node)
-		ft_exec(hell, &hell->node);
+	if (lexer(hell, command) != FALSE)
+	{
+		expander(hell, hell->token);
+		if (parser(hell) != FALSE)
+		{
+			while (hell->node && hell->node->up)
+					hell->node = hell->node->up;
+			if (hell->node)
+				ft_exec(hell, &hell->node);
+		}
+	}
 	clear_hell(hell);
 	clean_hell(hell);
 	return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/29 23:48:35 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/31 04:15:26 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		parser(t_minishit *hell);
 int		tokenization(t_minishit *hell, char *command);
 
 t_token	*ft_tokenlast(t_token *token);
+int     ft_token_size(t_token *token);
 void	ft_add_token(t_token **token, char *str, int type);
 void	init_token(t_token *token);
 void	ft_add_back_token(t_token **token, t_token *new);
@@ -52,7 +53,7 @@ int		is_token(char c);
 
 /* node */
 
-void	make_nodes(t_minishit *hell, t_token *token);
+int	make_nodes(t_minishit *hell, t_token *token);
 t_node	*ft_new_node(t_type type);
 t_node	*ft_nodelast(t_node *node);
 int		ft_node_size(t_node *node);
@@ -65,7 +66,7 @@ t_node	*make_argv_cmd(t_node *node, t_token *token, int current_type);
 
 /* creating_tree */
 
-void	creating_tree(t_minishit *hell);
+int 	creating_tree(t_minishit *hell);
 void	redir_in_tree(t_node *tree);
 
 t_node	*single_command(t_minishit *hell, t_node *node);
