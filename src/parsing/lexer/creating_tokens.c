@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/30 00:31:01 by wan              ###   ########.fr       */
+/*   Updated: 2023/08/31 22:52:53 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,9 @@ int	issa_token(t_minishit *hell, char *command, int i)
 	int		type;
 
 	token[0] = command[i];
-	if (command[i + 1] && (command[i + 1] == '<' || command[i + 1] == '>'))
-	{
+	if (command[i + 1] && (command[i] == command[i + 1])
+		&& (command[i + 1] == '<' || command[i + 1] == '>'))
 		type = issa_double_token(hell, command, i);
-	}
 	else
 	{
 		token[1] = '\0';

@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:18:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/31 04:03:03 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/02 22:33:18 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 
 */
 
-void	pip_node(t_node *node)
+void	pip_node(t_minishit *hell)
 {
 	t_node	*new_node;
 
 	new_node = ft_new_node(pip);
 	new_node->redir = none;
-	ft_add_back_node(&node, new_node);
+	ft_add_back_node(&hell->node, new_node);
 }
 
 void	cmd_node(t_minishit *hell, t_token *token)
@@ -76,9 +76,9 @@ int	make_nodes(t_minishit *hell, t_token *token)
 	{
 		if (ft_strlen(token->str) == 0)
 			token = token->next;
-		if (token->type == PIPE)
+		if (token && token->type == PIPE)
 		{
-			pip_node(hell->node);
+			pip_node(hell);
 			token = token->next;
 		}
 		if (token && token->type == ARG)
@@ -96,7 +96,6 @@ int	make_nodes(t_minishit *hell, t_token *token)
 			token = token->next;
 			if (token && token->next)
 				token = token->next;
-		
 		}
 	}
 	return (TRUE);
