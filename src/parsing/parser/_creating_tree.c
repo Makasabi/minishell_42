@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/02 01:33:40 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/02 23:04:11 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_if_not(t_node *node)
 {
 	while (node)
 	{
-		if (((node->index == 0  || node->index == ft_node_size(node) - 1) && node->type == pip)
+		if ((node->index == 0 && node->type == pip)
 			|| (node->type == rdr && node->next &&node->next->type == pip))
 		{
 			printf("Mini.Hell : syntax error near unexpected token « | »\n");

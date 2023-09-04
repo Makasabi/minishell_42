@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:16:37 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/30 00:34:29 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/02 23:41:36 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	index_built_ing(t_node *node)
 	index = 0;
 	while (node)
 	{
-		if (node->type == cmd)
+		if (node->type == cmd && node->argv[0])
 			is_built_in(node, node->argv[0]);
 		node->index = index;
 		index++;

@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/31 22:52:53 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/02 22:56:07 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	issa_string(t_minishit *hell, char *command, int i)
 	j = 0;
 	while (command[i + j] && is_token(command[i + j]) < 0)
 	{
-		if (is_space(command[i + j])
-			|| command[i + j] == SINGLE || command[i + j] == DOUBLE)
+		if (is_space(command[i + j]) || (j != 0
+		&& (command[i + j] == SINGLE || command[i + j] == DOUBLE)))
 			break ;
 		j++;
 	}
@@ -132,7 +132,7 @@ int	tokenization(t_minishit *hell, char *command)
 			i++;
 		else if (is_token(command[i]) > 0)
 			i += issa_token(hell, command, i);
-		else if (is_quote(command, i) != FALSE)
+		else if (is_quote(command, i) != FALSE && ft_strlen(command) > 1)
 			i += issa_quotes(hell, command, i);
 		else
 			i += issa_string(hell, command, i);
