@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 15:53:06 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:55:23 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_charprint(char *str, int fd_out)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '\\')
 			i++;

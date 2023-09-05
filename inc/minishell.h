@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:27:09 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:53:45 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@
 #  define BUFFER_SIZE 2048
 # endif
 
-# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GREY "s" _GOLD "h" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">> " _END
+# define SHELL "\1\033[1m\2\1\033[31m\2➜  M\
+\1\033[38;5;208m\2in\1\033[38;5;220m\2is\1\033[32m\2he\1\033[0m\2\1\033[1m\2·\
+\1\033[34m\2el\1\033[38;5;129m\2le\1\033[0m\2 "
 
 # define FALSE 0
 # define TRUE 1
