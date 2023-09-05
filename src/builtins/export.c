@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/22 17:54:25 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/05 16:24:05 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_export(t_minishit *hell, char **argv, int fd_out)
 	while (argv[i] != NULL)
 	{
 		if (ft_check_arg(argv[i]) == FAILED)
-			ft_bt_err(SHELL, EXP, argv[i++], IVALID);
+			ft_error_msg(SHELL, EXP, argv[i++], IVALID);
 		else if (ft_var_line(hell->my_env, argv[i]) >= 0
 			&& ft_value_is_empty(argv[i]) == FALSE)
 		{

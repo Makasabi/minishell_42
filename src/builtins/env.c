@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:07 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/22 17:46:27 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/05 16:24:05 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_env(t_minishit *hell, char **argv, int fd_out)
 	if (ft_table_size(argv) > 1)
 		return (FAILED);
 	if (!hell || !hell->my_env)
-		return (ft_bt_err(SHELL, ENV, NULL, ENVNS), FAILED);
+		return (ft_error_msg(SHELL, ENV, NULL, ENVNS), FAILED);
 	while (hell->my_env[i])
 	{
 		j = 0;

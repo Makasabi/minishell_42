@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/09/05 15:53:59 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:24:05 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ static char	*ft_home_old(t_minishit *hell, char **argv)
 	{
 		dir = ft_var_value(hell->my_env, "HOME");
 		if (!dir)
-			return (ft_bt_err(SHELL, CD, argv[1], HOMENS), NULL);
+			return (ft_error_msg(SHELL, CD, argv[1], HOMENS), NULL);
 	}
 	else
 	{
 		if (argv[1][1] != '\0')
-			return (ft_bt_err(SHELL, CD, argv[1], INVOPT), NULL);
+			return (ft_error_msg(SHELL, CD, argv[1], INVOPT), NULL);
 		dir = ft_var_value(hell->my_env, "OLDPWD");
 		if (!dir)
-			return (ft_bt_err(SHELL, CD, argv[1], OPWDNS), NULL);
+			return (ft_error_msg(SHELL, CD, argv[1], OPWDNS), NULL);
 	}
 	return (dir);
 }
@@ -75,7 +75,7 @@ int	ft_cd(t_minishit *hell, char **argv, int fd_out)
 	if (ft_table_size(argv) > 2)
 	{
 		printf("%d\n", ft_table_size(argv));
-		return (ft_bt_err(SHELL, CD, NULL, ARGNB), FAILED);
+		return (ft_error_msg(SHELL, CD, NULL, ARGNB), FAILED);
 	}
 	if (!argv[1] || (argv[1][0] == '-' && argv[1][1] == '\0'))
 	{
@@ -83,15 +83,15 @@ int	ft_cd(t_minishit *hell, char **argv, int fd_out)
 		if (!dir)
 			return (FAILED);
 		if (chdir(dir) == -1)
-			return (ft_bt_err(SHELL, CD, argv[1], NULL), FAILED);
+			return (ft_error_msg(SHELL, CD, argv[1], NULL), FAILED);
 		if (ft_pwd(hell, NULL, fd_out) == FAILED)
 			return (FAILED);
 	}
 	else if (chdir(argv[1]) == -1)
-		return (ft_bt_err(SHELL, CD, argv[1], NULL), FAILED);
+		return (ft_error_msg(SHELL, CD, argv[1], NULL), FAILED);
 	if (ft_update_oldpwd(hell))
-		return (ft_bt_err(SHELL, CD, NULL, ERROLDPWD), FAILED);
+		return (ft_error_msg(SHELL, CD, NULL, ERROLDPWD), FAILED);
 	if (ft_update_pwd(hell))
-		return (ft_bt_err(SHELL, CD, NULL, ERRPWD), FAILED);
+		return (ft_error_msg(SHELL, CD, NULL, ERRPWD), FAILED);
 	return (SUCCESS);
 }

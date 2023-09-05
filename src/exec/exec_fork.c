@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 12:32:27 by makasabi          #+#    #+#             */
-/*   Updated: 2023/08/24 14:30:32 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:21:19 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	else
 	{
 		close(*mem_fd);
-		while (waitpid(0, NULL, WUNTRACED) != -1)
+		while (waitpid(0, &hell->status, WUNTRACED) != -1)
 			;
 	}
 	return (SUCCESS);

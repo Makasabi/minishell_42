@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:09:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 15:39:13 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:25:06 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_set_redir(t_node **cmd, int *fd);
 /* exec_check_path.c */
 char	*ft_check_path(t_minishit *hell, char *cmd);
 
-/* exec_errors.c */
-void	ft_exec_err(char *shell, char *cmd, char *arg, char *error);
+/* errors.c */
+void	ft_error_msg(char *shell, char *cmd, char *arg, char *error);
 
 
 #endif

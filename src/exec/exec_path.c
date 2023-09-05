@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 15:47:43 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:24:19 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 
 	test = ft_calloc((ft_strlen(path) + size_cmd + 2), sizeof(char));
 	if (!test)
-		return (ft_exec_err(SHELL, NULL, cmd, MALLERRPATH), NULL);
+		return (ft_error_msg(SHELL, NULL, cmd, MALLERRPATH), NULL);
 	i = -1;
 	while (path[++i])
 		test[i] = path[i];
@@ -64,12 +64,12 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 
 	path_val = ft_var_value(hell->my_env, "PATH");
 	if (!path_val)
-		return (ft_exec_err(SHELL, NULL, cmd, NOFLDIR), NULL);
+		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
 	paths = ft_split(path_val, ':');
 	if (!paths)
-		return (ft_exec_err(SHELL, NULL, cmd, MALLERRPATH), NULL);
+		return (ft_error_msg(SHELL, NULL, cmd, MALLERRPATH), NULL);
 	right_path = ft_find_right_path(paths, cmd);
 	if (!right_path)
-		return (ft_exec_err(SHELL, NULL, cmd, NOFLDIR), NULL);
+		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
 	return (right_path);
 }

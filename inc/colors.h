@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:56:01 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:26:15 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/05 16:27:37 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,32 @@
 
 # include "minishell.h"
 
-# define _END "\033[0m"
-# define _BOLD "\033[1m"
-# define _ITALIC "\033[3m"
-# define _UNDER "\033[4m"
-# define _REV "\033[7m"
+# define _END "\1\033[0m\2"
+# define _BOLD "\1\033[1m\2"
+# define _ITALIC "\1\033[3m\2"
+# define _UNDER "\1\033[4m\2"
+# define _REV "\1\033[7m\2"
 
-# define _RED "\033[31m"
-# define _FOREST_GREEN "\033[32m"
-# define _BLUE "\033[34m"
-# define _YELLOW "\033[33m"
-# define _ORANGE "\033[38;5;208m"
-# define _PURPLE "\033[38;5;129m"
-# define _PINK "\033[38;5;218m"
-# define _CYAN "\033[36m"
-# define _GREY "\033[30m"
-# define _BROWN "\033[38;5;137m"
-# define _KAKI "\033[38;5;136m"
-# define _GOLD "\033[38;5;220m"
-# define _SILVER "\033[38;6;7m"
-# define _MAGENTA "\033[35;5m"
-# define _EMMERALD "\033[38;5;118m"
-# define _LILAC "\033[38;5;127m"
-# define _LAGOON "\033[38;5;120m"
-# define _AQUAMARINE "\033[38;5;122m"
-# define _CORAL "\033[38;5;201m"
-# define _RIVIERA "\033[38;5;32m"
-# define _SALMON "\033[38;5;209m"
+# define _RED "\1\033[31m\2"
+# define _FOREST_GREEN "\1\033[32m\2"
+# define _BLUE "\1\033[34m\2"
+# define _YELLOW "\1\033[33m\2"
+# define _ORANGE "\1\033[38;5;208m\2"
+# define _PURPLE "\1\033[38;5;129m\2"
+# define _PINK "\1\033[38;5;218m\2"
+# define _CYAN "\1\033[36m\2"
+# define _GREY "\1\033[30m\2"
+# define _BROWN "\1\033[38;5;137m\2"
+# define _KAKI "\1\033[38;5;136m\2"
+# define _GOLD "\1\033[38;5;220m\2"
+# define _SILVER "\1\033[38;6;7m\2"
+# define _MAGENTA "\1\033[35;5m\2"
+# define _EMMERALD "\1\033[38;5;118m\2"
+# define _LILAC "\1\033[38;5;127m\2"
+# define _LAGOON "\1\033[38;5;120m\2"
+# define _AQUAMARINE "\1\033[38;5;122m\2"
+# define _CORAL "\1\033[38;5;201m\2"
+# define _RIVIERA "\1\033[38;5;32m\2"
+# define _SALMON "\1\033[38;5;209m\2"
 
 #endif

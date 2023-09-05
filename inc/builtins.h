@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 15:38:29 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:24:05 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int		ft_sign_append(char *arg);
 int		ft_value_is_empty(char *arg);
 
 /* errors.c */
-void	ft_bt_err(char *shell, char *cmd, char *arg, char *error);
+void	ft_error_msg(char *shell, char *cmd, char *arg, char *error);
 
 #endif
