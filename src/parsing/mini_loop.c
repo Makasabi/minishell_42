@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/02 22:46:04 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/05 15:49:52 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 		CLEAR HELL
 
 	Clears every chained_list and env
-		
+
 */
 
 void	clear_hell(t_minishit *hell)
@@ -35,7 +35,7 @@ void	clear_hell(t_minishit *hell)
 		CLEAN HELL
 
 	Initializes every hell element to either NULL or defaut value
-		
+
 */
 
 void	clean_hell(t_minishit *hell)
@@ -47,7 +47,7 @@ void	clean_hell(t_minishit *hell)
 }
 
 void	display_prompt(int woop)
-{	
+{
 	(void)woop;
 	write(1, "\n", 1);
 	rl_replace_line("", 0);

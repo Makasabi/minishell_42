@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/29 00:59:21 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/05 15:44:38 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 
-/* This function copies the content of the environment variables passed to the 
-process upon execution. 
+/* This function copies the content of the environment variables passed to the
+process upon execution.
 From the external variable **environ to a 2D array **my_env.
 
 If the program was launched without any environment variable,
@@ -70,15 +70,35 @@ char	**ft_env_from_scratch(void)
 
 /* OBSOLETE FUNCTION - TO BE REMOVED
 This function searches through the environment table for the variable name
+/* OBSOLETE FUNCTION - TO BE REMOVED
+This function searches through the environment table for the variable name
 sent as argument (target) and returns a pointer to the string holding the var
-name and its value. 
+name and its value.
 The variable passed as argument can be of format "VAR=value" or "VAR"*/
 
 // char	*ft_find_var(char **my_env, char *target)
 // {
 // 	int		i;
 // 	size_t	size;
+// char	*ft_find_var(char **my_env, char *target)
+// {
+// 	int		i;
+// 	size_t	size;
 
+// 	i = 0;
+// 	size = ft_strlen(target);
+// 	if (size == 0 || !target)
+// 		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
+// 	while (my_env[i])
+// 	{
+// 		if (ft_strncmp(my_env[i], target, size) == 0
+// 			&& (my_env[i][size] == '='
+// 			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
+// 			return (my_env[i]);
+// 		i++;
+// 	}
+// 	return (NULL);
+// }
 // 	i = 0;
 // 	size = ft_strlen(target);
 // 	if (size == 0 || !target)

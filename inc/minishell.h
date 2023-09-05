@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/24 16:38:50 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/05 15:39:53 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@
 # endif
 
 # define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GREY "s" _GOLD "h" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">> " _END
+# define SHELL _BOLD _RED "Mi" _ORANGE "ni" _GREY "s" _GOLD "h" _FOREST_GREEN "el" _BLUE "l>" _PURPLE ">> " _END
 
 # define FALSE 0
 # define TRUE 1
 
 # define SUCCESS 0
 # define FAILED -1
+# define ERROR -1
 # define ERROR -1
 
 # define CMD 0
@@ -86,6 +88,7 @@ typedef struct s_node
 	bool				in_out_put;
 	t_type				type;
 	t_redir				redir;
+	int					fd[2];
 	int					fd[2];
 	struct s_node		*prev;
 	struct s_node		*next;

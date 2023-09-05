@@ -23,6 +23,7 @@ SRCS += ./src/env/env_errors.c
 SRCS += ./src/parsing/mini_loop.c
 SRCS += ./src/parsing/parser/redir_in_tree.c
 SRCS += ./src/parsing/parser/_creating_nodes_utils.c
+SRCS += ./src/parsing/parser/_single_command.c
 SRCS += ./src/parsing/parser/____parser.c
 SRCS += ./src/parsing/parser/___node_functions.c
 SRCS += ./src/parsing/parser/_creating_tree.c

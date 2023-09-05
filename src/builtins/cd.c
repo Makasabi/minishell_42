@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 20:00:59 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/24 16:39:34 by wan              ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/09/05 15:40:47 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "builtins.h"
 #include "env.h"
@@ -67,9 +68,11 @@ static char	*ft_home_old(t_minishit *hell, char **argv)
 }
 
 int	ft_cd(t_minishit *hell, char **argv, int fd_out)
+int	ft_cd(t_minishit *hell, char **argv, int fd_out)
 {
 	char	*dir;
 
+	(void)fd_out;
 	(void)fd_out;
 	if (ft_table_size(argv) > 2)
 	{
@@ -83,6 +86,8 @@ int	ft_cd(t_minishit *hell, char **argv, int fd_out)
 			return (FAILED);
 		if (chdir(dir) == -1)
 			return (ft_bt_err(SHELL, CD, argv[1], NULL), FAILED);
+		if (ft_pwd(hell, NULL, fd_out) == FAILED)
+			return (FAILED);
 		if (ft_pwd(hell, NULL, fd_out) == FAILED)
 			return (FAILED);
 	}

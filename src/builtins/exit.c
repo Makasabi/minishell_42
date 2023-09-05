@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:11 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/24 16:40:09 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/05 15:42:05 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
 int	ft_exit(t_minishit *hell, char **argv)
+int	ft_exit(t_minishit *hell, char **argv)
 {
 	(void)argv;
+	(void)argv;
 	clean_exit(hell);
+	return (SUCCESS);
 	return (SUCCESS);
 }
