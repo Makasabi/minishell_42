@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   complex_commands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 14:50:47 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/30 00:05:30 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/05 12:51:57 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-/* 
+/*
 		COMPLEX COMMANDS
 
-- calls link_between_pipes		
+- calls link_between_pipes
 - browses nodes until last pipe_node is found or the end
 - while looping -> calls lnk_inside_pipes
 - for the last part (after last pipe)

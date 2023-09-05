@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/29 02:34:37 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/05 13:11:08 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,23 @@
 
 /* Print to the specified fd the string sent as argument.
 if option -n, then do not print \n at the end */
+
+static void	ft_charprint(char *str, int fd_out)
+{
+	int	i;
+
+	i = 0;
+	while(str[i])
+	{
+		if (str[i] == '\\')
+			i++;
+		else
+		{
+			write(fd_out, &str[i], 1);
+			i++;
+		}
+	}
+}
 
 bool	ft_newline(char *str)
 {
@@ -51,7 +68,7 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 		/*
 			if dollar_sign in argv[i] -> put_nbr de var globale g_exit
 		*/
-		ft_putstr_fd(argv[i], fd_out);
+		ft_charprint(argv[i], fd_out);
 		if (argv[i + 1] != NULL)
 			ft_putchar_fd(' ', fd_out);
 		i++;
