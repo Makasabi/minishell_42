@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 15:39:53 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:52:41 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ typedef struct s_node
 	bool				in_out_put;
 	t_type				type;
 	t_redir				redir;
-	int					fd[2];
 	int					fd[2];
 	struct s_node		*prev;
 	struct s_node		*next;

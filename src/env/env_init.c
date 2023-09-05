@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 15:44:38 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:54:39 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ char	**ft_env_from_scratch(void)
 	return (my_env);
 }
 
-/* OBSOLETE FUNCTION - TO BE REMOVED
-This function searches through the environment table for the variable name
 /* OBSOLETE FUNCTION - TO BE REMOVED
 This function searches through the environment table for the variable name
 sent as argument (target) and returns a pointer to the string holding the var
