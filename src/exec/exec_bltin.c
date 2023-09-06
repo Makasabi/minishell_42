@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_bltin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 10:56:05 by makasabi          #+#    #+#             */
-/*   Updated: 2023/09/05 15:46:11 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/06 20:36:48 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_exec_bltin_cont(t_minishit *hell, char **argv, int *fds)
 		else if (argv[0][2] == 'i')
 			return (ft_exit(hell, argv));
 	}
-	return (SUCCESS);
+	return (FAILED);
 }
 
 int	ft_exec_bltin(t_minishit *hell, char **argv, int *fds)
@@ -41,5 +41,6 @@ int	ft_exec_bltin(t_minishit *hell, char **argv, int *fds)
 		res = ft_unset(hell, argv);
 	else if (argv[0][0] == 'e')
 		res = ft_exec_bltin_cont(hell, argv, fds);
+	hell->status = res;
 	return (res);
 }

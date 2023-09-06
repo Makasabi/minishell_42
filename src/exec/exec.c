@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/09/05 20:07:37 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/06 21:10:19 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
+
+/* ft_exec_sgl is solely used when a single builtin is called in prompt.
+*/
 
 int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 {
@@ -32,15 +35,15 @@ int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 	return (res);
 }
 
-/* exec pipe opens the righ fds and */
+/* exec pipe opens the righ fds and calls ft_exec_cmd. */
 
-int	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
+void	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 {
 	int	fd[2];
 	int	pid;
 
 	if (pipe(fd) == -1)
-		return (FAILED);
+		return ;
 	pid = fork();
 	if (pid == 0)
 	{
@@ -52,7 +55,6 @@ int	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 	close(fd[1]);
 	close(*mem_fd);
 	*mem_fd = fd[0];
-	return (SUCCESS);
 }
 
 /*ft_exec_tree is a recurive fuction that moves about the command tree:
@@ -62,7 +64,7 @@ when arriving to the last command: calling relevant function to finish cmd line
 returns TBD - int not necessarily usefull
 */
 
-int	ft_exec_tree(t_minishit *hell, t_node **tree, int *mem_fd)
+void	ft_exec_tree(t_minishit *hell, t_node **tree, int *mem_fd)
 {
 	if ((*tree)->type == pip)
 	{
@@ -71,7 +73,6 @@ int	ft_exec_tree(t_minishit *hell, t_node **tree, int *mem_fd)
 	}
 	else if ((*tree)->type == cmd || (*tree)->type == rdr)
 		ft_exec_last_cmd(hell, tree, mem_fd);
-	return (SUCCESS);
 }
 
 /* ft_exec assess if the prompt is made of a simple command
@@ -80,7 +81,7 @@ arguments: main structure hell and pointer to pointer to top of tree.
 returns TBD - int not necessarily usefull
 */
 
-int	ft_exec(t_minishit *hell, t_node **tree)
+void	ft_exec(t_minishit *hell, t_node **tree)
 {
 	int		mem_fd;
 
@@ -97,5 +98,4 @@ int	ft_exec(t_minishit *hell, t_node **tree)
 		close (mem_fd);
 		ft_exec_sgl(hell, tree);
 	}
-	return (SUCCESS);
 }

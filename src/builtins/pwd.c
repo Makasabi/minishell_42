@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:24:05 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:42:59 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	ft_pwd(t_minishit __attribute__((unused)) *hell,
 	if (getcwd(buff, sizeof(buff)) == NULL)
 		return (ft_error_msg(SHELL, PWD, NULL, NULL), FAILED);
 	else
+	{
+		printf("exit status = %d\n", hell->status);		
 		ft_putendl_fd(buff, fd_out);
+	}	
 	return (SUCCESS);
 }

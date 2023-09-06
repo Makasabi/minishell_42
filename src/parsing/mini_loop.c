@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 15:49:52 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:41:48 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	mini_loop(t_minishit *hell)
 	signal(SIGINT, display_prompt);
 	signal(SIGQUIT, SIG_IGN);
 	command = NULL;
-	command = readline(SHELL);
+	command = readline(PROMPT);
 	if (!command)
 		return (FALSE);
 	if (lexer(hell, command) != FALSE)

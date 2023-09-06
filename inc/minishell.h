@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:53:45 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:41:07 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,18 @@
 #  define BUFFER_SIZE 2048
 # endif
 
-# define SHELL "\1\033[1m\2\1\033[31m\2➜  M\
+# define PROMPT "\1\033[1m\2\1\033[31m\2➜  M\
 \1\033[38;5;208m\2in\1\033[38;5;220m\2is\1\033[32m\2he\1\033[0m\2\1\033[1m\2·\
 \1\033[34m\2el\1\033[38;5;129m\2le\1\033[0m\2 "
+# define SHELL "\1\033[1m\2\1\033[31m\2M\
+\1\033[38;5;208m\2in\1\033[38;5;220m\2is\1\033[32m\2he\1\033[0m\2\1\033[1m\2·\
+\1\033[34m\2el\1\033[38;5;129m\2le\1\033[0m\2"
 
 # define FALSE 0
 # define TRUE 1
 
 # define SUCCESS 0
-# define FAILED -1
+# define FAILED 1
 # define ERROR -1
 # define ERROR -1
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:09:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:54:51 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/06 20:57:58 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,27 @@
 # include "builtins.h"
 # include <unistd.h>
 # include <fcntl.h>
+# include <sys/stat.h>
 
 # define MALLERRPATH "Path malloc failled"
 # define MALFAILED -2
 # define CMDERR "command not found"
+# define ISDIRE "Is a directory"
+# define PERDEN "Permission Denied"
+# define SYNTER "syntax error near unexpected token `newline'"
+
+# define NONE -1
+# define FILE 0
+# define DIRE 1
+# define EXEC 2
 
 /* exec.c */
-int		ft_exec(t_minishit *hell, t_node **tree);
+void	ft_exec(t_minishit *hell, t_node **tree);
 int		ft_exec_sgl(t_minishit *hell, t_node **tree);
+// void	ft_not(t_minishit *hell, t_node **tree);
 
 /* exec_fork.c */
-int		ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd);
+void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd);
 int		ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd);
 
 /* exec_bltin.c */

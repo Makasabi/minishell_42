@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 12:32:27 by makasabi          #+#    #+#             */
-/*   Updated: 2023/09/05 16:21:19 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/06 20:32:11 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-static int	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
+static void	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
 {
 	char	*path;
 
@@ -29,12 +29,14 @@ static int	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
 	}
 	path = ft_check_path(hell, (*comd)->argv[0]);
 	if (!path)
-		return (clean_exit(hell), FAILED);
+		clean_exit(hell);
 	execve(path, (*comd)->argv, hell->my_env);
-	return (clean_exit(hell), FAILED);
+	clean_exit(hell);
 }
 
-int	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
+	// printf("status is: %d\n", hell->status);
+
+void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 {
 	int	fds[2];
 
@@ -43,7 +45,10 @@ int	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	dup2(*mem_fd, STDIN_FILENO);
 	close(*mem_fd);
 	if (ft_check_rdr(hell, (*comd)) == FAILED)
-		return (close(*mem_fd), clean_exit(hell), FAILED);
+	{
+		close(*mem_fd);
+		clean_exit(hell);
+	}
 	ft_set_redir(comd, fds);
 	if ((*comd)->type == cmd && (*comd)->built_in == FALSE)
 		ft_bin_cmd(hell, comd, fds);
@@ -54,11 +59,8 @@ int	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 			close(fds[1]);
 		if (fds[0] != 0)
 			close(fds[0]);
-		return (clean_exit(hell), SUCCESS);
+		clean_exit(hell);
 	}
-	else
-		return (SUCCESS);
-	return (FAILED);
 }
 
 int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
@@ -73,6 +75,7 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 		close(*mem_fd);
 		while (waitpid(0, &hell->status, WUNTRACED) != -1)
 			;
+		hell->status = hell->status % 255;
 	}
-	return (SUCCESS);
+	return (hell->status);
 }
