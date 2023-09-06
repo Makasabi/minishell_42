@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/09/05 16:57:18 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 20:07:37 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 	return (res);
 }
 
+/* exec pipe opens the righ fds and */
+
 int	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 {
 	int	fd[2];
@@ -53,6 +55,13 @@ int	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 	return (SUCCESS);
 }
 
+/*ft_exec_tree is a recurive fuction that moves about the command tree:
+first going left to execute the first piped cmd (or rdr),
+then moving to the right node.
+when arriving to the last command: calling relevant function to finish cmd line
+returns TBD - int not necessarily usefull
+*/
+
 int	ft_exec_tree(t_minishit *hell, t_node **tree, int *mem_fd)
 {
 	if ((*tree)->type == pip)
@@ -64,6 +73,12 @@ int	ft_exec_tree(t_minishit *hell, t_node **tree, int *mem_fd)
 		ft_exec_last_cmd(hell, tree, mem_fd);
 	return (SUCCESS);
 }
+
+/* ft_exec assess if the prompt is made of a simple command
+or several piped commands.
+arguments: main structure hell and pointer to pointer to top of tree.
+returns TBD - int not necessarily usefull
+*/
 
 int	ft_exec(t_minishit *hell, t_node **tree)
 {

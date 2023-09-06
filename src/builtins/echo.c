@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:55:23 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 18:07:34 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_charprint(char *str, int fd_out)
 	}
 }
 
-bool	ft_newline(char *str)
+static bool	ft_newline(char *str)
 {
 	int	i;
 
@@ -65,9 +65,9 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 		i++;
 	while (argv[i])
 	{
-		/*
-			if dollar_sign in argv[i] -> put_nbr de var globale g_exit
-		*/
+		if (newline == 0 && argv[i][0] == '-'\
+		&& argv[i][1] == 'n' && ft_newline(argv[i++]) == 0)
+			continue ;
 		ft_charprint(argv[i], fd_out);
 		if (argv[i + 1] != NULL)
 			ft_putchar_fd(' ', fd_out);

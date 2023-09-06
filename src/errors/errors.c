@@ -23,5 +23,5 @@ void	ft_error_msg(char *shell, char *cmd, char *arg, char *error)
 		ft_putstr_fd(error, 2);
 	else
 		perror(NULL);
-	// ft_putstr_fd("\n", 2);
+	ft_putstr_fd("\n", 2);
 }

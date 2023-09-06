@@ -6,7 +6,7 @@
 /*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 16:24:19 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 19:59:41 by makasabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,26 @@ static char	*ft_find_right_path(char **paths, char *cmd)
 	return (test);
 }
 
+/*Find a way to set either 126 or 127 as status code if command cannot execute or if command is simply not found*/
+
 char	*ft_check_path(t_minishit *hell, char *cmd)
 {
 	char	*path_val;
 	char	**paths;
 	char	*right_path;
 
+	if ((cmd[0] == '.' && cmd[1] == '/')
+		|| (cmd[0] == '.' && cmd[1] == '.' && cmd[2] == '/'))
+	{
+		if ((access(cmd, F_OK) >= 0) && access(cmd, X_OK) >= 0)
+			return (cmd);
+		else
+		{
+			hell->status = 127
+			ft_error_msg(SHELL, NULL, NOFLDIR, cmd);
+			return (NULL);
+		}
+	}
 	path_val = ft_var_value(hell->my_env, "PATH");
 	if (!path_val)
 		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
