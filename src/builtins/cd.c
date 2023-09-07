@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:55:57 by makasabi          #+#    #+#             */
-/*   Updated: 2023/09/05 16:55:59 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:41:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,7 @@ int	ft_cd(t_minishit *hell, char **argv, int fd_out)
 
 	(void)fd_out;
 	if (ft_table_size(argv) > 2)
-	{
-		printf("%d\n", ft_table_size(argv));
 		return (ft_error_msg(SHELL, CD, NULL, ARGNB), FAILED);
-	}
 	if (!argv[1] || (argv[1][0] == '-' && argv[1][1] == '\0'))
 	{
 		dir = ft_home_old(hell, argv);

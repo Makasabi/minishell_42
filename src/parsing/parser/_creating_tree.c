@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 13:13:01 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:41:47 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,26 @@ int	check_if_not(t_node *node)
 		if ((node->index == 0 && node->type == pip)
 			|| (node->type == rdr && node->next &&node->next->type == pip))
 		{
-			printf("Mini.Hell : syntax error near unexpected token « | »\n");
+			ft_err_syntax(SHELL, SYNERR, "|");
+			//printf("Mini.Hell : syntax error near unexpected token « | »\n");
 			return (FAILED);
 		}
 		if (node->type != cmd)
 		{
 			if (node->type == rdr && ft_table_size(node->argv) == 1)
 			{
-				printf("Mini.Hell : syntax error near unexpected token « %s »\n", node->argv[0]);
+				ft_err_syntax(SHELL, SYNERR, node->argv[0]);
+				//printf("Mini.Hell : syntax error near unexpected token « %s »\n", node->argv[0]);
 				return (FAILED);
 			}
 			else if (node->type == not)
 			{
 				if (node->next && node->next->argv)
-					printf("Mini.Hell : syntax error near unexpected token « %s »\n", node->next->argv[0]);
+					ft_err_syntax(SHELL, SYNERR, node->argv[0]);
+				//	printf("Mini.Hell : syntax error near unexpected token « %s »\n", node->next->argv[0]);
 				else
-					printf("Mini.Hell : syntax error near unexpected token « newline »\n");
+					ft_err_syntax(SHELL, SYNERR, "newline");
+				//	printf("Mini.Hell : syntax error near unexpected token « newline »\n");
 				return (FAILED);
 			}
 		}

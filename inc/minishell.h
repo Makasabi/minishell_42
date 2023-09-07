@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/06 17:41:07 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/07 11:32:34 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <readline/history.h>
 # include "libft.h"
 # include "colors.h"
+# include "errors.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048

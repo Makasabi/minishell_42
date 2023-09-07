@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 12:32:27 by makasabi          #+#    #+#             */
-/*   Updated: 2023/09/06 20:32:11 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/07 13:49:09 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static void	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
 	execve(path, (*comd)->argv, hell->my_env);
 	clean_exit(hell);
 }
-
-	// printf("status is: %d\n", hell->status);
 
 void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 {
@@ -66,6 +64,7 @@ void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 {
 	int	pid;
+	int	exit_status;
 
 	pid = fork();
 	if (pid == 0)
@@ -73,9 +72,10 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	else
 	{
 		close(*mem_fd);
-		while (waitpid(0, &hell->status, WUNTRACED) != -1)
+		while (waitpid(0, &exit_status, WUNTRACED) != -1)
 			;
-		hell->status = hell->status % 255;
+		if (WIFEXITED(exit_status) == TRUE)
+			hell->status = WEXITSTATUS(exit_status);
 	}
 	return (hell->status);
 }

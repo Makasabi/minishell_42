@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/06 19:57:29 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/07 13:50:03 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_is_executable(t_minishit *hell, char *cmd)
 {
 	int			i;
 	struct stat	sb;
-	
+
 	i = stat(cmd, &sb);
 	if (i < 0)
 		return (NONE);
@@ -76,7 +76,7 @@ int	ft_is_executable(t_minishit *hell, char *cmd)
 	if (sb.st_mode & S_IXUSR)
 		return (EXEC);
 	else if ((sb.st_mode & S_IFMT) == S_IFREG
-	&& !(sb.st_mode & S_IXUSR))
+		&& !(sb.st_mode & S_IXUSR))
 	{
 		hell->status = 126;
 		ft_error_msg(SHELL, cmd, NULL, PERDEN);

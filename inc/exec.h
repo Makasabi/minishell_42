@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:09:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/06 20:57:58 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/07 11:50:53 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@
 
 # define MALLERRPATH "Path malloc failled"
 # define MALFAILED -2
-# define CMDERR "command not found"
-# define ISDIRE "Is a directory"
-# define PERDEN "Permission Denied"
-# define SYNTER "syntax error near unexpected token `newline'"
 
 # define NONE -1
 # define FILE 0
@@ -34,7 +30,6 @@
 /* exec.c */
 void	ft_exec(t_minishit *hell, t_node **tree);
 int		ft_exec_sgl(t_minishit *hell, t_node **tree);
-// void	ft_not(t_minishit *hell, t_node **tree);
 
 /* exec_fork.c */
 void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd);
@@ -50,7 +45,6 @@ void	ft_set_redir(t_node **cmd, int *fd);
 /* exec_check_path.c */
 char	*ft_check_path(t_minishit *hell, char *cmd);
 
-/* errors.c */
-void	ft_error_msg(char *shell, char *cmd, char *arg, char *error);
+
 
 #endif
