@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 11:45:20 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 14:40:29 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	clean_hell(t_minishit *hell)
 void	display_prompt(int woop)
 {
 	(void)woop;
+	
 	write(1, "\n", 1);
 	rl_replace_line("", 0);
 	rl_on_new_line();

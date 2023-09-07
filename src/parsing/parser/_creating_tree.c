@@ -6,13 +6,13 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 18:04:22 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 15:24:32 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "env.h"
-
+#include "errors.h"
 
 /*
 	create whole functions for a better parsing
@@ -25,33 +25,34 @@ int	check_if_not(t_node *node)
 {
 	while (node)
 	{
-		if ((node->index == 0 && node->type == pip)
+		if ((node->type == pip && (!node->next || node->next->type == pip))
 			|| (node->type == rdr && node->next && node->next->type == pip))
 		{
-			printf("Mini.Hell : syntax error near unexpected token « | »\n");
+			ft_err_syntax(SHELL, SYNERR, "|");
 			return (FAILED);
 		}
 		if (node->type != cmd)
 		{
-			if (node->type == rdr && ft_table_size(node->argv) == 1)
+			if (node->type == rdr && ft_table_size(node->argv) != 1)
 			{
-				printf("Mini.Hell : syntax error near unexpected token « %s »\n", node->argv[0]);
+				printf("tree is treeing index is %d\n", node->index);
+				ft_err_syntax(SHELL, SYNERR, node->argv[0]);
 				return (FAILED);
 			}
 			else if (node->type == not)
 			{
 				if (node->next && node->next->argv)
-					printf("Mini.Hell : syntax error near unexpected token « %s »\n", node->next->argv[0]);
+					ft_err_syntax(SHELL, SYNERR, node->argv[0]);
 				else
-					printf("Mini.Hell : syntax error near unexpected token « newline »\n");
+					ft_err_syntax(SHELL, SYNERR, "newline");
 				return (FAILED);
 			}
 		}
-		printf("this one \n");
 		node = node->next;
 	}
-	return(SUCCESS);
+	return (SUCCESS);
 }
+
 
 /*
 		CREATING TREE
@@ -62,18 +63,19 @@ int	check_if_not(t_node *node)
 
 */
 
-int	creating_tree(t_minishit *hell)
+int    creating_tree(t_minishit *hell)
 {
-	// if (check_if_not(hell->node) == FAILED)
-	// {
-	// 	/* NOTHING SHOULD HAPPEN
-	// 		Mini.Hell : syntax error near unexpected token (the one next to the one type->not)*/
-	// 	return (FALSE);
-	// }
-	if (hell->pipes == 0)
-		single_command(hell, hell->node);
-	else
-		complex_commands(hell, hell->node);
-	redir_in_tree(hell->node);
-	return (TRUE);
+    if (check_if_not(hell->node) == FAILED)
+    {
+        hell->status = 2;
+        /* NOTHING SHOULD HAPPEN
+            Mini.Hell : syntax error near unexpected token (the one next to the one type->not)*/
+        return (FALSE);
+    }
+    if (hell->pipes == 0)
+        single_command(hell, hell->node);
+    else
+        complex_commands(hell, hell->node);
+    redir_in_tree(hell->node);
+    return (TRUE);
 }

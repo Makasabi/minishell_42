@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:16:37 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 12:11:18 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 14:49:40 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,18 +103,22 @@ t_node	*make_argv_rdr(t_node *node, t_token *token)
 t_node	*make_argv_cmd(t_node *node, t_token *token)
 {
 	int		i;
+	int		flag;
 
 	i = count_tab_size(token);
 	node->argv = ft_calloc (sizeof(char *), i);
 	if (!node->argv)
 		return (NULL);
 	i = 0;
+	flag = 0;
 	while (token && token->type != PIPE)
 	{
+		if (!ft_strcmp("echo", token->str))
+			flag = 1;
 		if (ft_strlen(token->str) != 0 && token->type != REDIR)
 		{
 			node->argv[i] = ft_strdup(token->str);
-			if (i != 0 && token->space == 1)
+			if (i != 0 && flag == 1 && token->space == 1)
 			{
 				free (node->argv[i]);
 				node->argv[i] = ft_strjoin(ft_strdup(token->str), " ");

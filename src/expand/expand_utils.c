@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/30 00:44:50 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 16:04:51 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	get_end(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] && str[i] == '?')
+	if (str[i] && (str[i] == '?' || ft_isdigit(str[i])))
 		return (1);
 	while (str[i] && ft_isalnum(str[i]))
 		i++;

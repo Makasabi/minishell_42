@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/30 00:40:52 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 16:05:24 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*get_value(t_minishit *hell, char *str)
 	new = replace_var_by_value(str, value, start, end);
 	free(var);
 	free(str);
-	return(new);
+	return (new);
 }
 
 void	expander(t_minishit *hell, t_token *token)
