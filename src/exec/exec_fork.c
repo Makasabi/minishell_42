@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 12:32:27 by makasabi          #+#    #+#             */
-/*   Updated: 2023/09/07 13:49:09 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/07 15:34:48 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 		while (waitpid(0, &exit_status, WUNTRACED) != -1)
 			;
 		if (WIFEXITED(exit_status) == TRUE)
-			hell->status = WEXITSTATUS(exit_status);
+			g_status = WEXITSTATUS(exit_status);
 	}
-	return (hell->status);
+	return (g_status);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:24:05 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:00:49 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@
 
 # define HOMENS "HOME not set"
 # define OPWDNS "OLDPWD not set"
-# define ENVNS    "environment not set"
-# define INVOPT    "invalid option"
-# define ARGNB    "too many arguments"
+# define ENVNS "environment not set"
+# define INVOPT "invalid option"
+# define ARGNB "too many arguments"
 # define ERROLDPWD "error updating OLDPWD"
 # define ERRPWD "error updating PWD"
-# define IVALID    "not a valid identifier"
+# define IVALID "not a valid identifier"
 # define IVALPM "invalid parameter name"
 # define IVALOP "invalid option"
 
 # define CD "cd"
 # define EXP "export"
+# define EXT "exit"
 # define ENV "env"
 # define PWD "pwd"
 # define UST "unset"

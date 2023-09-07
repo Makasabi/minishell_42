@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/07 11:32:34 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/07 15:48:59 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@
 # define SKIP 1
 # define NOSKIP 0
 
+extern int	g_status;
+
 typedef enum e_type
 {
 	pip,
@@ -115,7 +117,6 @@ typedef struct s_token
 typedef struct s_minishit
 {
 	int		pipes;
-	int		status;
 	char	**path;
 	char	**my_env;
 	t_node	*node;

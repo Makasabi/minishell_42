@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 13:50:03 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/07 15:37:09 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,13 @@ int	ft_is_executable(t_minishit *hell, char *cmd)
 	int			i;
 	struct stat	sb;
 
+	(void)hell;
 	i = stat(cmd, &sb);
 	if (i < 0)
 		return (NONE);
 	if ((sb.st_mode & S_IFMT) == S_IFDIR)
 	{
-		hell->status = 126;
+		g_status = 126;
 		ft_error_msg(SHELL, cmd, NULL, ISDIRE);
 		return (DIRE);
 	}
@@ -78,7 +79,7 @@ int	ft_is_executable(t_minishit *hell, char *cmd)
 	else if ((sb.st_mode & S_IFMT) == S_IFREG
 		&& !(sb.st_mode & S_IXUSR))
 	{
-		hell->status = 126;
+		g_status = 126;
 		ft_error_msg(SHELL, cmd, NULL, PERDEN);
 		return (FILE);
 	}
@@ -106,7 +107,7 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 	right_path = ft_find_right_path(paths, cmd);
 	if (!right_path)
 	{
-		hell->status = 127;
+		g_status = 127;
 		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
 	}
 	return (right_path);

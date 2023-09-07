@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 11:41:47 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/07 15:41:59 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,11 @@ int	check_if_not(t_node *node)
 
 int	creating_tree(t_minishit *hell)
 {
-	// if (check_if_not(hell->node) == FAILED)
-	// {
-	// 	/* NOTHING SHOULD HAPPEN
-	// 		Mini.Hell : syntax error near unexpected token (the one next to the one type->not)*/
-	// 	return (FALSE);
-	// }
+	if (check_if_not(hell->node) == FAILED)
+	{
+		g_status = 2;
+		return (FALSE);
+	}
 	if (hell->pipes == 0)
 		single_command(hell, hell->node);
 	else

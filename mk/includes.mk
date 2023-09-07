@@ -1,3 +1,4 @@
+INCLUDES += ./inc/errors.h
 INCLUDES += ./inc/parsing.h
 INCLUDES += ./inc/expand.h
 INCLUDES += ./inc/env.h
