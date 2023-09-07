@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:16:37 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/02 23:41:36 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 12:11:18 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,18 @@
 
 */
 
-void    is_built_in(t_node *node, char *str)
+int    is_built_in(t_node *node, char *str)
 {
-    if (!ft_strcmp("echo", str) || !ft_strcmp("cd", str)
-        || !ft_strcmp("pwd", str) || !ft_strcmp("export", str)
-        || !ft_strcmp("unset", str) || !ft_strcmp("env", str)
-        || !ft_strcmp("exit", str))
-        node->built_in = TRUE;
+	if (!ft_strcmp("echo", str) || !ft_strcmp("cd", str)
+		|| !ft_strcmp("pwd", str) || !ft_strcmp("export", str)
+		|| !ft_strcmp("unset", str) || !ft_strcmp("env", str)
+		|| !ft_strcmp("exit", str))
+	{
+		if (node)
+			node->built_in = TRUE;
+		return (TRUE);
+	}
+	return (FALSE);
 }
 
 void	index_built_ing(t_node *node)
@@ -53,13 +58,17 @@ void	index_built_ing(t_node *node)
 
 */
 
-int	count_tab_size(t_token *token, int current_type)
+int	count_tab_size(t_token *token)
 {
 	int	i;
 
 	i = 1;
-	while (token && token->type == current_type && i++)
+	while (token && token->type != PIPE)
+	{
+		if (token->type != REDIR)
+			i++;
 		token = token->next;
+	}
 	return (i);
 }
 
@@ -91,22 +100,27 @@ t_node	*make_argv_rdr(t_node *node, t_token *token)
 
 */
 
-t_node	*make_argv_cmd(t_node *node, t_token *token, int current_type)
+t_node	*make_argv_cmd(t_node *node, t_token *token)
 {
 	int		i;
 
-	i = count_tab_size(token, current_type);
+	i = count_tab_size(token);
 	node->argv = ft_calloc (sizeof(char *), i);
 	if (!node->argv)
 		return (NULL);
 	i = 0;
-	while (token && token->type == current_type)
+	while (token && token->type != PIPE)
 	{
-		if (ft_strlen(token->str) != 0)
+		if (ft_strlen(token->str) != 0 && token->type != REDIR)
 		{
 			node->argv[i] = ft_strdup(token->str);
-			i++;	
-		}	
+			if (i != 0 && token->space == 1)
+			{
+				free (node->argv[i]);
+				node->argv[i] = ft_strjoin(ft_strdup(token->str), " ");
+			}
+			i++;
+		}
 		token = token->next;
 	}
 	return (node);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:55:23 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:11:50 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 			if dollar_sign in argv[i] -> put_nbr de var globale g_exit
 		*/
 		ft_charprint(argv[i], fd_out);
-		if (argv[i + 1] != NULL)
-			ft_putchar_fd(' ', fd_out);
+		// if (argv[i + 1] != NULL)
+		// 	ft_putchar_fd(' ', fd_out);
 		i++;
 	}
 	if (newline == 1)

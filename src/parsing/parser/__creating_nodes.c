@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:18:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/02 22:33:18 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 12:04:08 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	cmd_node(t_minishit *hell, t_token *token)
 	t_node	*new_node;
 
 	new_node = ft_new_node(cmd);
-	new_node = make_argv_cmd(new_node, token, ARG);
+	new_node = make_argv_cmd(new_node, token);
 	new_node->redir = none;
 	ft_add_back_node(&hell->node, new_node);
 }
@@ -44,6 +44,7 @@ void	rdr_node(t_minishit *hell, t_token *token)
 	int		type;
 
 	new_node = ft_new_node(rdr);
+	// printf("node str is %s\n", token->next->str);
 	new_node = make_argv_rdr(new_node, token->next);
 	type = which_redir(token->str);
 	if (type == APPEND)
@@ -72,25 +73,35 @@ void	rdr_node(t_minishit *hell, t_token *token)
 
 int	make_nodes(t_minishit *hell, t_token *token)
 {
+	int	flag;
+
+	flag = 0;
 	while (token)
 	{
 		if (ft_strlen(token->str) == 0)
 			token = token->next;
-		if (token && token->type == PIPE)
+		else if (token && token->type == PIPE)
 		{
 			pip_node(hell);
 			token = token->next;
+			flag = 0;
 		}
-		if (token && token->type == ARG)
+		else if (token && token->type == ARG)
 		{
-			cmd_node(hell, token);
+			if (flag == 0)
+			{
+				cmd_node(hell, token);
+				flag = 1;
+			}
 			while (token && token->type == ARG)
 				token = token->next;
 		}
-		if (token && token->type == REDIR)
+		else if (token && token->type == REDIR)
 		{
 			if (token->next && token->next->type == REDIR)
+			{
 				rdr_node(hell, token);
+			}
 			else
 				ft_add_back_node(&hell->node, ft_new_node(not));
 			token = token->next;

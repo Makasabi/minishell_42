@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:53:45 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:02:44 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct s_node
 typedef struct s_token
 {
 	int				type;
+	int				space;
 	char			quote;
 	char			*str;
 	struct s_token	*redir_in;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 13:13:01 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/05 18:04:22 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_if_not(t_node *node)
 	while (node)
 	{
 		if ((node->index == 0 && node->type == pip)
-			|| (node->type == rdr && node->next &&node->next->type == pip))
+			|| (node->type == rdr && node->next && node->next->type == pip))
 		{
 			printf("Mini.Hell : syntax error near unexpected token « | »\n");
 			return (FAILED);
@@ -47,6 +47,7 @@ int	check_if_not(t_node *node)
 				return (FAILED);
 			}
 		}
+		printf("this one \n");
 		node = node->next;
 	}
 	return(SUCCESS);
