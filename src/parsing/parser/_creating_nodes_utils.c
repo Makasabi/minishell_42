@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:16:37 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 14:49:40 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/08 12:35:49 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 */
 
-int    is_built_in(t_node *node, char *str)
+int	is_built_in(t_node *node, char *str)
 {
 	if (!ft_strcmp("echo", str) || !ft_strcmp("cd", str)
 		|| !ft_strcmp("pwd", str) || !ft_strcmp("export", str)
@@ -50,7 +50,7 @@ void	index_built_ing(t_node *node)
 	}
 }
 
-/* 
+/*
 		COUNT TAB SIZE
 		
 - browses tokens while it's the same type or the end

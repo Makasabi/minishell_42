@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 14:40:29 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/08 12:20:32 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	clean_hell(t_minishit *hell)
 void	display_prompt(int woop)
 {
 	(void)woop;
-	
 	write(1, "\n", 1);
 	rl_replace_line("", 0);
 	rl_on_new_line();
@@ -60,7 +59,6 @@ void	display_prompt(int woop)
 int	mini_loop(t_minishit *hell)
 {
 	char	*command;
-	// int i;
 
 	signal(SIGINT, display_prompt);
 	signal(SIGQUIT, SIG_IGN);
@@ -73,15 +71,6 @@ int	mini_loop(t_minishit *hell)
 		expander(hell, hell->token);
 		if (parser(hell) != FALSE)
 		{
-			// while (hell->node)
-			// {
-			// 	i = 0;
-			// 	printf("type is %d\n", hell->node->type);
-			// 	if (hell->node->type == cmd)
-			// 		while (hell->node->argv[i++])
-			// 			printf("type is %s\n", hell->node->argv[i]);
-			// 	hell->node = hell->node->next;
-			// }
 			while (hell->node && hell->node->up)
 				hell->node = hell->node->up;
 			if (hell->node)

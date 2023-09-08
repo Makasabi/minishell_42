@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 16:05:24 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/08 12:21:26 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,4 @@ void	expander(t_minishit *hell, t_token *token)
 				-> decision on what we do with it ?
 					(ex : echo \$HOME -> \/home/wan as it doesn't "unread" $ ?)
 		
-		
-		- see wildcards for bonuses ? 
-		- parenthesis () priorities should be handled by moving the concerned node up or down the tree
-
 */

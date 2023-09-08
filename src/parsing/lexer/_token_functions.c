@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:16:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 12:01:23 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/08 12:14:04 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_token	*ft_tokenlast(t_token *token)
 	return (token);
 }
 
-
 /* 
 		TOKEN SIZE
 
@@ -70,7 +69,6 @@ int	ft_token_size(t_token *token)
 	}
 	return (nb_elements);
 }
-
 
 /* 
 		ADD BACK TOKEN

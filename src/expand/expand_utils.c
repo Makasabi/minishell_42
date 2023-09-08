@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 16:04:51 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/08 12:21:46 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int	dollar_sign(char *str)
 	i = 0;
 	while (str[i])
 	{
-        if (str[i + 1] && str[i + 1] == '?')
-            i++;
+		if (str[i + 1] && str[i + 1] == '?')
+			i++;
 		else if (str[i] == '$')
 			return (i);
-        else
-            i++;
+		else
+			i++;
 	}
 	return (FAILED);
 }
