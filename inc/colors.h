@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:56:01 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:27:37 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:52:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLORS_H
 # define COLORS_H
 
-# include "minishell.h"
+// # include "minishell.h"
 
 # define _END "\1\033[0m\2"
 # define _BOLD "\1\033[1m\2"

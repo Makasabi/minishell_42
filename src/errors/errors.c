@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:50:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/07 13:50:23 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/08 17:03:23 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,47 +16,36 @@
 
 void	ft_err_syntax(char *shell, char *msg, char *str)
 {
+	int fd;
+	fd = dup(STDOUT_FILENO);
+	dup2(2, 1);
 	if (shell)
-	{
-		ft_putstr_fd(shell, 2);
-		ft_putstr_fd(": ", 2);
-	}
+		printf("%s: ", shell);
 	if (cmd)
-	{
-		ft_putstr_fd(msg, 2);
-		ft_putstr_fd(": ", 2);
-	}
+		printf("%s: ", msg);
 	if (str)
-	{
-		ft_putstr_fd("« ", 2);
-		ft_putstr_fd(str, 2);
-		ft_putstr_fd(" »", 2);
-		ft_putstr_fd("\n", 2);
-	}
+		printf("« %s »\n", str);
+	dup2(1, fd);
+	close(fd);
 }
 
 void	ft_error_msg(char *shell, char *cmd, char *arg, char *error)
 {
+	int fd;
+	fd = dup(STDOUT_FILENO);
+	dup2(2, 1);
 	if (shell)
-	{
-		ft_putstr_fd(shell, 2);
-		ft_putstr_fd(": ", 2);
-	}
+		printf("%s: ", shell);
 	if (cmd)
-	{
-		ft_putstr_fd(cmd, 2);
-		ft_putstr_fd(": ", 2);
-	}
+		printf("%s: ", cmd);
 	if (arg)
-	{
-		ft_putstr_fd(arg, 2);
-		ft_putstr_fd(": ", 2);
-	}
+		printf("%s: ", arg);
 	if (error)
-	{
-		ft_putstr_fd(error, 2);
-		ft_putstr_fd("\n", 2);
-	}
+		printf("%s", error);
 	else
+	{
 		perror(NULL);
+		return ;		
+	}
+	printf("\n");
 }
