@@ -24,6 +24,7 @@ SRCS += ./src/parsing/lexer/creating_tokens.c
 SRCS += ./src/parsing/lexer/token_redir.c
 SRCS += ./src/parsing/lexer/creating_tokens_utils.c
 SRCS += ./src/main/main.c
+SRCS += ./src/main/shell_header.c
 SRCS += ./src/main/clean_exit.c
 SRCS += ./src/exec/exec_check_redir.c
 SRCS += ./src/exec/exec_fork.c

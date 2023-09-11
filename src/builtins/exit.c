@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:11 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/07 15:41:01 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/11 17:07:17 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	ft_exit(t_minishit *hell, char **argv)
 {
 	int	exit_status;
-	
+
 	if (ft_table_size(argv) > 2)
 		return (ft_error_msg(SHELL, EXT, NULL, ARGNB), FAILED);
 	if (argv[1])

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 17:35:27 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 15:34:48 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/11 17:10:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_free(char **split)
 int	clean_exit(t_minishit *hell)
 {
 	int	exit_status;
-	
+
 	exit_status = g_status;
 	if (hell->my_env)
 		ft_free(hell->my_env);

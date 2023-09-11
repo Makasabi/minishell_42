@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/08 15:36:47 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/11 16:29:17 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@
 # include "libft.h"
 # include "colors.h"
 # include "errors.h"
+# include <sys/ioctl.h>
+# include <asm/termbits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048
 # endif
 
+# define HEAD_LINE "M  I  N  I  S  H  E  ·  E  L  L  E"
 # define PROMPT "\1\033[1m\2\1\033[31m\2➜  M\
 \1\033[38;5;208m\2in\1\033[38;5;220m\2is\1\033[32m\2he\1\033[0m\2\1\033[1m\2·\
 \1\033[34m\2el\1\033[38;5;129m\2le\1\033[0m\2 "
@@ -133,5 +136,9 @@ void	ft_free(char **split);
 void	ft_clear_token(t_token *token);
 void	ft_clear_node(t_node *node);
 void	ft_free(char **split);
+
+/* shell_header.c */
+
+void	ft_header(t_minishit *hell);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:09:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/07 11:50:53 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/11 17:09:03 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,5 @@ void	ft_set_redir(t_node **cmd, int *fd);
 
 /* exec_check_path.c */
 char	*ft_check_path(t_minishit *hell, char *cmd);
-
-
 
 #endif
