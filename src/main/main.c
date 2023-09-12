@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/11 15:26:08 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 11:40:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 #include "parsing.h"
 #include "builtins.h"
 
-int	g_status;
-
 void	clean_init(t_minishit *hell)
 {
 	hell->pipes = 0;
-	hell->path = NULL;
 	hell->my_env = NULL;
 	hell->node = NULL;
 	hell->token = NULL;
+	hell->exit = 0;
+	hell->pids = NULL;
 }
 
 int	main(int argc, char **argv)
@@ -37,6 +36,7 @@ int	main(int argc, char **argv)
 		return (0);
 	clean_init(hell);
 	hell->my_env = ft_env_init();
+	ft_header(hell);
 	ft_header(hell);
 	while (1)
 	{

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:49:30 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/07 13:49:33 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 11:28:22 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 {
 	int	fd[2];
 	int	pid;
+	int	i;
 
 	if (pipe(fd) == -1)
 		return ;
@@ -52,6 +53,10 @@ void	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 		close(fd[0]);
 		ft_exec_cmd(hell, node, mem_fd);
 	}
+	i = 0;
+	while (hell->pids[i] != 0 && i <= hell->pipes)
+		i++;
+	hell->pids[i] = pid;
 	close(fd[1]);
 	close(*mem_fd);
 	*mem_fd = fd[0];
@@ -89,6 +94,9 @@ void	ft_exec(t_minishit *hell, t_node **tree)
 	if ((*tree)->type == pip
 		|| ((*tree)->type == cmd && (*tree)->built_in == FALSE))
 	{
+		hell->pids = ft_calloc(sizeof(pid_t), hell->pipes + 1);
+		if (!hell->pids)
+			return (ft_error_msg(SHELL, NULL, NULL, "Pid tab malloc error"));
 		ft_exec_tree(hell, tree, &mem_fd);
 		close(mem_fd);
 	}

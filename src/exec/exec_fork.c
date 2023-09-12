@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 12:32:27 by makasabi          #+#    #+#             */
-/*   Updated: 2023/09/11 12:35:53 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 11:39:48 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,23 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 {
 	int	pid;
 	int	exit_status;
+	int	i;
 
 	pid = fork();
+	i = 0;
 	if (pid == 0)
 		ft_exec_cmd(hell, comd, mem_fd);
 	else
 	{
 		close(*mem_fd);
-		while (waitpid(0, &exit_status, WUNTRACED) != -1)
-			;
+		hell->pids[hell->pipes] = pid;
+		while (i <= hell->pipes)
+		{
+			waitpid(hell->pids[i], &exit_status, WUNTRACED);
+			i++;
+		}
 		if (WIFEXITED(exit_status) == TRUE)
-			g_status = WEXITSTATUS(exit_status);
+			hell->exit = WEXITSTATUS(exit_status);
 	}
-	return (g_status);
+	return (hell->exit);
 }

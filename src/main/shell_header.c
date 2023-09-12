@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:25:24 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/11 17:03:00 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 11:41:08 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ static void	ft_print_header(int width)
 	{
 		i = -1;
 		while (++i < (width / 2 - half_title))
-			printf("%s%s ", _REV, ft_chose_color(j));
-		printf("%s%s%s%s", _BOLD, _REV, ft_chose_color(j), HEAD_LINE);
+			printf("%s ", ft_chose_color(j));
+		printf("%s%s%s", _BOLD, ft_chose_color(j), HEAD_LINE);
 		while (++i <= (width - (int)strlen(HEAD_LINE)))
-			printf("%s ", _REV);
+			printf(" ");
 		printf("\n");
 		j++;
+		usleep(150000);
 	}
 	printf("%s\n", _END);
 }

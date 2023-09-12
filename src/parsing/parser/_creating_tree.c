@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 15:41:59 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 10:15:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	creating_tree(t_minishit *hell)
 {
 	if (check_if_not(hell->node) == FAILED)
 	{
-		g_status = 2;
+		hell->exit = 2;
 		return (FALSE);
 	}
 	if (hell->pipes == 0)

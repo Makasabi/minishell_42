@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 10:56:05 by makasabi          #+#    #+#             */
-/*   Updated: 2023/09/07 15:34:48 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 10:15:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	ft_exec_bltin(t_minishit *hell, char **argv, int *fds)
 		res = ft_unset(hell, argv);
 	else if (argv[0][0] == 'e')
 		res = ft_exec_bltin_cont(hell, argv, fds);
-	g_status = res;
+	hell->exit = res;
 	return (res);
 }

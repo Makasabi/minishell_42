@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/11 11:37:26 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 11:42:30 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,8 @@ static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 	j = -1;
 	while (cmd[++j])
 		test[i + j] = cmd[j];
-	test[i + j] = '\0';
-	return (test);
-}
+	test[i + j] = 0
 
-static char	*ft_find_right_path(char **paths, char *cmd)
-{
-	char	*test;
-	int		i;
-	size_t	size_cmd;
-
-	i = -1;
 	size_cmd = ft_strlen(cmd);
 	while (paths[++i])
 	{
@@ -70,7 +61,7 @@ int	ft_is_executable(t_minishit *hell, char *cmd)
 		return (NONE);
 	if ((sb.st_mode & S_IFMT) == S_IFDIR)
 	{
-		g_status = 126;
+		hell->exit = 126;
 		ft_error_msg(SHELL, cmd, NULL, ISDIRE);
 		return (DIRE);
 	}
@@ -79,7 +70,7 @@ int	ft_is_executable(t_minishit *hell, char *cmd)
 	else if ((sb.st_mode & S_IFMT) == S_IFREG
 		&& !(sb.st_mode & S_IXUSR))
 	{
-		g_status = 126;
+		hell->exit = 126;
 		ft_error_msg(SHELL, cmd, NULL, PERDEN);
 		return (FILE);
 	}
@@ -107,7 +98,7 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 	right_path = ft_find_right_path(paths, cmd);
 	if (!right_path)
 	{
-		g_status = 127;
+		hell->exit = 127;
 		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
 	}
 	return (right_path);

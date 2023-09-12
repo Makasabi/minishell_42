@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/07 15:41:59 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 10:15:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_pwd(t_minishit __attribute__((unused)) *hell,
 		return (ft_error_msg(SHELL, PWD, NULL, NULL), FAILED);
 	else
 	{
-		printf("exit status = %d\n", g_status);
+		printf("exit status = %d\n", hell->exit);
 		ft_putendl_fd(buff, fd_out);
-		g_status = 0;
+		hell->exit = 0;
 	}
 	return (SUCCESS);
 }

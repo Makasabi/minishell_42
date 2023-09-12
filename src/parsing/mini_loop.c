@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 11:53:52 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 11:04:30 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	clear_hell(t_minishit *hell)
 		ft_clear_token(hell->token);
 	if (hell->node)
 		ft_clear_node(hell->node);
-	if (hell->path)
-		ft_free(hell->path);
+	if (hell->pids)
+		free(hell->pids);
 }
 
 /*
@@ -41,9 +41,9 @@ void	clear_hell(t_minishit *hell)
 void	clean_hell(t_minishit *hell)
 {
 	hell->pipes = 0;
-	hell->path = NULL;
 	hell->node = NULL;
 	hell->token = NULL;
+	hell->pids = NULL;
 }
 
 void	display_prompt(int woop)
