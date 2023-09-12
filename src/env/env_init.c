@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 18:43:33 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/12 16:19:17 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ char	**ft_env_init(void)
 		return (ft_env_from_scratch());
 	my_env = malloc(sizeof(char **) * (size + 1));
 	if (!my_env)
-		ft_env_error(my_env, 0);
+		return (ft_env_error(my_env, 0), NULL);
 	while (environ[i])
 	{
 		my_env[i] = ft_strdup(environ[i]);
 		if (!my_env[i])
-			ft_env_error(my_env, 1);
+			return (ft_env_error(my_env, 1), NULL);
 		i++;
 	}
 	my_env[i] = NULL;
@@ -57,13 +57,13 @@ char	**ft_env_from_scratch(void)
 	getcwd(buff, sizeof(buff));
 	my_env = malloc(sizeof(char **) * 4);
 	if (!my_env)
-		ft_env_error(my_env, 0);
+		return (ft_env_error(my_env, 0), NULL);
 	my_env[0] = ft_strjoin("PWD=", buff);
 	if (!my_env[0])
-		ft_env_error(my_env, 2);
+		return (ft_env_error(my_env, 2), NULL);
 	my_env[1] = ft_strdup("SHLVL=1");
 	if (!my_env[1])
-		ft_env_error(my_env, 1);
+		return (ft_env_error(my_env, 1), NULL);
 	my_env[2] = NULL;
 	return (my_env);
 }
@@ -142,7 +142,7 @@ int	ft_var_line(char **my_env, char *var)
 		}
 		i++;
 	}
-	return (FAILED);
+	return (-1);
 }
 
 /* This function searches through the environment table for the variable name

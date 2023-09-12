@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:31:34 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/07 14:35:12 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 13:10:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define CMDERR "command not found"
 # define ISDIRE "Is a directory"
 # define PERDEN "Permission Denied"
+# define MALERR "Malloc failed"
 
 # define SYNERR "syntax error near unexpected token "
 

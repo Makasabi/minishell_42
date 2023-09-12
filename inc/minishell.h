@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/12 11:39:24 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 12:33:23 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 #  define BUFFER_SIZE 2048
 # endif
 
-# define HEAD_LINE "M  I  N  I  S  H  E  ·  E  L  L  E"
 # define HEAD_LINE "M  I  N  I  S  H  E  ·  E  L  L  E"
 # define PROMPT "\1\033[1m\2\1\033[31m\2➜  M\
 \1\033[38;5;208m\2in\1\033[38;5;220m\2is\1\033[32m\2he\1\033[0m\2\1\033[1m\2·\

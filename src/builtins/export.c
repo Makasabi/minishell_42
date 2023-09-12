@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/07 15:25:27 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 13:15:13 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ static char	**ft_dup_env(char **env)
 	size = ft_table_size(env);
 	export = malloc(sizeof(char **) * (size + 1));
 	if (!export)
-		return (NULL);
+		return (ft_error_msg(SHELL, EXP, NULL, MALERR), NULL);
 	while (env[i])
 	{
 		export[i] = ft_strdup(env[i]);
 		if (!export[i])
-			return (NULL);
+			return (ft_error_msg(SHELL, EXP, env[i], MALERR), \
+			ft_free(export), NULL);
 		i++;
 	}
 	export[i] = NULL;
