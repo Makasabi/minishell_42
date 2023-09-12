@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:49:30 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/12 11:28:22 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 12:02:26 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_exec(t_minishit *hell, t_node **tree)
 	{
 		hell->pids = ft_calloc(sizeof(pid_t), hell->pipes + 1);
 		if (!hell->pids)
-			return (ft_error_msg(SHELL, NULL, NULL, "Pid tab malloc error"));
+			return (close(mem_fd), ft_error_msg(SHELL, NULL, NULL, "Pid tab malloc error"));
 		ft_exec_tree(hell, tree, &mem_fd);
 		close(mem_fd);
 	}

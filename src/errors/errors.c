@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:50:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/11 17:07:44 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 12:01:52 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,6 @@ void	ft_error_msg(char *shell, char *cmd, char *arg, char *error)
 		return ;		
 	}
 	printf("\n");
+	dup2(1, fd);
+	close(fd);
 }
