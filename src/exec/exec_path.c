@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/12 11:42:30 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/12 11:48:42 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,17 @@ static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 	j = -1;
 	while (cmd[++j])
 		test[i + j] = cmd[j];
-	test[i + j] = 0
+	test[i + j] = '\0';
+	return (test);
+}
 
+static char	*ft_find_right_path(char **paths, char *cmd)
+{
+	char	*test;
+	int		i;
+	size_t	size_cmd;
+
+	i = -1;
 	size_cmd = ft_strlen(cmd);
 	while (paths[++i])
 	{
