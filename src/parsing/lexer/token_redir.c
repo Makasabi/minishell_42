@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/02 01:30:11 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 12:12:19 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,12 @@ void	assign_type_redir(t_minishit *hell, t_token *token)
 		if (token->type != PIPE && token->type != ARG)
 		{
 			redir = which_redir(token->str);
-			if (token->next
-				&& (redir == INPUT || redir == OUTPUT || redir == APPEND))
+			if (token->next && (redir == INPUT || redir == OUTPUT
+					|| redir == HEREDOC || redir == APPEND))
 			{
-				if (token->next->type == ARG)
-					token->next->type = REDIR;
-				// else
-				// 	token->type = not;
+				token->next->type = REDIR;
+				token = token->next;
 			}
-			if (token->prev && redir == HEREDOC)
-				token->prev->type = REDIR;
 		}
 		token = token->next;
 	}

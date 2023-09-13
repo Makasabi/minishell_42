@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:51:26 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/12 12:33:23 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 16:30:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_node
 typedef struct s_token
 {
 	int				type;
+	int				space;
 	char			quote;
 	char			*str;
 	struct s_token	*redir_in;

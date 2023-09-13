@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:07:19 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/02 22:32:24 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/05 18:02:43 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	is_token(char c)
 		return (INPUT);
 	if (c == '|')
 		return (PIPE);
+	if (c == ';')
+		return (END);
 	else
 		return (-1);
 }
@@ -46,7 +48,8 @@ int	is_quote(char *str, int i)
 	if (str[i] == SINGLE || str[i] == DOUBLE)
 		return (1);
 	else if (str[i] == '\\')
-	{	if (str[i + 1] && (str[i + 1] == SINGLE || str[i + 1] == DOUBLE))
+	{
+		if (str[i + 1] && (str[i + 1] == SINGLE || str[i + 1] == DOUBLE))
 			return (2);
 	}
 	return (FALSE);

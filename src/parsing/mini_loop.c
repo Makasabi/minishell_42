@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/12 11:04:30 by mrony            ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/09/13 16:31:48 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "parsing.h"
 #include "expand.h"
@@ -32,6 +33,7 @@ void	clear_hell(t_minishit *hell)
 }
 
 /*
+
 		CLEAN HELL
 
 	Initializes every hell element to either NULL or defaut value
@@ -58,6 +60,7 @@ void	display_prompt(int woop)
 int	mini_loop(t_minishit *hell)
 {
 	char	*command;
+	// int i;
 
 	signal(SIGINT, display_prompt);
 	signal(SIGQUIT, SIG_IGN);
@@ -70,8 +73,17 @@ int	mini_loop(t_minishit *hell)
 		expander(hell, hell->token);
 		if (parser(hell) != FALSE)
 		{
+			// while (hell->node)
+			// {
+			// 	i = 0;
+			// 	printf("type is %d\n", hell->node->type);
+			// 	if (hell->node->type == cmd)
+			// 		while (hell->node->argv[i++])
+			// 			printf("type is %s\n", hell->node->argv[i]);
+			// 	hell->node = hell->node->next;
+			// }
 			while (hell->node && hell->node->up)
-					hell->node = hell->node->up;
+				hell->node = hell->node->up;
 			if (hell->node)
 				ft_exec(hell, &hell->node);
 		}

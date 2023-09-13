@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 11:32:14 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 16:31:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,22 @@ int		issa_token(t_minishit *hell, char *command, int i);
 int		issa_string(t_minishit *hell, char *command, int i);
 
 void	remove_quotes(t_token *token);
+int     is_built_in(t_node *node, char *str);
 int 	is_quote(char *str, int i);
 int		is_space(char c);
 int		is_token(char c);
 
 /* node */
 
-int	make_nodes(t_minishit *hell, t_token *token);
+int     make_nodes(t_minishit *hell, t_token *token);
 t_node	*ft_new_node(t_type type);
 t_node	*ft_nodelast(t_node *node);
 int		ft_node_size(t_node *node);
 void	init_node(t_node *node);
 void	ft_add_back_node(t_node **node, t_node *new);
 
-int		count_tab_size(t_token *token, int current_type);
 t_node	*make_argv_rdr(t_node *node, t_token *token);
-t_node	*make_argv_cmd(t_node *node, t_token *token, int current_type);
+t_node	*make_argv_cmd(t_node *node, t_token *token);
 
 /* creating_tree */
 

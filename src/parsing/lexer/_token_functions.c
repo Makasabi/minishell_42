@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:16:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/31 02:45:57 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 12:01:23 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 void	init_token(t_token *token)
 {
 	token->type = -1;
+	token->space = 0;
 	token->quote = ' ';
 	token->str = NULL;
 	token->redir_in = NULL;

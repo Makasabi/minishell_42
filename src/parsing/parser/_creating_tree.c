@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/12 10:15:57 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 16:32:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_if_not(t_node *node)
 	while (node)
 	{
 		if ((node->index == 0 && node->type == pip)
-			|| (node->type == rdr && node->next &&node->next->type == pip))
+			|| (node->type == rdr && node->next && node->next->type == pip))
 		{
 			ft_err_syntax(SHELL, SYNERR, "|");
 			//printf("Mini.Hell : syntax error near unexpected token « | »\n");
@@ -51,6 +51,7 @@ int	check_if_not(t_node *node)
 				return (FAILED);
 			}
 		}
+		printf("this one \n");
 		node = node->next;
 	}
 	return(SUCCESS);

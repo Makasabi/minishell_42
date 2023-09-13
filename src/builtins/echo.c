@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/12 15:55:27 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 16:31:29 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 		&& argv[i][1] == 'n' && ft_newline(argv[i++]) == 0)
 			continue ;
 		ft_charprint(argv[i], fd_out);
-		if (argv[i + 1] != NULL)
-			ft_putchar_fd(' ', fd_out);
+		// if (argv[i + 1] != NULL)
+		// 	ft_putchar_fd(' ', fd_out);
 		i++;
 	}
 	if (newline == 1)

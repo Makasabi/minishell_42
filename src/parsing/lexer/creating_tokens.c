@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/02 22:56:07 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 12:03:31 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ int	issa_token(t_minishit *hell, char *command, int i)
 	}
 	if (type == INPUT || type == OUTPUT)
 		ft_add_token(&hell->token, token, REDIR);
-	else if (type == PIPE || type == END)
+	else if (type == PIPE)
 		ft_add_token(&hell->token, token, type);
+	else if (type == END)
+		return (END);
 	if (type == APPEND || type == HEREDOC)
 		return (2);
 	else
@@ -81,7 +83,7 @@ int	issa_string(t_minishit *hell, char *command, int i)
 	while (command[i + j] && is_token(command[i + j]) < 0)
 	{
 		if (is_space(command[i + j]) || (j != 0
-		&& (command[i + j] == SINGLE || command[i + j] == DOUBLE)))
+				&& (command[i + j] == SINGLE || command[i + j] == DOUBLE)))
 			break ;
 		j++;
 	}
@@ -124,14 +126,25 @@ int	issa_quotes(t_minishit *hell, char *command, int i)
 int	tokenization(t_minishit *hell, char *command)
 {
 	int	i;
+	int	flag;
+	t_token	*last;
 
 	i = 0;
 	while (command[i])
 	{
 		if (command[i] == ' ' || (command[i] >= 9 && command[i] <= 13))
+		{
 			i++;
+			last = ft_tokenlast(hell->token);
+			last->space = 1;
+		}
 		else if (is_token(command[i]) > 0)
-			i += issa_token(hell, command, i);
+		{
+			flag = issa_token(hell, command, i);
+			if (flag == END)
+				return (0);
+			i += flag;
+		}
 		else if (is_quote(command, i) != FALSE && ft_strlen(command) > 1)
 			i += issa_quotes(hell, command, i);
 		else
