@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/12 16:19:17 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 17:22:29 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,44 +74,25 @@ sent as argument (target) and returns a pointer to the string holding the var
 name and its value.
 The variable passed as argument can be of format "VAR=value" or "VAR"*/
 
-// char	*ft_find_var(char **my_env, char *target)
-// {
-// 	int		i;
-// 	size_t	size;
-// char	*ft_find_var(char **my_env, char *target)
-// {
-// 	int		i;
-// 	size_t	size;
+char	*ft_find_var(char **my_env, char *target)
+{
+	int		i;
+	size_t	size;
 
-// 	i = 0;
-// 	size = ft_strlen(target);
-// 	if (size == 0 || !target)
-// 		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
-// 	while (my_env[i])
-// 	{
-// 		if (ft_strncmp(my_env[i], target, size) == 0
-// 			&& (my_env[i][size] == '='
-// 			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
-// 			return (my_env[i]);
-// 		i++;
-// 	}
-// 	return (NULL);
-// }
-// 	i = 0;
-// 	size = ft_strlen(target);
-// 	if (size == 0 || !target)
-// 		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
-// 	while (my_env[i])
-// 	{
-// 		if (ft_strncmp(my_env[i], target, size) == 0
-// 			&& (my_env[i][size] == '='
-// 			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
-// 			return (my_env[i]);
-// 		i++;
-// 	}
-// 	return (NULL);
-// }
-
+	i = 0;
+	size = ft_strlen(target);
+	if (size == 0 || !target)
+		return (NULL);
+	while (my_env[i])
+	{
+		if (ft_strncmp(my_env[i], target, size) == 0
+			&& (my_env[i][size] == '='
+			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
+			return (my_env[i]);
+		i++;
+	}
+	return (NULL);
+}
 /* This function searches through the environment table for the variable sent
 as argument (target) and returns the index (int) of the variable in
 the environment table. if the vairable is not found, the function returns -1
@@ -151,18 +132,34 @@ to the begining of the variable value */
 
 char	*ft_var_value(char **my_env, char *target)
 {
-	int		line;
 	char	*tmp;
 	size_t	size;
 
+	
 	if (!my_env || !target)
-		return (ft_putstr_fd(_PURPLE _BOLD ENVSEARCH _END, 1),
-			ft_putstr_fd(_ITALIC NOVARTARGET _END, 1), NULL);
-	size = ft_strlen(target);
-	line = ft_var_line(my_env, target);
-	if (line != FAILED)
-	tmp = my_env[line];
-	if (line == FAILED || !tmp || size == 0)
 		return (NULL);
-	return (tmp + size + 1);
+	size = ft_strlen(target);
+	tmp = ft_find_var(my_env, target);
+	if (!tmp || size == 0)
+		return(NULL);
+	return(tmp+size+1);
 }
+
+// char	*ft_var_value(char **my_env, char *target)
+// {
+// 	int		line;
+// 	char	*tmp;
+// 	size_t	size;
+
+// 	if (!my_env || !target)
+// 		return (ft_putstr_fd(_PURPLE _BOLD ENVSEARCH _END, 1),
+// 			ft_putstr_fd(_ITALIC NOVARTARGET _END, 1), NULL);
+// 	size = ft_strlen(target);
+// 	line = ft_var_line(my_env, target);
+// 	if (line != -1)
+// 		return (NULL);
+// 	tmp = my_env[line];
+// 	if (line == -1 || !tmp || size == 0)
+// 		return (NULL);
+// 	return (tmp + size + 1);
+// }
