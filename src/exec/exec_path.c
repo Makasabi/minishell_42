@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/12 11:48:42 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 15:17:19 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 	int		i;
 	int		j;
 
+	(void)size_cmd;
 	test = ft_calloc((ft_strlen(path) + size_cmd + 2), sizeof(char));
 	if (!test)
-		return (ft_error_msg(SHELL, NULL, cmd, MALLERRPATH), NULL);
+		return (NULL);
 	i = -1;
 	while (path[++i])
 		test[i] = path[i];

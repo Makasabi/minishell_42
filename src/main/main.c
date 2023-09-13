@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/12 16:36:37 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 16:10:54 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	main(int argc, char **argv)
 	(void)argv;
 	hell = ft_calloc(1, sizeof(t_minishit));
 	if (!hell)
-		return (0);
+		return (ft_error_msg(SHELL, "initialization", NULL, MALERR), FAILED);
 	clean_init(hell);
 	hell->my_env = ft_env_init();
 	if (!hell->my_env)
 		return (free(hell), 1);
-	// ft_header(hell);
+	ft_header(hell);
 	while (1)
 	{
 		if (mini_loop(hell) == FALSE)
