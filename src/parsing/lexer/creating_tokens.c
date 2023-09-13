@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 12:03:31 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/08 12:16:51 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,8 @@ int	issa_quotes(t_minishit *hell, char *command, int i)
 
 int	tokenization(t_minishit *hell, char *command)
 {
-	int	i;
-	int	flag;
+	int		i;
+	int		flag;
 	t_token	*last;
 
 	i = 0;

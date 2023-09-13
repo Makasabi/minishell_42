@@ -6,13 +6,13 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/13 16:32:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 16:39:37 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "env.h"
-
+#include "errors.h"
 
 /*
 	create whole functions for a better parsing
@@ -25,36 +25,32 @@ int	check_if_not(t_node *node)
 {
 	while (node)
 	{
-		if ((node->index == 0 && node->type == pip)
-			|| (node->type == rdr && node->next && node->next->type == pip))
+		if ((node->type == pip && (!node->next || node->next->type == pip)))
 		{
 			ft_err_syntax(SHELL, SYNERR, "|");
 			//printf("Mini.Hell : syntax error near unexpected token « | »\n");
+			ft_err_syntax(SHELL, SYNERR, "|");
 			return (FAILED);
 		}
 		if (node->type != cmd)
 		{
-			if (node->type == rdr && ft_table_size(node->argv) == 1)
+			if (node->type == rdr && ft_table_size(node->argv) != 1)
 			{
 				ft_err_syntax(SHELL, SYNERR, node->argv[0]);
-				//printf("Mini.Hell : syntax error near unexpected token « %s »\n", node->argv[0]);
-				return (FAILED);
+				return (FAILED);	
 			}
 			else if (node->type == not)
 			{
 				if (node->next && node->next->argv)
 					ft_err_syntax(SHELL, SYNERR, node->argv[0]);
-				//	printf("Mini.Hell : syntax error near unexpected token « %s »\n", node->next->argv[0]);
 				else
 					ft_err_syntax(SHELL, SYNERR, "newline");
-				//	printf("Mini.Hell : syntax error near unexpected token « newline »\n");
 				return (FAILED);
 			}
 		}
-		printf("this one \n");
 		node = node->next;
 	}
-	return(SUCCESS);
+	return (SUCCESS);
 }
 
 /*
@@ -70,7 +66,7 @@ int	creating_tree(t_minishit *hell)
 {
 	if (check_if_not(hell->node) == FAILED)
 	{
-		hell->exit = 2;
+		hell->status = 2;
 		return (FALSE);
 	}
 	if (hell->pipes == 0)

@@ -6,10 +6,11 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:50:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/12 12:01:52 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 16:38:51 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "errors.h"
 #include "errors.h"
 #include "exec.h"
 #include "builtins.h"
@@ -43,7 +44,10 @@ void	ft_error_msg(char *shell, char *cmd, char *arg, char *error)
 	if (arg)
 		printf("%s: ", arg);
 	if (error)
+	{
 		printf("%s", error);
+		ft_putstr_fd("\n", 2);
+	}
 	else
 	{
 		perror(NULL);
@@ -53,3 +57,4 @@ void	ft_error_msg(char *shell, char *cmd, char *arg, char *error)
 	dup2(1, fd);
 	close(fd);
 }
+

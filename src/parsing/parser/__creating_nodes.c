@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:18:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 12:04:08 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/07 15:27:56 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	rdr_node(t_minishit *hell, t_token *token)
 	int		type;
 
 	new_node = ft_new_node(rdr);
-	// printf("node str is %s\n", token->next->str);
 	new_node = make_argv_rdr(new_node, token->next);
 	type = which_redir(token->str);
 	if (type == APPEND)
@@ -86,6 +85,16 @@ int	make_nodes(t_minishit *hell, t_token *token)
 			token = token->next;
 			flag = 0;
 		}
+		else if (token && token->type == REDIR)
+		{
+			if (token->next && token->next->type == REDIR)
+				rdr_node(hell, token);
+			else
+				ft_add_back_node(&hell->node, ft_new_node(not));
+			token = token->next;
+			if (token && token->next)
+				token = token->next;
+		}
 		else if (token && token->type == ARG)
 		{
 			if (flag == 0)
@@ -94,18 +103,6 @@ int	make_nodes(t_minishit *hell, t_token *token)
 				flag = 1;
 			}
 			while (token && token->type == ARG)
-				token = token->next;
-		}
-		else if (token && token->type == REDIR)
-		{
-			if (token->next && token->next->type == REDIR)
-			{
-				rdr_node(hell, token);
-			}
-			else
-				ft_add_back_node(&hell->node, ft_new_node(not));
-			token = token->next;
-			if (token && token->next)
 				token = token->next;
 		}
 	}

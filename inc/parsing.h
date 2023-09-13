@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/13 16:31:12 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 16:36:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define SINGLE '\''
 # define DOUBLE '\"'
 
-                                    /* PARSING */
-                                    
+/* PARSING */
+
 /* loop */
 int		mini_loop(t_minishit *hell);
 
@@ -33,7 +33,7 @@ int		parser(t_minishit *hell);
 int		tokenization(t_minishit *hell, char *command);
 
 t_token	*ft_tokenlast(t_token *token);
-int     ft_token_size(t_token *token);
+int		ft_token_size(t_token *token);
 void	ft_add_token(t_token **token, char *str, int type);
 void	init_token(t_token *token);
 void	ft_add_back_token(t_token **token, t_token *new);
@@ -47,14 +47,14 @@ int		issa_token(t_minishit *hell, char *command, int i);
 int		issa_string(t_minishit *hell, char *command, int i);
 
 void	remove_quotes(t_token *token);
-int     is_built_in(t_node *node, char *str);
-int 	is_quote(char *str, int i);
+int		is_built_in(t_node *node, char *str);
+int		is_quote(char *str, int i);
 int		is_space(char c);
 int		is_token(char c);
 
 /* node */
 
-int     make_nodes(t_minishit *hell, t_token *token);
+int		make_nodes(t_minishit *hell, t_token *token);
 t_node	*ft_new_node(t_type type);
 t_node	*ft_nodelast(t_node *node);
 int		ft_node_size(t_node *node);
@@ -66,7 +66,7 @@ t_node	*make_argv_cmd(t_node *node, t_token *token);
 
 /* creating_tree */
 
-int 	creating_tree(t_minishit *hell);
+int		creating_tree(t_minishit *hell);
 void	redir_in_tree(t_node *tree);
 
 t_node	*single_command(t_minishit *hell, t_node *node);
@@ -78,7 +78,7 @@ void	link_right(t_node *up_node, t_node *right_node);
 t_node	*get_components(t_node *node, t_type current_type);
 
 void	link_between_pipes(t_node *node);
-int 	link_inside_pipes(t_node *node);
+int		link_inside_pipes(t_node *node);
 void	link_cmd_to_pip(t_node *node);
 void	link_rdr(t_node *up_node, t_node *node);
 void	link_to_last_pipe(t_node *node, t_node *last_pipe);
