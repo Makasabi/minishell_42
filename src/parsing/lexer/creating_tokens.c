@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creating_tokens.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/08 12:16:51 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/13 18:00:43 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ int	tokenization(t_minishit *hell, char *command)
 		{
 			i++;
 			last = ft_tokenlast(hell->token);
+			if (!last)
+				return (1);
 			last->space = 1;
 		}
 		else if (is_token(command[i]) > 0)

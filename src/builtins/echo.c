@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/13 16:31:29 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/14 10:10:51 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,16 @@ static bool	ft_newline(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] != '-')
+	if (str[i] != '-' || str[i + 1] != 'n')
 		return (1);
-	i++;
+	i += 2;
 	while (str[i])
 	{
 		if (str[i] == 'n')
 			i++;
-		else
+		if (str[i] == ' ' && str[i + 1] == '\0')
+			return (0);
+		if (str[i] != 'n')
 			return (1);
 	}
 	return (0);
@@ -66,11 +68,12 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 	while (argv[i])
 	{
 		if (newline == 0 && argv[i][0] == '-'\
-		&& argv[i][1] == 'n' && ft_newline(argv[i++]) == 0)
+		&& argv[i][1] == 'n' && ft_newline(argv[i]) == 0)
+		{
+			i++;
 			continue ;
+		}	
 		ft_charprint(argv[i], fd_out);
-		// if (argv[i + 1] != NULL)
-		// 	ft_putchar_fd(' ', fd_out);
 		i++;
 	}
 	if (newline == 1)

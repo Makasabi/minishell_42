@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/13 15:17:19 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 18:39:39 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int	ft_is_executable(t_minishit *hell, char *cmd)
 	return (NONE);
 }
 
+// int	ft_might_be_directory_or_folder()
+
 char	*ft_check_path(t_minishit *hell, char *cmd)
 {
 	char	*path_val;
@@ -109,7 +111,7 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 	if (!right_path)
 	{
 		hell->exit = 127;
-		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
+		return (ft_error_msg(SHELL, NULL, cmd, CMDERR), NULL);
 	}
 	return (right_path);
 }

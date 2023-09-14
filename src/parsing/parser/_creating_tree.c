@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/13 16:40:50 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/13 18:18:11 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	check_if_not(t_node *node)
 		if ((node->type == pip && (!node->next || node->next->type == pip)))
 		{
 			ft_err_syntax(SHELL, SYNERR, "|");
-			//printf("Mini.Hell : syntax error near unexpected token « | »\n");
-			ft_err_syntax(SHELL, SYNERR, "|");
 			return (FAILED);
 		}
 		if (node->type != cmd)
@@ -44,7 +42,7 @@ int	check_if_not(t_node *node)
 				if (node->next && node->next->argv)
 					ft_err_syntax(SHELL, SYNERR, node->argv[0]);
 				else
-					ft_err_syntax(SHELL, SYNERR, "newline");
+					ft_err_syntax(SHELL, SYNERR, NULL);
 				return (FAILED);
 			}
 		}
