@@ -6,12 +6,13 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/13 18:39:39 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/14 13:03:36 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "env.h"
+#include "parsing.h"
 
 static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 {
@@ -57,10 +58,7 @@ static char	*ft_find_right_path(char **paths, char *cmd)
 	return (test);
 }
 
-/*Find a way to set either 126 or 127 as status code if command cannot execute 
-or if command is simply not found*/
-
-int	ft_is_executable(t_minishit *hell, char *cmd)
+char *ft_is_executable(t_minishit *hell, char *cmd)
 {
 	int			i;
 	struct stat	sb;
@@ -68,39 +66,36 @@ int	ft_is_executable(t_minishit *hell, char *cmd)
 	(void)hell;
 	i = stat(cmd, &sb);
 	if (i < 0)
-		return (NONE);
+	{
+		hell->exit = 1;
+		return (ft_error_msg(SHELL, cmd, NULL, NOFLDIR), NULL);
+	}
 	if ((sb.st_mode & S_IFMT) == S_IFDIR)
 	{
 		hell->exit = 126;
 		ft_error_msg(SHELL, cmd, NULL, ISDIRE);
-		return (DIRE);
+		return (NULL);
 	}
 	if (sb.st_mode & S_IXUSR)
-		return (EXEC);
+		return (cmd);
 	else if ((sb.st_mode & S_IFMT) == S_IFREG
 		&& !(sb.st_mode & S_IXUSR))
 	{
 		hell->exit = 126;
 		ft_error_msg(SHELL, cmd, NULL, PERDEN);
-		return (FILE);
+		return (NULL);
 	}
-	return (NONE);
+	return (NULL);
 }
-
-// int	ft_might_be_directory_or_folder()
 
 char	*ft_check_path(t_minishit *hell, char *cmd)
 {
 	char	*path_val;
 	char	**paths;
 	char	*right_path;
-	int		exec_test;
 
-	exec_test = ft_is_executable(hell, cmd);
-	if (exec_test == DIRE || exec_test == FILE)
-		return (NULL);
-	else if (exec_test == EXEC)
-		return (cmd);
+	if (ft_strchr(cmd, '/'))
+		return (ft_is_executable(hell, cmd));
 	path_val = ft_var_value(hell->my_env, "PATH");
 	if (!path_val)
 		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
@@ -115,3 +110,15 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 	}
 	return (right_path);
 }
+/*
+bash-5.1$ Makefile
+bash: Makefile: command not found
+bash-5.1$ ./Makefile
+bash: ./Makefile: Permission denied
+bash-5.1$ ../
+bash: ../: Is a directory
+bash-5.1$ ../hjkj
+bash: ../hjkj: No such file or directory
+bash-5.1$ 
+
+*/

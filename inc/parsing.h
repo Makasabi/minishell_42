@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/13 16:36:12 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/14 12:39:35 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,8 @@ int		link_inside_pipes(t_node *node);
 void	link_cmd_to_pip(t_node *node);
 void	link_rdr(t_node *up_node, t_node *node);
 void	link_to_last_pipe(t_node *node, t_node *last_pipe);
+
+int		check_exception(t_minishit *hell, t_node *node);
+int	ft_ischarset(char *arg, char *set);
 
 #endif

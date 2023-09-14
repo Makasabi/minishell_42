@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/13 17:36:32 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/14 18:04:33 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,8 @@ void	expander(t_minishit *hell, t_token *token)
 		- '\' is not supposed to be handled, as well as open quotes
 				-> decision on what we do with it ?
 					(ex : echo \$HOME -> \/home/wan as it doesn't "unread" $ ?)
+		- find behavious when 2 expansions are mixed with '\'
 		
+
+
 */

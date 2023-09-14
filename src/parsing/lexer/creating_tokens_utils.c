@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creating_tokens_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:07:19 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 18:02:43 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/14 11:40:40 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	is_token(char c)
 		return (INPUT);
 	if (c == '|')
 		return (PIPE);
-	if (c == ';')
-		return (END);
+	// if (c == ';')
+	// 	return (END);
 	else
 		return (-1);
 }

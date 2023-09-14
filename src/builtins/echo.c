@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/14 10:10:51 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/14 15:14:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,16 @@ static bool	ft_newline(char *str)
 
 	i = 0;
 	if (str[i] != '-' || str[i + 1] != 'n')
+	{
 		return (1);
+	}	
 	i += 2;
 	while (str[i])
 	{
 		if (str[i] == 'n')
 			i++;
-		if (str[i] == ' ' && str[i + 1] == '\0')
-			return (0);
+		if (str[i] == '\0' || (str[i] == ' ' && str[i + 1] == '\0'))
+			break;
 		if (str[i] != 'n')
 			return (1);
 	}

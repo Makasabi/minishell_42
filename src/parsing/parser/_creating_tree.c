@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/13 18:18:11 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/14 11:59:01 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ int	check_if_not(t_node *node)
 {
 	while (node)
 	{
-		if ((node->type == pip && (!node->next || node->next->type == pip)))
-		{
-			ft_err_syntax(SHELL, SYNERR, "|");
-			return (FAILED);
-		}
+		if ((node->type == pip && (!node->next || !node->prev 
+			|| node->next->type == pip)))
+			return (ft_err_syntax(SHELL, SYNERR, "|"), FAILED);
 		if (node->type != cmd)
 		{
 			if (node->type == rdr && ft_table_size(node->argv) != 1)
@@ -67,6 +65,8 @@ int	creating_tree(t_minishit *hell)
 		hell->exit = 2;
 		return (FALSE);
 	}
+	if (check_exception(hell, hell->node) == FAILED)
+		return (FALSE);
 	if (hell->pipes == 0)
 		single_command(hell, hell->node);
 	else
