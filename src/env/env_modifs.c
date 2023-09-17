@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:29:17 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/03 17:36:43 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 15:20:05 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,16 @@ void	ft_add_var(char ***my_env, char *var)
 		return (ft_replace_var(my_env, var));
 	new_env = malloc(sizeof(char **) * (ft_table_size(*my_env) + 2));
 	if (!new_env)
-		return (ft_free(*my_env), ft_env_error((*my_env), 0));
+		return (ft_error_msg(SHELL, "add var", var, MALERR));
 	while ((*my_env)[i])
 	{
 		new_env[i] = (*my_env)[i];
 		i++;
 	}
-	free(*my_env);
 	new_env[i] = ft_strdup(var);
 	if (!new_env[i])
-	{
-		ft_free(new_env);
-		ft_env_error(new_env, 0);
-	}
+		return (free(new_env), ft_error_msg(SHELL, "add var", var, MALERR));
+	free(*my_env);
 	ft_clean_var(&new_env[i]);
 	new_env[i + 1] = NULL;
 	(*my_env) = new_env;
@@ -62,10 +59,7 @@ void	ft_del_var(char ***my_env, int line)
 		return ;
 	new_env = malloc(sizeof(char **) * (ft_table_size(*my_env)));
 	if (!new_env)
-	{
-		ft_free(*my_env);
-		ft_env_error((*my_env), 0);
-	}
+		return (ft_error_msg(SHELL, "delete var", (*my_env)[line], MALERR));
 	while ((*my_env)[i])
 	{
 		if (i == line)
@@ -93,10 +87,7 @@ void	ft_replace_var(char ***my_env, char *var)
 	line = ft_var_line((*my_env), var);
 	new_var = ft_strdup(var);
 	if (!new_var)
-	{
-		ft_free(*my_env);
-		ft_env_error((*my_env), 1);
-	}
+		return (ft_error_msg(SHELL, "replace var", var, MALERR));
 	free((*my_env)[line]);
 	(*my_env)[line] = new_var;
 }
@@ -105,7 +96,9 @@ void	ft_append_var(char ***my_env, char *var)
 {
 	int		line;
 	char	*new_var;
+	char	*var_cpy;
 
+	var_cpy = var;
 	line = ft_var_line((*my_env), var);
 	if (line == -1)
 		return (ft_add_var(my_env, var));
@@ -119,8 +112,8 @@ void	ft_append_var(char ***my_env, char *var)
 	if (*var == '\0')
 		return ;
 	new_var = ft_strjoin((*my_env)[line], var);
-	if (!new_var) /* to be reworked */
-		return (ft_putendl_fd("error appending var\n", 2));
+	if (!new_var)
+		return (ft_error_msg(SHELL, "append var", var_cpy, MALERR));
 	ft_replace_var(my_env, new_var);
 	free(new_var);
 }

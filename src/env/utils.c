@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:01:09 by mrony             #+#    #+#             */
-/*   Updated: 2023/08/04 14:29:54 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 15:20:35 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ int	ft_shlvl_inc(char ***my_env)
 	shlvl++;
 	level = ft_itoa(shlvl);
 	if (!level)
-		return (-1);
+		return (ft_error_msg(SHELL, "SHLVL incrementation", \
+		NULL, "itoa malloc error"), -1);
 	new_var = ft_strjoin("SHLVL=", level);
 	free(level);
 	if (!new_var)
-		return (-1);
+		return (ft_error_msg(SHELL, "SHLVL incrementation", \
+		NULL, ENVERR2), -1);
 	ft_replace_var(my_env, new_var);
 	free(new_var);
 	return (0);

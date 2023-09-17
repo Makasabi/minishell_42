@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 11:21:10 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 15:56:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	assign_type_redir(t_minishit *hell, t_token *token)
 					|| redir == HEREDOC || redir == APPEND))
 			{
 				// printf("redir is %d\n", redir);
-				token->type = REDIR;
 				token->next->type = REDIR;
 				token = token->next;
 			}

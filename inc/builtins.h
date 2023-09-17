@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:32 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:24:05 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:03:49 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@
 
 # define CD "cd"
 # define EXP "export"
+# define EXT "exit"
 # define ENV "env"
 # define PWD "pwd"
 # define UST "unset"
 # define ECH "echo"
-
-typedef int	(*t_bin)(t_minishit *hell, char **argv);
 
 int		ft_cd(t_minishit *hell, char **argv, int fd_out);
 int		ft_env(t_minishit *hell, char **argv, int fd_out);

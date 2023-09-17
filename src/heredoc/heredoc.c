@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 14:49:59 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 15:43:37 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "expand.h"
 #include <sys/ioctl.h>
 
-char *check_if_heredoc(t_node *node)
+char	*check_if_heredoc(t_node *node)
 {
 	while (node)
 	{
@@ -53,7 +53,7 @@ int	here_doc(t_minishit *hell, char *delimiter)
 	while (1)
 	{
 		if (!line || (ft_strncmp(line, delimiter, ft_strlen(line)) == 0
-			&& ft_strlen(line) == ft_strlen(delimiter)))
+				&& ft_strlen(line) == ft_strlen(delimiter)))
 			break ;
 		if (dollar_sign(line) != FAILED)
 		{
@@ -76,7 +76,7 @@ int	here_doc(t_minishit *hell, char *delimiter)
 
 int ft_here_doc(t_minishit *hell, t_node *node)
 {
-	char    *delim;
+	char	*delim;
 
 	delim = check_if_heredoc(node);
 	while (node && node->redir != heredoc)

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+         #
+#    By: mrony <mrony@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 13:08:34 by tgibier           #+#    #+#              #
-#    Updated: 2023/08/24 11:39:24 by makasabi         ###   ########.fr        #
+#    Updated: 2023/09/17 15:00:30 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
--include make/includes.mk
--include make/sources.mk
--include make/colors.mk
+-include mk/includes.mk
+-include mk/sources.mk
+-include mk/colors.mk
 
 
 # Das Progamm
@@ -79,9 +79,9 @@ fclean	:	clean
 re:	fclean all
 
 gmk:
-		@if [ -d make ];then echo ok;else mkdir make;fi
-		@find -path './src/*' -name '*.c' | sed 's/^/SRCS += /' > make/sources.mk
-		@find -path './inc/*' -name '*.h' | sed 's/^/INCLUDES += /' > make/includes.mk
+		@if [ -d mk ];then echo ok;else mkdir mk;fi
+		@find -path './src/*' -name '*.c' | sed 's/^/SRCS += /' > mk/sources.mk
+		@find -path './inc/*' -name '*.h' | sed 's/^/INCLUDES += /' > mk/includes.mk
 
 -include $(DEPS)
 

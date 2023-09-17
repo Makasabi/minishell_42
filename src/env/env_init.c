@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:53:52 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 15:54:39 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:18:36 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ char	**ft_env_init(void)
 		return (ft_env_from_scratch());
 	my_env = malloc(sizeof(char **) * (size + 1));
 	if (!my_env)
-		ft_env_error(my_env, 0);
+		return (ft_env_error(my_env, 0), NULL);
 	while (environ[i])
 	{
 		my_env[i] = ft_strdup(environ[i]);
 		if (!my_env[i])
-			ft_env_error(my_env, 1);
+			return (ft_env_error(my_env, 1), NULL);
 		i++;
 	}
 	my_env[i] = NULL;
@@ -57,13 +57,13 @@ char	**ft_env_from_scratch(void)
 	getcwd(buff, sizeof(buff));
 	my_env = malloc(sizeof(char **) * 4);
 	if (!my_env)
-		ft_env_error(my_env, 0);
+		return (ft_env_error(my_env, 0), NULL);
 	my_env[0] = ft_strjoin("PWD=", buff);
 	if (!my_env[0])
-		ft_env_error(my_env, 2);
+		return (ft_env_error(my_env, 2), NULL);
 	my_env[1] = ft_strdup("SHLVL=1");
 	if (!my_env[1])
-		ft_env_error(my_env, 1);
+		return (ft_env_error(my_env, 1), NULL);
 	my_env[2] = NULL;
 	return (my_env);
 }
@@ -74,44 +74,25 @@ sent as argument (target) and returns a pointer to the string holding the var
 name and its value.
 The variable passed as argument can be of format "VAR=value" or "VAR"*/
 
-// char	*ft_find_var(char **my_env, char *target)
-// {
-// 	int		i;
-// 	size_t	size;
-// char	*ft_find_var(char **my_env, char *target)
-// {
-// 	int		i;
-// 	size_t	size;
+char	*ft_find_var(char **my_env, char *target)
+{
+	int		i;
+	size_t	size;
 
-// 	i = 0;
-// 	size = ft_strlen(target);
-// 	if (size == 0 || !target)
-// 		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
-// 	while (my_env[i])
-// 	{
-// 		if (ft_strncmp(my_env[i], target, size) == 0
-// 			&& (my_env[i][size] == '='
-// 			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
-// 			return (my_env[i]);
-// 		i++;
-// 	}
-// 	return (NULL);
-// }
-// 	i = 0;
-// 	size = ft_strlen(target);
-// 	if (size == 0 || !target)
-// 		return (ft_putstr_fd(NOVARTARGET, 1), NULL);
-// 	while (my_env[i])
-// 	{
-// 		if (ft_strncmp(my_env[i], target, size) == 0
-// 			&& (my_env[i][size] == '='
-// 			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
-// 			return (my_env[i]);
-// 		i++;
-// 	}
-// 	return (NULL);
-// }
-
+	i = 0;
+	size = ft_strlen(target);
+	if (size == 0 || !target)
+		return (NULL);
+	while (my_env[i])
+	{
+		if (ft_strncmp(my_env[i], target, size) == 0
+			&& (my_env[i][size] == '='
+			|| (my_env[i][size] == '+' && my_env[i][size + 1] == '=')))
+			return (my_env[i]);
+		i++;
+	}
+	return (NULL);
+}
 /* This function searches through the environment table for the variable sent
 as argument (target) and returns the index (int) of the variable in
 the environment table. if the vairable is not found, the function returns -1
@@ -151,18 +132,14 @@ to the begining of the variable value */
 
 char	*ft_var_value(char **my_env, char *target)
 {
-	int		line;
 	char	*tmp;
 	size_t	size;
 
 	if (!my_env || !target)
-		return (ft_putstr_fd(_PURPLE _BOLD ENVSEARCH _END, 1),
-			ft_putstr_fd(_ITALIC NOVARTARGET _END, 1), NULL);
+		return (NULL);
 	size = ft_strlen(target);
-	line = ft_var_line(my_env, target);
-	if (line != FAILED)
-	tmp = my_env[line];
-	if (line == FAILED || !tmp || size == 0)
+	tmp = ft_find_var(my_env, target);
+	if (!tmp || size == 0)
 		return (NULL);
 	return (tmp + size + 1);
 }

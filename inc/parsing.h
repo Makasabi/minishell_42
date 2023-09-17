@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/08 12:25:02 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 14:59:45 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,8 @@ int		link_inside_pipes(t_node *node);
 void	link_cmd_to_pip(t_node *node);
 void	link_rdr(t_node *up_node, t_node *node);
 void	link_to_last_pipe(t_node *node, t_node *last_pipe);
+
+int		check_exception(t_minishit *hell, t_node *node);
+int		ft_ischarset(char *arg, char *set);
 
 #endif

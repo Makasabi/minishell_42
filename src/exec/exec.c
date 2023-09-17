@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/09/17 14:04:35 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 15:31:19 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "heredoc.h"
+
+/* ft_exec_sgl is solely used when a single builtin is called in prompt.
+*/
 
 int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 {
@@ -33,13 +36,16 @@ int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 	return (res);
 }
 
-int	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
+/* exec pipe opens the righ fds and calls ft_exec_cmd. */
+
+void	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 {
 	int	fd[2];
 	int	pid;
+	int	i;
 
 	if (pipe(fd) == -1)
-		return (FAILED);
+		return ;
 	pid = fork();
 	if (pid == 0)
 	{
@@ -48,13 +54,23 @@ int	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 		close(fd[0]);
 		ft_exec_cmd(hell, node, mem_fd);
 	}
+	i = 0;
+	while (hell->pids[i] != 0 && i <= hell->pipes)
+		i++;
+	hell->pids[i] = pid;
 	close(fd[1]);
 	close(*mem_fd);
 	*mem_fd = fd[0];
-	return (SUCCESS);
 }
 
-int	ft_exec_tree(t_minishit *hell, t_node **tree, int *mem_fd)
+/*ft_exec_tree is a recurive fuction that moves about the command tree:
+first going left to execute the first piped cmd (or rdr),
+then moving to the right node.
+when arriving to the last command: calling relevant function to finish cmd line
+returns TBD - int not necessarily usefull
+*/
+
+void	ft_exec_tree(t_minishit *hell, t_node **tree, int *mem_fd)
 {
 	if ((*tree)->type == pip)
 	{
@@ -63,19 +79,26 @@ int	ft_exec_tree(t_minishit *hell, t_node **tree, int *mem_fd)
 	}
 	else if ((*tree)->type == cmd || (*tree)->type == rdr)
 		ft_exec_last_cmd(hell, tree, mem_fd);
-	return (SUCCESS);
 }
 
-int	ft_exec(t_minishit *hell, t_node **tree)
+/* ft_exec assess if the prompt is made of a simple command
+or several piped commands.
+arguments: main structure hell and pointer to pointer to top of tree.
+returns TBD - int not necessarily usefull
+*/
+
+void	ft_exec(t_minishit *hell, t_node **tree)
 {
 	int		mem_fd;
 
-	// if (check_if_heredoc(hell->node))
-	// 	printf("we have an heredoc cap'n\n");
 	mem_fd = dup(STDIN_FILENO);
 	if ((*tree)->type == pip
 		|| ((*tree)->type == cmd && (*tree)->built_in == FALSE))
 	{
+		hell->pids = ft_calloc(sizeof(pid_t), hell->pipes + 1);
+		if (!hell->pids)
+			return (close(mem_fd), \
+			ft_error_msg(SHELL, NULL, "pids array init", "malloc failed"));
 		ft_exec_tree(hell, tree, &mem_fd);
 		close(mem_fd);
 	}
@@ -85,5 +108,4 @@ int	ft_exec(t_minishit *hell, t_node **tree)
 		close (mem_fd);
 		ft_exec_sgl(hell, tree);
 	}
-	return (SUCCESS);
 }
