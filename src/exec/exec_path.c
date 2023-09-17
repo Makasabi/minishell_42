@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exec_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 16:24:19 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:26:50 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "env.h"
+#include "minishell.h"
+#include "parsing.h"
 
 static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 {
@@ -19,9 +21,10 @@ static char	*ft_craft_test(char *path, char *cmd, size_t size_cmd)
 	int		i;
 	int		j;
 
+	(void)size_cmd;
 	test = ft_calloc((ft_strlen(path) + size_cmd + 2), sizeof(char));
 	if (!test)
-		return (ft_error_msg(SHELL, NULL, cmd, MALLERRPATH), NULL);
+		return (NULL);
 	i = -1;
 	while (path[++i])
 		test[i] = path[i];
@@ -56,12 +59,44 @@ static char	*ft_find_right_path(char **paths, char *cmd)
 	return (test);
 }
 
+char	*ft_is_executable(t_minishit *hell, char *cmd)
+{
+	int			i;
+	struct stat	sb;
+
+	(void)hell;
+	i = stat(cmd, &sb);
+	if (i < 0)
+	{
+		hell->exit = 1;
+		return (ft_error_msg(SHELL, cmd, NULL, NOFLDIR), NULL);
+	}
+	if ((sb.st_mode & S_IFMT) == S_IFDIR)
+	{
+		hell->exit = 126;
+		ft_error_msg(SHELL, cmd, NULL, ISDIRE);
+		return (NULL);
+	}
+	if (sb.st_mode & S_IXUSR)
+		return (cmd);
+	else if ((sb.st_mode & S_IFMT) == S_IFREG
+		&& !(sb.st_mode & S_IXUSR))
+	{
+		hell->exit = 126;
+		ft_error_msg(SHELL, cmd, NULL, PERDEN);
+		return (NULL);
+	}
+	return (NULL);
+}
+
 char	*ft_check_path(t_minishit *hell, char *cmd)
 {
 	char	*path_val;
 	char	**paths;
 	char	*right_path;
 
+	if (ft_strchr(cmd, '/'))
+		return (ft_is_executable(hell, cmd));
 	path_val = ft_var_value(hell->my_env, "PATH");
 	if (!path_val)
 		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
@@ -70,6 +105,21 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 		return (ft_error_msg(SHELL, NULL, cmd, MALLERRPATH), NULL);
 	right_path = ft_find_right_path(paths, cmd);
 	if (!right_path)
-		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
+	{
+		hell->exit = 127;
+		return (ft_error_msg(SHELL, NULL, cmd, CMDERR), NULL);
+	}
 	return (right_path);
 }
+/*
+bash-5.1$ Makefile
+bash: Makefile: command not found
+bash-5.1$ ./Makefile
+bash: ./Makefile: Permission denied
+bash-5.1$ ../
+bash: ../: Is a directory
+bash-5.1$ ../hjkj
+bash: ../hjkj: No such file or directory
+bash-5.1$ 
+
+*/

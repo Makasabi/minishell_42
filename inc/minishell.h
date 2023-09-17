@@ -28,14 +28,23 @@
 # include <readline/history.h>
 # include "libft.h"
 # include "colors.h"
+# include "errors.h"
+# include <sys/ioctl.h>
+# include <asm/termbits.h>
+# include <sys/ioctl.h>
+# include <asm/termbits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048
 # endif
 
-# define SHELL "\1\033[1m\2\1\033[31m\2➜  M\
+# define HEAD_LINE "M  I  N  I  S  H  E  ·  E  L  L  E"
+# define PROMPT "\1\033[1m\2\1\033[31m\2➜  M\
 \1\033[38;5;208m\2in\1\033[38;5;220m\2is\1\033[32m\2he\1\033[0m\2\1\033[1m\2·\
 \1\033[34m\2el\1\033[38;5;129m\2le\1\033[0m\2 "
+# define SHELL "\1\033[1m\2\1\033[31m\2M\
+\1\033[38;5;208m\2in\1\033[38;5;220m\2is\1\033[32m\2he\1\033[0m\2\1\033[1m\2·\
+\1\033[34m\2el\1\033[38;5;129m\2le\1\033[0m\2"
 
 # define FALSE 0
 # define TRUE 1
@@ -112,22 +121,24 @@ typedef struct s_token
 typedef struct s_minishit
 {
 	int		pipes;
-	int		status;
-	char	**path;
+	int		exit;
 	char	**my_env;
 	t_node	*node;
 	t_token	*token;
+	pid_t	*pids;
 }	t_minishit;
 
 /* main */
 void	clean_init(t_minishit *hell);
 
 /* clean_exit */
-
 int		clean_exit(t_minishit *hell);
 void	ft_free(char **split);
 void	ft_clear_token(t_token *token);
 void	ft_clear_node(t_node *node);
 void	ft_free(char **split);
+
+/* shell_header.c */
+void	ft_header(t_minishit *hell);
 
 #endif

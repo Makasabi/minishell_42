@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/08 12:21:46 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 16:30:39 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ int	dollar_sign(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i + 1] && str[i + 1] == '?')
-			i++;
-		else if (str[i] == '$')
+		if (str[i] == '$')
 			return (i);
 		else
 			i++;
@@ -49,8 +47,8 @@ int	check_dollar(char *str, int i)
 {
 	if (ft_strlen(str) < 2)
 		return (1);
-	if (str[i] == '$' && str[i + 1] == '?')
-		return (1);
+	if (str[i] == '$' && str[i + 1] == '?' && str[i + 2] == '\0')
+		return (2);
 	if (str[i] == '$' && ft_isalnum(str[i + 1]))
 		return (0);
 	return (1);

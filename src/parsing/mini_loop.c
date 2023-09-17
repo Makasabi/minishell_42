@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 14:19:51 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 15:53:00 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	clear_hell(t_minishit *hell)
 		ft_clear_token(hell->token);
 	if (hell->node)
 		ft_clear_node(hell->node);
-	if (hell->path)
-		ft_free(hell->path);
+	if (hell->pids)
+		free(hell->pids);
 }
 
 /*
@@ -42,9 +42,9 @@ void	clear_hell(t_minishit *hell)
 void	clean_hell(t_minishit *hell)
 {
 	hell->pipes = 0;
-	hell->path = NULL;
 	hell->node = NULL;
 	hell->token = NULL;
+	hell->pids = NULL;
 }
 
 void	display_prompt(int woop)
@@ -63,7 +63,7 @@ int	mini_loop(t_minishit *hell)
 	signal(SIGINT, display_prompt);
 	signal(SIGQUIT, SIG_IGN);
 	command = NULL;
-	command = readline(SHELL);
+	command = readline(PROMPT);
 	if (!command)
 		return (FALSE);
 	if (lexer(hell, command) != FALSE)

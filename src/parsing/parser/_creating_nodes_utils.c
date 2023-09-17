@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_nodes_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:16:37 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 11:28:37 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 16:02:25 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ t_node	*make_argv_rdr(t_node *node, t_token *token)
 - each argv[] is token->str while token->type is cmd
 
 */
-
 t_node	*make_argv_cmd(t_node *node, t_token *token)
 {
 	int		i;
 	int		flag;
+	char	*tmp;
 
 	i = count_tab_size(token);
 	node->argv = ft_calloc (sizeof(char *), i);
@@ -117,12 +117,14 @@ t_node	*make_argv_cmd(t_node *node, t_token *token)
 			flag = 1;
 		if (ft_strlen(token->str) != 0 && token->type != REDIR)
 		{
-			node->argv[i] = ft_strdup(token->str);
 			if (i != 0 && flag == 1 && token->space == 1)
 			{
-				free (node->argv[i]);
-				node->argv[i] = ft_strjoin(ft_strdup(token->str), " ");
+				tmp = ft_strdup(token->str);
+				node->argv[i] = ft_strjoin(tmp, " ");
+				free(tmp);
 			}
+			else
+				node->argv[i] = ft_strdup(token->str);
 			i++;
 		}
 		token = token->next;

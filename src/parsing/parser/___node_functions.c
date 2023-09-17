@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ___node_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:45:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 15:47:15 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:58:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	init_node(t_node *node)
 	node->built_in = FALSE;
 	node->type = not;
 	node->redir = none;
-	node->fd[0] = -1;
-	node->fd[1] = -1;
 	node->fd[0] = -1;
 	node->fd[1] = -1;
 	node->prev = NULL;

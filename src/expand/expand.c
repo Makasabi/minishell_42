@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/08 12:21:26 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 16:30:50 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ char	*replace_var_by_value(char *var, char *value, int start, int end)
 
 */
 
+char	*expand_status(t_minishit *hell, char *str)
+{
+	free(str);
+	return (ft_itoa(hell->exit));
+}
+
 char	*get_value(t_minishit *hell, char *str)
 {
 	int		start;
@@ -65,6 +71,8 @@ char	*get_value(t_minishit *hell, char *str)
 	char	*new;
 	char	*value;
 
+	if (check_dollar(str, dollar_sign(str)) == 2)
+		return (expand_status(hell, str));
 	start = get_start(str);
 	end = get_end(str + start + 1);
 	var = ft_substr(str, start + 1, end);

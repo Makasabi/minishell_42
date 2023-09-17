@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:04 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/07 12:11:50 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 15:03:06 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,23 @@ static void	ft_charprint(char *str, int fd_out)
 	}
 }
 
-bool	ft_newline(char *str)
+static bool	ft_newline(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] != '-')
+	if (str[i] != '-' || str[i + 1] != 'n')
+	{
 		return (1);
-	i++;
+	}	
+	i += 2;
 	while (str[i])
 	{
 		if (str[i] == 'n')
 			i++;
-		else
+		if (str[i] == '\0' || (str[i] == ' ' && str[i + 1] == '\0'))
+			break ;
+		if (str[i] != 'n')
 			return (1);
 	}
 	return (0);
@@ -65,12 +69,13 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 		i++;
 	while (argv[i])
 	{
-		/*
-			if dollar_sign in argv[i] -> put_nbr de var globale g_exit
-		*/
+		if (newline == 0 && argv[i][0] == '-'\
+		&& argv[i][1] == 'n' && ft_newline(argv[i]) == 0)
+		{
+			i++;
+			continue ;
+		}	
 		ft_charprint(argv[i], fd_out);
-		// if (argv[i + 1] != NULL)
-		// 	ft_putchar_fd(' ', fd_out);
 		i++;
 	}
 	if (newline == 1)

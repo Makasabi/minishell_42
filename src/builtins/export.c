@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/05 16:24:05 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:08:18 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "builtins.h"
 #include "env.h"
+#include "errors.h"
 
 static char	**ft_dup_env(char **env)
 {
@@ -24,12 +25,13 @@ static char	**ft_dup_env(char **env)
 	size = ft_table_size(env);
 	export = malloc(sizeof(char **) * (size + 1));
 	if (!export)
-		return (NULL);
+		return (ft_error_msg(SHELL, EXP, NULL, MALERR), NULL);
 	while (env[i])
 	{
 		export[i] = ft_strdup(env[i]);
 		if (!export[i])
-			return (NULL);
+			return (ft_error_msg(SHELL, EXP, env[i], MALERR), \
+			ft_free(export), NULL);
 		i++;
 	}
 	export[i] = NULL;
@@ -92,8 +94,8 @@ int	ft_export(t_minishit *hell, char **argv, int fd_out)
 	{
 		if (ft_check_arg(argv[i]) == FAILED)
 			ft_error_msg(SHELL, EXP, argv[i++], IVALID);
-		else if (ft_var_line(hell->my_env, argv[i]) >= 0
-			&& ft_value_is_empty(argv[i]) == FALSE)
+		else if (ft_var_line(hell->my_env, argv[i]) >= 0)
+			// && ft_value_is_empty(argv[i]) == FALSE)
 		{
 			if (ft_sign_append(argv[i]) == TRUE)
 				ft_append_var(&hell->my_env, argv[i++]);

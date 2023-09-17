@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 11:28:27 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 16:04:03 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,13 @@ int	check_if_not(t_node *node)
 	while (node)
 	{
 		if ((node->type == pip && (!node->next || node->next->type == pip)))
-		{
-			ft_err_syntax(SHELL, SYNERR, "|");
-			return (FAILED);
-		}
+			return (ft_err_syntax(SHELL, SYNERR, "|"), FAILED);
 		if (node->type != cmd)
 		{
 			if (node->type == rdr && ft_table_size(node->argv) != 1)
 			{
 				ft_err_syntax(SHELL, SYNERR, node->argv[0]);
-				return (FAILED);	
+				return (FAILED);
 			}
 			else if (node->type == not)
 			{
@@ -64,7 +61,7 @@ int	creating_tree(t_minishit *hell)
 {
 	if (check_if_not(hell->node) == FAILED)
 	{
-		hell->status = 2;
+		hell->exit = 2;
 		return (FALSE);
 	}
 	if (hell->pipes == 0)
