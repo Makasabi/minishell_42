@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:09:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/17 15:31:51 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 19:42:16 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 
-# define MALLERRPATH "Path malloc failled"
+# define MALLERRPATH "Path malloc failed"
 # define MALFAILED -2
 
 # define NONE -1
