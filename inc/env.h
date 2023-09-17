@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:57:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/17 16:15:46 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 21:12:33 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <linux/limits.h>
 
 # define ENVERR "🦖 Environment initialization error: " 
-# define ENVERR0 "my_env malloc failled\n"
-# define ENVERR1 "failled ft_strdup\n"
-# define ENVERR2 "failled ft_strjoin\n"
+# define ENVERR0 "my_env malloc failed\n"
+# define ENVERR1 "failed ft_strdup\n"
+# define ENVERR2 "failed ft_strjoin\n"
 
 # define ENVSEARCH   "Environment Variable search: " 
 # define VARNOTFOUND "Variable not found" 
