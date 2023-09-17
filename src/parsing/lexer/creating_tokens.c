@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 15:50:18 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 18:11:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,12 @@ int	tokenization(t_minishit *hell, char *command)
 		if (command[i] == ' ' || (command[i] >= 9 && command[i] <= 13))
 		{
 			i++;
-			last = ft_tokenlast(hell->token);
-			last->space = 1;
+			if (hell->token)
+			{
+				last = ft_tokenlast(hell->token);
+				if (last)
+					last->space = 1;
+			}
 		}
 		else if (is_token(command[i]) > 0)
 		{
