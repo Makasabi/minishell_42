@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:58:37 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/14 12:00:50 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 18:03:28 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_ischarset(char *arg, char *set)
 	j = 0;
 	while (arg[j] && j < 2)
 	{
-		while(set[i])
+		while (set[i])
 		{
 			if (arg[j] == set[i])
 				return (TRUE);
