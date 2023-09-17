@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makasabi <makasabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/09/05 16:57:18 by makasabi         ###   ########.fr       */
+/*   Updated: 2023/09/17 14:04:35 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
+#include "heredoc.h"
 
 int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 {
@@ -69,6 +70,8 @@ int	ft_exec(t_minishit *hell, t_node **tree)
 {
 	int		mem_fd;
 
+	// if (check_if_heredoc(hell->node))
+	// 	printf("we have an heredoc cap'n\n");
 	mem_fd = dup(STDIN_FILENO);
 	if ((*tree)->type == pip
 		|| ((*tree)->type == cmd && (*tree)->built_in == FALSE))

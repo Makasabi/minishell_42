@@ -6,12 +6,13 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:14:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/05 18:53:33 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 14:46:19 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "builtins.h"
+#include "heredoc.h"
 
 /*
 		PARSER
@@ -28,5 +29,6 @@ int	parser(t_minishit *hell)
 	index_built_ing(hell->node);
 	if (creating_tree(hell) == FALSE)
 		return (FALSE);
+	ft_here_doc(hell, hell->node);
 	return (TRUE);
 }

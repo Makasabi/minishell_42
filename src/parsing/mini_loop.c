@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/08 12:20:32 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 14:19:51 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,14 @@ int	mini_loop(t_minishit *hell)
 		expander(hell, hell->token);
 		if (parser(hell) != FALSE)
 		{
+			// while (hell->node && hell->node->next)
+			// {
+			// 	printf("type is %d index is %d\n", hell->node->type, hell->node->index);
+			// 	hell->node = hell->node->next;
+			// }
 			while (hell->node && hell->node->up)
 				hell->node = hell->node->up;
+			// printf("type is %d index is %d\n", hell->node->type, hell->node->index);
 			if (hell->node)
 				ft_exec(hell, &hell->node);
 		}

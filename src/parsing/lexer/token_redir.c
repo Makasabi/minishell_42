@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 15:09:49 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 11:21:10 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	assign_type_redir(t_minishit *hell, t_token *token)
 			if (token->next && (redir == INPUT || redir == OUTPUT
 					|| redir == HEREDOC || redir == APPEND))
 			{
+				// printf("redir is %d\n", redir);
+				token->type = REDIR;
 				token->next->type = REDIR;
 				token = token->next;
 			}

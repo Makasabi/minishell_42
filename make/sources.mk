@@ -13,6 +13,7 @@ SRCS += ./src/builtins/echo.c
 SRCS += ./src/builtins/export.c
 SRCS += ./src/builtins/unset.c
 SRCS += ./src/builtins/cd.c
+SRCS += ./src/heredoc/heredoc.c
 SRCS += ./src/env/env_init.c
 SRCS += ./src/env/env_modifs.c
 SRCS += ./src/env/utils.c

@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:18:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/07 15:27:56 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 11:28:43 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	make_nodes(t_minishit *hell, t_token *token)
 			else
 				ft_add_back_node(&hell->node, ft_new_node(not));
 			token = token->next;
-			if (token && token->next)
+			if (token)
 				token = token->next;
 		}
 		else if (token && token->type == ARG)

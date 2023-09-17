@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   link_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 20:49:20 by tgibier           #+#    #+#             */
-/*   Updated: 2023/08/06 19:30:45 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/17 11:27:55 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	link_rdr(t_node *up_node, t_node *node)
 {
 	while (node && node->type != pip)
 	{
-		if (node->type == rdr)
+		if (up_node->type != rdr && node->type == rdr)
 			link_left(up_node, node);
 		node = node->next;
 	}
