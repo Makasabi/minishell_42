@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 15:53:00 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 21:17:03 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,8 @@ int	mini_loop(t_minishit *hell)
 		expander(hell, hell->token);
 		if (parser(hell) != FALSE)
 		{
-			// while (hell->node && hell->node->next)
-			// {
-			// 	printf("type is %d index is %d\n", hell->node->type, hell->node->index);
-			// 	hell->node = hell->node->next;
-			// }
 			while (hell->node && hell->node->up)
 				hell->node = hell->node->up;
-			// printf("type is %d index is %d\n", hell->node->type, hell->node->index);
 			if (hell->node)
 				ft_exec(hell, &hell->node);
 		}
@@ -89,12 +83,18 @@ int	mini_loop(t_minishit *hell)
 }
 
 /*
+	while (hell->node && hell->node->next)
+	{
+		printf("type is %d index is %d\n", hell->node->type, hell->node->index);
+		hell->node = hell->node->next;
+	}
 
-	// while (hell->node)
-	// {
-	// 	printf("type is %d index is %d\n", hell->node->type, hell->node->index);
-	// 	hell->node = hell->node->next;
-	// }
-	check if built_in
+			printf("type is %d index is %d\n", hell->node->type, hell->node->index);
+
+	while (hell->node)
+	{
+		printf("type is %d index is %d\n", hell->node->type, hell->node->index);
+		hell->node = hell->node->next;
+	}
 
 */

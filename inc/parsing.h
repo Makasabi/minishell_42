@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 18:44:14 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 21:24:23 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		parser(t_minishit *hell);
 /* token */
 int		tokenization(t_minishit *hell, char *command);
 
+int     count_tab_size(t_token *token);
 t_token	*ft_tokenlast(t_token *token);
 int		ft_token_size(t_token *token);
 void	ft_add_token(t_token **token, char *str, int type);

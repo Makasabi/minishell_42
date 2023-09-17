@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 15:43:37 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 21:16:22 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	here_doc(t_minishit *hell, char *delimiter)
 	return (fd[0]);
 }
 
-int ft_here_doc(t_minishit *hell, t_node *node)
+int	ft_here_doc(t_minishit *hell, t_node *node)
 {
 	char	*delim;
 
