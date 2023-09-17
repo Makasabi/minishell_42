@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:58:37 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/17 18:03:28 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 18:22:32 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int	ft_ischarset(char *arg, char *set)
 
 int	check_sgl_node(t_minishit *hell, t_node *node)
 {
-	int size;
+	int	size;
 
 	size = ft_table_size(node->argv);
 	if (size == 1)
 	{
-		if ((node->argv[0][0] == '!' || node->argv[0][0] == ':') 
+		if ((node->argv[0][0] == '!' || node->argv[0][0] == ':')
 			&& node->argv[0][1] == '\0')
 		{
 			hell->exit = 0;
@@ -55,14 +55,13 @@ int	check_sgl_node(t_minishit *hell, t_node *node)
 			return (ft_err_syntax(SHELL, SYNERR, node->argv[0]), FAILED);
 		}
 	}
-	return(SUCCESS);
+	return (SUCCESS);
 }
 
-int check_exception(t_minishit *hell, t_node *node)
+int	check_exception(t_minishit *hell, t_node *node)
 {
 	while (node)
 	{
-		// printf("node->type = %d\n", node->type);
 		if (!node->prev || !node->next)
 			return (check_sgl_node(hell, node));
 		node = node->next;
