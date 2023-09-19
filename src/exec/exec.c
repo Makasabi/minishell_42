@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/09/17 15:31:19 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/19 11:56:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 	pid = fork();
 	if (pid == 0)
 	{
+		signal_hdl = 1;
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[1]);
 		close(fd[0]);

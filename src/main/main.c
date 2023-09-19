@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:34:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 18:06:23 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/19 11:57:34 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	clean_init(t_minishit *hell)
 	hell->token = NULL;
 	hell->exit = 0;
 	hell->pids = NULL;
+	signal_hdl = 0;
 }
 
 int	main(int argc, char **argv)

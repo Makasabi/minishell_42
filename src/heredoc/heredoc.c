@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 15:43:37 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/19 11:58:05 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ char	*check_if_heredoc(t_node *node)
 
 void	heredoc_signal(int signal)
 {
-	if (signal == SIGINT)
+	if (signal == SIGINT && signal_hdl == 1)
 	{
-			/* global exit status ?*/
 		ioctl(0, TIOCSTI, "\n");
 		rl_replace_line("\n", 0);
 		rl_on_new_line();
