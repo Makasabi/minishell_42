@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:57:14 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/17 16:15:46 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/19 10:54:25 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <linux/limits.h>
 
 # define ENVERR "🦖 Environment initialization error: " 
-# define ENVERR0 "my_env malloc failled\n"
+# define ENVERR0 "my_env malloc failed\n"
 # define ENVERR1 "failled ft_strdup\n"
 # define ENVERR2 "failled ft_strjoin\n"
 
-# define ENVSEARCH   "Environment Variable search: " 
+# define ENVSEARCH "Environment Variable search: " 
 # define VARNOTFOUND "Variable not found" 
 # define NOVARTARGET "No variable to search for" 
 # define NOFLDIR "No such file or directory"
@@ -29,7 +29,7 @@
 /* env_init.c */
 char	**ft_env_init(void);
 char	**ft_env_from_scratch(void);
-// char	*ft_find_var(char **my_env, char *target);
+char	*ft_find_var(char **my_env, char *target);
 char	*ft_var_value(char **my_env, char *target);
 int		ft_var_line(char **my_env, char *var);
 

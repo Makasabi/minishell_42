@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 12:32:27 by makasabi          #+#    #+#             */
-/*   Updated: 2023/09/17 15:24:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/19 11:54:56 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	pid = fork();
 	i = 0;
 	if (pid == 0)
+	{
+		signal_hdl = 1;
 		ft_exec_cmd(hell, comd, mem_fd);
+	}
 	else
 	{
 		close(*mem_fd);
