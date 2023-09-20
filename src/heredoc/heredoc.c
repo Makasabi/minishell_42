@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/20 11:34:56 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:12:04 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	*do_heredoc(t_minishit *hell, char *delimiter, int *fd)
 int	here_doc(t_minishit *hell, char *delimiter)
 {
 	int		fd[2];
+	int		temp;
 
 	signal(SIGINT, heredoc_signal);
 	signal(SIGINT, SIG_IGN);
@@ -78,7 +79,9 @@ int	here_doc(t_minishit *hell, char *delimiter)
 	}
 	do_heredoc(hell, delimiter, fd);
 	close(fd[1]);
-	return (fd[0]);
+	temp = fd[0];
+	close(fd[0]);
+	return (temp);
 }
 
 int	ft_here_doc(t_minishit *hell, t_node *node)
