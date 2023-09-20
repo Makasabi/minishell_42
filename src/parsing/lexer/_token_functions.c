@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _token_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:16:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/08 12:14:04 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/20 16:53:54 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,25 @@ void	ft_add_back_token(t_token **token, t_token *new)
 	
 */
 
-void	ft_add_token(t_token **token, char *s, int type)
+void	ft_add_token(t_minishit *hell, t_token **token, char *s, int type)
 {
 	t_token	*new;
 
 	new = ft_calloc(1, sizeof(t_token));
 	if (!new)
-		return ;
+		return (ft_error_msg(SHELL, "add_token", s, MALERR));
 	init_token(new);
 	if (s)
+	{
 		new->str = ft_strdup(s);
+		if (!new->str)
+		{
+			ft_error_msg(SHELL, "add_token", s, MALERR);
+			free(new);
+			free(s);
+			clean_exit(hell);
+		}
+	}
 	if (type != -1)
 		new->type = type;
 	ft_add_back_token(token, new);

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 10:56:05 by makasabi          #+#    #+#             */
-/*   Updated: 2023/09/17 15:22:03 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/20 15:19:06 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_exec_bltin_cont(t_minishit *hell, char **argv, int *fds)
 		if (argv[0][2] == 'p')
 			return (ft_export(hell, argv, fds[1]));
 		else if (argv[0][2] == 'i')
-			return (ft_exit(hell, argv));
+			return (ft_exit(hell, argv, fds[1]));
 	}
 	return (SUCCESS);
 }

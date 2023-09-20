@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_tree_exceptions.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:58:37 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/17 21:29:53 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/20 17:36:59 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_sgl_node(t_minishit *hell, t_node *node)
 		if (ft_ischarset(node->argv[0], "&();"))
 		{
 			hell->exit = 2;
-			if (node->argv[0][2])
+			if(ft_strlen(node->argv[0]) > 2)
 				node->argv[0][2] = '\0';
 			return (ft_err_syntax(SHELL, SYNERR, node->argv[0]), FAILED);
 		}

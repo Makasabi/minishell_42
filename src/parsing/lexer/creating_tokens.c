@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creating_tokens.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/20 11:29:20 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/20 18:26:07 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	issa_double_token(t_minishit *hell, char *command, int i)
 		token[1] = command[i + 1];
 	}
 	token[2] = '\0';
-	ft_add_token(&hell->token, token, REDIR);
+	ft_add_token(hell, &hell->token, token, REDIR);
 	return (type);
 }
 
@@ -63,9 +63,9 @@ int	issa_token(t_minishit *hell, char *command, int i)
 		type = is_token(command[i]);
 	}
 	if (type == INPUT || type == OUTPUT)
-		ft_add_token(&hell->token, token, REDIR);
+		ft_add_token(hell, &hell->token, token, REDIR);
 	else if (type == PIPE)
-		ft_add_token(&hell->token, token, type);
+		ft_add_token(hell, &hell->token, token, type);
 	else if (type == END)
 		return (END);
 	if (type == APPEND || type == HEREDOC)
@@ -88,7 +88,13 @@ int	issa_string(t_minishit *hell, char *command, int i)
 		j++;
 	}
 	str = ft_substr(command, i, j);
-	ft_add_token(&hell->token, str, ARG);
+	if (!str)
+	{
+		ft_error_msg(SHELL, "issa_string", NULL, MALERR);
+		free(command);
+		clean_exit(hell);
+	}
+	ft_add_token(hell, &hell->token, str, ARG);
 	free(str);
 	return (j);
 }
@@ -118,7 +124,13 @@ int	issa_quotes(t_minishit *hell, char *command, int i)
 		&& is_token(command[i + j]) < 0)
 		j++;
 	str = ft_substr(command, i, j + 1);
-	ft_add_token(&hell->token, str, ARG);
+	if (!str)
+	{
+		ft_error_msg(SHELL, "issa_quotes", NULL, MALERR);
+		free(command);
+		clean_exit(hell);
+	}
+	ft_add_token(hell, &hell->token, str, ARG);
 	free(str);
 	return (j + 1);
 }

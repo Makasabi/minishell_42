@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   __creating_nodes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:18:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 11:28:43 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/20 18:34:46 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	pip_node(t_minishit *hell)
 	t_node	*new_node;
 
 	new_node = ft_new_node(pip);
+	if (!new_node)
+	{
+		ft_error_msg(SHELL, "pip_node", "'|'", MALERR);
+		clean_exit(hell);
+	}
 	new_node->redir = none;
 	ft_add_back_node(&hell->node, new_node);
 }
@@ -33,6 +38,11 @@ void	cmd_node(t_minishit *hell, t_token *token)
 	t_node	*new_node;
 
 	new_node = ft_new_node(cmd);
+	if (!new_node)
+	{
+		ft_error_msg(SHELL, "cmd_node", token->str, MALERR);
+		clean_exit(hell);
+	}
 	new_node = make_argv_cmd(new_node, token);
 	new_node->redir = none;
 	ft_add_back_node(&hell->node, new_node);
@@ -44,6 +54,11 @@ void	rdr_node(t_minishit *hell, t_token *token)
 	int		type;
 
 	new_node = ft_new_node(rdr);
+	if (!new_node)
+	{
+		ft_error_msg(SHELL, "rdr_node", token->str, MALERR);
+		clean_exit(hell);
+	}
 	new_node = make_argv_rdr(new_node, token->next);
 	type = which_redir(token->str);
 	if (type == APPEND)

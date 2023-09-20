@@ -6,14 +6,14 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 20:01:11 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/17 15:07:34 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/20 15:18:37 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 #include "env.h"
 
-int	ft_exit(t_minishit *hell, char **argv)
+int	ft_exit(t_minishit *hell, char **argv, int fd_out)
 {
 	int	exit_status;
 
@@ -24,6 +24,7 @@ int	ft_exit(t_minishit *hell, char **argv)
 	else
 		exit_status = 0;
 	hell->exit = exit_status;
+	ft_putstr_fd("exit\n", fd_out);
 	clean_exit(hell);
 	return (exit_status);
 }

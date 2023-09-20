@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:09 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 18:29:03 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/20 16:07:53 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	*ft_is_executable(t_minishit *hell, char *cmd)
 		hell->exit = 1;
 		return (ft_error_msg(SHELL, cmd, NULL, NOFLDIR), NULL);
 	}
-	if ((sb.st_mode & S_IFMT) == S_IFDIR)
+	if (S_ISDIR(sb.st_mode))
 	{
 		hell->exit = 126;
 		ft_error_msg(SHELL, cmd, NULL, ISDIRE);
@@ -79,7 +79,7 @@ char	*ft_is_executable(t_minishit *hell, char *cmd)
 	}
 	if (sb.st_mode & S_IXUSR)
 		return (cmd);
-	else if ((sb.st_mode & S_IFMT) == S_IFREG
+	else if (S_ISREG(sb.st_mode)
 		&& !(sb.st_mode & S_IXUSR))
 	{
 		hell->exit = 126;

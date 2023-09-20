@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 21:17:03 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/20 14:25:46 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	display_prompt(int woop)
 	write(1, "\n", 1);
 	rl_replace_line("", 0);
 	rl_on_new_line();
-	rl_redisplay();
+	// rl_redisplay();
 }
 
 int	mini_loop(t_minishit *hell)
@@ -68,13 +68,15 @@ int	mini_loop(t_minishit *hell)
 		return (FALSE);
 	if (lexer(hell, command) != FALSE)
 	{
-		expander(hell, hell->token);
-		if (parser(hell) != FALSE)
+		if (expander(hell, hell->token) != FALSE)
 		{
-			while (hell->node && hell->node->up)
-				hell->node = hell->node->up;
-			if (hell->node)
-				ft_exec(hell, &hell->node);
+			if (parser(hell) != FALSE)
+			{
+				while (hell->node && hell->node->up)
+					hell->node = hell->node->up;
+				if (hell->node)
+					ft_exec(hell, &hell->node);
+			}
 		}
 	}
 	clear_hell(hell);
