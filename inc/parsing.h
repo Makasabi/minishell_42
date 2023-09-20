@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:32:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 18:44:14 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/20 10:50:43 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		parser(t_minishit *hell);
 /* token */
 int		tokenization(t_minishit *hell, char *command);
 
+int		count_tab_size(t_token *token);
 t_token	*ft_tokenlast(t_token *token);
 int		ft_token_size(t_token *token);
 void	ft_add_token(t_token **token, char *str, int type);
@@ -40,7 +41,7 @@ void	ft_add_back_token(t_token **token, t_token *new);
 void	add_redir(t_token *token, t_token *redir, int boool);
 
 int		which_redir(char *command);
-int     assign_type_redir(t_minishit *hell, t_token *token);
+int		assign_type_redir(t_minishit *hell, t_token *token);
 
 int		issa_quotes(t_minishit *hell, char *command, int i);
 int		issa_token(t_minishit *hell, char *command, int i);

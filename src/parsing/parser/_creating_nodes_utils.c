@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:16:37 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 19:15:15 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 21:27:03 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,6 @@ void	index_built_ing(t_node *node)
 	}
 }
 
-/*
-		COUNT TAB SIZE
-		
-- browses tokens while it's the same type or the end
-- gets the size to malloc for char **argv (each char * will be a token->str)
-
-*/
-
-int	count_tab_size(t_token *token)
-{
-	int	i;
-
-	i = 1;
-	while (token && token->type != PIPE)
-	{
-		if (token->type != REDIR)
-			i++;
-		token = token->next;
-	}
-	return (i);
-}
-
 /* 
 		MAKE ARGV RDR
 		
@@ -99,11 +77,26 @@ t_node	*make_argv_rdr(t_node *node, t_token *token)
 - each argv[] is token->str while token->type is cmd
 
 */
+
+t_node	*make_argv_cmd_utils(t_node *node, t_token *token, int i, int flag)
+{
+	char	*tmp;
+
+	if (i != 0 && flag == 1 && token->space == 1)
+	{
+		tmp = ft_strdup(token->str);
+		node->argv[i] = ft_strjoin(tmp, " ");
+		free(tmp);
+	}
+	else
+		node->argv[i] = ft_strdup(token->str);
+	return (node);
+}
+
 t_node	*make_argv_cmd(t_node *node, t_token *token)
 {
 	int		i;
 	int		flag;
-	char	*tmp;
 
 	i = count_tab_size(token);
 	node->argv = ft_calloc (sizeof(char *), i);
@@ -117,14 +110,7 @@ t_node	*make_argv_cmd(t_node *node, t_token *token)
 			flag = 1;
 		if (ft_strlen(token->str) != 0 && token->type != REDIR)
 		{
-			if (i != 0 && flag == 1 && token->space == 1)
-			{
-				tmp = ft_strdup(token->str);
-				node->argv[i] = ft_strjoin(tmp, " ");
-				free(tmp);
-			}
-			else
-				node->argv[i] = ft_strdup(token->str);
+			node = make_argv_cmd_utils(node, token, i, flag);
 			i++;
 		}
 		token = token->next;

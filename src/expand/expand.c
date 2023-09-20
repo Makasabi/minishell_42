@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:18:58 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 16:30:50 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 21:14:13 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,6 @@ void	expander(t_minishit *hell, t_token *token)
 
 		- '\' is not supposed to be handled, as well as open quotes
 				-> decision on what we do with it ?
-					(ex : echo \$HOME -> \/home/wan as it doesn't "unread" $ ?)
+		(ex : echo \$HOME -> \/home/wan as it doesn't "unread" $ ?)
 		
 */

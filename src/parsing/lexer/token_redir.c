@@ -6,7 +6,7 @@
 /*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:27:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 19:16:57 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/17 21:30:23 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	assign_type_redir(t_minishit *hell, t_token *token)
 			hell->pipes++;
 			if (token->prev)
 				token->prev->space = 0;
-		}	
+		}
 		if (token->type != PIPE && token->type != ARG)
 		{
 			redir = which_redir(token->str);
@@ -57,7 +57,7 @@ int	assign_type_redir(t_minishit *hell, t_token *token)
 					|| redir == HEREDOC || redir == APPEND))
 			{
 				if (token->next->type == REDIR)
-					return(ft_err_syntax(SHELL, SYNERR, token->str), FALSE);
+					return (ft_err_syntax(SHELL, SYNERR, token->str), FALSE);
 				token->next->type = REDIR;
 				token = token->next;
 			}

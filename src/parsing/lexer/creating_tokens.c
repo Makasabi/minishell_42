@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creating_tokens.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:08:46 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 19:17:10 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/20 11:29:20 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int	tokenization(t_minishit *hell, char *command)
 	i = 0;
 	while (command[i])
 	{
-		if (command[i] == ' ' || (command[i] >= 9 && command[i] <= 13))
+		if (is_space(command[i]))
 		{
 			i++;
 			if (hell->token)

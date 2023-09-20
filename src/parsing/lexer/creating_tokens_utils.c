@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   creating_tokens_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:07:19 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 15:50:31 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/17 21:19:25 by wan              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+/*
+		COUNT TAB SIZE
+		
+- browses tokens while it's the same type or the end
+- gets the size to malloc for char **argv (each char * will be a token->str)
+
+*/
+
+int	count_tab_size(t_token *token)
+{
+	int	i;
+
+	i = 1;
+	while (token && token->type != PIPE)
+	{
+		if (token->type != REDIR)
+			i++;
+		token = token->next;
+	}
+	return (i);
+}
 
 /* 
 		UTILS
