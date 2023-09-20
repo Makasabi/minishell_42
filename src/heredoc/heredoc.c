@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 21:16:22 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/20 11:34:56 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,22 @@ char	*check_if_heredoc(t_node *node)
 	return (NULL);
 }
 
+		/* global exit status ?*/
 void	heredoc_signal(int signal)
 {
 	if (signal == SIGINT)
 	{
-			/* global exit status ?*/
 		ioctl(0, TIOCSTI, "\n");
 		rl_replace_line("\n", 0);
 		rl_on_new_line();
 	}
 }
 
-int	here_doc(t_minishit *hell, char *delimiter)
+int	*do_heredoc(t_minishit *hell, char *delimiter, int *fd)
 {
-	int		fd[2];
 	char	*line;
 	char	*str;
 
-	signal(SIGINT, heredoc_signal);
-	signal(SIGQUIT, SIG_IGN);
-	if (pipe(fd) == -1)
-	{
-		perror("pipe");
-		exit(EXIT_FAILURE);
-	}
 	line = readline("> ");
 	while (1)
 	{
@@ -70,6 +62,21 @@ int	here_doc(t_minishit *hell, char *delimiter)
 		line = readline("> ");
 	}
 	free(line);
+	return (fd);
+}
+
+int	here_doc(t_minishit *hell, char *delimiter)
+{
+	int		fd[2];
+
+	signal(SIGINT, heredoc_signal);
+	signal(SIGINT, SIG_IGN);
+	if (pipe(fd) == -1)
+	{
+		perror("pipe");
+		exit(EXIT_FAILURE);
+	}
+	do_heredoc(hell, delimiter, fd);
 	close(fd[1]);
 	return (fd[0]);
 }
