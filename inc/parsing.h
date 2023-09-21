@@ -50,8 +50,8 @@ int		ft_node_size(t_node *node);
 void	init_node(t_node *node);
 void	ft_add_back_node(t_node **node, t_node *new);
 
-t_node	*make_argv_rdr(t_node *node, t_token *token);
-t_node	*make_argv_cmd(t_node *node, t_token *token);
+char	**make_argv_rdr(t_node *node, t_token *token);
+char	**make_argv_cmd(t_node *node, t_token *token);
 
 /* creating_tree */
 

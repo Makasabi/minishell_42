@@ -31,7 +31,13 @@ void	cmd_node(t_minishit *hell, t_token *token)
 		ft_error_msg(SHELL, "cmd_node", token->str, MALERR);
 		clean_exit(hell);
 	}
-	new_node = make_argv_cmd(new_node, token);
+	new_node->argv = make_argv_cmd(new_node, token);
+	if (!new_node->argv)
+	{
+		ft_error_msg(SHELL, "make_argv_cmd", token->str, MALERR);
+		free(new_node);
+		clean_exit(hell);
+	}
 	new_node->redir = none;
 	ft_add_back_node(&hell->node, new_node);
 }
@@ -47,7 +53,13 @@ void	rdr_node(t_minishit *hell, t_token *token)
 		ft_error_msg(SHELL, "rdr_node", token->str, MALERR);
 		clean_exit(hell);
 	}
-	new_node = make_argv_rdr(new_node, token->next);
+	new_node->argv = make_argv_rdr(new_node, token->next);
+	if (!new_node->argv)
+	{
+		ft_error_msg(SHELL, "make_argv_rdr", token->str, MALERR);
+		free(new_node);
+		clean_exit(hell);
+	}
 	type = which_redir(token->str);
 	if (type == APPEND)
 		new_node->redir = append;

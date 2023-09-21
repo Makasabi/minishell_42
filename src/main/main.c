@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	hell->my_env = ft_env_init();
 	if (!hell->my_env)
 		return (free(hell), 1);
-	ft_header(hell);
+	// ft_header(hell);
 	while (1)
 	{
 		if (mini_loop(hell) == FALSE)

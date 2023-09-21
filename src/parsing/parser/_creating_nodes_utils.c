@@ -46,7 +46,7 @@ void	index_built_ing(t_node *node)
 
 */
 
-t_node	*make_argv_rdr(t_node *node, t_token *token)
+char	**make_argv_rdr(t_node *node, t_token *token)
 {
 	if (ft_strlen(token->str) == 0)
 		return (NULL);
@@ -54,8 +54,10 @@ t_node	*make_argv_rdr(t_node *node, t_token *token)
 	if (!node->argv)
 		return (NULL);
 	node->argv[0] = ft_strdup(token->str);
+	if (!node->argv[0])
+		return (free(node->argv), NULL);
 	node->argv[1] = NULL;
-	return (node);
+	return (node->argv);
 }
 
 /* 
@@ -66,25 +68,34 @@ t_node	*make_argv_rdr(t_node *node, t_token *token)
 
 */
 
-t_node	*make_argv_cmd_utils(t_node *node, t_token *token, int i, int flag)
+char	**make_argv_cmd_utils(t_node *node, t_token *token, int i, int flag)
 {
 	char	*tmp;
 
 	if (i != 0 && flag == 1 && token->space == 1)
 	{
 		tmp = ft_strdup(token->str);
+		if (!tmp)
+			return (NULL);
 		node->argv[i] = ft_strjoin(tmp, " ");
+		if (!node->argv[i])
+			return (free(tmp), NULL);
 		free(tmp);
 	}
 	else
+	{
 		node->argv[i] = ft_strdup(token->str);
-	return (node);
+		if (!node->argv[i])
+			return (NULL);
+	}
+	return (node->argv);
 }
 
-t_node	*make_argv_cmd(t_node *node, t_token *token)
+char	**make_argv_cmd(t_node *node, t_token *token)
 {
 	int		i;
 	int		flag;
+	char	**argv;
 
 	i = count_tab_size(token);
 	node->argv = ft_calloc (sizeof(char *), i);
@@ -98,10 +109,13 @@ t_node	*make_argv_cmd(t_node *node, t_token *token)
 			flag = 1;
 		if (ft_strlen(token->str) != 0 && token->type != REDIR)
 		{
-			node = make_argv_cmd_utils(node, token, i, flag);
+			argv = make_argv_cmd_utils(node, token, i, flag);
+			if (!argv)
+				return (ft_free(node->argv), NULL);
+			node->argv = argv;
 			i++;
 		}
 		token = token->next;
 	}
-	return (node);
+	return (node->argv);
 }
