@@ -36,13 +36,24 @@ As mentionned previously, we apprehended this project from a macro perspective.
 We started by creaing a general workflow for our project, hence avoiding any redundancy in our code but also to anticipate the type of data we'd be sending from the parsing phase to the execution phase.
 
 - Parsing
-	- This section is where the command line entered after the prompt `➜  Minishe·elle `, which  at this point is a mere string of characters, become a glorious binary (or 'syntax') tree.
+This section starts at the command line which is entered after the prompt `➜  Minishe·elle `.
+At this point it is a mere string of characters, and it becomes a glorious binary (or 'syntax') tree.
 - Execution
-	- This bit will use all the formated data of the tree to execute every single commands and redirections.
+This bit will use all the formated data of the tree to execute every single commands and redirections.
 
+## Key Learning Points
 
+1. Readling - Collecting instructions
+2. Parsing
+   	1. Lexer - divide command sting in tokens
+   	2. Expander - Replace variables with their value
+   	3. Parser - analyse tokens and store them in nodes
+   	4. Pseudo Heredoc - 
+   	5. Tree builder - organise nodes in a logical way
+5. signals handling
+6. Environment variables
+7. Execution
 
-## Challenges
 
 1. [Extracting Information]
 2. [Parsing - Abstract Synthax Tree]
