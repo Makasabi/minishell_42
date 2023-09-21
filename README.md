@@ -54,7 +54,7 @@ Pipe1["` char **argv = NULL;
  struct s_node   *up = NULL;
  struct s_node   *left = *node 2;
  struct s_node   *right = *node 4;`"]
-graph TR;
+graph TD;
    Pipe1-->Cmd1;
    Cmd1-->Pipe1;
    Cmd1-->Redir1;
