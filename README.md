@@ -19,14 +19,15 @@ Minishell is the first group project (within the common core curiculum of 42), w
 
 I was very happy Tiffany asked me to become her Minishell mate! We were lucky enough to be coding in a very similar way so working together and reviewing eachother's code was a breeze! Our respecive professionnal experience was also an asset for us as we apprehended this big piece of a project from a macro perspective first. And on a more personnal level - we became really good friends. So thank you Tiffany !
 
-**We divided the project in 2 main hcunks as following**
+**We divided the project in roughly 2 main chunks : parsing and execution**
 > *[Tiffany](https://github.com/ImJustWan)*
->
+<details>
 > Prompt, parsing (tokenization, lexer, binary tree, expansion), pseudo Heredoc, signal
->
+</details>
 > *[Marie](https://github.com/Makasabi)*
->
+<details>
 > Environment variables, builtins, execution, exit status
+</details>
 
 ## Project's Architecture
 
