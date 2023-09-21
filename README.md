@@ -4,9 +4,10 @@ A 42 Paris project
 ![main_img](https://github.com/Makasabi/minishell_42/assets/114622980/2dc3bb9a-04a2-4f2c-b738-fb223311c24c)
 
 ## Subject
-Minishell is a level 03 project at 42 Paris and an emblematic exercice for any computer science student. 
+Minishell is a level 03 project at 42 Paris and an emblematic exercice for any computer science student.
+
 The subject is pretty straightforward : Recode a POSIX Shell in C.
-The scope is fully 'functionnal' as we were not required to code any graphic interface (opening a new windo, etc) but 'only'interpret and execute the instruction(s) given in the prompt line.
+The scope is fully 'functionnal' as we were not required to code any graphic interface (opening a new windo, etc) but 'only'interpret and execute the instruction(s) given in the prompt line `➜  Minishe·elle `.
 The `./minishell` program is able to run most of the basic instructions a shell can handle, such as echo, ls, cat, cd, mkdir... and even run other executable such prevous 42 projects (think push_swap, fdf, etc).
 A set of basic commands also have to be recoded inside our program as to be able to run basic instruction even when `./minishell` is lauched without any environment vairbales (but will get on that later on).
 if you have any questions - shoot us an email or ping us on Discord, we'll be happy to help!
