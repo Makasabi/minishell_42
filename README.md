@@ -47,6 +47,21 @@ Here is a global representation of the general structure of our code :
 
 **You can see it in extensive details [here](https://miro.com/app/board/uXjVM2vuNQE=/?share_link_id=828445432809)**.
 
+```mermaid
+Syntax Tree;
+   Pipe1-->Cmd1;
+   Cmd1-->Pipe1;
+   Cmd1-->Redir1;
+   Redir1-->Cmd1;
+   Pipe1-->Pipe2;
+   Pipe2-->Cmd2;
+   Cmd2-->Pipe2;
+   Pipe2-->Cmd3;
+   Cmd3-->Pipe2;
+   Cmd3-->Redir3;
+   Redir3-->Cmd3;
+```
+
 ## Key Learning Points
 
 1. Readling - Collecting instructions from prompt line
