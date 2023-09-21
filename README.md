@@ -49,12 +49,20 @@ Here is a global representation of the general structure of our code :
 
 ```mermaid
 graph TD;
-Pipe1["` char **argv = NULL;
+Pipe1["Pipe
+ char **argv = NULL;
  t_type              type = pip;
  t_redir             redir = none;
  struct s_node   *up = NULL;
  struct s_node   *left = *node 2;
- struct s_node   *right = *node 4;`"]
+ struct s_node   *right = *node 4;"]
+Cmd1["Command 1
+ char **argv = {ifconfig};
+ t_type              type = cmd;
+ t_redir             redir = none;
+ struct s_node   *up = *node 1
+ struct s_node   *left = *node 3;
+struct s_node   *right = NULL;"]
    Pipe1-->Cmd1;
    Cmd1-->Pipe1;
    Cmd1-->Redir1;
