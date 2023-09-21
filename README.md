@@ -42,7 +42,9 @@ At this point it is a mere string of characters, and it becomes a glorious binar
 This bit will use all the formated data of the tree to execute every single commands and redirections.
 
 Here is a global representation of the general structure of our code : 
+
 ![Minishell_Archi](https://github.com/Makasabi/minishell_42/assets/114622980/0bc6015f-d4bd-410f-90be-9861136db674)
+
 **You can see it in extensive details [here](https://miro.com/app/board/uXjVM2vuNQE=/?share_link_id=828445432809)**.
 
 ## Key Learning Points
