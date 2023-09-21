@@ -1,6 +1,18 @@
-# minishell
-# a 42 Paris project
+# Minishell
+A 42 Paris project
 
+![main_img](https://github.com/Makasabi/minishell_42/assets/114622980/2dc3bb9a-04a2-4f2c-b738-fb223311c24c)
+
+## Subject
+Minishell is a leve 03 project at 42 Paris and an emblematic exercice for any 
+
+Recoding a POSIX Shell in C
+
+## Wonderwomen
+
+## Project's Architecture
+
+## Challenges
 
 
 Sujet :
