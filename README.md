@@ -6,7 +6,7 @@ A 42 Paris project
 ## Subject
 Minishell is a level 03 project at 42 Paris and an emblematic exercice for any computer science student.
 
-The subject is pretty straightforward : Recode a POSIX Shell in C.
+The subject is pretty straightforward : Recode a (limited version) POSIX Shell in C.
 
 The scope is fully 'functionnal' as we were not required to code any graphic interface (opening a new windo, etc) but 'only'interpret and execute the instruction(s) given in the prompt line `➜  Minishe·elle `.
 The `./minishell` program is able to run most of the basic instructions a shell can handle, such as echo, ls, cat, cd, mkdir... and even run other executable such prevous 42 projects (think push_swap, fdf, etc).
@@ -14,6 +14,8 @@ A set of basic commands also have to be recoded inside our program as to be able
 if you have any questions - shoot us an email or ping us on Discord, we'll be happy to help!
  
 ## Wonderwomen
+
+Minishell is the first group project (within the common core curiculum of 42), which has to be done in pairs. The point of working on a group project is to emulate real life work - where wel'll have to work on projects with bigger scopes and where we will have to review code or get our own code reviewed. Which is why, when working with one or several persons, knowing exactly each other's scope is key to avoid any overlaping or redundancy. Another key learning point was the use of git (branching, merging, etc). By the way, the first thing we did was a ![git crash course]([https://learngitbranching.js.org/?locale=fr_FR](https://learngitbranching.js.org/?locale=en)).
 
 ## Project's Architecture
 
