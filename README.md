@@ -21,13 +21,13 @@ I was very happy Tiffany asked me to become her Minishell mate! We were lucky en
 
 **We divided the project in roughly 2 main chunks : parsing and execution**
 
->> **[Tiffany](https://github.com/ImJustWan)**
->> 
->> Prompt, parsing (tokenization, lexer, binary tree, expansion), pseudo Heredoc, signal
-
->> **[Marie](https://github.com/Makasabi)**
->> 
->> Environment variables, builtins, execution, exit status
+|**[Tiffany](https://github.com/ImJustWan)**	 |**[Marie](https://github.com/Makasabi)**	  |
+|------------------------------------------------|------------------------------------------------|
+| Prompt 					 | Environment variables			  |
+| Parsing (Token, Lexer, Expansion, Binary tree) | Builtins					  |
+| Pseudo Heredoc 				 | Execution (simple and compplex commands)	  |
+| Signal handling				 | Exit Status					  |
+-------------------------------------------------|------------------------------------------------|
 
 
 ## Project's Architecture
