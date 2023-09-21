@@ -43,35 +43,24 @@ This bit will use all the formated data of the tree to execute every single comm
 
 ## Key Learning Points
 
-1. Readling - Collecting instructions
+1. Readling - Collecting instructions from prompt line
 2. Parsing
    	1. Lexer - divide command sting in tokens
    	2. Expander - Replace variables with their value
    	3. Parser - analyse tokens and store them in nodes
    	4. Pseudo Heredoc - 
    	5. Tree builder - organise nodes in a logical way
-5. signals handling
+5. Signals handling
 6. Environment variables
 7. Execution
-
-
-1. [Extracting Information]
-2. [Parsing - Abstract Synthax Tree]
-3. [Environment Variables]
-5. [Execution]
-   1. [Builtin functions]
-   2. [Running other executables from our terminal]
-   3. [Library executables (e.g. cat, ls)]
-   3. [Exit status ($?)](
-   4. [Assynchronous Vs Synchronous (Pros, cons and our hybrid approach)]
-6. [Signals]
-7. [Pipes and Redirections]
-   1. [Redirections]
-   2. [Pipes]
-   3. [Multiple Redirections]
-   4. [Combining Pipes and Redirections]
-
-
+   	1. Builtins
+   	2. Running binary executable form minishell
+   	3. Piped commands
+   	4. Redirections
+   	5. Paths and Access rights
+   	6. Exit status
+8. External Ressources 
+ 
 Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
 
