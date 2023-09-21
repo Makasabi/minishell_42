@@ -48,7 +48,7 @@ Here is a global representation of the general structure of our code :
 **You can see it in extensive details [here](https://miro.com/app/board/uXjVM2vuNQE=/?share_link_id=828445432809)**.
 
 ```mermaid
-Syntax Tree;
+graph TD;
    Pipe1-->Cmd1;
    Cmd1-->Pipe1;
    Cmd1-->Redir1;
