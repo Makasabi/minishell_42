@@ -28,11 +28,19 @@ I was very happy Tiffany asked me to become her Minishell mate! We were lucky en
 |Pseudo Heredoc|Execution (simple and compplex commands)|
 |Signal handling|Exit Status|
 
+____
 
 ## Project's Architecture
 
 As mentionned previously, we apprehended this project from a macro perspective. 
-We started by creaing a general workflow for our project, hence avoiding any redundancy in our code. 
+We started by creaing a general workflow for our project, hence avoiding any redundancy in our code but also to anticipate the type of data we'd be sending from the parsing phase to the execution phase.
+
+<details>
+	- ### Parsing
+	This section is where the command line entered after the prompt `➜  Minishe·elle `, which  at this point is a mere string of characters, become a glorious binary (or 'syntax') tree.
+	- ### Eecution
+	This bit will use all the formated data of the tree to execute every single commands and redirections.
+</details>
 
 
 ## Challenges
