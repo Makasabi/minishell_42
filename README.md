@@ -31,9 +31,28 @@ I was very happy Tiffany asked me to become her Minishell mate! We were lucky en
 
 ## Project's Architecture
 
+As mentionned previously, we apprehended this project from a macro perspective. 
+We started by creaing a general workflow for our project, hence avoiding any redundancy in our code. 
 
 
 ## Challenges
+
+1. [Extracting Information]
+2. [Parsing - Abstract Synthax Tree]
+3. [Environment Variables]
+5. [Execution]
+   1. [Builtin functions]
+   2. [Running other executables from our terminal]
+   3. [Library executables (e.g. cat, ls)]
+   3. [Exit status ($?)](
+   4. [Assynchronous Vs Synchronous (Pros, cons and our hybrid approach)]
+6. [Signals]
+7. [Pipes and Redirections]
+   1. [Redirections]
+   2. [Pipes]
+   3. [Multiple Redirections]
+   4. [Combining Pipes and Redirections]
+
 
 Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
