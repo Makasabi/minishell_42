@@ -27,10 +27,11 @@ I was very happy Tiffany asked me to become her Minishell mate! We were lucky en
 | Parsing (Token, Lexer, Expansion, Binary tree) | Builtins					  |
 | Pseudo Heredoc 				 | Execution (simple and compplex commands)	  |
 | Signal handling				 | Exit Status					  |
--------------------------------------------------|------------------------------------------------|
 
 
 ## Project's Architecture
+
+
 
 ## Challenges
 
