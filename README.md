@@ -1,4 +1,7 @@
-# minishell_42
+# minishell
+# a 42 Paris project
+
+
 
 Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
