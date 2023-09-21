@@ -48,13 +48,13 @@ Here is a global representation of the general structure of our code :
 **You can see it in extensive details [here](https://miro.com/app/board/uXjVM2vuNQE=/?share_link_id=828445432809)**.
 
 ```mermaid
+graph TD;
 Pipe1["` char **argv = NULL;
  t_type              type = pip;
  t_redir             redir = none;
  struct s_node   *up = NULL;
  struct s_node   *left = *node 2;
  struct s_node   *right = *node 4;`"]
-graph TD;
    Pipe1-->Cmd1;
    Cmd1-->Pipe1;
    Cmd1-->Redir1;
