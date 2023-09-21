@@ -50,16 +50,16 @@ This bit will use all the formated data of the tree to execute every single comm
    	3. Parser - analyse tokens and store them in nodes
    	4. Pseudo Heredoc - 
    	5. Tree builder - organise nodes in a logical way
-5. Signals handling
-6. Environment variables
-7. Execution
+3. Signals handling
+4. Environment variables
+5. Execution
    	1. Builtins
    	2. Running binary executable form minishell
    	3. Piped commands
    	4. Redirections
    	5. Paths and Access rights
    	6. Exit status
-8. External Ressources 
+6. External Ressources 
  
 Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
