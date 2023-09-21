@@ -15,7 +15,7 @@ if you have any questions - shoot us an email or ping us on Discord, we'll be ha
  
 ## Wonderwomen
 
-Minishell is the first group project (within the common core curiculum of 42), which has to be done in pairs. The point of working on a group project is to emulate real life work - where wel'll have to work on projects with bigger scopes and where we will have to review code or get our own code reviewed. Which is why, when working with one or several persons, knowing exactly each other's scope is key to avoid any overlaping or redundancy. Another key learning point was the use of git (branching, merging, etc). By the way, the first thing we did was a ![git crash course]([https://learngitbranching.js.org/?locale=fr_FR](https://learngitbranching.js.org/?locale=en)).
+Minishell is the first group project (within the common core curiculum of 42), which has to be done in pairs. The point of working on a group project is to emulate real life work - where wel'll have to work on projects with bigger scopes and where we will have to review code or get our own code reviewed. Which is why, when working with one or several persons, knowing exactly each other's scope is key to avoid any overlaping or redundancy. Another key learning point was the use of git (branching, merging, etc). By the way, the first thing we did was a [git crash course](https://learngitbranching.js.org/?locale=en)).
 
 ## Project's Architecture
 
