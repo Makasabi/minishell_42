@@ -75,6 +75,15 @@ struct s_node   *right = NULL;"]
    Cmd3-->Redir3;
    Redir3-->Cmd3;
 ```
+```mermaid
+classDiagram
+Pipe01 : t_type pip
+Pipe01 : t_redir none
+Pipe01 : struct s_node up = NULL
+Pipe01 : struct s_node left = command01
+Pipe01 : struct s_node right = Pipe02
+
+```
 
 ## Key Learning Points
 
