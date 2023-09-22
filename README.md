@@ -73,8 +73,8 @@ Here is a global representation of the general structure of our code :
 
 Enrionment vairiables are very similar to variables you'd be using in your code as their respective values can be used when called in functions. 
 Here are a few examples you may know:
-+`$PATH`: if you've previously worked on Pipex project, you sure have used it in order to execute a command with the function `execve`.
-+`$USER`: is used when generating your source file header.
++ `$PATH`: if you've previously worked on Pipex project, you sure have used it in order to execute a command with the function `execve`.
++ `$USER`: is used when generating your source file header.
 + `$HOME`: is used by `cd` when no arguments are entered.
 + `$PWD` & `$OLDPWD`: are both updated when we change directory with the cd command.
 + `$SHLVL`: is incremented everytime an instance of shell is launched within another one.
