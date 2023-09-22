@@ -116,6 +116,7 @@ typedef struct s_minishit
 {
 	int		pipes;
 	int		exit;
+	int		pipe_fd;
 	char	**my_env;
 	t_node	*node;
 	t_token	*token;

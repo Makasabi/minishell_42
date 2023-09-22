@@ -81,6 +81,7 @@ int	here_doc(t_minishit *hell, char *delimiter)
 		exit(EXIT_FAILURE);
 	}
 	pid = fork();
+	hell->pipe_fd = fd[1];
 	if (pid == 0)
 		child_heredoc(hell, delimiter, fd);
 	else

@@ -6,6 +6,7 @@
 void	clean_init(t_minishit *hell)
 {
 	hell->pipes = 0;
+	hell->pipe_fd = -1;
 	hell->my_env = NULL;
 	hell->node = NULL;
 	hell->token = NULL;

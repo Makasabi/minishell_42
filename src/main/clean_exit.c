@@ -68,6 +68,8 @@ int	clean_exit(t_minishit *hell)
 		ft_clear_node(hell->node);
 	if (hell->pids)
 		free(hell->pids);
+	// if (hell->pipe_fd != -1)
+	close (hell->pipe_fd);
 	hell = NULL;
 	rl_clear_history();
 	exit (exit_status);
