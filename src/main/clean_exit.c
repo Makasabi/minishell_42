@@ -28,6 +28,10 @@ void	ft_clear_node(t_node *node)
 		node = node->prev;
 	while (node)
 	{
+		if (node->fd[0] != -1)
+			close (node->fd[0]);
+		if (node->fd[1] != -1)
+			close (node->fd[1]);
 		if (node->argv)
 			ft_free(node->argv);
 		node->argv = NULL;

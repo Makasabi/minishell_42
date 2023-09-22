@@ -17,6 +17,8 @@ int	parser(t_minishit *hell)
 	index_built_ing(hell->node);
 	if (creating_tree(hell) == FALSE)
 		return (FALSE);
+	while (hell->node && hell->node->up)
+		hell->node = hell->node->up;
 	ft_here_doc(hell, hell->node);
 	return (TRUE);
 }

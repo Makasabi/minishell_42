@@ -93,10 +93,22 @@ int	ft_here_doc(t_minishit *hell, t_node *node)
 {
 	char	*delim;
 
-	delim = check_if_heredoc(node);
-	while (node && node->redir != heredoc)
+	// delim = check_if_heredoc(node);
+	// while (node && node->redir != heredoc)
+	// 	node = node->next;
+	// if (delim)
+	// 	node->fd[0] = here_doc(hell, delim);
+	// return (TRUE);
+	while (node)
+	{
+		if (node->redir == heredoc)
+		{
+			delim = check_if_heredoc(node);
+			if (delim)
+				node->fd[0] = here_doc(hell, delim);
+		}
 		node = node->next;
-	if (delim)
-		node->fd[0] = here_doc(hell, delim);
+	}
 	return (TRUE);
+
 }
