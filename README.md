@@ -82,8 +82,14 @@ Here are a few examples you may know:
 You can easily check the value of an environment variable with the command `echo $VARNAME`
 
 the environment of shell is a collection of many variables, and luckily you don't have to set the entire environment yourself.
-You can 'import it' from your main function arguments `int main(int argc, char ** argv, char ** envp)` or by importing it from an external variable ```c
-extern char	**environ```
+You can 'import it' from your main function arguments `int main(int argc, char ** argv, char ** envp)` or by importing it from an external variable ```extern char	**environ```.
+if you are launching `./minihsell` with `env -i`: you are setting the envp/environ to a one line 2D array that is set to NULL; In this particular case, you'll need to make sure your program can run without crashing and run builtins.
+
+You'll have to store your'e environment variable somehere easily accessible throughout youre code. 
+In our project, we decided to duplicate the environment 2D char array and to have it saved on the heap. 
+
+Finally, you will also need to code functions to modify your environment: add, remove, edit, find, extract value of a variable. 
+
 
 Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
