@@ -13,13 +13,19 @@ void	clean_init(t_minishit *hell)
 	hell->pids = NULL;
 }
 
+t_minishit *get_address(void)
+{
+	static t_minishit hell;
+	return (&hell);
+}
+
 int	main(int argc, char **argv)
 {
 	t_minishit	*hell;
 
 	(void)argc;
 	(void)argv;
-	hell = ft_calloc(1, sizeof(t_minishit));
+	hell = get_address();
 	if (!hell)
 		return (ft_error_msg(SHELL, "initialization", NULL, MALERR), FAILED);
 	clean_init(hell);

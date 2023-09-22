@@ -49,6 +49,18 @@ void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	}
 }
 
+void	ft_close_fds(t_node *node)
+{
+	while (node)
+	{
+		if (node->fd[0] != -1)
+			close(node->fd[0]);
+		if (node->fd[1] != -1)
+			close(node->fd[1]);
+		node = node->left;
+	}
+}
+
 int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 {
 	int	pid;
@@ -62,7 +74,7 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	else
 	{
 		close(*mem_fd);
-		hell->pids[hell->pipes] = pid;
+		hell->pids[hell->pipes] = pid; 
 		while (i <= hell->pipes)
 		{
 			waitpid(hell->pids[i], &exit_status, WUNTRACED);
@@ -71,5 +83,6 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 		if (WIFEXITED(exit_status) == TRUE)
 			hell->exit = WEXITSTATUS(exit_status);
 	}
+	ft_close_fds(*comd);
 	return (hell->exit);
 }

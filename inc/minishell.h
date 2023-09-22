@@ -60,6 +60,12 @@
 # define SKIP 1
 # define NOSKIP 0
 
+# define HEREDOC_PARENT	1
+# define HEREDOC_CHILD	2
+# define PROCESS_PARENT	3
+# define PROCESS_CHILD	4
+# define PROCESS_DONE	5
+
 typedef enum e_type
 {
 	pip,
@@ -128,5 +134,5 @@ void	ft_free(char **split);
 
 /* shell_header.c */
 void	ft_header(t_minishit *hell);
-
+t_minishit *get_address(void);
 #endif

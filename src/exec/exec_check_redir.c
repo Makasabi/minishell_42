@@ -19,17 +19,20 @@ void	ft_set_redir(t_node **cmd, int *fd)
 	}
 }
 
-static int	ft_check_in(t_node *redir)
+static int    ft_check_in(t_node *redir)
 {
-	if (access(redir->argv[0], F_OK) < 0)
-		return (ft_error_msg(SHELL, NULL, redir->argv[0], NULL), FAILED);
-	if (access(redir->argv[0], F_OK) >= 0)
-	{
-		redir->fd[0] = open(redir->argv[0], O_RDONLY);
-		if (redir->fd[0] < 0)
-			return (ft_error_msg(SHELL, NULL, redir->argv[0], NULL), FAILED);
-	}
-	return (SUCCESS);
+    if (redir->redir == heredoc)
+        if (redir->fd[0] != -1)
+            return (SUCCESS);
+    if (access(redir->argv[0], F_OK) < 0)
+        return (ft_error_msg(SHELL, NULL, redir->argv[0], NULL), FAILED);
+    if (access(redir->argv[0], F_OK) >= 0)
+    {
+        redir->fd[0] = open(redir->argv[0], O_RDONLY);
+        if (redir->fd[0] < 0)
+            return (ft_error_msg(SHELL, NULL, redir->argv[0], NULL), FAILED);
+    }
+    return (SUCCESS);
 }
 
 static int	ft_check_out(t_node *redir)
@@ -51,29 +54,27 @@ static int	ft_check_out(t_node *redir)
 	}
 	return (SUCCESS);
 }
-
-int	ft_check_rdr(t_minishit *hell, t_node *redir)
+int    ft_check_rdr(t_minishit *hell, t_node *redir)
 {
-	(void)hell;
-	while (redir != NULL)
-	{
-		if (redir->type == rdr)
-		{
-			if (redir->in_out_put == 0)
-			{
-				if (redir->redir != heredoc
-					&& ft_check_in(redir) == FAILED)
-					return (FAILED);
-			}
-			else if (redir->in_out_put == 1)
-				if (ft_check_out(redir) == FAILED)
-					return (FAILED);
-			if (redir->redir == empty && redir->in_out_put == 0)
-				close(redir->fd[0]);
-			if (redir->redir == empty && redir->in_out_put == 1)
-				close(redir->fd[1]);
-		}
-		redir = redir->left;
-	}
-	return (SUCCESS);
+    (void)hell;
+    while (redir != NULL)
+    {
+        if (redir->type == rdr)
+        {
+            if (redir->in_out_put == 0)
+            {
+                if (ft_check_in(redir) == FAILED)
+                    return (FAILED);
+            }
+            else if (redir->in_out_put == 1)
+                if (ft_check_out(redir) == FAILED)
+                    return (FAILED);
+            if (redir->redir == empty && redir->in_out_put == 0)
+                close(redir->fd[0]);
+            if (redir->redir == empty && redir->in_out_put == 1)
+                close(redir->fd[1]);
+        }
+        redir = redir->left;
+    }
+    return (SUCCESS);
 }

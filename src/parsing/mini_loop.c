@@ -1,5 +1,6 @@
 #include "parsing.h"
 #include "expand.h"
+#include "signals.h"
 #include "exec.h"
 
 /*
@@ -33,15 +34,6 @@ void	clean_hell(t_minishit *hell)
 	hell->node = NULL;
 	hell->token = NULL;
 	hell->pids = NULL;
-}
-
-void	display_prompt(int woop)
-{
-	(void)woop;
-	write(1, "\n", 1);
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	// rl_redisplay();
 }
 
 int	mini_loop(t_minishit *hell)

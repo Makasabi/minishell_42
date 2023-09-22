@@ -1,5 +1,6 @@
 #include "heredoc.h"
 #include "expand.h"
+#include "signals.h"
 #include <sys/ioctl.h>
 
 char	*check_if_heredoc(t_node *node)
@@ -12,29 +13,30 @@ char	*check_if_heredoc(t_node *node)
 	}
 	return (NULL);
 }
-
-		/* global exit status ?*/
-void	heredoc_signal(int signal)
-{
-	if (signal == SIGINT)
-	{
-		ioctl(0, TIOCSTI, "\n");
-		rl_replace_line("\n", 0);
-		rl_on_new_line();
-	}
-}
-
-int	*do_heredoc(t_minishit *hell, char *delimiter, int *fd)
+int	child_heredoc(t_minishit *hell, char *delimiter, int *fd)
 {
 	char	*line;
 	char	*str;
 
-	line = readline("> ");
+	handle_signalz(HEREDOC_CHILD, fd);
+	close(fd[0]);
+	line = NULL;
 	while (1)
 	{
-		if (!line || (ft_strncmp(line, delimiter, ft_strlen(line)) == 0
-				&& ft_strlen(line) == ft_strlen(delimiter)))
-			break ;
+		free(line);
+		line = readline("> ");
+		if (!line)
+		{
+			ft_putstr_fd("Warning: here-document delimited by chosen end-of-file\n", 2);
+			close(fd[1]);
+			clean_exit(hell);
+		}
+		if (ft_strncmp(line, delimiter, ft_strlen(line)) == 0
+			&& ft_strlen(line) == ft_strlen(delimiter))
+		{
+			close(fd[1]);
+			clean_exit(hell);
+		}
 		if (dollar_sign(line) != FAILED)
 		{
 			str = get_value(hell, line);
@@ -45,31 +47,46 @@ int	*do_heredoc(t_minishit *hell, char *delimiter, int *fd)
 		else
 			write(fd[1], line, strlen(line));
 		write(fd[1], "\n", 1);
-		if (line)
-			free(line);
-		line = readline("> ");
 	}
-	free(line);
-	return (fd);
+	close(fd[1]);
+	if (line)
+		free(line);
+	clean_exit(hell);
+	return (fd[1]);
+}
+
+void	parent_heredoc(t_minishit *hell, int *fd, int *tmp, int pid)
+{
+	(void)hell;
+	close(fd[1]);
+	waitpid(pid, tmp, 0);
+	if (*tmp != 0)
+	{
+		close (fd[0]);
+		hell->exit = 1;
+	}
+	return ;
 }
 
 int	here_doc(t_minishit *hell, char *delimiter)
 {
-	int		fd[2];
-	int		temp;
+	int	fd[2];
+	int	pid;
+	int	tmp;
 
-	signal(SIGINT, heredoc_signal);
-	signal(SIGINT, SIG_IGN);
+	handle_signalz(HEREDOC_PARENT, NULL);
 	if (pipe(fd) == -1)
 	{
 		perror("pipe");
 		exit(EXIT_FAILURE);
 	}
-	do_heredoc(hell, delimiter, fd);
-	close(fd[1]);
-	temp = fd[0];
-	close(fd[0]);
-	return (temp);
+	pid = fork();
+	if (pid == 0)
+		child_heredoc(hell, delimiter, fd);
+	else
+		parent_heredoc(hell, fd, &tmp, pid);
+	handle_signalz(PROCESS_DONE, NULL);
+	return (fd[0]);
 }
 
 int	ft_here_doc(t_minishit *hell, t_node *node)
