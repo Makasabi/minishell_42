@@ -67,7 +67,9 @@ Here is a global representation of the general structure of our code :
    	6. Exit status
 6. External Ressources 
 
-## 1. Readline - Collecting istructions from the prompt line
+## 1. Readline - Collecting instructions from the prompt line
+
+## 4. Environment variables
 
 Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
