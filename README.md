@@ -91,7 +91,7 @@ Redir1["Redirection 1
  struct s_node	*up = *Command 1;
  struct s_node	*left = *NULL;
  struct s_node	*right = NULL;"]
-Redir1["Redirection 1
+Redir3["Redirection 3
  char **argv = {address};
  t_type	type = rdr;
  t_redir	redir = readfrom;
