@@ -49,26 +49,53 @@ Here is a global representation of the general structure of our code :
 
 ```mermaid
 graph TD;
-Pipe1["Pipe
+Pipe1["Pipe 1
  char **argv = NULL;
  t_type	type = pip;
  t_redir	redir = none;
  struct s_node *up = NULL;
- struct s_node	*left = *node 2;
- struct s_node	*right = *node 4;"]
+ struct s_node	*left = *Command 1;
+ struct s_node	*right = *Pipe 2;"]
+Pipe2["Pipe 2
+ char **argv = NULL;
+ t_type	type = pip;
+ t_redir	redir = none;
+ struct s_node *up = NULL;
+ struct s_node	*left = *Command 2;
+ struct s_node	*right = *Command 3;"]
 Cmd1["Command 1
  char **argv = {ifconfig};
  t_type	type = cmd;
  t_redir	redir = none;
- struct s_node	*up = *node 1
- struct s_node	*left = *node 3;
+ struct s_node	*up = *Pipe 1;
+ struct s_node	*left = *Redirection 1;
+ struct s_node	*right = NULL;"]
+Cmd2["Command 2
+ char **argv = {"grep", "ether"};
+ t_type	type = cmd;
+ t_redir	redir = none;
+ struct s_node	*up = *Pipe 2;
+ struct s_node	*left = *NULL;
+ struct s_node	*right = NULL;"]
+Cmd3["Command 3
+ char **argv = {"cut", "-d", "' '", "-f", "10"};
+ t_type	type = cmd;
+ t_redir	redir = none;
+ struct s_node	*up = *Pipe 2;
+ struct s_node	*left = *Redirection 3;
  struct s_node	*right = NULL;"]
 Redir1["Redirection 1
- char **argv = {option,
-};
+ char **argv = {option};
  t_type	type = rdr;
  t_redir	redir = readfrom;
- struct s_node	*up = *node 2
+ struct s_node	*up = *Command 1;
+ struct s_node	*left = *NULL;
+ struct s_node	*right = NULL;"]
+Redir1["Redirection 1
+ char **argv = {address};
+ t_type	type = rdr;
+ t_redir	redir = readfrom;
+ struct s_node	*up = *Command 3;
  struct s_node	*left = *NULL;
  struct s_node	*right = NULL;"]
    Pipe1-->Cmd1;
