@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:20:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/19 11:58:05 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/22 14:35:34 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heredoc.h"
 #include "expand.h"
+#include "errors.h"
+#include "minishell.h"
+#include "signals.h"
 #include <sys/ioctl.h>
+
+int	g_exit_status;
 
 char	*check_if_heredoc(t_node *node)
 {
@@ -25,35 +30,26 @@ char	*check_if_heredoc(t_node *node)
 	return (NULL);
 }
 
-void	heredoc_signal(int signal)
+int	*child_heredoc(t_minishit *hell, char *delimiter, int *fd)
 {
-	if (signal == SIGINT && signal_hdl == 1)
-	{
-		ioctl(0, TIOCSTI, "\n");
-		rl_replace_line("\n", 0);
-		rl_on_new_line();
-	}
-}
-
-int	here_doc(t_minishit *hell, char *delimiter)
-{
-	int		fd[2];
 	char	*line;
 	char	*str;
 
-	signal(SIGINT, heredoc_signal);
-	signal(SIGQUIT, SIG_IGN);
-	if (pipe(fd) == -1)
-	{
-		perror("pipe");
-		exit(EXIT_FAILURE);
-	}
-	line = readline("> ");
+	handle_signalz(HEREDOC_CHILD);
+	close(fd[0]);
+	g_exit_status = fd[1];
+	line = NULL;
 	while (1)
 	{
-		if (!line || (ft_strncmp(line, delimiter, ft_strlen(line)) == 0
-				&& ft_strlen(line) == ft_strlen(delimiter)))
-			break ;
+		free(line);
+		line = readline("> ");
+		if (!line)
+		{
+			ft_putstr_fd("Warning: here-document delimited by chosen end-of-file\n", 2);
+			exit(1);
+		}
+		if (ft_strncmp(line, delimiter, ft_strlen(line)) == 0)
+			exit(1) ;
 		if (dollar_sign(line) != FAILED)
 		{
 			str = get_value(hell, line);
@@ -64,16 +60,48 @@ int	here_doc(t_minishit *hell, char *delimiter)
 		else
 			write(fd[1], line, strlen(line));
 		write(fd[1], "\n", 1);
-		if (line)
-			free(line);
-		line = readline("> ");
 	}
-	free(line);
 	close(fd[1]);
+	if (line)
+		free(line);
+	return (fd);
+}
+
+void	parent_heredoc(t_minishit *hell, int *fd, int *tmp, int pid)
+{
+	close(fd[1]);
+	waitpid(pid, tmp, 0);
+	if (g_exit_status)
+	{
+		close (fd[0]);
+		g_exit_status = 1;
+		hell->exit = 1;
+	}
+	return ;
+}
+
+int	here_doc(t_minishit *hell, char *delimiter)
+{
+	int	fd[2];
+	int	pid;
+	int	tmp;
+
+	handle_signalz(HEREDOC_PARENT);
+	if (pipe(fd) == -1)
+	{
+		perror("pipe");
+		exit(EXIT_FAILURE);
+	}
+	pid = fork();
+	if (pid == 0)
+		child_heredoc(hell, delimiter, fd);
+	else
+		parent_heredoc(hell, fd, &tmp, pid);
+	handle_signalz(PROCESS_DONE);
 	return (fd[0]);
 }
 
-int ft_here_doc(t_minishit *hell, t_node *node)
+int	ft_here_doc(t_minishit *hell, t_node *node)
 {
 	char	*delim;
 

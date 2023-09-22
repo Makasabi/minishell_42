@@ -6,4 +6,5 @@ INCLUDES += ./inc/exec.h
 INCLUDES += ./inc/builtins.h
 INCLUDES += ./inc/minishell.h
 INCLUDES += ./inc/colors.h
+INCLUDES += ./inc/signals.h
 INCLUDES += ./inc/heredoc.h

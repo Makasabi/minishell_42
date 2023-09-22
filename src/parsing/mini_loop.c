@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mini_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:20:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/19 11:58:00 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/22 14:36:07 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "expand.h"
+#include "signals.h"
 #include "exec.h"
 
 /*
@@ -47,38 +48,23 @@ void	clean_hell(t_minishit *hell)
 	hell->pids = NULL;
 }
 
-void	display_prompt(int woop)
-{
-	if (signal_hdl == 0)
-	{	
-		(void)woop;
-		write(1, "\n", 1);
-		rl_replace_line("", 0);
-		rl_on_new_line();
-		rl_redisplay();
-	}
-}
-
 int	mini_loop(t_minishit *hell)
 {
 	char	*command;
 
-	signal(SIGINT, display_prompt);
-	signal(SIGQUIT, SIG_IGN);
+	// signal(SIGINT, display_prompt);
+	// signal(SIGQUIT, SIG_IGN);
+	handle_signalz(PROCESS_DONE);
 	command = NULL;
 	command = readline(PROMPT);
 	if (!command)
 		return (FALSE);
+	handle_signalz(PROCESS_PARENT);
 	if (lexer(hell, command) != FALSE)
 	{
 		expander(hell, hell->token);
 		if (parser(hell) != FALSE)
 		{
-			// while (hell->node && hell->node->next)
-			// {
-			// 	printf("type is %d index is %d\n", hell->node->type, hell->node->index);
-			// 	hell->node = hell->node->next;
-			// }
 			while (hell->node && hell->node->up)
 				hell->node = hell->node->up;
 			// printf("type is %d index is %d\n", hell->node->type, hell->node->index);

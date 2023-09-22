@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_commands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wan <wan@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 14:50:47 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/17 14:10:22 by wan              ###   ########.fr       */
+/*   Updated: 2023/09/22 13:54:30 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	complex_commands(t_minishit *hell, t_node *node)
 	link_between_pipes(node);
 	while (node)
 	{
-		// printf("indexing %d\n", node->index);
 		if (node->type == pip)
 			node = node->next;
 		if (link_inside_pipes(node) == FAILED)

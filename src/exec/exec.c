@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/09/19 11:56:57 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/22 14:35:24 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "heredoc.h"
+#include "signals.h"
 
 /* ft_exec_sgl is solely used when a single builtin is called in prompt.
 */
@@ -49,7 +50,7 @@ void	ft_exec_pipe(t_minishit *hell, t_node **node, int *mem_fd)
 	pid = fork();
 	if (pid == 0)
 	{
-		signal_hdl = 1;
+		handle_signalz(PROCESS_CHILD);
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[1]);
 		close(fd[0]);

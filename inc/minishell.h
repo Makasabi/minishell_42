@@ -72,6 +72,12 @@
 # define SKIP 1
 # define NOSKIP 0
 
+# define HEREDOC_PARENT	1
+# define HEREDOC_CHILD	2
+# define PROCESS_PARENT	3
+# define PROCESS_CHILD	4
+# define PROCESS_DONE	5
+
 typedef enum e_type
 {
 	pip,

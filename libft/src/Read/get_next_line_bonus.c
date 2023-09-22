@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 18:44:07 by mrony             #+#    #+#             */
-/*   Updated: 2023/03/21 17:58:03 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/21 18:06:56 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../../inc/minishell.h"
 
 char	*read_and_copy(char *dump, int fd)
 {
@@ -35,6 +36,7 @@ char	*read_and_copy(char *dump, int fd)
 			return (NULL);
 	}
 	free(buff);
+	printf("line is %s\n", dump);
 	return (dump);
 }
 

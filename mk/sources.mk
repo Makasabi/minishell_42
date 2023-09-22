@@ -8,6 +8,7 @@ SRCS += ./src/builtins/utils.c
 SRCS += ./src/builtins/export.c
 SRCS += ./src/builtins/pwd.c
 SRCS += ./src/errors/errors.c
+SRCS += ./src/signals/signals.c
 SRCS += ./src/parsing/parser/__creating_nodes.c
 SRCS += ./src/parsing/parser/_creating_nodes_utils.c
 SRCS += ./src/parsing/parser/____parser.c
