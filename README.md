@@ -99,10 +99,11 @@ Redir3["Redirection 3
  struct s_node	*left = *NULL;
  struct s_node	*right = NULL;"]
    Pipe1-->Cmd1;
-   Cmd1-->Pipe1;
    Cmd1-->Redir1;
    Redir1-->Cmd1;
+   Cmd1-->Pipe1;
    Pipe1-->Pipe2;
+   Pipe2-->Pipe1;
    Pipe2-->Cmd2;
    Cmd2-->Pipe2;
    Pipe2-->Cmd3;
