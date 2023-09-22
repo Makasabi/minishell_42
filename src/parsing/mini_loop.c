@@ -52,16 +52,16 @@ int	mini_loop(t_minishit *hell)
 		{
 			if (parser(hell) != FALSE)
 			{
-				while (hell->node)
-				{
-					printf("empty is %d type is %d\n", hell->node->redir, hell->node->type);
-					printf("fd 0 is %d fd 1 is %d\n", hell->node->fd[0], hell->node->fd[1]);
-					hell->node = hell->node->next;
-				}
-				// while (hell->node && hell->node->up)
-				// 	hell->node = hell->node->up;
-				// if (hell->node)
-				// 	ft_exec(hell, &hell->node);
+				// while (hell->node)
+				// {
+				// 	printf("empty is %d type is %d\n", hell->node->redir, hell->node->type);
+				// 	printf("fd 0 is %d fd 1 is %d\n", hell->node->fd[0], hell->node->fd[1]);
+				// 	hell->node = hell->node->next;
+				// }
+				while (hell->node && hell->node->up)
+					hell->node = hell->node->up;
+				if (hell->node)
+					ft_exec(hell, &hell->node);
 			}
 		}
 	}
