@@ -71,14 +71,14 @@ Cmd1["Command 1
  struct s_node	*left = *Redirection 1;
  struct s_node	*right = NULL;"]
 Cmd2["Command 2
- char **argv = {"grep", "ether"};
+ char **argv = {grep, ether};
  t_type	type = cmd;
  t_redir	redir = none;
  struct s_node	*up = *Pipe 2;
  struct s_node	*left = *NULL;
  struct s_node	*right = NULL;"]
 Cmd3["Command 3
- char **argv = {"cut", "-d", "' '", "-f", "10"};
+ char **argv = {cut, -d, ' ', -f, 10};
  t_type	type = cmd;
  t_redir	redir = none;
  struct s_node	*up = *Pipe 2;
