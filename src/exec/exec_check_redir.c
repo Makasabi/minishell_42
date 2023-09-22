@@ -21,9 +21,6 @@ void	ft_set_redir(t_node **cmd, int *fd)
 
 static int    ft_check_in(t_node *redir)
 {
-	if (redir->redir == heredoc)
-		if (redir->fd[0] != -1)
-			return (SUCCESS);
 	if (access(redir->argv[0], F_OK) < 0)
 		return (ft_error_msg(SHELL, NULL, redir->argv[0], NULL), FAILED);
 	if (access(redir->argv[0], F_OK) >= 0)
@@ -63,7 +60,8 @@ int    ft_check_rdr(t_minishit *hell, t_node *redir)
 		{
 			if (redir->in_out_put == 0)
 			{
-				if (ft_check_in(redir) == FAILED)
+				if (redir->redir != heredoc && redir->redir != none
+					&& ft_check_in(redir) == FAILED)
 					return (FAILED);
 			}
 			else if (redir->in_out_put == 1)

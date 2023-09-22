@@ -1,6 +1,7 @@
 #include "parsing.h"
 #include "env.h"
 #include "errors.h"
+#include "heredoc.h"
 
 /*
 	create whole functions for a better parsing
@@ -58,6 +59,7 @@ int	creating_tree(t_minishit *hell)
 		single_command(hell, hell->node);
 	else
 		complex_commands(hell, hell->node);
+	ft_here_doc(hell, hell->node);
 	redir_in_tree(hell->node);
 	return (TRUE);
 }

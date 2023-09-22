@@ -40,7 +40,12 @@ void	redir_in_tree(t_node *tree)
 			while (tree)
 			{
 				if (is_last_redir(tree->left, tree->in_out_put) == FALSE)
-					tree->redir = empty;
+				{
+					if (tree->redir == heredoc)
+						tree->redir = none;
+					else
+						tree->redir = empty;
+				}	
 				tree = tree->left;
 			}
 		}
