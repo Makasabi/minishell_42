@@ -57,7 +57,7 @@ Here is a global representation of the general structure of our code :
    	4. Pseudo Heredoc - 
    	5. Tree builder - organise nodes in a logical way
 3. Signals handling
-4. Environment variables
+4. [Environment variables](https://github.com/Makasabi/minishell_42/blob/main/README.md#4-environment-variables)
 5. Execution
    	1. Builtins
    	2. Running binary executable form minishell
@@ -70,6 +70,18 @@ Here is a global representation of the general structure of our code :
 ## 1. Readline - Collecting instructions from the prompt line
 
 ## 4. Environment variables
+
+Enrionment vairiables are very similar to variables you'd be using in your code as their respective values can be used when called in functions. 
+Here are a few examples you may know:
+`$PATH`: if you've previously worked on Pipex project, you sure have used it in order to execute a command with the function `execve`.
+`$USER`: is used when generating your source file header.
+`$HOME`: is used by `cd` when no arguments are entered.
+`$PWD` & `$OLDPWD`: are both updated when we change directory with the cd command.
+`$SHLVL`: is incremented everytime an instance of shell is launched within another one.
+
+You can easily check the value of an environment variable with the command `echo $VARNAME`
+
+
 
 Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
