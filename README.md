@@ -51,18 +51,26 @@ Here is a global representation of the general structure of our code :
 graph TD;
 Pipe1["Pipe
  char **argv = NULL;
- t_type              type = pip;
- t_redir             redir = none;
- struct s_node   *up = NULL;
- struct s_node   *left = *node 2;
- struct s_node   *right = *node 4;"]
+ t_type	type = pip;
+ t_redir	redir = none;
+ struct s_node *up = NULL;
+ struct s_node	*left = *node 2;
+ struct s_node	*right = *node 4;"]
 Cmd1["Command 1
  char **argv = {ifconfig};
- t_type              type = cmd;
- t_redir             redir = none;
- struct s_node   *up = *node 1
- struct s_node   *left = *node 3;
-struct s_node   *right = NULL;"]
+ t_type	type = cmd;
+ t_redir	redir = none;
+ struct s_node	*up = *node 1
+ struct s_node	*left = *node 3;
+ struct s_node	*right = NULL;"]
+Redir1["Redirection 1
+ char **argv = {option,
+};
+ t_type	type = rdr;
+ t_redir	redir = readfrom;
+ struct s_node	*up = *node 2
+ struct s_node	*left = *NULL;
+ struct s_node	*right = NULL;"]
    Pipe1-->Cmd1;
    Cmd1-->Pipe1;
    Cmd1-->Redir1;
@@ -74,15 +82,6 @@ struct s_node   *right = NULL;"]
    Cmd3-->Pipe2;
    Cmd3-->Redir3;
    Redir3-->Cmd3;
-```
-```mermaid
-classDiagram
-Pipe01 : t_type pip
-Pipe01 : t_redir none
-Pipe01 : struct s_node up = NULL
-Pipe01 : struct s_node left = command01
-Pipe01 : struct s_node right = Pipe02
-
 ```
 
 ## Key Learning Points
