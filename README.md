@@ -49,7 +49,7 @@ Here is a global representation of the general structure of our code :
 
 ## Key Learning Points
 
-1. Readline - Collecting instructions from prompt line
+1. [Readline - Collecting instructions from prompt line](https://github.com/Makasabi/minishell_42/blob/main/README.md#1-readline---collecting-istructions-from-the-prompt-line)
 2. Parsing
    	1. Lexer - divide command sting in tokens
    	2. Expander - Replace variables with their value
