@@ -81,7 +81,9 @@ Here are a few examples you may know:
 
 You can easily check the value of an environment variable with the command `echo $VARNAME`
 
-
+the environment of shell is a collection of many variables, and luckily you don't have to set the entire environment yourself.
+You can 'import it' from your main function arguments `int main(int argc, char ** argv, char ** envp)` or by importing it from an external variable ```c
+extern char	**environ```
 
 Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
