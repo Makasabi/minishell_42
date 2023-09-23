@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:13:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:30:54 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 15:19:24 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	add_redir(t_token *token, t_token *redir, int boool);
 int		which_redir(char *command);
 int		assign_type_redir(t_minishit *hell, t_token *token);
 
+int		adding_tokens(t_minishit *hell, char *command, int i);
 int		issa_quotes(t_minishit *hell, char *command, int i);
 int		issa_token(t_minishit *hell, char *command, int i);
 int		issa_string(t_minishit *hell, char *command, int i);

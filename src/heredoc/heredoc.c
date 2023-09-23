@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:19:48 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 14:47:20 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,74 +15,7 @@
 #include "signals.h"
 #include <sys/ioctl.h>
 
-char	*check_if_heredoc(t_node *node)
-{
-	while (node)
-	{
-		if (node->redir == heredoc)
-			return (node->argv[0]);
-		node = node->next;
-	}
-	return (NULL);
-}
-
-int	child_heredoc(t_minishit *hell, char *delimiter, int *fd)
-{
-	char	*line;
-	char	*str;
-
-	handle_signalz(HEREDOC_CHILD);
-	close(fd[0]);
-	line = NULL;
-	while (1)
-	{
-		free(line);
-		line = readline("> ");
-		if (!line)
-		{
-			ft_putstr_fd("Warning: here-document \n", 2);
-			ft_putstr_fd("delimited by chosen end-of-file\n", 2);
-			close(fd[1]);
-			clean_exit(hell);
-		}
-		if (ft_strncmp(line, delimiter, ft_strlen(line)) == 0
-			&& ft_strlen(line) == ft_strlen(delimiter))
-		{
-			close(fd[1]);
-			clean_exit(hell);
-		}
-		if (dollar_sign(line) != FAILED)
-		{
-			str = get_value(hell, line);
-			write(fd[1], str, ft_strlen(str));
-			free(str);
-			line = NULL;
-		}
-		else
-			write(fd[1], line, strlen(line));
-		write(fd[1], "\n", 1);
-	}
-	close(fd[1]);
-	if (line)
-		free(line);
-	clean_exit(hell);
-	return (fd[1]);
-}
-
-void	parent_heredoc(t_minishit *hell, int *fd, int *tmp, int pid)
-{
-	(void)hell;
-	close(fd[1]);
-	waitpid(pid, tmp, 0);
-	if (*tmp != 0)
-	{
-		close (fd[0]);
-		hell->exit = 1;
-	}
-	return ;
-}
-
-int	here_doc(t_minishit *hell, char *delimiter)
+int	process_here_doc(t_minishit *hell, char *delimiter)
 {
 	int	fd[2];
 	int	pid;
@@ -114,7 +47,7 @@ int	ft_here_doc(t_minishit *hell, t_node *node)
 		{
 			delim = check_if_heredoc(node);
 			if (delim)
-				node->fd[0] = here_doc(hell, delim);
+				node->fd[0] = process_here_doc(hell, delim);
 		}
 		node = node->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:42 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:20:31 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 15:00:31 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ int	parser(t_minishit *hell)
 		return (FALSE);
 	while (hell->node && hell->node->up)
 		hell->node = hell->node->up;
-	ft_here_doc(hell, hell->node);
 	return (TRUE);
 }

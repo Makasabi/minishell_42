@@ -1,3 +1,4 @@
+SRCS += ./src/heredoc/heredoc_utils.c
 SRCS += ./src/heredoc/heredoc.c
 SRCS += ./src/builtins/unset.c
 SRCS += ./src/builtins/exit.c

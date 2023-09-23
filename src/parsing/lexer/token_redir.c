@@ -6,11 +6,19 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:11:40 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 15:12:03 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+int	is_space(char c)
+{
+	if (c == ' ' || (c >= 9 && c <= 13))
+		return (1);
+	else
+		return (0);
+}
 
 /*
 				REDIR

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creating_tokens_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:30:57 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 15:16:09 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,6 @@ int	count_tab_size(t_token *token)
 - is_quote : checks if given char is a quote (not preceded by '\')
 
 */
-
-int	is_space(char c)
-{
-	if (c == ' ' || (c >= 9 && c <= 13))
-		return (1);
-	else
-		return (0);
-}
 
 int	is_token(char c)
 {
@@ -110,4 +102,24 @@ int	remove_quotes(t_token *token)
 		token = token->next;
 	}
 	return (TRUE);
+}
+
+int	adding_tokens(t_minishit *hell, char *command, int i)
+{
+	int	j;
+	int	flag;
+
+	j = 0;
+	if (is_token(command[i]) > 0)
+	{
+		flag = issa_token(hell, command, i);
+		if (flag == END)
+			return (0);
+		j += flag;
+	}
+	else if (is_quote(command, i) != FALSE && ft_strlen(command) > 1)
+		j += issa_quotes(hell, command, i);
+	else
+		j += issa_string(hell, command, i);
+	return (j);
 }

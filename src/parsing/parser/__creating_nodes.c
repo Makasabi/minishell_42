@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:47 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:11:48 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 14:52:53 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,23 @@ void	cmd_node(t_minishit *hell, t_token *token)
 	ft_add_back_node(&hell->node, new_node);
 }
 
+void	add_redir_to_node(t_minishit *hell, t_node *new_node, int type)
+{
+	if (type == APPEND)
+		new_node->redir = append;
+	if (type == HEREDOC)
+		new_node->redir = heredoc;
+	if (type == INPUT)
+		new_node->redir = readfrom;
+	if (type == OUTPUT)
+		new_node->redir = writeto;
+	if (type == INPUT || type == HEREDOC)
+		new_node->in_out_put = 0;
+	if (type == OUTPUT || type == APPEND)
+		new_node->in_out_put = 1;
+	ft_add_back_node(&hell->node, new_node);
+}
+
 void	rdr_node(t_minishit *hell, t_token *token)
 {
 	t_node	*new_node;
@@ -73,19 +90,7 @@ void	rdr_node(t_minishit *hell, t_token *token)
 		clean_exit(hell);
 	}
 	type = which_redir(token->str);
-	if (type == APPEND)
-		new_node->redir = append;
-	if (type == HEREDOC)
-		new_node->redir = heredoc;
-	if (type == INPUT)
-		new_node->redir = readfrom;
-	if (type == OUTPUT)
-		new_node->redir = writeto;
-	if (type == INPUT || type == HEREDOC)
-		new_node->in_out_put = 0;
-	if (type == OUTPUT || type == APPEND)
-		new_node->in_out_put = 1;
-	ft_add_back_node(&hell->node, new_node);
+	add_redir_to_node(hell, new_node, type);
 }
 
 /* 

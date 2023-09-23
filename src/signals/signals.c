@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:47:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:19:27 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 14:48:43 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	clean_heredoc(int woop)
 		clean_exit(hell);
 }
 
-void	handle_signalz(int process)
+void	handle_signalz_heredoc(int process)
 {
 	if (process == HEREDOC_PARENT)
 	{
@@ -54,6 +54,12 @@ void	handle_signalz(int process)
 			ft_error_msg(SHELL, NULL, NULL, "");
 		signal(SIGQUIT, SIG_IGN);
 	}
+}
+
+void	handle_signalz(int process)
+{
+	if (process == HEREDOC_PARENT || process == HEREDOC_CHILD)
+		handle_signalz_heredoc(process);
 	if (process == PROCESS_PARENT)
 	{
 		signal(SIGINT, SIG_IGN);
