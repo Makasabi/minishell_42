@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_nodes_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:46:30 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 19:24:27 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	**make_argv_cmd_utils(t_node *node, t_token *token, int i, int flag)
 		tmp = ft_strdup(token->str);
 		if (!tmp)
 			return (NULL);
-		node->argv[i] = ft_strjoin(tmp, " ");
+		node->argv[i] = ft_strjoin(" ", tmp);
 		if (!node->argv[i])
 			return (free(tmp), NULL);
 		free(tmp);
@@ -104,10 +104,37 @@ char	**make_argv_cmd_utils(t_node *node, t_token *token, int i, int flag)
 	return (node->argv);
 }
 
-char	**make_argv_cmd(t_node *node, t_token *token)
+// char	**make_argv_cmd(t_node *node, t_token *token)
+// {
+// 	int		i;
+// 	int		flag;
+// 	char	**argv;
+
+// 	i = count_tab_size(token);
+// 	node->argv = ft_calloc (sizeof(char *), i);
+// 	if (!node->argv)
+// 		return (NULL);
+// 	i = 0;
+// 	flag = 0;
+// 	while (token && token->type != PIPE)
+// 	{
+// 		flag = make_argv_spe(token, node, flag);
+// 		if (ft_strlen(token->str) != 0 && token->type != REDIR)
+// 		{
+// 			argv = make_argv_cmd_utils(node, token, i, flag);
+// 			if (!argv)
+// 				return (ft_free(node->argv), NULL);
+// 			node->argv = argv;
+// 			i++;
+// 		}
+// 		token = token->next;
+// 	}
+// 	return (node->argv);
+// }
+
+char	**make_argv_cmd(t_node *node, t_token *token, int flag)
 {
 	int		i;
-	int		flag;
 	char	**argv;
 
 	i = count_tab_size(token);
@@ -115,11 +142,12 @@ char	**make_argv_cmd(t_node *node, t_token *token)
 	if (!node->argv)
 		return (NULL);
 	i = 0;
-	flag = 0;
 	while (token && token->type != PIPE)
 	{
-		flag = make_argv_spe(token, node, flag);
-		if (ft_strlen(token->str) != 0 && token->type != REDIR)
+		if (!ft_strcmp("echo", token->str))
+			flag = 1;
+		if (token->type != REDIR && (ft_strlen(token->str) != 0
+				|| (ft_strlen(token->str) == 0 && token->quote != ' ')))
 		{
 			argv = make_argv_cmd_utils(node, token, i, flag);
 			if (!argv)

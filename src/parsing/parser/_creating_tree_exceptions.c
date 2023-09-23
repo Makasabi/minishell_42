@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_tree_exceptions.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:56 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:46:12 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 19:01:03 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "env.h"
 #include "errors.h"
 
-int	make_argv_spe(t_token *token, t_node *node, int flag)
+int	make_argv_while(t_token *token, t_node *node, int flag)
 {
 	if (!ft_strcmp("echo", token->str))
 			flag = 1;

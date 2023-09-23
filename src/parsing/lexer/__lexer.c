@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:22 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:11:24 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 18:18:42 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	lexer(t_minishit *hell, char *command)
 		return (FALSE);
 	if (assign_type_redir(hell, hell->token) == FALSE)
 		return (FALSE);
+	spacez(hell->token);
 	return (TRUE);
 }

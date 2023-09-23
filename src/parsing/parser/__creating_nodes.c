@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   __creating_nodes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:47 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:28:26 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 19:24:37 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	cmd_node(t_minishit *hell, t_token *token)
 		ft_error_msg(SHELL, "cmd_node", token->str, MALERR);
 		clean_exit(hell);
 	}
-	new_node->argv = make_argv_cmd(new_node, token);
+	new_node->argv = make_argv_cmd(new_node, token, 0);
 	if (!new_node->argv)
 	{
 		ft_error_msg(SHELL, "make_argv_cmd", token->str, MALERR);
@@ -108,3 +108,5 @@ int	make_nodes(t_minishit *hell, t_token *token)
 	}
 	return (TRUE);
 }
+
+

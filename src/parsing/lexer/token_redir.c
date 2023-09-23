@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 17:01:49 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 19:22:07 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,20 @@ int	is_space(char c)
 	Goes through the token list and assigns types according to the redirections
 
 */
+
+void	spacez(t_token *token)
+{
+	while (token)
+	{
+		if (token->prev && token->space == 1 && token->next)
+		{
+			token->next->space = 1;
+			token->space = 0;
+			token = token->next;
+		}
+		token = token->next;
+	}
+}
 
 int	which_redir(char *command)
 {
