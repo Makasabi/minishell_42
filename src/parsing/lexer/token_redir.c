@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 15:12:03 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:23:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,23 @@ int	which_redir(char *command)
 	return (0);
 }
 
+void	check_pipe(t_minishit *hell, t_token *token)
+{
+	if (token->type == PIPE)
+	{
+		hell->pipes++;
+		if (token->prev)
+			token->prev->space = 0;
+	}
+}
+
 int	assign_type_redir(t_minishit *hell, t_token *token)
 {
 	int	redir;
 
 	while (token)
 	{
-		if (token->type == PIPE)
-		{
-			hell->pipes++;
-			if (token->prev)
-				token->prev->space = 0;
-		}
+		check_pipe(hell, token);
 		if (token->type != PIPE && token->type != ARG)
 		{
 			redir = which_redir(token->str);
@@ -65,7 +70,10 @@ int	assign_type_redir(t_minishit *hell, t_token *token)
 					|| redir == HEREDOC || redir == APPEND))
 			{
 				if (token->next->type == REDIR)
+				{
+					hell->exit = 2;
 					return (ft_err_syntax(SHELL, SYNERR, token->str), FALSE);
+				}
 				token->next->type = REDIR;
 				token = token->next;
 			}

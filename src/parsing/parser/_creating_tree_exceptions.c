@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_tree_exceptions.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:56 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:20:51 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:16:32 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ int	check_sgl_node(t_minishit *hell, t_node *node)
 	size = ft_table_size(node->argv);
 	if (size == 1)
 	{
-		if ((node->argv[0][0] == '!' || node->argv[0][0] == ':')
-			&& node->argv[0][1] == '\0')
+		if (node->argv[0][0] == ':' && node->argv[0][1] == '\0')
 		{
 			hell->exit = 0;
+			return (FAILED);
+		}
+		if (node->argv[0][0] == '!' && node->argv[0][1] == '\0')
+		{
+			hell->exit = 1;
 			return (FAILED);
 		}
 		if (ft_ischarset(node->argv[0], "&();"))
