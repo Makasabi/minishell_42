@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:13:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:11:36 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:46:47 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int		ft_node_size(t_node *node);
 void	init_node(t_node *node);
 void	ft_add_back_node(t_node **node, t_node *new);
 
+int		make_argv_spe(t_token *token, t_node *node, int flag);
 char	**make_argv_rdr(t_node *node, t_token *token);
 char	**make_argv_cmd(t_node *node, t_token *token);
 

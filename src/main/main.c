@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:31:45 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 16:34:06 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	hell->my_env = ft_env_init();
 	if (!hell->my_env)
 		return (free(hell), 1);
-	ft_header(hell);
+	// ft_header(hell);
 	while (1)
 	{
 		if (mini_loop(hell) == FALSE)

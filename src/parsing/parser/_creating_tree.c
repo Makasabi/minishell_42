@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:59 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:12:00 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:56:03 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
 
 */
 
-int	check_if_not(t_node *node)
+int	check_if_not(t_minishit *hell, t_node *node)
 {
+	(void)hell;
 	while (node)
 	{
-		if ((node->type == pip && (!node->next || node->next->type == pip)))
+		if ((node->type == pip && (!node->next || node->next->type == pip)) ||
+			(node->type == pip && (!node->prev || node->prev->type == pip)))
 			return (ft_err_syntax(SHELL, SYNERR, "|"), FAILED);
 		if (node->type != cmd)
 		{
@@ -60,7 +62,7 @@ int	check_if_not(t_node *node)
 
 int	creating_tree(t_minishit *hell)
 {
-	if (check_if_not(hell->node) == FAILED)
+	if (check_if_not(hell, hell->node) == FAILED)
 	{
 		hell->exit = 2;
 		return (FALSE);

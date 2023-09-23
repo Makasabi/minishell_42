@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:34 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:24:35 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 17:12:39 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,26 @@ static bool	ft_newline(char *str)
 	return (0);
 }
 
+void	ft_echo_while(char **argv, int i, bool *newline, int fd_out)
+{
+	int		flag;
+
+	flag= 0;
+	while (argv[i])
+	{
+		if (*newline == 0 && argv[i][0] == '-' && flag == 0
+		&& argv[i][1] == 'n' && ft_newline(argv[i]) == 0)
+		{
+			i++;
+			continue ;
+		}
+		else
+			flag = 1;
+		ft_charprint(argv[i], fd_out);
+		i++;
+	}
+}
+
 int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 {
 	bool	newline;
@@ -67,17 +87,7 @@ int	ft_echo(t_minishit __attribute__((unused)) *hell, char **argv, int fd_out)
 	newline = ft_newline(argv[1]);
 	if (newline == 0)
 		i++;
-	while (argv[i])
-	{
-		if (newline == 0 && argv[i][0] == '-'\
-		&& argv[i][1] == 'n' && ft_newline(argv[i]) == 0)
-		{
-			i++;
-			continue ;
-		}	
-		ft_charprint(argv[i], fd_out);
-		i++;
-	}
+	ft_echo_while(argv, i, &newline, fd_out);
 	if (newline == 1)
 		ft_putchar_fd('\n', fd_out);
 	return (SUCCESS);

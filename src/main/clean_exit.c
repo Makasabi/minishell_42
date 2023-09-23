@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:35 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 15:41:47 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:41:34 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ void	ft_free(char **split)
 
 	i = -1;
 	while (split[++i])
-		free(split[i]);
+	{	
+		if (split[i])
+			free(split[i]);
+	}
 	free(split);
 	split = NULL;
 }

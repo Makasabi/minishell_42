@@ -6,13 +6,22 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:56 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:16:32 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 16:46:12 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "env.h"
 #include "errors.h"
+
+int	make_argv_spe(t_token *token, t_node *node, int flag)
+{
+	if (!ft_strcmp("echo", token->str))
+			flag = 1;
+	if (ft_strlen(token->str) == 0)
+		node->argv[0] = NULL;
+	return (flag);
+}
 
 int	ft_ischarset(char *arg, char *set)
 {

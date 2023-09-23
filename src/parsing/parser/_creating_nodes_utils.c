@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_nodes_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:10:16 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:46:30 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,7 @@ char	**make_argv_cmd(t_node *node, t_token *token)
 	flag = 0;
 	while (token && token->type != PIPE)
 	{
-		if (!ft_strcmp("echo", token->str))
-			flag = 1;
+		flag = make_argv_spe(token, node, flag);
 		if (ft_strlen(token->str) != 0 && token->type != REDIR)
 		{
 			argv = make_argv_cmd_utils(node, token, i, flag);

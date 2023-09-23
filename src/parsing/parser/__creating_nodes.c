@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   __creating_nodes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:47 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:11:04 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:28:26 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,10 @@ int	make_nodes(t_minishit *hell, t_token *token)
 	flag = 0;
 	while (token)
 	{
-		if (ft_strlen(token->str) == 0)
-			token = token->next;
-		else if (token && token->type == PIPE)
+		// if (ft_strlen(token->str) == 0)
+		// 	token = token->next;
+		// else if (token && token->type == PIPE)
+		if (token && token->type == PIPE)
 		{
 			pip_node(hell);
 			token = token->next;
