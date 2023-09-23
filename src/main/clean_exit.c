@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:35 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:41:34 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 19:38:29 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ int	clean_exit(t_minishit *hell)
 		close (hell->pipe_fd);
 	hell = NULL;
 	rl_clear_history();
+	ft_putstr_fd("exit\n", 1);
 	exit (exit_status);
 }

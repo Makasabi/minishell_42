@@ -6,11 +6,12 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:35:14 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 19:54:55 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
+#include "env.h"
 
 static void	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
 {
@@ -33,6 +34,27 @@ static void	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
 	execve(path, (*comd)->argv, hell->my_env);
 	clean_exit(hell);
 }
+void	ft_clear_argv(char **argv)
+{
+	int tab_s;
+	int i;
+	int j;
+	
+	tab_s = ft_table_size(argv);
+	i = -1;
+	while(++i < tab_s)
+		if(argv[i][0])
+			break;
+	if (i == tab_s)
+		return ;
+	j = 0;
+	while(i < tab_s)
+	{
+		argv[j] = argv[i];
+		i++;
+		j++;
+	}
+}
 
 void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 {
@@ -42,6 +64,7 @@ void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	fds[1] = 1;
 	dup2(*mem_fd, STDIN_FILENO);
 	close(*mem_fd);
+	ft_clear_argv((*comd)->argv);
 	if (ft_check_rdr((*comd)) == FAILED)
 	{
 		close(*mem_fd);
@@ -81,6 +104,7 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 
 	pid = fork();
 	i = 0;
+	ft_clear_argv((*comd)->argv);
 	if (pid == 0)
 		ft_exec_cmd(hell, comd, mem_fd);
 	else

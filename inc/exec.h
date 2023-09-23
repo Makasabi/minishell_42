@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:28:27 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:34:22 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 19:55:11 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		ft_exec_sgl(t_minishit *hell, t_node **tree);
 /* exec_fork.c */
 void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd);
 int		ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd);
+void	ft_clear_argv(char **argv);
 
 /* exec_bltin.c */
 int		ft_exec_bltin(t_minishit *hell, char **argv, int *fds);
