@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:15 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:14:55 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 20:00:27 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	mini_loop(t_minishit *hell)
 	command = NULL;
 	command = readline(PROMPT);
 	if (!command)
-		return (FALSE);
+		return (ft_putstr_fd("exit\n", 1), FALSE);
 	if (lexer(hell, command) != FALSE)
 	{
 		if (expander(hell, hell->token) != FALSE)

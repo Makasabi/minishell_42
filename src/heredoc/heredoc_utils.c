@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:37:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:47:07 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 20:03:07 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	child_heredoc(t_minishit *hell, char *delimiter, int *fd)
 		line = readline("> ");
 		if (!line)
 		{
-			ft_putstr_fd("Warning: here-document \n", 2);
+			ft_putstr_fd("Warning: here-document ", 2);
 			ft_putstr_fd("delimited by chosen end-of-file\n", 2);
 			break ;
 		}

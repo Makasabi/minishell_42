@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:42 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 19:39:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 19:59:10 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_exit(t_minishit *hell, char **argv, int  __attribute__((unused)) fd_out)
 	else
 		exit_status = 0;
 	hell->exit = exit_status;
+	ft_putstr_fd("exit\n", 1);
 	clean_exit(hell);
 	return (exit_status);
 }
