@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:13:26 by tgibier           #+#    #+#             */
+/*   Updated: 2023/09/23 14:16:57 by tgibier          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSING_H
 # define PARSING_H
 
@@ -23,7 +35,7 @@ int		tokenization(t_minishit *hell, char *command);
 int		count_tab_size(t_token *token);
 t_token	*ft_tokenlast(t_token *token);
 int		ft_token_size(t_token *token);
-void	ft_add_token(t_minishit * hell, t_token **token, char *str, int type);
+void	ft_add_token(t_minishit *hell, t_token **token, char *str, int type);
 void	init_token(t_token *token);
 void	ft_add_back_token(t_token **token, t_token *new);
 void	add_redir(t_token *token, t_token *redir, int boool);
@@ -35,7 +47,7 @@ int		issa_quotes(t_minishit *hell, char *command, int i);
 int		issa_token(t_minishit *hell, char *command, int i);
 int		issa_string(t_minishit *hell, char *command, int i);
 
-int	remove_quotes(t_token *token);
+int		remove_quotes(t_token *token);
 int		is_built_in(t_node *node, char *str);
 int		is_quote(char *str, int i);
 int		is_space(char c);

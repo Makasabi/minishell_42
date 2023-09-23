@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mini_loop.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:12:15 by tgibier           #+#    #+#             */
+/*   Updated: 2023/09/23 14:14:55 by tgibier          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 #include "expand.h"
 #include "signals.h"
@@ -52,12 +64,6 @@ int	mini_loop(t_minishit *hell)
 		{
 			if (parser(hell) != FALSE)
 			{
-				// while (hell->node)
-				// {
-				// 	printf("empty is %d type is %d\n", hell->node->redir, hell->node->type);
-				// 	printf("fd 0 is %d fd 1 is %d\n", hell->node->fd[0], hell->node->fd[1]);
-				// 	hell->node = hell->node->next;
-				// }
 				while (hell->node && hell->node->up)
 					hell->node = hell->node->up;
 				if (hell->node)

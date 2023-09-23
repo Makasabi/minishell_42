@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   heredoc.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:12:49 by tgibier           #+#    #+#             */
+/*   Updated: 2023/09/23 14:19:48 by tgibier          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "heredoc.h"
 #include "expand.h"
 #include "signals.h"
@@ -13,12 +25,13 @@ char	*check_if_heredoc(t_node *node)
 	}
 	return (NULL);
 }
+
 int	child_heredoc(t_minishit *hell, char *delimiter, int *fd)
 {
 	char	*line;
 	char	*str;
 
-	handle_signalz(HEREDOC_CHILD, fd);
+	handle_signalz(HEREDOC_CHILD);
 	close(fd[0]);
 	line = NULL;
 	while (1)
@@ -27,7 +40,8 @@ int	child_heredoc(t_minishit *hell, char *delimiter, int *fd)
 		line = readline("> ");
 		if (!line)
 		{
-			ft_putstr_fd("Warning: here-document delimited by chosen end-of-file\n", 2);
+			ft_putstr_fd("Warning: here-document \n", 2);
+			ft_putstr_fd("delimited by chosen end-of-file\n", 2);
 			close(fd[1]);
 			clean_exit(hell);
 		}
@@ -74,7 +88,7 @@ int	here_doc(t_minishit *hell, char *delimiter)
 	int	pid;
 	int	tmp;
 
-	handle_signalz(HEREDOC_PARENT, NULL);
+	handle_signalz(HEREDOC_PARENT);
 	if (pipe(fd) == -1)
 	{
 		perror("pipe");
@@ -86,7 +100,7 @@ int	here_doc(t_minishit *hell, char *delimiter)
 		child_heredoc(hell, delimiter, fd);
 	else
 		parent_heredoc(hell, fd, &tmp, pid);
-	handle_signalz(PROCESS_DONE, NULL);
+	handle_signalz(PROCESS_DONE);
 	return (fd[0]);
 }
 
@@ -94,12 +108,6 @@ int	ft_here_doc(t_minishit *hell, t_node *node)
 {
 	char	*delim;
 
-	// delim = check_if_heredoc(node);
-	// while (node && node->redir != heredoc)
-	// 	node = node->next;
-	// if (delim)
-	// 	node->fd[0] = here_doc(hell, delim);
-	// return (TRUE);
 	while (node)
 	{
 		if (node->redir == heredoc)
@@ -111,5 +119,4 @@ int	ft_here_doc(t_minishit *hell, t_node *node)
 		node = node->next;
 	}
 	return (TRUE);
-
 }

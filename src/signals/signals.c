@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:47:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/22 21:09:48 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/23 14:19:27 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	clean_heredoc(int woop)
 		clean_exit(hell);
 }
 
-void	handle_signalz(int process, int *fd)
+void	handle_signalz(int process)
 {
-	(void)fd;
 	if (process == HEREDOC_PARENT)
 	{
 		signal(SIGINT, display_newline);
@@ -52,9 +51,7 @@ void	handle_signalz(int process, int *fd)
 	if (process == HEREDOC_CHILD)
 	{
 		if (signal(SIGINT, clean_heredoc) == SIG_ERR)
-		{
 			ft_error_msg(SHELL, NULL, NULL, "");
-		}
 		signal(SIGQUIT, SIG_IGN);
 	}
 	if (process == PROCESS_PARENT)

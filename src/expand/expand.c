@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expand.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:12:54 by tgibier           #+#    #+#             */
+/*   Updated: 2023/09/23 14:21:10 by tgibier          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 #include "env.h"
 #include "expand.h"
@@ -38,8 +50,8 @@ char	*replace_var_by_value(char *var, char *value, int start, int end)
 
 char	*expand_status(t_minishit *hell, char *str)
 {
-	char *status;
-	
+	char	*status;
+
 	status = ft_itoa(hell->exit);
 	if (!status)
 		return (ft_error_msg(SHELL, "expand", "$?", MALERR), NULL);
@@ -81,12 +93,14 @@ int	expander(t_minishit *hell, t_token *token)
 	while (token)
 	{
 		if (token->quote != SINGLE)
+		{
 			while (dollar_sign(token->str) != FAILED)
 			{
 				token->str = get_value(hell, token->str);
 				if (token->str == NULL)
 					return (FALSE);
 			}
+		}
 		token = token->next;
 	}
 	return (TRUE);

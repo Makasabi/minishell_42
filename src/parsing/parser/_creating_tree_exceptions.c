@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   _creating_tree_exceptions.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:11:56 by tgibier           #+#    #+#             */
+/*   Updated: 2023/09/23 14:20:51 by tgibier          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 #include "env.h"
 #include "errors.h"
@@ -38,7 +50,7 @@ int	check_sgl_node(t_minishit *hell, t_node *node)
 		if (ft_ischarset(node->argv[0], "&();"))
 		{
 			hell->exit = 2;
-			if(ft_strlen(node->argv[0]) > 2)
+			if (ft_strlen(node->argv[0]) > 2)
 				node->argv[0][2] = '\0';
 			return (ft_err_syntax(SHELL, SYNERR, node->argv[0]), FAILED);
 		}

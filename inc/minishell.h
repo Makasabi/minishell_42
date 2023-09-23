@@ -124,16 +124,16 @@ typedef struct s_minishit
 }	t_minishit;
 
 /* main */
-void	clean_init(t_minishit *hell);
+void		clean_init(t_minishit *hell);
 
 /* clean_exit */
-int		clean_exit(t_minishit *hell);
-void	ft_free(char **split);
-void	ft_clear_token(t_token *token);
-void	ft_clear_node(t_node *node);
-void	ft_free(char **split);
+int			clean_exit(t_minishit *hell);
+void		ft_free(char **split);
+void		ft_clear_token(t_token *token);
+void		ft_clear_node(t_node *node);
+void		ft_free(char **split);
 
 /* shell_header.c */
-void	ft_header(t_minishit *hell);
-t_minishit *get_address(void);
+void		ft_header(t_minishit *hell);
+t_minishit	*get_address(void);
 #endif
