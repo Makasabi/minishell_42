@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:47 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:52:53 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:11:04 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,45 +54,6 @@ void	cmd_node(t_minishit *hell, t_token *token)
 	ft_add_back_node(&hell->node, new_node);
 }
 
-void	add_redir_to_node(t_minishit *hell, t_node *new_node, int type)
-{
-	if (type == APPEND)
-		new_node->redir = append;
-	if (type == HEREDOC)
-		new_node->redir = heredoc;
-	if (type == INPUT)
-		new_node->redir = readfrom;
-	if (type == OUTPUT)
-		new_node->redir = writeto;
-	if (type == INPUT || type == HEREDOC)
-		new_node->in_out_put = 0;
-	if (type == OUTPUT || type == APPEND)
-		new_node->in_out_put = 1;
-	ft_add_back_node(&hell->node, new_node);
-}
-
-void	rdr_node(t_minishit *hell, t_token *token)
-{
-	t_node	*new_node;
-	int		type;
-
-	new_node = ft_new_node(rdr);
-	if (!new_node)
-	{
-		ft_error_msg(SHELL, "rdr_node", token->str, MALERR);
-		clean_exit(hell);
-	}
-	new_node->argv = make_argv_rdr(new_node, token->next);
-	if (!new_node->argv)
-	{
-		ft_error_msg(SHELL, "make_argv_rdr", token->str, MALERR);
-		free(new_node);
-		clean_exit(hell);
-	}
-	type = which_redir(token->str);
-	add_redir_to_node(hell, new_node, type);
-}
-
 /* 
 		MAKE NODES
 		
@@ -101,6 +62,28 @@ void	rdr_node(t_minishit *hell, t_token *token)
 	(see pip / cmd / rdr _node functions)
 
 */
+
+void	make_nodes_redir(t_minishit *hell, t_token **token)
+{
+	if ((*token)->next && (*token)->next->type == REDIR)
+		rdr_node(hell, (*token));
+	else
+		ft_add_back_node(&hell->node, ft_new_node(not));
+	(*token) = (*token)->next;
+	if ((*token))
+		(*token) = (*token)->next;
+}
+
+void	make_nodes_arg(t_minishit *hell, t_token **token, int *flag)
+{
+	if (*flag == 0)
+	{
+		cmd_node(hell, (*token));
+		*flag = 1;
+	}
+	while ((*token) && (*token)->type == ARG)
+		(*token) = (*token)->next;
+}
 
 int	make_nodes(t_minishit *hell, t_token *token)
 {
@@ -118,25 +101,9 @@ int	make_nodes(t_minishit *hell, t_token *token)
 			flag = 0;
 		}
 		else if (token && token->type == REDIR)
-		{
-			if (token->next && token->next->type == REDIR)
-				rdr_node(hell, token);
-			else
-				ft_add_back_node(&hell->node, ft_new_node(not));
-			token = token->next;
-			if (token)
-				token = token->next;
-		}
+			make_nodes_redir(hell, &token);
 		else if (token && token->type == ARG)
-		{
-			if (flag == 0)
-			{
-				cmd_node(hell, token);
-				flag = 1;
-			}
-			while (token && token->type == ARG)
-				token = token->next;
-		}
+			make_nodes_arg(hell, &token, &flag);
 	}
 	return (TRUE);
 }

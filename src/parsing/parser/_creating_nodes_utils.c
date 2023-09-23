@@ -6,48 +6,49 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:51 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:11:52 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:10:16 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-/* 
-		INDEX BUILT ING
-		
-- browses nodes until the end
-- indexes each node
-- check if a command_node is a built_in
-
-*/
-
-int	is_built_in(t_node *node, char *str)
+void	add_redir_to_node(t_minishit *hell, t_node *new_node, int type)
 {
-	if (!ft_strcmp("echo", str) || !ft_strcmp("cd", str)
-		|| !ft_strcmp("pwd", str) || !ft_strcmp("export", str)
-		|| !ft_strcmp("unset", str) || !ft_strcmp("env", str)
-		|| !ft_strcmp("exit", str))
-	{
-		if (node)
-			node->built_in = TRUE;
-		return (TRUE);
-	}
-	return (FALSE);
+	if (type == APPEND)
+		new_node->redir = append;
+	if (type == HEREDOC)
+		new_node->redir = heredoc;
+	if (type == INPUT)
+		new_node->redir = readfrom;
+	if (type == OUTPUT)
+		new_node->redir = writeto;
+	if (type == INPUT || type == HEREDOC)
+		new_node->in_out_put = 0;
+	if (type == OUTPUT || type == APPEND)
+		new_node->in_out_put = 1;
+	ft_add_back_node(&hell->node, new_node);
 }
 
-void	index_built_ing(t_node *node)
+void	rdr_node(t_minishit *hell, t_token *token)
 {
-	int		index;
+	t_node	*new_node;
+	int		type;
 
-	index = 0;
-	while (node)
+	new_node = ft_new_node(rdr);
+	if (!new_node)
 	{
-		if (node->type == cmd && node->argv[0])
-			is_built_in(node, node->argv[0]);
-		node->index = index;
-		index++;
-		node = node->next;
+		ft_error_msg(SHELL, "rdr_node", token->str, MALERR);
+		clean_exit(hell);
 	}
+	new_node->argv = make_argv_rdr(new_node, token->next);
+	if (!new_node->argv)
+	{
+		ft_error_msg(SHELL, "make_argv_rdr", token->str, MALERR);
+		free(new_node);
+		clean_exit(hell);
+	}
+	type = which_redir(token->str);
+	add_redir_to_node(hell, new_node, type);
 }
 
 /* 

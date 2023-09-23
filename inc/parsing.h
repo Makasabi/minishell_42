@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:13:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 15:19:24 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 16:11:36 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_token(t_token *token);
 void	ft_add_back_token(t_token **token, t_token *new);
 void	add_redir(t_token *token, t_token *redir, int boool);
 
+void	rdr_node(t_minishit *hell, t_token *token);
 int		which_redir(char *command);
 int		assign_type_redir(t_minishit *hell, t_token *token);
 
