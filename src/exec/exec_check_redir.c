@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_check_redir.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:25:36 by mrony             #+#    #+#             */
+/*   Updated: 2023/09/23 14:34:57 by mrony            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "exec.h"
 #include "heredoc.h"
 #include "minishell.h"
@@ -19,7 +31,7 @@ void	ft_set_redir(t_node **cmd, int *fd)
 	}
 }
 
-static int    ft_check_in(t_node *redir)
+static int	ft_check_in(t_node *redir)
 {
 	if (access(redir->argv[0], F_OK) < 0)
 		return (ft_error_msg(SHELL, NULL, redir->argv[0], NULL), FAILED);
@@ -51,20 +63,18 @@ static int	ft_check_out(t_node *redir)
 	}
 	return (SUCCESS);
 }
-int    ft_check_rdr(t_minishit *hell, t_node *redir)
+
+int	ft_check_rdr(t_node *redir)
 {
-	(void)hell;
 	while (redir != NULL)
 	{
 		if (redir->type == rdr)
 		{
 			if (redir->in_out_put == 0)
-			{
 				if (redir->redir != heredoc && redir->redir != none
 					&& ft_check_in(redir) == FAILED)
 					return (FAILED);
-			}
-			else if (redir->in_out_put == 1)
+			if (redir->in_out_put == 1)
 				if (ft_check_out(redir) == FAILED)
 					return (FAILED);
 			if (redir->redir == empty && redir->in_out_put == 0)

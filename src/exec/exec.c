@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:25:48 by mrony             #+#    #+#             */
+/*   Updated: 2023/09/23 14:34:34 by mrony            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "exec.h"
 #include "heredoc.h"
 
@@ -12,7 +24,7 @@ int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 	fds[0] = 0;
 	fds[1] = 1;
 	res = SUCCESS;
-	if (ft_check_rdr(hell, (*tree)) == FAILED)
+	if (ft_check_rdr((*tree)) == FAILED)
 		return (FAILED);
 	ft_set_redir(tree, fds);
 	if ((*tree)->type == cmd)

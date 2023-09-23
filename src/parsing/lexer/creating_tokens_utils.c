@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creating_tokens_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:11:35 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 14:30:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	remove_quotes(t_token *token)
 			{
 				temp = ft_substr(token->str, 1, last - 1);
 				if (!temp)
-					return(ft_error_msg(SHELL, "remove quotes", NULL, MALERR), FALSE);
+					return (ft_error_msg(SHELL, REMQUO, NULL, MALERR), FALSE);
 				token->quote = token->str[0];
 				free(token->str);
 				token->str = temp;

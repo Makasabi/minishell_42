@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_fork.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
+/*   Updated: 2023/09/23 14:35:14 by mrony            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "exec.h"
 
 static void	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
@@ -30,7 +42,7 @@ void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	fds[1] = 1;
 	dup2(*mem_fd, STDIN_FILENO);
 	close(*mem_fd);
-	if (ft_check_rdr(hell, (*comd)) == FAILED)
+	if (ft_check_rdr((*comd)) == FAILED)
 	{
 		close(*mem_fd);
 		clean_exit(hell);
@@ -74,7 +86,7 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	else
 	{
 		close(*mem_fd);
-		hell->pids[hell->pipes] = pid; 
+		hell->pids[hell->pipes] = pid;
 		while (i <= hell->pipes)
 		{
 			waitpid(hell->pids[i], &exit_status, WUNTRACED);

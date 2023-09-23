@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:13:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:16:57 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 14:30:54 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define SINGLE '\''
 # define DOUBLE '\"'
+# define REMQUO "remove quotes"
 
 /* PARSING */
 

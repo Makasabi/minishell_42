@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:12:45 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/23 14:31:45 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void	clean_init(t_minishit *hell)
 	hell->pids = NULL;
 }
 
-t_minishit *get_address(void)
+t_minishit	*get_address(void)
 {
-	static t_minishit hell;
+	static t_minishit	hell;
+
 	return (&hell);
 }
 
@@ -45,7 +46,7 @@ int	main(int argc, char **argv)
 	hell->my_env = ft_env_init();
 	if (!hell->my_env)
 		return (free(hell), 1);
-	// ft_header(hell);
+	ft_header(hell);
 	while (1)
 	{
 		if (mini_loop(hell) == FALSE)

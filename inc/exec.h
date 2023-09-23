@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:28:27 by mrony             #+#    #+#             */
+/*   Updated: 2023/09/23 14:34:22 by mrony            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef EXEC_H
 # define EXEC_H
 
@@ -27,7 +39,7 @@ int		ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd);
 int		ft_exec_bltin(t_minishit *hell, char **argv, int *fds);
 
 /* exec_check_redir.c */
-int		ft_check_rdr(t_minishit *hell, t_node *redir);
+int		ft_check_rdr(t_node *redir);
 void	ft_set_redir(t_node **cmd, int *fd);
 
 /* exec_check_path.c */
