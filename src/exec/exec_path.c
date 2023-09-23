@@ -67,8 +67,7 @@ char	*ft_is_executable(t_minishit *hell, char *cmd)
 	}
 	if (sb.st_mode & S_IXUSR)
 		return (cmd);
-	else if (S_ISREG(sb.st_mode)
-		&& !(sb.st_mode & S_IXUSR))
+	else if (S_ISREG(sb.st_mode))
 	{
 		hell->exit = 126;
 		ft_error_msg(SHELL, cmd, NULL, PERDEN);
