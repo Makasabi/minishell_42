@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:34 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 19:45:17 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/24 12:44:49 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_echo_while(char **argv, int i, bool *newline, int fd_out)
 {
 	int		flag;
 
-	flag= 0;
+	flag = 0;
 	while (argv[i])
 	{
 		if (*newline == 0 && argv[i][0] == '-' && flag == 0

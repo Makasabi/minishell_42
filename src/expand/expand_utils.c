@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:52 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:12:53 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/24 12:23:58 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_dollar(char *str, int i)
 {
 	if (ft_strlen(str) < 2)
 		return (1);
-	if (str[i] == '$' && str[i + 1] == '?' && str[i + 2] == '\0')
+	if (str[i] == '$' && str[i + 1] == '?')
 		return (2);
 	if (str[i] == '$' && ft_isalnum(str[i + 1]))
 		return (0);

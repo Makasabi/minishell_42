@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 19:54:55 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/24 12:42:52 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,22 @@ static void	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
 	execve(path, (*comd)->argv, hell->my_env);
 	clean_exit(hell);
 }
+
 void	ft_clear_argv(char **argv)
 {
-	int tab_s;
-	int i;
-	int j;
-	
+	int	tab_s;
+	int	i;
+	int	j;
+
 	tab_s = ft_table_size(argv);
 	i = -1;
-	while(++i < tab_s)
-		if(argv[i][0])
-			break;
+	while (++i < tab_s)
+		if (argv[i][0])
+			break ;
 	if (i == tab_s)
 		return ;
 	j = 0;
-	while(i < tab_s)
+	while (i < tab_s)
 	{
 		argv[j] = argv[i];
 		i++;

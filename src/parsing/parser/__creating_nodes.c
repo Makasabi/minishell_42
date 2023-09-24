@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:47 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 19:24:37 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/24 12:44:31 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,6 @@ int	make_nodes(t_minishit *hell, t_token *token)
 	flag = 0;
 	while (token)
 	{
-		// if (ft_strlen(token->str) == 0)
-		// 	token = token->next;
-		// else if (token && token->type == PIPE)
 		if (token && token->type == PIPE)
 		{
 			pip_node(hell);
@@ -108,5 +105,3 @@ int	make_nodes(t_minishit *hell, t_token *token)
 	}
 	return (TRUE);
 }
-
-

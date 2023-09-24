@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:42 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 19:59:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/24 12:44:56 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 #include "env.h"
 
-int	ft_exit(t_minishit *hell, char **argv, int  __attribute__((unused)) fd_out)
+int	ft_exit(t_minishit *hell, char **argv, int __attribute__((unused)) fd_out)
 {
 	int	exit_status;
 

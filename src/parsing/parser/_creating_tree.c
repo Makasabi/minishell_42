@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _creating_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:59 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:56:03 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/24 12:43:18 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	check_if_not(t_minishit *hell, t_node *node)
 	(void)hell;
 	while (node)
 	{
-		if ((node->type == pip && (!node->next || node->next->type == pip)) ||
-			(node->type == pip && (!node->prev || node->prev->type == pip)))
+		if ((node->type == pip && (!node->next || node->next->type == pip))
+			|| (node->type == pip && (!node->prev || node->prev->type == pip)))
 			return (ft_err_syntax(SHELL, SYNERR, "|"), FAILED);
 		if (node->type != cmd)
 		{

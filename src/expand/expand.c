@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:54 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:21:10 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/24 12:37:04 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ char	*replace_var_by_value(char *var, char *value, int start, int end)
 char	*expand_status(t_minishit *hell, char *str)
 {
 	char	*status;
+	char	*new;
 
 	status = ft_itoa(hell->exit);
 	if (!status)
 		return (ft_error_msg(SHELL, "expand", "$?", MALERR), NULL);
+	new = replace_var_by_value(str, status, 0, 1);
 	free(str);
-	return (status);
+	free(status);
+	return (new);
 }
 
 char	*get_value(t_minishit *hell, char *str)
@@ -67,9 +70,9 @@ char	*get_value(t_minishit *hell, char *str)
 	char	*new;
 	char	*value;
 
+	start = get_start(str);
 	if (check_dollar(str, dollar_sign(str)) == 2)
 		return (expand_status(hell, str));
-	start = get_start(str);
 	end = get_end(str + start + 1);
 	var = ft_substr(str, start + 1, end);
 	if (!var)
@@ -94,11 +97,20 @@ int	expander(t_minishit *hell, t_token *token)
 	{
 		if (token->quote != SINGLE)
 		{
-			while (dollar_sign(token->str) != FAILED)
+			if (token->quote != DOUBLE && dollar_sign(token->str) != FAILED)
 			{
 				token->str = get_value(hell, token->str);
 				if (token->str == NULL)
 					return (FALSE);
+			}
+			else
+			{
+				while (dollar_sign(token->str) != FAILED)
+				{
+					token->str = get_value(hell, token->str);
+					if (token->str == NULL)
+						return (FALSE);
+				}
 			}
 		}
 		token = token->next;
