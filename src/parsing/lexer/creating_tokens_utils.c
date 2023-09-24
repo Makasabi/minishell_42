@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:34 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/24 14:30:53 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/24 20:50:41 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,9 @@ int	remove_quotes(t_token *token)
 		if (token->type == ARG)
 		{
 			last = ft_strlen(token->str) - 1;
-			if ((token->str[0] == SINGLE && token->str[last] == SINGLE)
-				|| (token->str[0] == DOUBLE && token->str[last] == DOUBLE))
+			if (last != 0
+				&& ((token->str[0] == SINGLE && token->str[last] == SINGLE)
+					|| (token->str[0] == DOUBLE && token->str[last] == DOUBLE)))
 			{
 				temp = ft_substr(token->str, 1, last - 1);
 				if (!temp)

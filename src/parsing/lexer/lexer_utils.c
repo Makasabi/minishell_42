@@ -1,25 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand.h                                           :+:      :+:    :+:   */
+/*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 14:13:20 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/24 20:48:49 by tgibier          ###   ########.fr       */
+/*   Created: 2023/09/24 16:55:48 by tgibier           #+#    #+#             */
+/*   Updated: 2023/09/24 16:56:08 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPAND_H
-# define EXPAND_H
+#include "parsing.h"
 
-# include "minishell.h"
-
-int		expander(t_minishit *hell, t_token *token);
-int		check_dollar(char *str, int i);
-int		dollar_sign(char *str);
-int		get_start(char *str);
-int		get_end(char *str);
-char	*get_value(t_minishit *hell, char *str);
-
-#endif
