@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:54 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/24 12:37:04 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/24 15:22:17 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@
 char	*replace_var_by_value(char *var, char *value, int start, int end)
 {
 	char	*new;
-	int		len;
+	size_t	len;
 
+	if (!var || !value)
+		return (ft_error_msg(SHELL, "expand", var, MALERR), NULL);
 	len = ft_strlen(var) + ft_strlen(value);
 	new = ft_calloc(len + 1, sizeof(char));
 	if (!new)
@@ -56,7 +58,7 @@ char	*expand_status(t_minishit *hell, char *str)
 	status = ft_itoa(hell->exit);
 	if (!status)
 		return (ft_error_msg(SHELL, "expand", "$?", MALERR), NULL);
-	new = replace_var_by_value(str, status, 0, 1);
+	new = replace_var_by_value(str, status, dollar_sign(str), 1);
 	free(str);
 	free(status);
 	return (new);
@@ -73,7 +75,7 @@ char	*get_value(t_minishit *hell, char *str)
 	start = get_start(str);
 	if (check_dollar(str, dollar_sign(str)) == 2)
 		return (expand_status(hell, str));
-	end = get_end(str + start + 1);
+	end = get_end(str, start + 1);
 	var = ft_substr(str, start + 1, end);
 	if (!var)
 	{
@@ -117,15 +119,3 @@ int	expander(t_minishit *hell, t_token *token)
 	}
 	return (TRUE);
 }
-
-/*
-	TO DO LIST
-		- create a global var g_exit(?) to help with error_handling
-				-> error_handling
-		- expand $? is to do in echo.c with g_exit
-
-		- '\' is not supposed to be handled, as well as open quotes
-				-> decision on what we do with it ?
-		(ex : echo \$HOME -> \/home/wan as it doesn't "unread" $ ?)
-		
-*/

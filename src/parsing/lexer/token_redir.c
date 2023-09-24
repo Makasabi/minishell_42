@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 19:22:07 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/24 15:22:38 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void	spacez(t_token *token)
 {
 	while (token)
 	{
-		if (token->prev && token->space == 1 && token->next)
+		if (token->quote != DOUBLE && token->next && token->space == 0
+			&& ft_strlen(token->str) == 1 && token->str[0] == '$')
+			token->str[0] = '\0';
+		if (ft_strlen(token->str) > 0 && token->prev
+			&& token->space == 1 && token->next)
 		{
 			token->next->space = 1;
 			token->space = 0;

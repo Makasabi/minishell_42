@@ -72,6 +72,7 @@ void	index_built_ing(t_node *node)
 
 int	parser(t_minishit *hell)
 {
+	spacez(hell->token);
 	if (make_nodes(hell, hell->token) == FALSE)
 		return (FALSE);
 	index_built_ing(hell->node);
