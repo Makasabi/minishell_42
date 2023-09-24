@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:54 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/24 15:22:17 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/24 15:44:14 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*replace_var_by_value(char *var, char *value, int start, int end)
 		return (ft_error_msg(SHELL, "expand", var, MALERR), NULL);
 	ft_strlcpy(new, var, start + 1);
 	ft_strlcat(new, value, ft_strlen(new) + ft_strlen(value) + 1);
-	ft_strlcat(new, var + start + end + 1, len);
+	ft_strlcat(new, var + start + end, len);
 	return (new);
 }
 

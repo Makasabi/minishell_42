@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:59 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:25:00 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/24 15:42:32 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,31 @@
 #include "builtins.h"
 #include "env.h"
 
-int	ft_check_arg(char *arg)
+int    ft_check_arg(char *arg)
 {
-	int	i;
+    int    i;
 
-	i = 0;
-	if (arg[i] && (ft_isalpha(arg[0]) == 1 || arg[0] == '_'))
-		i++;
-	else
-		return (FAILED);
-	while (arg[i] && arg[i] != '=' && arg[i] != '+')
-	{
-		if (ft_isalnum(arg[i]) == 0)
-		{
-			if (arg[i] == '_')
-				i++;
-			else
-				return (FAILED);
-		}
-		i++;
-	}
-	return (SUCCESS);
+    i = 0;
+    if (arg[i] && (ft_isalpha(arg[0]) == 1 || arg[0] == '_'))
+        i++;
+    else
+        return (FAILED);
+    while (arg[i])
+    {
+        if (arg[i] == '=')
+            return (SUCCESS);
+        else if (arg[i] == '+' && arg[i + 1] == '=')
+            return (SUCCESS);
+        if (ft_isalnum(arg[i]) == 0)
+        {
+            if (arg[i] == '_')
+                i++;
+            else
+                return (FAILED);
+        }
+        i++;
+    }
+    return (SUCCESS);
 }
 
 int	ft_sign_append(char *arg)
