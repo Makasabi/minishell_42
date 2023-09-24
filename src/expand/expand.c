@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:54 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/24 20:46:37 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/24 20:53:33 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,21 +97,12 @@ int	expander(t_minishit *hell, t_token *token)
 	{
 		if (token->quote != SINGLE)
 		{
-			// if (token->quote != DOUBLE && dollar_sign(token->str) != FAILED)
-			// {
-			// 	token->str = get_value(hell, token->str);
-			// 	if (token->str == NULL)
-			// 		return (FALSE);
-			// }
-			// else
-			// {
-				while (dollar_sign(token->str) != FAILED)
-				{
-					token->str = get_value(hell, token->str);
-					if (token->str == NULL)
-						return (FALSE);
-				}
-			// }
+			while (dollar_sign(token->str) != FAILED)
+			{
+				token->str = get_value(hell, token->str);
+				if (token->str == NULL)
+					return (FALSE);
+			}
 		}
 		token = token->next;
 	}

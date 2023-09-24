@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:45 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/24 15:42:20 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/24 20:55:22 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,35 +83,35 @@ static int	ft_print_export(t_minishit *hell, int fd_out)
 	return (SUCCESS);
 }
 
-int    ft_export(t_minishit *hell, char **argv, int fd_out)
+int	ft_export(t_minishit *hell, char **argv, int fd_out)
 {
-    int    i;
+	int	i;
 
-    i = 1;
-    hell->exit = 0;
-    if (ft_table_size(argv) == 1)
-        return (ft_print_export(hell, fd_out));
-    while (argv[i])
-    {
-        if (argv[i][0] == '-')
-            return(ft_error_msg(SHELL, EXP, argv[i], IVALOP), 2);
-        if (ft_check_arg(argv[i]) == FAILED)
-        {
-            hell->exit = 1;
-            ft_error_msg(SHELL, EXP, argv[i++], IVALID);
-        }
-        else if (ft_var_line(hell->my_env, argv[i]) >= 0)
-        {
-            if (ft_sign_append(argv[i]) == TRUE)
-                ft_append_var(&hell->my_env, argv[i++]);
-            else
-                ft_replace_var(&hell->my_env, argv[i++]);
-        }
-        else if (ft_var_line(hell->my_env, argv[i]) >= 0
-            && ft_value_is_empty(argv[i]) == TRUE)
-            i++;
-        else
-            ft_add_var(&hell->my_env, argv[i++]);
-    }
-    return (hell->exit);
+	i = 1;
+	hell->exit = 0;
+	if (ft_table_size(argv) == 1)
+		return (ft_print_export(hell, fd_out));
+	while (argv[i])
+	{
+		if (argv[i][0] == '-')
+			return (ft_error_msg(SHELL, EXP, argv[i], IVALOP), 2);
+		if (ft_check_arg(argv[i]) == FAILED)
+		{
+			hell->exit = 1;
+			ft_error_msg(SHELL, EXP, argv[i++], IVALID);
+		}
+		else if (ft_var_line(hell->my_env, argv[i]) >= 0)
+		{
+			if (ft_sign_append(argv[i]) == TRUE)
+				ft_append_var(&hell->my_env, argv[i++]);
+			else
+				ft_replace_var(&hell->my_env, argv[i++]);
+		}
+		else if (ft_var_line(hell->my_env, argv[i]) >= 0
+			&& ft_value_is_empty(argv[i]) == TRUE)
+			i++;
+		else
+			ft_add_var(&hell->my_env, argv[i++]);
+	}
+	return (hell->exit);
 }
