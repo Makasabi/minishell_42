@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/24 12:42:52 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/26 17:50:00 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "env.h"
+#include "signals.h"
 
 static void	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
 {
@@ -107,9 +108,14 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	i = 0;
 	ft_clear_argv((*comd)->argv);
 	if (pid == 0)
+	{
+		handle_signalz(PROCESS_CHILD);
 		ft_exec_cmd(hell, comd, mem_fd);
+	}
 	else
 	{
+		handle_signalz(PROCESS_PARENT);
+		handle_signalz(PROCESS_DONE);
 		close(*mem_fd);
 		hell->pids[hell->pipes] = pid;
 		while (i <= hell->pipes)

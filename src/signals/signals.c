@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:47:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:48:43 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/26 17:52:01 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ void	display_prompt(int woop)
 		rl_on_new_line();
 		rl_replace_line("", 1);
 		rl_redisplay();
+	}
+}
+void	display_prompt2(int woop)
+{
+	if (woop == SIGINT)
+	{
+		write(2, "\n", 1);
+		rl_on_new_line();
+		rl_replace_line("", 1);
 	}
 }
 
@@ -72,7 +81,7 @@ void	handle_signalz(int process)
 	}
 	if (process == PROCESS_DONE)
 	{
-		signal(SIGINT, display_prompt);
+		signal(SIGINT, display_prompt2);
 		signal(SIGQUIT, SIG_IGN);
 	}
 }
