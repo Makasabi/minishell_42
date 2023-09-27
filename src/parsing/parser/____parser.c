@@ -31,12 +31,13 @@ int	is_built_in(t_node *node, char *str)
 	i = 0;
 	while (node->argv[i])
 	{
-		if (!ft_strcmp("echo", node->argv[i]) || !ft_strcmp("cd", node->argv[i])
-			|| !ft_strcmp("pwd", node->argv[i])
-			|| !ft_strcmp("export", node->argv[i])
-			|| !ft_strcmp("unset", node->argv[i])
-			|| !ft_strcmp("env", node->argv[i])
-			|| !ft_strcmp("exit", node->argv[i]))
+		if (!ft_strcmp("echo", node->argv[i]) || !ft_strcmp("echo ", node->argv[i])
+			|| !ft_strcmp("cd", node->argv[i]) || !ft_strcmp("cd ", node->argv[i])
+			|| !ft_strcmp("pwd", node->argv[i]) || !ft_strcmp("pwd ", node->argv[i])
+			|| !ft_strcmp("export", node->argv[i]) || !ft_strcmp("export ", node->argv[i])
+			|| !ft_strcmp("unset", node->argv[i]) || !ft_strcmp("unset ", node->argv[i])
+			|| !ft_strcmp("env", node->argv[i]) || !ft_strcmp("env ", node->argv[i])
+			|| !ft_strcmp("exit", node->argv[i]) || !ft_strcmp("exit ", node->argv[i]))
 		{
 			if (node)
 				node->built_in = TRUE;
@@ -49,13 +50,19 @@ int	is_built_in(t_node *node, char *str)
 
 void	index_built_ing(t_node *node)
 {
-	int		index;
+	int	index;
+	int	j;
 
 	index = 0;
+	j = 0;
 	while (node)
 	{
 		if (node->type == cmd && node->argv)
-			is_built_in(node, node->argv[0]);
+		{
+			while (node->argv[j][0] == '\0')
+				j++;
+			is_built_in(node, node->argv[j]);
+		}	
 		node->index = index;
 		index++;
 		node = node->next;

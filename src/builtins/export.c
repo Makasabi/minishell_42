@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:45 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/24 20:57:32 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/27 13:46:58 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static int	ft_print_export(t_minishit *hell, int fd_out)
 	ft_free(export);
 	return (SUCCESS);
 }
+
 
 int	ft_export(t_minishit *hell, char **argv, int fd_out)
 {

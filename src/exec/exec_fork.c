@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/26 17:50:00 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/27 13:41:17 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,6 @@ static void	ft_bin_cmd(t_minishit *hell, t_node **comd, int *fds)
 	clean_exit(hell);
 }
 
-void	ft_clear_argv(char **argv)
-{
-	int	tab_s;
-	int	i;
-	int	j;
-
-	tab_s = ft_table_size(argv);
-	i = -1;
-	while (++i < tab_s)
-		if (argv[i][0])
-			break ;
-	if (i == tab_s)
-		return ;
-	j = 0;
-	while (i < tab_s)
-	{
-		argv[j] = argv[i];
-		i++;
-		j++;
-	}
-}
-
 void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 {
 	int	fds[2];
@@ -66,8 +44,9 @@ void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	fds[1] = 1;
 	dup2(*mem_fd, STDIN_FILENO);
 	close(*mem_fd);
-	ft_clear_argv((*comd)->argv);
-	if (ft_check_rdr((*comd)) == FAILED)
+	if ((*comd)->argv && (*comd)->argv[0][0] == '\0')
+		(*comd)->argv = ft_clear_argv((*comd)->argv);
+	if ((*comd)->argv == NULL || ft_check_rdr((*comd)) == FAILED)
 	{
 		close(*mem_fd);
 		clean_exit(hell);
@@ -106,7 +85,6 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 
 	pid = fork();
 	i = 0;
-	ft_clear_argv((*comd)->argv);
 	if (pid == 0)
 	{
 		handle_signalz(PROCESS_CHILD);
@@ -114,15 +92,11 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	}
 	else
 	{
-		handle_signalz(PROCESS_PARENT);
 		handle_signalz(PROCESS_DONE);
 		close(*mem_fd);
 		hell->pids[hell->pipes] = pid;
 		while (i <= hell->pipes)
-		{
-			waitpid(hell->pids[i], &exit_status, WUNTRACED);
-			i++;
-		}
+			waitpid(hell->pids[i++], &exit_status, WUNTRACED);
 		if (WIFEXITED(exit_status) == TRUE)
 			hell->exit = WEXITSTATUS(exit_status);
 	}

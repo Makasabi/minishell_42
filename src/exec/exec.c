@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:48 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/26 17:48:08 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/27 13:41:38 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 	fds[0] = 0;
 	fds[1] = 1;
 	res = SUCCESS;
-	ft_clear_argv((*tree)->argv);
-	if (ft_check_rdr((*tree)) == FAILED)
+	if ((*tree)->argv && (*tree)->argv[0][0] == '\0')
+		(*tree)->argv = ft_clear_argv((*tree)->argv);
+	if ((*tree)->argv == NULL || ft_check_rdr((*tree)) == FAILED)
 		return (FAILED);
 	ft_set_redir(tree, fds);
 	if ((*tree)->type == cmd)
