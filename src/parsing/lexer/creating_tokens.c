@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:36 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/27 11:58:33 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/27 15:04:06 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int	tokenization(t_minishit *hell, char *command)
 	t_token	*last;
 
 	i = 0;
-	while (i < ((int)ft_strlen(command) - 1) && command[i])
+	while (i < ((int)ft_strlen(command)) && command[i])
 	{
 		if (is_space(command[i]))
 		{

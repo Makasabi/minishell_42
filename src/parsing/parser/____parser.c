@@ -43,11 +43,11 @@ int	is_built_in(t_node *node, char *str)
 	(void)str;
 	i = 0;
 	j = 0;
-	while (node->argv[i])
+	while (node->argv && node->argv[i])
 	{
 		while (j < 14)
 		{
-			if (!ft_strcmp(tab_comp(j), node->argv[i]))
+			if (ft_strcmp(tab_comp(j), node->argv[i]) == 0)
 			{
 				if (node)
 					node->built_in = TRUE;
@@ -55,6 +55,7 @@ int	is_built_in(t_node *node, char *str)
 			}
 			j++;
 		}
+		j = 0;
 		i++;
 	}
 	return (FALSE);
@@ -72,7 +73,7 @@ void	index_built_ing(t_node *node)
 		if (node->type == cmd && node->argv)
 		{
 			is_built_in(node, node->argv[j]);
-		}	
+		}
 		node->index = index;
 		index++;
 		node = node->next;
@@ -89,6 +90,7 @@ void	index_built_ing(t_node *node)
 
 int	parser(t_minishit *hell)
 {
+	
 	spacez(hell->token);
 	if (make_nodes(hell, hell->token) == FALSE)
 		return (FALSE);
