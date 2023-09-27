@@ -22,26 +22,38 @@
 - check if a command_node is a built_in
 
 */
+char	*tab_comp(int i)
+{
+	static char	tab_comp[14][7] = {"echo", "echo ",
+		"cd", "cd ",
+		"pwd", "pwd ",
+		"export", "export ",
+		"unset", "unset ",
+		"env", "env ",
+		"exit", "exit "};
+
+	return (tab_comp[i]);
+}
 
 int	is_built_in(t_node *node, char *str)
 {
 	int	i;
+	int	j;
 
 	(void)str;
 	i = 0;
+	j = 0;
 	while (node->argv[i])
 	{
-		if (!ft_strcmp("echo", node->argv[i]) || !ft_strcmp("echo ", node->argv[i])
-			|| !ft_strcmp("cd", node->argv[i]) || !ft_strcmp("cd ", node->argv[i])
-			|| !ft_strcmp("pwd", node->argv[i]) || !ft_strcmp("pwd ", node->argv[i])
-			|| !ft_strcmp("export", node->argv[i]) || !ft_strcmp("export ", node->argv[i])
-			|| !ft_strcmp("unset", node->argv[i]) || !ft_strcmp("unset ", node->argv[i])
-			|| !ft_strcmp("env", node->argv[i]) || !ft_strcmp("env ", node->argv[i])
-			|| !ft_strcmp("exit", node->argv[i]) || !ft_strcmp("exit ", node->argv[i]))
+		while (j < 14)
 		{
-			if (node)
-				node->built_in = TRUE;
-			return (TRUE);
+			if (!ft_strcmp(tab_comp(j), node->argv[i]))
+			{
+				if (node)
+					node->built_in = TRUE;
+				return (TRUE);
+			}
+			j++;
 		}
 		i++;
 	}
@@ -59,8 +71,6 @@ void	index_built_ing(t_node *node)
 	{
 		if (node->type == cmd && node->argv)
 		{
-			while (node->argv[j][0] == '\0')
-				j++;
 			is_built_in(node, node->argv[j]);
 		}	
 		node->index = index;
