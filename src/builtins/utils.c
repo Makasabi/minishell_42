@@ -23,7 +23,6 @@ int	ft_check_arg(char *arg)
 		i++;
 	else
 		return (FAILED);
-	printf("arg = [%s]\n", arg);
 	while (arg[i])
 	{
 		if (arg[i] == '=')

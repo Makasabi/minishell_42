@@ -80,28 +80,83 @@ char	**make_argv_rdr(t_node *node, t_token *token)
 
 */
 
-char	**make_argv_cmd_utils(t_node *node, t_token *token, int i, int flag)
+char	*join_strs(t_token *token)
+{
+	t_token	*ptr;
+	int		len;
+	char	*str;
+
+	len = 0;
+	ptr = token;
+	while (ptr)
+	{
+		len += ft_strlen(ptr->str);
+		if (ptr->space == 1)
+			break ;
+		ptr = ptr->next;
+	}
+	str = ft_calloc(sizeof(char), len + 1);
+	if (!str)
+		return (NULL);
+	while (token)
+	{
+		ft_strlcat(str, token->str, len + 1);
+		if (token->space == 1)
+			break ;
+		token = token->next;
+	}
+	str[len] = '\0';
+	return (str);
+}
+
+char	**make_argv_cmd_utils(t_node *node, t_token **token, int i, int flag)
 {
 	char	*tmp;
+	char	*joined;
 
-	if (i != 0 && flag == 1 && token->space == 1
-		&& token->prev && ft_strcmp("echo", token->prev->str))
+	if ((*token) && (*token)->space == 0 && (*token)->next)
 	{
-		tmp = ft_strdup(token->str);
+		joined = join_strs((*token));
+		while ((*token))
+		{
+			if ((*token)->space == 1 || !(*token)->next)
+				break ;
+			(*token) = (*token)->next;
+		}
+		(*token)->str = joined;
+		(*token)->space = 1;
+	}
+	if (i != 0 && flag == 1 && (*token)->space == 1)
+	{
+		tmp = ft_strdup((*token)->str);
 		if (!tmp)
 			return (NULL);
-		node->argv[i] = ft_strjoin(" ", tmp);
+		node->argv[i] = ft_strjoin(tmp, " ");
 		if (!node->argv[i])
 			return (free(tmp), NULL);
 		free(tmp);
 	}
 	else
 	{
-		node->argv[i] = ft_strdup(token->str);
+		node->argv[i] = ft_strdup((*token)->str);
 		if (!node->argv[i])
 			return (NULL);
 	}
 	return (node->argv);
+}
+
+int	check_echo(t_node *node)
+{
+	int	i;
+
+	i = 0;
+	if (node->argv[i])
+	{
+		if (!ft_strcmp("echo", node->argv[i]))
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
 }
 
 char	**make_argv_cmd(t_node *node, t_token *token, int flag)
@@ -116,12 +171,12 @@ char	**make_argv_cmd(t_node *node, t_token *token, int flag)
 	i = 0;
 	while (token && token->type != PIPE)
 	{
-		if (!ft_strcmp("echo", token->str))
+		if (!ft_strcmp("echo", token->str) || check_echo(node) == TRUE)
 			flag = 1;
 		if (token->type != REDIR && (ft_strlen(token->str) != 0
 				|| (ft_strlen(token->str) == 0 && token->quote != ' ')))
 		{
-			argv = make_argv_cmd_utils(node, token, i, flag);
+			argv = make_argv_cmd_utils(node, &token, i, flag);
 			if (!argv)
 				return (ft_free(node->argv), NULL);
 			node->argv = argv;

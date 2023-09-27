@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:44 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 16:40:46 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/27 16:18:04 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,10 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 		return (ft_is_executable(hell, cmd));
 	path_val = ft_var_value(hell->my_env, "PATH");
 	if (!path_val)
+	{
+		hell->exit = 127;
 		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
+	}
 	paths = ft_split(path_val, ':');
 	if (!paths)
 		return (ft_error_msg(SHELL, NULL, cmd, MALLERRPATH), NULL);

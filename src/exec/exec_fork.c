@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/27 15:29:15 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/27 16:38:24 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	fds[1] = 1;
 	dup2(*mem_fd, STDIN_FILENO);
 	close(*mem_fd);
-	if ((*comd)->argv && (*comd)->argv[0][0] == '\0')
+	if ((*comd)->argv[0] && (*comd)->argv[0][0] == '\0')
 		(*comd)->argv = ft_clear_argv((*comd)->argv);
-	if ((*comd)->argv == NULL || ft_check_rdr((*comd)) == FAILED)
+	if ((*comd)->argv[0] == NULL || ft_check_rdr((*comd)) == FAILED)
 	{
 		close(*mem_fd);
 		clean_exit(hell);
@@ -90,16 +90,16 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 		handle_signalz(PROCESS_CHILD);
 		ft_exec_cmd(hell, comd, mem_fd);
 	}
-	else
+	handle_signalz(PROCESS_DONE);
+	close(*mem_fd);
+	hell->pids[hell->pipes] = pid;
+	while (i <= hell->pipes)
 	{
-		handle_signalz(PROCESS_DONE);
-		close(*mem_fd);
-		hell->pids[hell->pipes] = pid;
-		while (i <= hell->pipes)
-			waitpid(hell->pids[i++], &exit_status, WUNTRACED);
-		if (WIFEXITED(exit_status) == TRUE)
-			hell->exit = WEXITSTATUS(exit_status);
+		waitpid(hell->pids[i], &exit_status, WUNTRACED);
+		i++;
 	}
+	if (WIFEXITED(exit_status) == TRUE)
+		hell->exit = WEXITSTATUS(exit_status);
 	ft_close_fds(*comd);
 	return (hell->exit);
 }
