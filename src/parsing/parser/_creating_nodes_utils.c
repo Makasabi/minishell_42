@@ -84,23 +84,11 @@ char	**make_argv_cmd_utils(t_node *node, t_token *token, int i, int flag)
 {
 	char	*tmp;
 
-	// if (i != 0 && flag == 1 && token->space == 1
-	// 	&& token->prev && ft_strcmp("echo", token->prev->str))
-	// {
-	// 	tmp = ft_strdup(token->str);
-	// 	if (!tmp)
-	// 		return (NULL);
-	// 	node->argv[i] = ft_strjoin(tmp, " ");
-	// 	// node->argv[i] = ft_strjoin(" ", tmp);
-	// 	if (!node->argv[i])
-	// 		return (free(tmp), NULL);
-	// 	free(tmp);
-// }
 	if (i != 0 && flag == 1 && token->space == 1)
 	{
 		tmp = ft_strdup(token->str);
 		if (!tmp)
-		return (NULL);	
+			return (NULL);
 		node->argv[i] = ft_strjoin(tmp, " ");
 		if (!node->argv[i])
 			return (free(tmp), NULL);
