@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:52 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/24 12:23:58 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/27 17:51:17 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	dollar_sign(char *str)
 	while (str[i])
 	{
 		if (str[i] == '$' && (str[i + 1]
-				&& (str[i + 1] != '=' && str[i + 1] != ':')))
+				&& (str[i + 1] != '=' && str[i + 1] != ':'
+				&& !is_space(str[i + 1]))))
 			return (i);
 		else
 			i++;

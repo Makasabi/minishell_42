@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/27 10:44:31 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/27 17:46:36 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	check_pipe(t_minishit *hell, t_token *token)
 	if (token->type == PIPE)
 	{
 		hell->pipes++;
-		if (token->prev)
-			token->prev->space = 0;
+		// if (token->prev)
+		// 	token->prev->space = 0;
 	}
 }
 

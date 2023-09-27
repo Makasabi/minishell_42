@@ -114,11 +114,13 @@ char	**make_argv_cmd_utils(t_node *node, t_token **token, int i, int flag)
 	char	*tmp;
 	char	*joined;
 
-	if ((*token) && (*token)->space == 0 && (*token)->next)
+	if ((*token) && (*token)->space == 0 && (*token)->next && (*token)->type != PIPE)
 	{
 		joined = join_strs((*token));
-		while ((*token))
+		while ((*token) && (*token)->type != PIPE)
 		{
+			if ((*token)->type == PIPE)
+				return (NULL) ;
 			if ((*token)->space == 1 || !(*token)->next)
 				break ;
 			(*token) = (*token)->next;
@@ -126,7 +128,7 @@ char	**make_argv_cmd_utils(t_node *node, t_token **token, int i, int flag)
 		(*token)->str = joined;
 		(*token)->space = 1;
 	}
-	if (i != 0 && flag == 1 && (*token)->space == 1)
+	if (i != 0 && flag == 1 && (*token)->space == 1 && (*token)->next && (*token)->next->type != PIPE)
 	{
 		tmp = ft_strdup((*token)->str);
 		if (!tmp)
