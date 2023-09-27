@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:36 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/24 14:31:03 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/27 10:43:44 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,7 @@ int	issa_quotes(t_minishit *hell, char *command, int i)
 		flag = command[i + 1];
 		j = 2;
 	}
-	while (command[i + j] && command[i + j] != flag
-		&& is_token(command[i + j]) < 0)
+	while (command[i + j] && command[i + j] != flag)
 		j++;
 	str = ft_substr(command, i, j + 1);
 	if (!str)
