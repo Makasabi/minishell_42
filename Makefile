@@ -6,7 +6,7 @@
 #    By: mrony <mrony@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 13:08:34 by tgibier           #+#    #+#              #
-#    Updated: 2023/09/28 14:12:23 by mrony            ###   ########.fr        #
+#    Updated: 2023/09/28 17:34:20 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,7 @@ NAME_BONUS			=	bonus
 
 # Compiler
 CC					=	cc
-CFLAGS				=	-g3 -Wall -Werror -Wextra 
-#-fsanitize=address
+CFLAGS				=	-g3 -Wall -Werror -Wextra -fsanitize=address
 LDFLAGS				=	-L $(LIBFT_PATH) -lft
 
 # Libft

@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:42:58 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 13:53:42 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 17:45:30 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ void	display_prompt2(int woop)
 			rl_on_new_line();
 			rl_replace_line("", 1);
 			rl_redisplay();
-			hell->exit = 130;
+			hell->exit = 0;
 		}
 		else
 		{
 			write(2, "\n", 1);
 			hell->on_off = 0;
+			hell->exit = 130;
 		}
 	}
 }
