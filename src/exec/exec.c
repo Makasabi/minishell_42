@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:48 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 11:41:29 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 17:22:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 {
 	int		fds[2];
 	int		res;
+	int		f;
 
 	fds[0] = 0;
 	fds[1] = 1;
+	f = -1;
 	res = SUCCESS;
 	if ((*tree)->argv && (*tree)->argv[0][0] == '\0')
-		(*tree)->argv = ft_clear_argv((*tree)->argv);
+		(*tree)->argv = ft_clear_argv(hell, &f,(*tree)->argv);
 	if ((*tree)->argv == NULL || ft_check_rdr((*tree)) == FAILED)
 		return (FAILED);
 	ft_set_redir(tree, fds);
