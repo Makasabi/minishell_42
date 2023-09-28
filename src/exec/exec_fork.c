@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 11:10:57 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 11:41:16 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	int	exit_status;
 	int	i;
 
+	hell->on_off = 1;
 	pid = fork();
 	i = 0;
 	if (pid == 0)

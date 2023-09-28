@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 16:34:06 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 11:36:55 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 void	clean_init(t_minishit *hell)
 {
+	hell->on_off = 0;
 	hell->pipes = 0;
 	hell->pipe_fd = -1;
 	hell->my_env = NULL;

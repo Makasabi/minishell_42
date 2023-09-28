@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:30 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:24:31 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:10:17 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	ft_update_oldpwd(t_minishit *hell)
 
 	i = 0;
 	line = ft_var_line(hell->my_env, "PWD");
+	if (line == -1)
+		return (FAILED);
 	while (hell->my_env[line][i] != '=')
 		i++;
 	tmp = ft_strjoin("OLDPWD=", hell->my_env[line] + i + 1);

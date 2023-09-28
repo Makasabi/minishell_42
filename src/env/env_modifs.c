@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:13 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:25:14 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:08:27 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ void	ft_del_var(char ***my_env, int line)
 	while ((*my_env)[i])
 	{
 		if (i == line)
-			free((*my_env)[i++]);
+		{
+			free((*my_env)[i]);
+			(*my_env)[i] = NULL;
+			i++;
+		}
 		else
 			new_env[j++] = (*my_env)[i++];
 	}

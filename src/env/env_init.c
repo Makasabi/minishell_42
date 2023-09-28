@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:09 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:25:10 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:00:20 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ char	**ft_env_from_scratch(void)
 	char	buff[PATH_MAX];
 	char	**my_env;
 
-	getcwd(buff, sizeof(buff));
+	if (getcwd(buff, sizeof(buff)) == NULL)
+		return (ft_error_msg(SHELL, "PWD", NULL, NULL), NULL);
 	my_env = malloc(sizeof(char **) * 4);
 	if (!my_env)
 		return (ft_env_error(my_env, 0), NULL);
