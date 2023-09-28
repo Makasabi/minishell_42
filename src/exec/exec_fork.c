@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 17:08:32 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 18:54:48 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	int	i;
 
 	hell->on_off = 1;
+	handle_signalz(PROCESS_PARENT);
 	pid = fork();
 	i = -1;
 	if (pid == 0)
@@ -91,13 +92,13 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 		handle_signalz(PROCESS_CHILD);
 		ft_exec_cmd(hell, comd, mem_fd);
 	}
-	handle_signalz(PROCESS_DONE);
 	close(*mem_fd);
 	hell->pids[hell->pipes] = pid;
 	while (++i <= hell->pipes)
 		waitpid(hell->pids[i], &exit_status, WUNTRACED);
 	if (WIFEXITED(exit_status) == TRUE)
 		hell->exit = WEXITSTATUS(exit_status);
+	handle_signalz(PROCESS_DONE);
 	ft_core_dump(hell, exit_status);
 	ft_close_fds(*comd);
 	return (hell->exit);

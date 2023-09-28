@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:19 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:25:20 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 19:17:41 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	ft_shlvl_inc(char ***my_env)
 
 	shlvl = ft_atoi(ft_var_value((*my_env), "SHLVL"));
 	shlvl++;
+	if (shlvl >= 1024)
+		shlvl = 0;
 	level = ft_itoa(shlvl);
 	if (!level)
 		return (ft_error_msg(SHELL, "SHLVL incrementation", \
