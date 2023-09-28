@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:13:20 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/24 20:48:49 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/28 20:03:50 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int		check_dollar(char *str, int i);
 int		dollar_sign(char *str);
 int		get_start(char *str);
 int		get_end(char *str);
-char	*get_value(t_minishit *hell, char *str);
+char	*get_value(t_minishit *hell, char *str, int hd);
 
 #endif

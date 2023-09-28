@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:37:38 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 20:03:07 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 20:04:01 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ void	create_heredoc(t_minishit *hell, char *line, int *fd)
 
 	if (dollar_sign(line) != FAILED)
 	{
-		str = get_value(hell, line);
+		str = get_value(hell, line, 1);
 		write(fd[1], str, ft_strlen(str));
-		free(str);
+		if (str)
+			free(str);
 		line = NULL;
 	}
 	else
@@ -51,7 +52,8 @@ void	child_heredoc(t_minishit *hell, char *delimiter, int *fd)
 	line = NULL;
 	while (1)
 	{
-		free(line);
+		if (line)
+			free(line);
 		line = readline("> ");
 		if (!line)
 		{

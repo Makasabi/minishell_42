@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:54 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 19:39:06 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 20:03:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*expand_status(t_minishit *hell, char *str)
 	return (new);
 }
 
-char	*get_value(t_minishit *hell, char *str)
+char	*get_value(t_minishit *hell, char *str, int	hd)
 {
 	int		start;
 	int		end;
@@ -88,7 +88,8 @@ char	*get_value(t_minishit *hell, char *str)
 		value = "";
 	new = replace_var_by_value(str, value, start, end);
 	free(var);
-	free(str);
+	if (hd == 0)
+		free(str);
 	return (new);
 }
 
@@ -101,7 +102,7 @@ int	expander(t_minishit *hell, t_token *token)
 		{
 			while (dollar_sign(token->str) != FAILED)
 			{
-				token->str = get_value(hell, token->str);
+				token->str = get_value(hell, token->str, 0);
 				if (token->str == NULL)
 					return (FALSE);
 			}
