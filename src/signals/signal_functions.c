@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:42:58 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 11:42:26 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:22:52 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ void	display_prompt2(int woop)
 			rl_replace_line("", 1);
 			rl_redisplay();
 			hell->exit = 130;
-			// printf("yo on off = 0\n");
 		}
 		else
 		{
-			// printf("yo wdwdwdwdwdwddw\n");
 			write(2, "\n", 1);
 			hell->on_off = 0;
 		}

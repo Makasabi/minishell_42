@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:15 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 10:48:39 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:22:14 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	clear_hell(t_minishit *hell)
 
 void	clean_hell(t_minishit *hell)
 {
+	hell->on_off = 0;
 	hell->pipes = 0;
 	hell->node = NULL;
 	hell->token = NULL;

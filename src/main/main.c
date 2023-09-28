@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:44 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 11:36:55 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 13:49:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	main(int argc, char **argv)
 {
 	t_minishit	*hell;
 
-	(void)argc;
 	(void)argv;
 	hell = get_address();
 	if (!hell)
@@ -47,7 +46,8 @@ int	main(int argc, char **argv)
 	hell->my_env = ft_env_init();
 	if (!hell->my_env)
 		return (free(hell), 1);
-	// ft_header(hell);
+	if (argc == 1)
+		ft_header(hell);
 	while (1)
 	{
 		if (mini_loop(hell) == FALSE)
