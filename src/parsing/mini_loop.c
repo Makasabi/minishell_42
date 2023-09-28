@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:15 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 20:00:27 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 10:48:39 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ int	mini_loop(t_minishit *hell)
 {
 	char	*command;
 
-	signal(SIGINT, display_prompt);
-	signal(SIGQUIT, SIG_IGN);
+	handle_signalz(PROCESS_DONE);
 	command = NULL;
 	command = readline(PROMPT);
 	if (!command)

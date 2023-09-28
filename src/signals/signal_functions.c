@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:42:58 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/27 13:44:20 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 11:10:36 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,27 @@
 #include "minishell.h"
 #include "errors.h"
 
-void	display_prompt(int woop)
+
+void	ft_core_dump(t_minishit *hell, int woop)
 {
-	if (woop == SIGINT)
+	if (woop == 131)
 	{
-		write(2, "\n", 1);
-		rl_on_new_line();
-		rl_replace_line("", 1);
-		rl_redisplay();
+		hell->exit = 131;
+		printf("Quit (core dumped)\n");
 	}
 }
 
 void	display_prompt2(int woop)
 {
+	t_minishit	*hell;
+
+	hell = get_address();
 	if (woop == SIGINT)
 	{
 		write(2, "\n", 1);
 		rl_on_new_line();
 		rl_replace_line("", 1);
+		hell->exit = 130;
 	}
 }
 

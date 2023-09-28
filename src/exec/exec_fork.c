@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/27 16:38:24 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 11:10:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	}
 	if (WIFEXITED(exit_status) == TRUE)
 		hell->exit = WEXITSTATUS(exit_status);
+	ft_core_dump(hell, exit_status);
 	ft_close_fds(*comd);
 	return (hell->exit);
 }
