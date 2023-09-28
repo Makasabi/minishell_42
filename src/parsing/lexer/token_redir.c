@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/27 17:46:36 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 15:12:50 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,7 @@ void	spacez(t_token *token)
 {
 	while (token)
 	{
-		if (token->quote != DOUBLE && token->next && token->space == 0
-			&& ft_strlen(token->str) == 1 && token->str[0] == '$')
-			token->str[0] = '\0';
-		// if (ft_strlen(token->str) > 0 && token->prev
-		// 	&& token->space == 1 && token->next)
-		// {
-		// 	token->next->space = 1;
-		// 	token->space = 0;
-		// 	token = token->next;
-		// }
+		// printf("token->str = [%s]\n", token->str);
 		token = token->next;
 	}
 }

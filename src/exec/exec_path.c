@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:44 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 10:39:16 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 14:08:01 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,26 @@ char	*ft_is_executable(t_minishit *hell, char *cmd)
 	return (NULL);
 }
 
+char	*ft_check_path_2(t_minishit *hell, char *cmd, char *path_val)
+{
+	char	**paths;
+	char	*right_path;
+
+	paths = ft_split(path_val, ':');
+	if (!paths)
+		return (ft_error_msg(SHELL, NULL, cmd, MALLERRPATH), NULL);
+	right_path = ft_find_right_path(paths, cmd);
+	if (!right_path)
+	{
+		hell->exit = 127;
+		return (ft_error_msg(SHELL, NULL, cmd, CMDERR), NULL);
+	}
+	return (right_path);
+}
+
 char	*ft_check_path(t_minishit *hell, char *cmd)
 {
 	char	*path_val;
-	char	**paths;
 	char	*right_path;
 
 	if (ft_strlen(cmd) < 1)
@@ -107,26 +123,8 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 		hell->exit = 127;
 		return (ft_error_msg(SHELL, NULL, cmd, NOFLDIR), NULL);
 	}
-	paths = ft_split(path_val, ':');
-	if (!paths)
-		return (ft_error_msg(SHELL, NULL, cmd, MALLERRPATH), NULL);
-	right_path = ft_find_right_path(paths, cmd);
+	right_path = ft_check_path_2(hell, cmd, path_val);
 	if (!right_path)
-	{
-		hell->exit = 127;
-		return (ft_error_msg(SHELL, NULL, cmd, CMDERR), NULL);
-	}
+		return (NULL);
 	return (right_path);
 }
-/*
-bash-5.1$ Makefile
-bash: Makefile: command not found
-bash-5.1$ ./Makefile
-bash: ./Makefile: Permission denied
-bash-5.1$ ../
-bash: ../: Is a directory
-bash-5.1$ ../hjkj
-bash: ../hjkj: No such file or directory
-bash-5.1$ 
-
-*/

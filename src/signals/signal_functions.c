@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:42:58 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 12:22:52 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 13:53:42 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "parsing.h"
 #include "minishell.h"
 #include "errors.h"
-
 
 void	ft_core_dump(t_minishit *hell, int woop)
 {

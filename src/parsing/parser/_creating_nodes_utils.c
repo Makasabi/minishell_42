@@ -125,6 +125,7 @@ char	**make_argv_cmd_utils(t_node *node, t_token **token, int i, int flag)
 				break ;
 			(*token) = (*token)->next;
 		}
+		free((*token)->str);
 		(*token)->str = joined;
 		(*token)->space = 1;
 	}
