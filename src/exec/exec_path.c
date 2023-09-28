@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:44 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 14:08:01 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 16:59:43 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ char	*ft_check_path(t_minishit *hell, char *cmd)
 	char	*path_val;
 	char	*right_path;
 
-	if (ft_strlen(cmd) < 1)
+	if (ft_strlen(cmd) < 1 || !cmd[0])
 	{
 		hell->exit = 127;
 		return (ft_error_msg(SHELL, NULL, cmd, CMDERR), NULL);

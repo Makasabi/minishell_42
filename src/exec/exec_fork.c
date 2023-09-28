@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 12:19:49 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 17:08:32 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_exec_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	dup2(*mem_fd, STDIN_FILENO);
 	close(*mem_fd);
 	if ((*comd)->argv[0] && (*comd)->argv[0][0] == '\0')
-		(*comd)->argv = ft_clear_argv((*comd)->argv);
+		(*comd)->argv = ft_clear_argv(hell, mem_fd, (*comd)->argv);
 	if ((*comd)->argv[0] == NULL || ft_check_rdr((*comd)) == FAILED)
 	{
 		close(*mem_fd);

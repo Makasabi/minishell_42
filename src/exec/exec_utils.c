@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:59:29 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/27 15:28:04 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 17:19:13 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,34 @@ char	**ft_copy_valids(char **new, char **argv)
 	return (new);
 }
 
-char	**ft_clear_argv(char **argv)
+int		count_argv(t_minishit *hell, int *mem_fd, char **argv, int tab_s)
 {
-	int		i;
+	int	i;
+	int	count;
+
+	i = -1;
+	count = 0;
+	while (argv && argv[++i])
+		if (argv[i][0] == '\0')
+			count++;
+	if (tab_s == count)
+	{
+		ft_error_msg(SHELL, "", NULL, CMDERR);
+		close(*mem_fd);
+		hell->exit = 127;
+		clean_exit(hell);
+	}
+	return (count);
+}
+
+char	**ft_clear_argv(t_minishit *hell, int *mem_fd, char **argv)
+{
 	int		count;
 	int		tab_s;
 	char	**new;
 
-	i = -1;
-	count = 0;
 	tab_s = ft_table_size(argv);
-	while (argv && argv[++i])
-		if (argv[i][0] == '\0')
-			count++;
+	count = count_argv(hell, mem_fd, argv, tab_s);
 	new = malloc(sizeof(char *) * (tab_s - count + 1));
 	if (!new)
 		return (ft_free(argv),
