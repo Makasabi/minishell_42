@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:52 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 17:25:53 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/28 18:20:09 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,11 @@ int	get_start(char *str)
 
 	i = 0;
 	while (str[i] && str[i + 1] && check_dollar(str, i))
+	{
+		if (str[i] == '$' && str[i + 1] == '?')
+			break ;
 		i++;
+	}
 	return (i);
 }
 

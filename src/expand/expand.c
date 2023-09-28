@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:54 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/24 20:53:33 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/28 18:20:58 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,15 @@ char	*replace_var_by_value(char *var, char *value, int start, int end)
 
 char	*expand_status(t_minishit *hell, char *str)
 {
+	int		start;
 	char	*status;
 	char	*new;
 
+	start = get_start(str);
 	status = ft_itoa(hell->exit);
 	if (!status)
 		return (ft_error_msg(SHELL, "expand", "$?", MALERR), NULL);
-	new = replace_var_by_value(str, status, 0, 1);
+	new = replace_var_by_value(str, status, start, 1);
 	free(str);
 	free(status);
 	return (new);
