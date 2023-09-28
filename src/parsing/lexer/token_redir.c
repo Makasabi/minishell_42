@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:11:39 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 15:12:50 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 17:26:52 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ int	is_space(char c)
 void	spacez(t_token *token)
 {
 	while (token)
-	{
-		// printf("token->str = [%s]\n", token->str);
 		token = token->next;
-	}
 }
 
 int	which_redir(char *command)
@@ -58,11 +55,7 @@ int	which_redir(char *command)
 void	check_pipe(t_minishit *hell, t_token *token)
 {
 	if (token->type == PIPE)
-	{
 		hell->pipes++;
-		// if (token->prev)
-		// 	token->prev->space = 0;
-	}
 }
 
 int	assign_type_redir(t_minishit *hell, t_token *token)

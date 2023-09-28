@@ -21,6 +21,7 @@ SRCS += ./src/parsing/parser/_single_command.c
 SRCS += ./src/parsing/parser/link_functions.c
 SRCS += ./src/parsing/parser/_creating_tree_exceptions.c
 SRCS += ./src/parsing/parser/complex_commands.c
+SRCS += ./src/parsing/parser/parser_utils.c
 SRCS += ./src/parsing/parser/_creating_tree.c
 SRCS += ./src/parsing/mini_loop.c
 SRCS += ./src/parsing/lexer/_token_functions.c

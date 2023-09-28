@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:59:29 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 17:19:13 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 17:26:01 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**ft_copy_valids(char **new, char **argv)
 	return (new);
 }
 
-int		count_argv(t_minishit *hell, int *mem_fd, char **argv, int tab_s)
+int	count_argv(t_minishit *hell, int *mem_fd, char **argv, int tab_s)
 {
 	int	i;
 	int	count;

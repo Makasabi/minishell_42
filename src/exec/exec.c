@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:48 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 17:22:57 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 17:26:14 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_exec_sgl(t_minishit *hell, t_node **tree)
 	f = -1;
 	res = SUCCESS;
 	if ((*tree)->argv && (*tree)->argv[0][0] == '\0')
-		(*tree)->argv = ft_clear_argv(hell, &f,(*tree)->argv);
+		(*tree)->argv = ft_clear_argv(hell, &f, (*tree)->argv);
 	if ((*tree)->argv == NULL || ft_check_rdr((*tree)) == FAILED)
 		return (FAILED);
 	ft_set_redir(tree, fds);

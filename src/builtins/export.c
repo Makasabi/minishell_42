@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:45 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 15:12:32 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 17:28:01 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	ft_export_while(t_minishit *hell, char **argv, int i)
 		else
 			ft_add_var(&hell->my_env, argv[i++]);
 	}
-	return(SUCCESS);
+	return (SUCCESS);
 }
 
 int	ft_export(t_minishit *hell, char **argv, int fd_out)
