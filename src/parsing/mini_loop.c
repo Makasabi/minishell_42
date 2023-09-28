@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:15 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 12:22:14 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 19:49:16 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,35 @@ void	clean_hell(t_minishit *hell)
 	hell->node = NULL;
 	hell->token = NULL;
 	hell->pids = NULL;
+}
+
+int	check_quotes(char *command)
+{
+	int	i;
+	int	singl;
+	int	doubl;
+
+	i = 0;
+	singl = 0;
+	doubl = 0;
+	while (command[i])
+	{
+		if (i > 0 && command[i - 1] == '\\')
+			i++;
+		else if (command[i] == '\'' && singl == 0)
+			singl = 1;
+		else if (command[i] == '\'' && singl == 1)
+			singl = 0;
+		else if (command[i] == '\"' && doubl == 0)
+			doubl = 1;
+		else if (command[i] == '\"' && doubl == 1)
+			doubl = 0;
+		i++;
+	}
+	if (singl == 0 && doubl == 0)
+		return (TRUE);
+	ft_err_syntax(SHELL, SYNERR, "Opened quote");
+	return (FALSE);
 }
 
 int	mini_loop(t_minishit *hell)

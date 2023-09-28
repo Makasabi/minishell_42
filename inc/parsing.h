@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:13:26 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 17:37:24 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/28 19:49:37 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		parser(t_minishit *hell);
 /* token */
 int		tokenization(t_minishit *hell, char *command);
 
+int		check_quotes(char *command);
 int		count_tab_size(t_token *token);
 t_token	*ft_tokenlast(t_token *token);
 int		ft_token_size(t_token *token);

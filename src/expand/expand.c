@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:54 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 18:20:58 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/28 19:39:06 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	expander(t_minishit *hell, t_token *token)
 	(void)hell;
 	while (token)
 	{
-		if (token->quote != SINGLE)
+		if (token->quote != SINGLE && token->prev && ft_strcmp(token->prev->str, "<<"))
 		{
 			while (dollar_sign(token->str) != FAILED)
 			{
