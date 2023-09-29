@@ -43,7 +43,7 @@ void	rdr_node(t_minishit *hell, t_token *token)
 	new_node->argv = make_argv_rdr(new_node, token->next);
 	if (!new_node->argv)
 	{
-		ft_error_msg(SHELL, "make_argv_rdr", token->str, MALERR);
+		ft_error_msg(SHELL, "make_argv_rdr", token->str, "Empty arg");
 		free(new_node);
 		clean_exit(hell);
 	}

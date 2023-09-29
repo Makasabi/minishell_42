@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:44 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 16:59:43 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/29 14:43:30 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_is_executable(t_minishit *hell, char *cmd)
 	i = stat(cmd, &sb);
 	if (i < 0)
 	{
-		hell->exit = 1;
+		hell->exit = 127;
 		return (ft_error_msg(SHELL, cmd, NULL, NOFLDIR), NULL);
 	}
 	if (S_ISDIR(sb.st_mode))
