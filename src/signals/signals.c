@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:47:48 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 11:11:56 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/29 12:04:19 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	handle_signalz(int process)
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 	}
-	if (process == PROCESS_DONE)
+	if (process == PROCESS_ROOT)
 	{
 		signal(SIGINT, display_prompt2);
 		signal(SIGQUIT, SIG_IGN);

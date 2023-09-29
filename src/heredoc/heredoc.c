@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:49 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/23 14:47:20 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/29 12:04:19 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	process_here_doc(t_minishit *hell, char *delimiter)
 		child_heredoc(hell, delimiter, fd);
 	else
 		parent_heredoc(hell, fd, &tmp, pid);
-	handle_signalz(PROCESS_DONE);
+	handle_signalz(PROCESS_ROOT);
 	return (fd[0]);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:28:34 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 17:37:46 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/29 12:04:19 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@
 # define HEREDOC_CHILD	2
 # define PROCESS_PARENT	3
 # define PROCESS_CHILD	4
-# define PROCESS_DONE	5
+# define PROCESS_ROOT	5
 
 typedef enum e_type
 {

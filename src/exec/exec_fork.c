@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 18:54:48 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/29 12:04:19 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,16 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	}
 	close(*mem_fd);
 	hell->pids[hell->pipes] = pid;
+	kill(pid, SIGINT);
 	while (++i <= hell->pipes)
 		waitpid(hell->pids[i], &exit_status, WUNTRACED);
 	if (WIFEXITED(exit_status) == TRUE)
 		hell->exit = WEXITSTATUS(exit_status);
-	handle_signalz(PROCESS_DONE);
+	else if (WIFSIGNALED(exit_status))
+		hell->exit = exit_status + 128;
+	if (hell->exit == 130)
+		write(1, "\n", 1);
+	handle_signalz(PROCESS_ROOT);
 	ft_core_dump(hell, exit_status);
 	ft_close_fds(*comd);
 	return (hell->exit);

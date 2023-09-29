@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:15 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 19:49:16 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/29 12:04:19 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	mini_loop(t_minishit *hell)
 {
 	char	*command;
 
-	handle_signalz(PROCESS_DONE);
+	handle_signalz(PROCESS_ROOT);
 	command = NULL;
 	command = readline(PROMPT);
 	if (!command)
