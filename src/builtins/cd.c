@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:30 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/28 12:10:17 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/29 12:26:01 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,22 +74,22 @@ int	ft_cd(t_minishit *hell, char **argv, int fd_out)
 
 	(void)fd_out;
 	if (ft_table_size(argv) > 2)
-		return (ft_error_msg(SHELL, CD, NULL, ARGNB), FAILED);
+		return (ft_error_msg(SHELL, CD, NULL, ARGNB), 1);
 	if (!argv[1] || (argv[1][0] == '-' && argv[1][1] == '\0'))
 	{
 		dir = ft_home_old(hell, argv);
 		if (!dir)
 			return (FAILED);
 		if (chdir(dir) == -1)
-			return (ft_error_msg(SHELL, CD, argv[1], NULL), FAILED);
+			return (ft_error_msg(SHELL, CD, argv[1], NULL), 1);
 		if (ft_pwd(hell, NULL, fd_out) == FAILED)
 			return (FAILED);
 	}
 	else if (chdir(argv[1]) == -1)
-		return (ft_error_msg(SHELL, CD, argv[1], NULL), FAILED);
+		return (ft_error_msg(SHELL, CD, argv[1], NOFLDIR), 1);
 	if (ft_update_oldpwd(hell))
-		return (ft_error_msg(SHELL, CD, NULL, ERROLDPWD), FAILED);
+		return (ft_error_msg(SHELL, CD, NULL, ERROLDPWD), 3);
 	if (ft_update_pwd(hell))
-		return (ft_error_msg(SHELL, CD, NULL, ERRPWD), FAILED);
+		return (ft_error_msg(SHELL, CD, NULL, ERRPWD), 3);
 	return (SUCCESS);
 }

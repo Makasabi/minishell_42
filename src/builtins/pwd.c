@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:50 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/27 17:18:50 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/29 12:28:04 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_pwd(t_minishit __attribute__((unused)) *hell,
 	char	buff[PATH_MAX];
 
 	if (getcwd(buff, sizeof(buff)) == NULL)
-		return (ft_error_msg(SHELL, PWD, NULL, NULL), FAILED);
+		return (ft_error_msg(SHELL, PWD, NULL, NULL), 1);
 	else
 	{
 		ft_putendl_fd(buff, fd_out);

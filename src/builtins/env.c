@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:24:40 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/29 12:26:52 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_env(t_minishit *hell, char **argv, int fd_out)
 	if (ft_table_size(argv) > 1)
 		return (FAILED);
 	if (!hell || !hell->my_env)
-		return (ft_error_msg(SHELL, ENV, NULL, ENVNS), FAILED);
+		return (ft_error_msg(SHELL, ENV, NULL, ENVNS), 1);
 	while (hell->my_env[i])
 	{
 		j = 0;

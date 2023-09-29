@@ -6,7 +6,7 @@
 /*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:24:55 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/23 14:24:56 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/29 12:28:42 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_unset(t_minishit *hell, char **argv)
 
 	i = 1;
 	if (!argv[1])
-		return (FAILED);
+		return (0);
 	while (argv[i])
 	{
 		if (argv[i][0] == '-')
