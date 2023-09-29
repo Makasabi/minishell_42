@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:25:39 by mrony             #+#    #+#             */
-/*   Updated: 2023/09/29 12:04:19 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/29 12:15:06 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,12 @@ void	ft_close_fds(t_node *node)
 	}
 }
 
-int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
+void	ft_parent_last_cmd(t_minishit *hell, t_node **comd)
 {
-	int	pid;
 	int	exit_status;
 	int	i;
 
-	hell->on_off = 1;
-	handle_signalz(PROCESS_PARENT);
-	pid = fork();
 	i = -1;
-	if (pid == 0)
-	{
-		handle_signalz(PROCESS_CHILD);
-		ft_exec_cmd(hell, comd, mem_fd);
-	}
-	close(*mem_fd);
-	hell->pids[hell->pipes] = pid;
-	kill(pid, SIGINT);
 	while (++i <= hell->pipes)
 		waitpid(hell->pids[i], &exit_status, WUNTRACED);
 	if (WIFEXITED(exit_status) == TRUE)
@@ -106,5 +94,25 @@ int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
 	handle_signalz(PROCESS_ROOT);
 	ft_core_dump(hell, exit_status);
 	ft_close_fds(*comd);
+}
+
+int	ft_exec_last_cmd(t_minishit *hell, t_node **comd, int *mem_fd)
+{
+	int	pid;
+
+	hell->on_off = 1;
+	handle_signalz(PROCESS_PARENT);
+	pid = fork();
+	if (pid == 0)
+	{
+		handle_signalz(PROCESS_CHILD);
+		ft_exec_cmd(hell, comd, mem_fd);
+	}
+	else
+	{
+		close(*mem_fd);
+		hell->pids[hell->pipes] = pid;
+		ft_parent_last_cmd(hell, comd);
+	}
 	return (hell->exit);
 }

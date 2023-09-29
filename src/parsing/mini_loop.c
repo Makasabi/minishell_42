@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:15 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/29 12:04:19 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/09/29 12:16:37 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,20 +104,3 @@ int	mini_loop(t_minishit *hell)
 	clean_hell(hell);
 	return (TRUE);
 }
-
-/*
-	while (hell->node && hell->node->next)
-	{
-		printf("type is %d index is %d\n", hell->node->type, hell->node->index);
-		hell->node = hell->node->next;
-	}
-
-			printf("type is %d index is %d\n", hell->node->type, hell->node->index);
-
-	while (hell->node)
-	{
-		printf("type is %d index is %d\n", hell->node->type, hell->node->index);
-		hell->node = hell->node->next;
-	}
-
-*/
