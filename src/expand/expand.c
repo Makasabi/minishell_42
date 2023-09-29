@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrony <mrony@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 14:12:54 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 20:07:33 by mrony            ###   ########.fr       */
+/*   Updated: 2023/09/29 09:24:38 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ int	expander(t_minishit *hell, t_token *token)
 	(void)hell;
 	while (token)
 	{
-		if (token->quote != SINGLE
-			&& token->prev && ft_strcmp(token->prev->str, "<<"))
+		if (token->quote != SINGLE && (!token->prev
+				|| (token->prev && ft_strcmp(token->prev->str, "<<"))))
 		{
 			while (dollar_sign(token->str) != FAILED)
 			{
