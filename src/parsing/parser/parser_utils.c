@@ -6,7 +6,7 @@
 /*   By: tgibier <tgibier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:29:05 by tgibier           #+#    #+#             */
-/*   Updated: 2023/09/28 17:36:59 by tgibier          ###   ########.fr       */
+/*   Updated: 2023/11/06 16:05:32 by tgibier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**make_argv_cmd_utils(t_node *node, t_token **token, int i, int flag)
 	char	*tmp;
 
 	if ((*token) && (*token)->space == 0
-		&& (*token)->next && (*token)->type != PIPE)
+		&& (*token)->next && (*token)->next->type != PIPE)
 		(*token) = make_joined(*token);
 	if (i != 0 && flag == 1 && (*token)->space == 1
 		&& (*token)->next && (*token)->next->type != PIPE)
