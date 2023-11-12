@@ -138,10 +138,10 @@ The first step of this part is rather simple : we create a new chained list (dif
 
 Here's our example in nodes : 
 
-   t_type         cmd        rdr    pip   cmd     rdr
-   t_redir                 _input_              _append_
-   char **argv   (cat)   (Makefile)       (wc)  (out file)
-                                       (-l)
+       t_type         cmd        rdr    pip   cmd     rdr
+       t_redir                 _input_              _append_
+       char **argv   (cat)   (Makefile)       (wc)  (out file)
+                                              (-l)
 
 Notice how we
 + lost the symbol for redirections, using only the type
