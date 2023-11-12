@@ -122,8 +122,8 @@ Once this list is created, a quick run through this list helps with some cleanin
 
 Our example now looks like this :
 
- ARG  REDIR   ARG-REDIR  PIPE   ARG   ARG  REDIR     ARG-REDIR
-`cat`  `<`    `Makefile`  `|`   `wc`  `-l`  `>>`   `out file`
+       ARG  REDIR   ARG-REDIR  PIPE   ARG   ARG  REDIR     ARG-REDIR
+      `cat`  `<`    `Makefile`  `|`   `wc`  `-l`  `>>`   `out file`
 
 2. Expander - replace variables with their value
 
@@ -173,7 +173,7 @@ It's the only one, so each command goes respectively on its left and right
      cmd      cmd
 
 For each command, their redirection is linked on its left
-    
+
              pip
            /    \
         cmd      cmd
@@ -185,18 +185,18 @@ For funnsies, here's the command we played around with when conceptualizing our 
 `ifconfig < option | grep ether | cut -d ' ' -f 10 > address`
 
 tokens : 
-   ARG     REDIR  ARG-REDIR  PIPE   ARG     ARG   PIPE   ARG   ARG  ARG   ARG    ARG  REDIR  ARG-REDIR
-`ifconfig`  `<`    `option`   `|`  `grep` `ether`  `|`  `cut` `-d`  ` `  `-f`   `10`  `>`   `address`
+         ARG     REDIR  ARG-REDIR  PIPE   ARG     ARG   PIPE   ARG   ARG  ARG   ARG    ARG  REDIR  ARG-REDIR
+      `ifconfig`  `<`    `option`   `|`  `grep` `ether`  `|`  `cut` `-d`  ` `  `-f`   `10`  `>`   `address`
 
 nodes :
 
-t_type          cmd         rdr     pip   cmd     pip   cmd     rdr
-t_redir                   _input_                             _output_
-char **argv   (ifconfig)  (option)       (grep)         (cut) (address)
-                                         (ether)        (-d)
-                                                        ( )
-                                                        (-f)
-                                                        (10)
+        t_type          cmd         rdr     pip   cmd     pip   cmd     rdr
+        t_redir                   _input_                             _output_
+        char **argv   (ifconfig)  (option)       (grep)         (cut) (address)
+                                                 (ether)        (-d)
+                                                                ( )
+                                                                (-f)
+                                                                (10)
 
 
 
