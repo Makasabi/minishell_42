@@ -173,12 +173,12 @@ It's the only one, so each command goes respectively on its left and right
      cmd      cmd
 
 For each command, their redirection is linked on its left
-
-          pip
-        /    \
-     cmd      cmd
-    /        /
- rdr      rdr
+    
+             pip
+           /    \
+        cmd      cmd
+       /        /
+    rdr      rdr
 
 For funnsies, here's the command we played around with when conceptualizing our AST :
 
