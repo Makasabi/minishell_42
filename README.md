@@ -185,8 +185,9 @@ For funnsies, here's the command we played around with when conceptualizing our 
 `ifconfig < option | grep ether | cut -d ' ' -f 10 > address`
 
 tokens : 
-         ARG     REDIR  ARG-REDIR  PIPE   ARG     ARG   PIPE   ARG   ARG  ARG   ARG    ARG  REDIR  ARG-REDIR
-      `ifconfig`  `<`    `option`   `|`  `grep` `ether`  `|`  `cut` `-d`  ` `  `-f`   `10`  `>`   `address`
+
+           ARG     REDIR  ARG-REDIR  PIPE   ARG     ARG   PIPE   ARG   ARG  ARG   ARG   ARG  REDIR  ARG-REDIR
+        `ifconfig`  `<`    `option`   `|`  `grep` `ether`  `|`  `cut` `-d`  ` `  `-f`   `10`  `>`   `address`
 
 nodes :
 
