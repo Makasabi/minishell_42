@@ -8,16 +8,16 @@ Minishell is a level 03 project at 42 Paris and an emblematic exercice for any c
 
 The subject is pretty straightforward : Recode a (limited version) POSIX Shell in C.
 
-The scope is fully 'functionnal' as we were not required to code any graphic interface (opening a new windo, etc) but 'only'interpret and execute the instruction(s) given in the prompt line `➜  Minishe·elle `.
-The `./minishell` program is able to run most of the basic instructions a shell can handle, such as echo, ls, cat, cd, mkdir... and even run other executable such prevous 42 projects (think push_swap, fdf, etc).
-A set of basic commands also have to be recoded inside our program as to be able to run basic instruction even when `./minishell` is lauched without any environment vairbales (but will get on that later on).
-if you have any questions - shoot us an email or ping us on Discord, we'll be happy to help!
+The scope is fully 'functionnal' as we were not required to code any graphic interface (opening a new window, etc) but 'only' interpret and execute the instruction(s) given in the prompt line `➜  Minishe·elle `.
+The `./minishell` program is able to run most of the basic instructions a shell can handle, such as echo, ls, cat, cd, mkdir... and even run other executable such as previous 42 projects (think push_swap, fdf, etc).
+A set of basic commands also have to be recoded inside our program, to be able to run basic instructions even when `./minishell` is launched without any environment variables (but we'll get on that later on).
+If you have any questions - shoot us an email or ping us on Discord, we'll be happy to help!
  
 ## Wonderwomen
 
-Minishell is the first group project (within the common core curiculum of 42), which has to be done in pairs. The point of working on a group project is to emulate real life work - where wel'll have to work on projects with bigger scopes and where we will have to review code or get our own code reviewed. Which is why, when working with one or several persons, knowing exactly each other's scope is key to avoid any overlaping or redundancy. Another key learning point was the use of git (branching, merging, etc). By the way, the first thing we did was a [git crash course](https://learngitbranching.js.org/?locale=en).
+Minishell is the first group project (within the common core curriculum of 42), which has to be done in pairs. The point of working on a group project is to emulate real life work - where we'll have to work on projects with bigger scopes and review code or get our own code reviewed. Which is why, when working with one or several persons, knowing exactly each other's scope is key to avoid any overlapping or redundancy. Another key learning point was the use of git (branching, merging, etc). By the way, the first thing we did was a [git crash course](https://learngitbranching.js.org/?locale=en).
 
-I was very happy Tiffany asked me to become her Minishell mate! We were lucky enough to be coding in a very similar way so working together and reviewing eachother's code was a breeze! Our respecive professionnal experience was also an asset for us as we apprehended this big piece of a project from a macro perspective first. And on a more personnal level - we became really good friends. So thank you Tiffany !
+I was very happy Tiffany asked me to become her Minishell mate! We were lucky enough to be coding in a very similar way so working together and reviewing eachother's code was a breeze! Our respective professionnal experience was also an asset for us as we apprehended this big piece of a project from a macro perspective first. And on a more personnal level - we became really good friends. So thank you Tiffany !
 
 **We divided the project in roughly 2 main chunks : parsing and execution**
 
@@ -50,11 +50,11 @@ Here is a global representation of the general structure of our code :
 ## Key Learning Points
 
 1. [Readline - Collecting instructions from prompt line](https://github.com/Makasabi/minishell_42/blob/main/README.md#1-readline---collecting-istructions-from-the-prompt-line)
-2. Parsing
-   	1. Lexer - divide command sting in tokens
-   	2. Expander - Replace variables with their value
+2. [Parsing] (https://github.com/Makasabi/minishell_42/blob/main/README.md#2-parsing---how-to-create-an-ast-from-scratch)
+   	1. Lexer - divide command string in tokens
+   	2. Expander - replace variables with their value
    	3. Parser - analyse tokens and store them in nodes
-   	4. Pseudo Heredoc - 
+   	4. Pseudo Heredoc - create a temporary file, directly in the prompt
    	5. Tree builder - organise nodes in a logical way
 3. Signals handling
 4. [Environment variables](https://github.com/Makasabi/minishell_42/blob/main/README.md#4-environment-variables)
@@ -68,6 +68,141 @@ Here is a global representation of the general structure of our code :
 6. External Ressources 
 
 ## 1. Readline - Collecting instructions from the prompt line
+
+## 2. Parsing - How to create an AST from scratch
+
+AST stands for Abstract Syntax Tree ; to explain the functionning of it, we can make a parallel with regular grammar, as also works in a syntax tree. 
+
+_Shoutout to Chomsky for that part_
+
+Let's take an example : "Jade reads a book."
+
+This sentence is `formal language`, which means it's an ensemble of letters from an alphabet, forming words, etc.
+Grammar looks at this phrase in a more abstract way : 
+
+S (sentence) = Jade reads a book
+NP (noun phrase) = Jade
+VP (verb phrase) = reads a book
+
+It can me illustrated in a tree that way :
+
+            S
+            |
+          /   \
+        NP     VP
+      (Jade)  (reads a book)
+
+The difference between formal language and grammar is this abstraction - it doesn't actually matter what details are put in those noun or verb phrases.
+
+This sentence would have the exact same AST : "The wonderfully smart, brilliant and stunningly funny Jade reads a book written by no one else than Brandon Sanderson, fantasy genius of our times"
+
+I'm getting carried away, but bear with me, we're getting there.
+
+The exact same principle applies to shell commands. In the end, it doesn't really matter _what_ the words are : we just need to be able to break it down and find a categorization that fits and allows us to build a tree around it.
+
+
+We sat down and got to work : bash's AST is extensive, so we drew inspiration from it.
+
+PIPE : highest point of the tree, works as a pivot point in the code
+REDIR : always starts with either < or > , to be broken down in different types after
+COMMAND : basically all the rest, whether it is a simple command, or a complex one with multiple options and arguments
+
+Here's a quick command example, let's make a tree out of it !
+
+`cat < Makefile | wc -l >> "out file"`
+
+1. Lexer - divide command string in tokens
+
+This is where the actual parsing (or at least the coding part of it) began.
+
+The first step was a chained list of tokens. Basically, everything either `|`, `<` or `>` gets its own token, with the type PIPE or corresponding redirection name (input, output, heredoc or append). Everything else is put in an ARG token.
+Once this list is created, a quick run through this list helps with some cleaning
++ Every ARG after a REDIR becomes said REDIR name
++ Quotes are deleted (while keeping a flag to differenciate between single and double quotes)
+
+Our example now looks like this :
+
+ ARG  REDIR   ARG-REDIR  PIPE   ARG   ARG  REDIR     ARG-REDIR
+`cat`  `<`    `Makefile`  `|`   `wc`  `-l`  `>>`   `out file`
+
+2. Expander - replace variables with their value
+# Expansion
+
+3. Parser - analyse tokens and store them in nodes
+
+Now that we have that : let's go on with the nodes.
+
+The first step of this part is rather simple : we create a new chained list (different s_type for clarity), with standard next and prev pointers.
++ PIPE tokens get a PIP node
++ REDIR tokens and their ARG name go into a RDR node, with the name as a variable
++ bewteen two pipes : every unused ARG create the char ** of a CMD node
+
+Here's our example in nodes : 
+
+t_type         cmd        rdr    pip   cmd     rdr
+t_redir                 _input_              _append_
+char **argv   (cat)   (Makefile)       (wc)  (out file)
+                                       (-l)
+
+Notice how we
++ lost the symbol for redirections, using only the type
++ PIPE node became only a pip node, no more formal language is used
+
+Once again, the main goal of the AST is to strip the language to its more abstract form.
+
+4. Pseudo Heredoc - create a temporary file, directly in the prompt
+# Heredoc
+
+5. Tree builder - organise nodes in a logical way
+
+Now, the only thing left is to create our now infamous tree.
+
+Hierarchy is primordial : 
++ pip nodes are the highest pivot point
++ everything on the left of a pipe in a command will be on the left in the tree
+(+ bewteen pipes, every redir is linked to the same command)
+
+`cat < Makefile | wc -l >> "out file"`
+
+First, pip : 
+
+          pip
+
+It's the only one, so each command goes respectively on its left and right
+
+          pip
+        /    \
+     cmd      cmd
+
+For each command, their redirection is linked on its left
+
+          pip
+        /    \
+     cmd      cmd
+    /        /
+ rdr      rdr
+
+For funnsies, here's the command we played around with when conceptualizing our AST :
+
+`ifconfig < option | grep ether | cut -d ' ' -f 10 > address`
+
+tokens : 
+   ARG     REDIR  ARG-REDIR  PIPE   ARG     ARG   PIPE   ARG   ARG  ARG   ARG    ARG  REDIR  ARG-REDIR
+`ifconfig`  `<`    `option`   `|`  `grep` `ether`  `|`  `cut` `-d`  ` `  `-f`   `10`  `>`   `address`
+
+nodes :
+
+t_type          cmd         rdr     pip   cmd     pip   cmd     rdr
+t_redir                   _input_                             _output_
+char **argv   (ifconfig)  (option)       (grep)         (cut) (address)
+                                         (ether)        (-d)
+                                                        ( )
+                                                        (-f)
+                                                        (10)
+
+
+
+
 
 ## 4. Environment variables
 
