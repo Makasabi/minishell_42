@@ -126,7 +126,6 @@ Our example now looks like this :
 `cat`  `<`    `Makefile`  `|`   `wc`  `-l`  `>>`   `out file`
 
 2. Expander - replace variables with their value
-# Expansion
 
 3. Parser - analyse tokens and store them in nodes
 
@@ -151,7 +150,6 @@ Notice how we
 Once again, the main goal of the AST is to strip the language to its more abstract form.
 
 4. Pseudo Heredoc - create a temporary file, directly in the prompt
-# Heredoc
 
 5. Tree builder - organise nodes in a logical way
 
