@@ -84,7 +84,7 @@ S (sentence) = Jade reads a book
 NP (noun phrase) = Jade
 VP (verb phrase) = reads a book
 
-It can me illustrated in a tree that way :
+It can be illustrated in a tree that way :
 
             S
             |
@@ -94,7 +94,7 @@ It can me illustrated in a tree that way :
 
 The difference between formal language and grammar is this abstraction - it doesn't actually matter what details are put in those noun or verb phrases.
 
-This sentence would have the exact same AST : "The wonderfully smart, brilliant and stunningly funny Jade reads a book written by no one else than Brandon Sanderson, fantasy genius of our times"
+This sentence would have the exact same AST : "The wonderfully smart, brilliant and stunningly funny Jade reads a book written by no one else than Brandon Sanderson, fantasy genius of our times."
 
 I'm getting carried away, but bear with me, we're getting there.
 
