@@ -58,7 +58,7 @@ Here is a global representation of the general structure of our code :
    	5. Tree builder - organise nodes in a logical way
 3. Signals handling
 4. [Environment variables](https://github.com/Makasabi/minishell_42/blob/main/README.md#4-environment-variables)
-5. Execution
+5. Execution (https://github.com/Makasabi/minishell_42/blob/main/README.md#5-execution)
    	1. Builtins
    	2. Running binary executable form minishell
    	3. Piped commands
@@ -217,13 +217,39 @@ You can easily check the value of an environment variable with the command `echo
 
 the environment of shell is a collection of many variables, and luckily you don't have to set the entire environment yourself.
 You can 'import it' from your main function arguments `int main(int argc, char ** argv, char ** envp)` or by importing it from an external variable ```extern char	**environ```.
-if you are launching `./minihsell` with `env -i`: you are setting the envp/environ to a one line 2D array that is set to NULL; In this particular case, you'll need to make sure your program can run without crashing and run builtins.
+if you are launching `./minihsell` with `env -i`: you are setting the envp/environ to a one line 2D char* array that is set to NULL; In this particular case, you'll need to make sure your program can still run without crashing (the builtins will be the only command you'll be able to use, - along with redirections and pipes).
 
-You'll have to store your'e environment variable somehere easily accessible throughout youre code. 
+You'll have to store your environment variable somehere easily accessible throughout youre code. 
 In our project, we decided to duplicate the environment 2D char array and to have it saved on the heap. 
 
 Finally, you will also need to code functions to modify your environment: add, remove, edit, find, extract value of a variable. 
 
+### Initialisation
+
+	We chose to store our environment variables in a 2D char array as opposed to a linked list.
+	
+	The main reason for this choice is that linked list did not appear as more efficient nor optimised in terms of memory allocation or practicity for modifications.
+	
+	We used string manipulation functions as well as pointer arythmetics in order to add, remove or edit existing variables.
+
+	As mentionned above, starting `./minishell` without option allows us to easily import the environment variables 2D char array from the shell calling minihsell, using the external viariable ```extern char	**environ```.
+	We only had to edit the shell level value `$SHLVL` to n+1 in our version of the environment before returning its pointer.
+
+	On the other hand, when starting with a NULL environment, we set a mini version of the environment variables with 2 pieces of data we'd later use : PWD and SHLVL.
+
+## 5. Execution
+
+
+
+### A. Builtins
+
+#### env
+#### export
+#### unset
+#### pwd
+#### cd
+#### echo
+#### exit
 
 Sujet :
 https://cdn.intra.42.fr/pdf/pdf/90159/fr.subject.pdf
