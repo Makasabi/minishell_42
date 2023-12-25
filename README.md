@@ -226,16 +226,16 @@ Finally, you will also need to code functions to modify your environment: add, r
 
 ### Initialisation
 
-	We chose to store our environment variables in a 2D char array as opposed to a linked list.
-	
-	The main reason for this choice is that linked list did not appear as more efficient nor optimised in terms of memory allocation or practicity for modifications.
-	
-	We used string manipulation functions as well as pointer arythmetics in order to add, remove or edit existing variables.
+We chose to store our environment variables in a 2D char array as opposed to a linked list.
 
-	As mentionned above, starting `./minishell` without option allows us to easily import the environment variables 2D char array from the shell calling minihsell, using the external viariable ```extern char	**environ```.
-	We only had to edit the shell level value `$SHLVL` to n+1 in our version of the environment before returning its pointer.
+The main reason for this choice is that linked list did not appear as more efficient nor optimised in terms of memory allocation or practicity for modifications.
 
-	On the other hand, when starting with a NULL environment, we set a mini version of the environment variables with 2 pieces of data we'd later use : PWD and SHLVL.
+We used string manipulation functions as well as pointer arythmetics in order to add, remove or edit existing variables.
+
+As mentionned above, starting `./minishell` without option allows us to easily import the environment variables 2D char array from the shell calling minihsell, using the external viariable ```extern char	**environ```.
+We only had to edit the shell level value `$SHLVL` to n+1 in our version of the environment before returning its pointer.
+
+On the other hand, when starting with a NULL environment, we set a mini version of the environment variables with 2 pieces of data we'd later use : PWD and SHLVL.
 
 ## 5. Execution
 
