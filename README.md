@@ -235,11 +235,13 @@ We used string manipulation functions as well as pointer arythmetics in order to
 As mentionned above, starting `./minishell` without option allows us to easily import the environment variables 2D char array from the shell calling minihsell, using the external viariable ```extern char	**environ```.
 We only had to edit the shell level value `$SHLVL` to n+1 in our version of the environment before returning its pointer.
 
-On the other hand, when starting with a NULL environment, we set a mini version of the environment variables with 2 pieces of data we'd later use : PWD and SHLVL.
+On the other hand, when starting with a NULL environment, we set a mini version of the environment variables with 2 pieces of data we'd later use : `$PWD` and `$SHLVL`.
 
 ## 5. Execution
 
+Once the environment is set and our command line has been succesfully organised in a command tree, it is now time to execute whatever our user has requested.
 
+Our program must be able to execute a set of 7 built-ins commands that don't require using the existing binary file from our system. 
 
 ### A. Builtins
 
